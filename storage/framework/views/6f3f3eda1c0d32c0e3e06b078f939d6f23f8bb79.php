@@ -106,11 +106,11 @@
                                                                        class="form-label mb-1">استان</label>
                                                                 <select name="province_id"
                                                                         class="form-select form-select-sm"
-                                                                        id="province">
-                                                                    <option selected>استان را انتخاب کنید</option>
+                                                                        id="province-<?php echo e($address->id); ?>">
                                                                     <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <option value="<?php echo e($province->id); ?>"
-                                                                                data-url="<?php echo e(route('customer.sales-process.get-cities', $province->id)); ?>">
+                                                                        <option
+                                                                            <?php echo e($address->province_id == $province->id ? 'selected' : ''); ?> value="<?php echo e($province->id); ?>"
+                                                                            data-url="<?php echo e(route('customer.sales-process.get-cities', $province->id)); ?>">
                                                                             <?php echo e($province->name); ?></option>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -121,7 +121,7 @@
                                                                 <label for="city" class="form-label mb-1">شهر</label>
                                                                 <select name="city_id"
                                                                         class="form-select form-select-sm"
-                                                                        id="city">
+                                                                        id="city-<?php echo e($address->id); ?>">
                                                                     <option selected>شهر را انتخاب کنید</option>
                                                                 </select>
                                                             </section>
@@ -202,6 +202,8 @@
                                                                     class="form-control form-control-sm" id="mobile"
                                                                     placeholder="شماره موبایل">
                                                             </section>
+
+
                                                     </section>
                                                     <section class="modal-footer py-1">
                                                         <button type="submit" class="btn btn-sm btn-primary">ثبت
@@ -216,8 +218,9 @@
                                                 </section>
                                             </section>
                                         </section>
-                                        <!-- end edit address Modal -->
+                                        <!-- end add address Modal -->
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 
                                     <section class="address-add-wrapper">
                                         <button class="address-add-button" type="button" data-bs-toggle="modal"
@@ -236,8 +239,8 @@
                                                                 aria-label="Close"></button>
                                                     </section>
                                                     <section class="modal-body">
-                                                        <section class="row" method="post"
-                                                                 action="<?php echo e(route('customer.sales-process.add-address')); ?>">
+                                                        <form class="row" method="post"
+                                                              action="<?php echo e(route('customer.sales-process.add-address')); ?>">
                                                             <?php echo csrf_field(); ?>
                                                             <section class="col-6 mb-2">
                                                                 <label for="province"
@@ -248,26 +251,11 @@
                                                                     <option selected>استان را انتخاب کنید</option>
                                                                     <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <option value="<?php echo e($province->id); ?>"
-                                                                                data-url="<?php echo e(route('customer.sales-process.get-cities', $province->id)); ?>"
-                                                                                <?php if(old('province_id') == $province): ?> selected <?php endif; ?>>
+                                                                                data-url="<?php echo e(route('customer.sales-process.get-cities', $province->id)); ?>">
                                                                             <?php echo e($province->name); ?></option>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                                                 </select>
-                                                                <?php $__errorArgs = ['province_id'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
                                                             </section>
 
                                                             <section class="col-6 mb-2">
@@ -277,42 +265,13 @@ unset($__errorArgs, $__bag); ?>
                                                                         id="city">
                                                                     <option selected>شهر را انتخاب کنید</option>
                                                                 </select>
-                                                                <?php $__errorArgs = ['city_id'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
                                                             </section>
                                                             <section class="col-12 mb-2">
                                                                 <label for="address"
                                                                        class="form-label mb-1">نشانی</label>
                                                                 <textarea name="address"
                                                                           class="form-control form-control-sm"
-                                                                          id="address"
-                                                                          placeholder="نشانی"><?php echo e(old('address')); ?></textarea>
-                                                                <?php $__errorArgs = ['address'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                          id="address" placeholder="نشانی"></textarea>
                                                             </section>
 
                                                             <section class="col-6 mb-2">
@@ -321,64 +280,21 @@ unset($__errorArgs, $__bag); ?>
                                                                 <input type="text" name="postal_code"
                                                                        class="form-control form-control-sm"
                                                                        id="postal_code"
-                                                                       placeholder="کد پستی"
-                                                                       value="<?php echo e(old('postal_code')); ?>">
-                                                                <?php $__errorArgs = ['postal_code'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="کد پستی">
                                                             </section>
 
                                                             <section class="col-3 mb-2">
                                                                 <label for="no" class="form-label mb-1">پلاک</label>
                                                                 <input type="text" name="no"
                                                                        class="form-control form-control-sm" id="no"
-                                                                       placeholder="پلاک" value="<?php echo e(old('no')); ?>">
-                                                                <?php $__errorArgs = ['no'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="پلاک">
                                                             </section>
 
                                                             <section class="col-3 mb-2">
                                                                 <label for="unit" class="form-label mb-1">واحد</label>
                                                                 <input type="text" name="unit"
                                                                        class="form-control form-control-sm" id="unit"
-                                                                       placeholder="واحد" value="<?php echo e(old('unit')); ?>">
-                                                                <?php $__errorArgs = ['unit'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="واحد">
                                                             </section>
 
                                                             <section class="border-bottom mt-2 mb-3"></section>
@@ -399,22 +315,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 <input type="text" name="recipient_first_name"
                                                                        class="form-control form-control-sm"
                                                                        id="first_name"
-                                                                       placeholder="نام گیرنده"
-                                                                       value="<?php echo e(old('recipient_first_name')); ?>">
-                                                                <?php $__errorArgs = ['recipient_first_name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="نام گیرنده">
                                                             </section>
 
                                                             <section class="col-6 mb-2">
@@ -423,22 +324,7 @@ unset($__errorArgs, $__bag); ?>
                                                                 <input type="text" name="recipient_last_name"
                                                                        class="form-control form-control-sm"
                                                                        id="last_name"
-                                                                       placeholder="نام خانوادگی گیرنده"
-                                                                       value="<?php echo e(old('recipient_last_name')); ?>">
-                                                                <?php $__errorArgs = ['recipient_last_name'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="نام خانوادگی گیرنده">
                                                             </section>
 
                                                             <section class="col-6 mb-2">
@@ -446,199 +332,215 @@ unset($__errorArgs, $__bag); ?>
                                                                     موبایل</label>
                                                                 <input type="text" name="mobile"
                                                                        class="form-control form-control-sm" id="mobile"
-                                                                       placeholder="شماره موبایل"
-                                                                       value="<?php echo e(old('mobile')); ?>">
-                                                                <?php $__errorArgs = ['mobile'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span
-                                                                    class="alert_required bg-danger text-white p-1 rounded"
-                                                                    role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
+                                                                       placeholder="شماره موبایل">
                                                             </section>
 
-                                                        </section>
-                                                        <section class="modal-footer py-1">
-                                                            <button type="submit" class="btn btn-sm btn-primary">ثبت
-                                                                آدرس
-                                                            </button>
-                                                            <button type="button" class="btn btn-sm btn-danger"
-                                                                    data-bs-dismiss="modal">بستن
-                                                            </button>
-                                                        </section>
-                                                        </form>
 
                                                     </section>
+                                                    <section class="modal-footer py-1">
+                                                        <button type="submit" class="btn btn-sm btn-primary">ثبت
+                                                            آدرس
+                                                        </button>
+                                                        <button type="button" class="btn btn-sm btn-danger"
+                                                                data-bs-dismiss="modal">بستن
+                                                        </button>
+                                                    </section>
+                                                    </form>
+
                                                 </section>
                                             </section>
-                                            <!-- end add address Modal -->
                                         </section>
-
+                                        <!-- end add address Modal -->
                                     </section>
+
                                 </section>
-
-
-                                <section class="content-wrapper bg-white p-3 rounded-2 mb-4">
-
-                                    <!-- start content header -->
-                                    <section class="content-header mb-3">
-                                        <section class="d-flex justify-content-between align-items-center">
-                                            <h2 class="content-header-title content-header-title-small">
-                                                انتخاب نحوه ارسال
-                                            </h2>
-                                            <section class="content-header-link">
-                                                <!--<a href="#">مشاهده همه</a>-->
-                                            </section>
-                                        </section>
-                                    </section>
-                                    <section class="delivery-select ">
-
-                                        <section class="address-alert alert alert-primary d-flex align-items-center p-2"
-                                                 role="alert">
-                                            <i class="fa fa-info-circle flex-shrink-0 me-2"></i>
-                                            <secrion>
-                                                نحوه ارسال کالا را انتخاب کنید. هنگام انتخاب لطفا مدت زمان ارسال را در
-                                                نظر
-                                                بگیرید.
-                                            </secrion>
-                                        </section>
-
-                                        <input type="radio" name="delivery_type" value="1" id="d1"/>
-                                        <label for="d1" class="col-12 col-md-4 delivery-wrapper mb-2 pt-2">
-                                            <section class="mb-2">
-                                                <i class="fa fa-shipping-fast mx-1"></i>
-                                                پست پیشتاز
-                                            </section>
-                                            <section class="mb-2">
-                                                <i class="fa fa-calendar-alt mx-1"></i>
-                                                تامین کالا از 4 روز کاری آینده
-                                            </section>
-                                        </label>
-
-                                        <input type="radio" name="delivery_type" value="2" id="d2"/>
-                                        <label for="d2" class="col-12 col-md-4 delivery-wrapper mb-2 pt-2">
-                                            <section class="mb-2">
-                                                <i class="fa fa-shipping-fast mx-1"></i>
-                                                تیپاکس
-                                            </section>
-                                            <section class="mb-2">
-                                                <i class="fa fa-calendar-alt mx-1"></i>
-                                                تامین کالا از 2 روز کاری آینده
-                                            </section>
-                                        </label>
-
-
-                                    </section>
-                                </section>
-
-
                             </section>
-                            <section class="col-md-3">
-                                <section class="content-wrapper bg-white p-3 rounded-2 cart-total-price">
-                                    <?php
-                                        $totalProductPrice = 0;
-                                        $totalDiscount = 0;
-                                    ?>
 
-                                    <?php $__currentLoopData = $cartItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cartItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <?php
-                                            $totalProductPrice += $cartItem->cartItemProductPrice() * $cartItem->number;
-                                            $totalDiscount += $cartItem->cartItemProductDiscount() * $cartItem->number;
-                                        ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+                            <section class="content-wrapper bg-white p-3 rounded-2 mb-4">
+
+                                <!-- start vontent header -->
+                                <section class="content-header mb-3">
                                     <section class="d-flex justify-content-between align-items-center">
-                                        <p class="text-muted">قیمت کالاها (<?php echo e($cartItems->count()); ?>)</p>
-                                        <p class="text-muted"><span
-                                                id="total_product_price"><?php echo e(priceFormat($totalProductPrice)); ?></span>
-                                            تومان
-                                        </p>
-                                    </section>
-
-                                    <?php if($totalDiscount != 0): ?>
-                                        <section class="d-flex justify-content-between align-items-center">
-                                            <p class="text-muted">تخفیف کالاها</p>
-                                            <p class="text-danger fw-bolder"><span
-                                                    id="total_discount"><?php echo e(priceFormat($totalDiscount)); ?></span> تومان
-                                            </p>
+                                        <h2 class="content-header-title content-header-title-small">
+                                            انتخاب نحوه ارسال
+                                        </h2>
+                                        <section class="content-header-link">
+                                            <!--<a href="#">مشاهده همه</a>-->
                                         </section>
-                                    <?php endif; ?>
-                                    <section class="border-bottom mb-3"></section>
-                                    <section class="d-flex justify-content-between align-items-center">
-                                        <p class="text-muted">جمع سبد خرید</p>
-                                        <p class="fw-bolder"><span
-                                                id="total_price"><?php echo e(priceFormat($totalProductPrice - $totalDiscount)); ?></span>
-                                            تومان</p>
+                                    </section>
+                                </section>
+                                <section class="delivery-select ">
+
+                                    <section class="address-alert alert alert-primary d-flex align-items-center p-2"
+                                             role="alert">
+                                        <i class="fa fa-info-circle flex-shrink-0 me-2"></i>
+                                        <secrion>
+                                            نحوه ارسال کالا را انتخاب کنید. هنگام انتخاب لطفا مدت زمان ارسال را در نظر
+                                            بگیرید.
+                                        </secrion>
                                     </section>
 
-                                    <p class="my-3">
-                                        <i class="fa fa-info-circle me-1"></i>کاربر گرامی خرید شما هنوز نهایی نشده است.
-                                        برای
-                                        ثبت سفارش و تکمیل خرید باید ابتدا آدرس خود را انتخاب کنید و سپس نحوه ارسال را
-                                        انتخاب
-                                        کنید. نحوه ارسال انتخابی شما محاسبه و به این مبلغ اضافه شده خواهد شد. و در نهایت
-                                        پرداخت
-                                        این سفارش صورت میگیرد.
-                                    </p>
+                                    <input type="radio" name="delivery_type" value="1" id="d1"/>
+                                    <label for="d1" class="col-12 col-md-4 delivery-wrapper mb-2 pt-2">
+                                        <section class="mb-2">
+                                            <i class="fa fa-shipping-fast mx-1"></i>
+                                            پست پیشتاز
+                                        </section>
+                                        <section class="mb-2">
+                                            <i class="fa fa-calendar-alt mx-1"></i>
+                                            تامین کالا از 4 روز کاری آینده
+                                        </section>
+                                    </label>
 
+                                    <input type="radio" name="delivery_type" value="2" id="d2"/>
+                                    <label for="d2" class="col-12 col-md-4 delivery-wrapper mb-2 pt-2">
+                                        <section class="mb-2">
+                                            <i class="fa fa-shipping-fast mx-1"></i>
+                                            تیپاکس
+                                        </section>
+                                        <section class="mb-2">
+                                            <i class="fa fa-calendar-alt mx-1"></i>
+                                            تامین کالا از 2 روز کاری آینده
+                                        </section>
+                                    </label>
 
-                                    <section class="">
-                                        <button type="button"
-                                                onclick="document.getElementById('profile_completion').submit();"
-                                                class="btn btn-danger d-block w-100">تکمیل فرآیند خرید
-                                        </button>
-                                    </section>
 
                                 </section>
+                            </section>
+
+
+                        </section>
+                        <section class="col-md-3">
+                            <section class="content-wrapper bg-white p-3 rounded-2 cart-total-price">
+                                <?php
+                                    $totalProductPrice = 0;
+                                    $totalDiscount = 0;
+                                ?>
+
+                                <?php $__currentLoopData = $cartItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cartItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $totalProductPrice += $cartItem->cartItemProductPrice() * $cartItem->number;
+                                        $totalDiscount += $cartItem->cartItemProductDiscount() * $cartItem->number;
+                                    ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                <section class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted">قیمت کالاها (<?php echo e($cartItems->count()); ?>)</p>
+                                    <p class="text-muted"><span
+                                            id="total_product_price"><?php echo e(priceFormat($totalProductPrice)); ?></span> تومان
+                                    </p>
+                                </section>
+
+                                <?php if($totalDiscount != 0): ?>
+                                    <section class="d-flex justify-content-between align-items-center">
+                                        <p class="text-muted">تخفیف کالاها</p>
+                                        <p class="text-danger fw-bolder"><span
+                                                id="total_discount"><?php echo e(priceFormat($totalDiscount)); ?></span> تومان</p>
+                                    </section>
+                                <?php endif; ?>
+                                <section class="border-bottom mb-3"></section>
+                                <section class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted">جمع سبد خرید</p>
+                                    <p class="fw-bolder"><span
+                                            id="total_price"><?php echo e(priceFormat($totalProductPrice - $totalDiscount)); ?></span>
+                                        تومان</p>
+                                </section>
+
+                                <p class="my-3">
+                                    <i class="fa fa-info-circle me-1"></i>کاربر گرامی خرید شما هنوز نهایی نشده است. برای
+                                    ثبت سفارش و تکمیل خرید باید ابتدا آدرس خود را انتخاب کنید و سپس نحوه ارسال را انتخاب
+                                    کنید. نحوه ارسال انتخابی شما محاسبه و به این مبلغ اضافه شده خواهد شد. و در نهایت
+                                    پرداخت
+                                    این سفارش صورت میگیرد.
+                                </p>
+
+
+                                <section class="">
+                                    <button type="button"
+                                            onclick="document.getElementById('profile_completion').submit();"
+                                            class="btn btn-danger d-block w-100">تکمیل فرآیند خرید
+                                    </button>
+                                </section>
+
                             </section>
                         </section>
                     </section>
                 </section>
-
             </section>
+
         </section>
-        <!-- end cart -->
+    </section>
+    <!-- end cart -->
+
+<?php $__env->stopSection(); ?>
 
 
-        <?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    <script>
+        $(document).ready(function () {
+            $('#province').change(function () {
+                var element = $('#province option:selected');
+                var url = element.attr('data-url');
+
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function (response) {
+                        if (response.status) {
+                            let cities = response.cities;
+                            $('#city').empty();
+                            cities.map((city) => {
+                                $('#city').append($('<option/>').val(city.id).text(city
+                                    .name))
+                            })
+                        } else {
+                            errorToast('خطا پیش آمده است')
+                        }
+                    },
+                    error: function () {
+                        errorToast('خطا پیش آمده است')
+                    }
+                })
+            })
 
 
-        <?php $__env->startSection('script'); ?>
-            <script>
-                $(document).ready(function () {
-                    $('#province').change(function () {
-                        var element = $('#province option:selected');
-                        var url = element.attr('data-url');
+            // edit
+            var addresses = <?php echo auth()->user()->addresses; ?>
 
-                        $.ajax({
-                            url: url,
-                            type: "GET",
-                            success: function (response) {
-                                if (response.status) {
-                                    let cities = response.cities;
-                                    $('#city').empty();
-                                    cities.map((city) => {
-                                        $('#city').append($('<option/>').val(city.id).text(city
-                                            .name))
-                                    })
-                                } else {
-                                    errorToast('خطا پیش آمده است')
-                                }
-                            },
-                            error: function () {
+            // console.log(addresses);
+            addresses.map(function (address) {
+                var id = address.id;
+                var target = `#province-${id}`;
+                var selected = `${target} option:selected`
+                $(target).change(function () {
+                    var element = $(selected);
+                    var url = element.attr('data-url');
+
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function (response) {
+                            if (response.status) {
+                                let cities = response.cities;
+                                $(`#city-${id}`).empty();
+                                cities.map((city) => {
+                                    $(`#city-${id}`).append($('<option/>').val(city.id).text(city
+                                        .name))
+                                })
+                            } else {
                                 errorToast('خطا پیش آمده است')
                             }
-                        })
+                        },
+                        error: function () {
+                            errorToast('خطا پیش آمده است')
+                        }
                     })
                 })
-            </script>
+            })
+
+        })
+    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('customer.layouts.master-two-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\###amazon\resources\views/customer/sales-process/address-and-delivery.blade.php ENDPATH**/ ?>
