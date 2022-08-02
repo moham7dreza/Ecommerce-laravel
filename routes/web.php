@@ -8,6 +8,7 @@ use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
+use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaymentController;
 
 
 /*
@@ -51,6 +52,8 @@ Route::namespace('SalesProcess')->group(function () {
         Route::post('/add-address', [AddressController::class, 'addAddress'])->name('customer.sales-process.add-address');
         Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('customer.sales-process.update-address');
         Route::get('/get-cities/{province}', [AddressController::class, 'getCities'])->name('customer.sales-process.get-cities');
+		 //payment
+        Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('customer.sales-process.payment');
     });
 });
 
