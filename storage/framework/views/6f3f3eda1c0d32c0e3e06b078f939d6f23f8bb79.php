@@ -373,7 +373,6 @@
                                 </section>
                             </section>
 
-                            <form action="<?php echo e(route('customer.sales-process.payment')); ?>" id="myForm"></form>
 
 
 
@@ -421,10 +420,14 @@
                                     این سفارش صورت میگیرد.
                                 </p>
 
+                                <form action="<?php echo e(route('customer.sales-process.choose-address-and-delivery')); ?>" method="post" id="myForm">
+                                <?php echo csrf_field(); ?>
+                                </form>
+
 
                                 <section class="">
                                     <button type="button"
-                                        onclick="document.getElementById('profile_completion').submit();"
+                                        onclick="document.getElementById('myForm').submit();"
                                         class="btn btn-danger d-block w-100">تکمیل فرآیند خرید</button>
                                 </section>
 

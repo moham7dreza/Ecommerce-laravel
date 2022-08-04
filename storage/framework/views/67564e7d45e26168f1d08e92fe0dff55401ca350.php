@@ -21,9 +21,6 @@
 
     <?php echo $__env->make('customer.layouts.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('script'); ?>
-
-
-
 </body>
 </html>
 <?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/master-one-col.blade.php ENDPATH**/ ?>
