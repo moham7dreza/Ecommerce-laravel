@@ -85,10 +85,12 @@ class AddressController extends Controller
             $totalFinalDiscountPriceWithNumbers += $cartItem->cartItemFinalDiscount();
         }
 
+
         //commonDiscount
         $commonDiscount = CommonDiscount::where([['status', 1], ['end_date', '>', now()], ['start_date', '<', now()]])->first();
         if($commonDiscount)
         {
+            $inputs['common_discount_id'] = $commonDiscount->id;
              $commonPercentageDiscountAmount = $totalFinalPrice * ($commonDiscount->percentage / 100);
              if($commonPercentageDiscountAmount > $commonDiscount->discount_ceiling)
              {
@@ -99,6 +101,7 @@ class AddressController extends Controller
                 $finalPrice = $totalFinalPrice - $commonPercentageDiscountAmount;
              }
              else{
+
                 $finalPrice = $totalFinalPrice;
              }
         }
