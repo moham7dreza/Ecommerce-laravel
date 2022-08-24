@@ -104,6 +104,7 @@ class AddressController extends Controller
         }
         else{
             $commonPercentageDiscountAmount = null;
+            $finalPrice = $totalFinalPrice;
         }
 
 
