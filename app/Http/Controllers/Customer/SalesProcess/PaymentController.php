@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Customer\SalesProcess;
 use App\Models\Market\Copan;
 use App\Models\Market\Order;
 use Illuminate\Http\Request;
+use App\Models\Market\Payment;
 use App\Models\Market\CartItem;
+use App\Models\Market\CashPayment;
 use App\Http\Controllers\Controller;
+use App\Models\Market\OnlinePayment;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Market\OfflinePayment;
+use Illuminate\Database\Eloquent\Model;
 
 class PaymentController extends Controller
 {
@@ -30,7 +35,7 @@ class PaymentController extends Controller
             if ($copan->user_id != null) {
                 $copan = Copan::where([['code' => $request->code], ['status', 1], ['end_date', '>', now()], ['start_date', '<', now()], ['user_id', auth()->user()->id]])->first();
                 if ($copan == null) {
-                    return redirect()->back()->withErrors(['copan' => ['کد تخفیف اشتباه وارد شده است']]);;
+                    return redirect()->back()->withErrors(['copan' => ['کد تخفیف اشتباه وارد شده است']]);
                 }
             }
 
@@ -56,13 +61,12 @@ class PaymentController extends Controller
 
                 return redirect()->back()->with(['copan' => 'کد تخفیف با موفقیت اعمال شد']);
             } else {
-                return redirect()->back()->withErrors(['copan' => ['کد تخفیف اشتباه وارد شده است']]);;
+                return redirect()->back()->withErrors(['copan' => ['کد تخفیف اشتباه وارد شده است']]);
             }
         } else {
             return redirect()->back()->withErrors(['copan' => ['کد تخفیف اشتباه وارد شده است']]);
         }
     }
-
 
     public function paymentSubmit(Request $request)
     {
@@ -72,18 +76,55 @@ class PaymentController extends Controller
 
         $order = Order::where('user_id', Auth::user()->id)->where('order_status', 0)->first();
         $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
+
         switch ($request->payment_type) {
             case '1':
-                dd('online');
+                $targetModel = OnlinePayment::class;
+                $type = 0;
                 break;
             case '2':
-                dd('offline');
+                $targetModel = OfflinePayment::class;
+                $type = 1;
                 break;
             case '3':
-                dd('cash');
+                $targetModel = CashPayment::class;
+                $type = 2;
                 break;
             default:
-                return redirect()->back();
+                return redirect()->back()->withErrors(['error' => 'خطا']);
         }
+
+        $paymented = $targetModel::create([
+            'amount' => $order->order_final_amount,
+            'user_id' => auth()->user()->id,
+            'pay_date' => now(),
+            'status' => 1,
+        ]);
+
+        $payment = Payment::create(
+            [
+                'amount' => $order->order_final_amount,
+                'user_id' => auth()->user()->id,
+                'pay_date' => now(),
+                'type' => $type,
+                'paymentable_id' => $paymented->id,
+                'paymentable_type' => $targetModel,
+                'staus' => 1
+            ]
+        );
+
+            $order->update(
+                ['order_status' => 3]
+            );
+
+            foreach($cartItems as $cartItem)
+            {
+                $cartItem->delete();
+            }
+
+            return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
+
+
+
     }
 }
