@@ -87,4 +87,4 @@
         </section>
     </footer>
     <!-- end footer -->
-<?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/layouts/footer.blade.php ENDPATH**/ ?>

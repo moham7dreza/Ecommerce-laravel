@@ -8,4 +8,4 @@
 <script src="<?php echo e(asset('customer-assets/js/main.js')); ?>" ></script>
 
 
-<?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/script.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/layouts/script.blade.php ENDPATH**/ ?>

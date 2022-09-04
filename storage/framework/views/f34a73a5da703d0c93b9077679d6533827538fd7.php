@@ -3,6 +3,12 @@
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
+    <?php if(session('success')): ?>
+        <div class="alert alert-success">
+            <?php echo e(session('success')); ?>
+
+        </div>
+        <?php endif; ?>
         <section class="row">
             <section class="col-md-8 pe-md-1 ">
                 <section id="slideshow" class="owl-carousel owl-theme">
@@ -336,4 +342,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\###amazon\resources\views/customer/home.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/home.blade.php ENDPATH**/ ?>

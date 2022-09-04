@@ -66,7 +66,7 @@
 
                         <section class="header-cart d-inline ps-3 border-start position-relative">
                             <a class="btn btn-link position-relative text-dark header-cart-link" href="<?php echo e(route('customer.sales-process.cart')); ?>">
-                                <i class="fa fa-shopping-cart"></i> <span style="top: 80%;" class="position-absolute start-0 translate-middle badge rounded-pill bg-danger">2</span>
+                                <i class="fa fa-shopping-cart"></i> <span style="top: 80%;" class="position-absolute start-0 translate-middle badge rounded-pill bg-danger"><?php echo e($cartItems->count()); ?></span>
                             </a>
                             <section class="header-cart-dropdown">
                                 <section class="border-bottom d-flex justify-content-between p-2">
@@ -1201,4 +1201,4 @@
 
 
 
-<?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/layouts/header.blade.php ENDPATH**/ ?>

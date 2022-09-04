@@ -16,4 +16,4 @@
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/product.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/profile.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/login.css')); ?>">
-<?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/head-tag.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/layouts/head-tag.blade.php ENDPATH**/ ?>

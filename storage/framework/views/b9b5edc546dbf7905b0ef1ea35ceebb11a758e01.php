@@ -23,4 +23,4 @@
     <?php echo $__env->yieldContent('script'); ?>
 </body>
 </html>
-<?php /**PATH C:\CODEX\###amazon\resources\views/customer/layouts/master-one-col.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/layouts/master-one-col.blade.php ENDPATH**/ ?>
