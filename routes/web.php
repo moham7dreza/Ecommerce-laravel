@@ -3,7 +3,6 @@
 use App\Http\Controllers\Customer\SalesProcess\AddressController;
 use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Assemble\SmartAssembleController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
@@ -33,6 +32,13 @@ Route::namespace('Auth')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
+
+Route::prefix('user')->group(function (){
+    Route::get('/profile', [HomeController::class, 'myProfile'])->name('user.profile');
+    Route::get('/orders', [HomeController::class, 'myOrders'])->name('user.orders');
+    Route::get('/favorites', [HomeController::class, 'myFavorites'])->name('user.favorites');
+    Route::get('/addresses', [HomeController::class, 'myAddresses'])->name('user.addresses');
+});
 
 Route::namespace('SalesProcess')->group(function () {
 
@@ -69,21 +75,15 @@ Route::namespace('Market')->group(function () {
     Route::post('/add-comment/prodcut/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
     Route::get('/add-to-favorite/prodcut/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
 
+
 });
 
+require 'smart-assemble.php';
 
-Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
-    // assemble by user
-    Route::get('/', [SmartAssembleController::class, 'index'])->name('smart.assemble.index');
-    // recommended system categories, types, gens and configs
-    Route::get('/systems/', [SmartAssembleController::class, 'systemCategories'])->name('smart.assemble.categories');
-    Route::get('/systems/{systemCategory:slug}', [SmartAssembleController::class, 'systemTypes'])->name('smart.assemble.types');
-    Route::get('/systems/{systemCategory:slug}/{systemType:slug}', [SmartAssembleController::class, 'systemGens'])->name('smart.assemble.gens');
-    Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemGen:slug}', [SmartAssembleController::class, 'systemConfigs'])->name('smart.assemble.configs');
-    // recommended system components according to selected system categories, types, gens and configs
-    Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemGen:slug}/{systemConfig:slug}/config/{system}', [SmartAssembleController::class, 'offeredSystems'])->name('smart.assemble.offered.systems');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+Route::get('filter', [HomeController::class, 'filter'])->name('customer.product.filter');

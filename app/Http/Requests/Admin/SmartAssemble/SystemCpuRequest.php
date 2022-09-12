@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\SmartAssemble;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SystemGenRequest extends FormRequest
+class SystemCpuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

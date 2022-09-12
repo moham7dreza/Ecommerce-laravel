@@ -6,25 +6,24 @@
 </head>
 <body>
 
-    @include('customer.layouts.header')
+@include('customer.layouts.header')
 
-    <section class="container-xxl body-container">
-        @yield('customer.layouts.sidebar')
-    </section>
+<section class="container-xxl body-container">
+    @yield('customer.layouts.sidebar')
+</section>
 
-    @include('admin.alerts.alert-section.success')
-    <main id="main-body-one-col" class="main-body">
+@include('admin.alerts.alert-section.success')
 
+<main id="main-body-one-col" class="main-body">
     @yield('content')
-
-    </main>
-
-
-    @include('customer.layouts.footer')
+</main>
 
 
+@include('customer.layouts.footer')
 
-    @include('customer.layouts.script')
-    @yield('script')
+
+
+@include('customer.layouts.script')
+@yield('script')
 </body>
 </html>

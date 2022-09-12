@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\SmartAssemble\SystemBrandController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemCategoryController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemConfigController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemController;
-use App\Http\Controllers\Admin\SmartAssemble\SystemGenController;
+use App\Http\Controllers\Admin\SmartAssemble\SystemCpuController;
+use App\Http\Controllers\Admin\SmartAssemble\SystemGalleryController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemMenuController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemTypeController;
 use App\Http\Controllers\Admin\user\RoleController;
@@ -56,6 +58,16 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
 
+        //brand
+        Route::prefix('brand')->group(function () {
+            Route::get('/', [SystemBrandController::class, 'index'])->name('admin.smart-assemble.brand.index');
+            Route::get('/create', [SystemBrandController::class, 'create'])->name('admin.smart-assemble.brand.create');
+            Route::post('/store', [SystemBrandController::class, 'store'])->name('admin.smart-assemble.brand.store');
+            Route::get('/edit/{systemBrand}', [SystemBrandController::class, 'edit'])->name('admin.smart-assemble.brand.edit');
+            Route::put('/update/{systemBrand}', [SystemBrandController::class, 'update'])->name('admin.smart-assemble.brand.update');
+            Route::delete('/destroy/{systemBrand}', [SystemBrandController::class, 'destroy'])->name('admin.smart-assemble.brand.destroy');
+        });
+
         //category
         Route::prefix('category')->group(function () {
             Route::get('/', [SystemCategoryController::class, 'index'])->name('admin.smart-assemble.category.index');
@@ -65,6 +77,12 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::put('/update/{systemCategory}', [SystemCategoryController::class, 'update'])->name('admin.smart-assemble.category.update');
             Route::delete('/destroy/{systemCategory}', [SystemCategoryController::class, 'destroy'])->name('admin.smart-assemble.category.destroy');
             Route::get('/status/{systemCategory}', [SystemCategoryController::class, 'status'])->name('admin.smart-assemble.category.status');
+            //gallery
+            Route::get('/gallery/{systemCategory}', [SystemGalleryController::class, 'index'])->name('admin.smart-assemble.category.gallery.index');
+            Route::get('/gallery/create/{systemCategory}', [SystemGalleryController::class, 'create'])->name('admin.smart-assemble.category.gallery.create');
+            Route::post('/gallery/store/{systemCategory}', [SystemGalleryController::class, 'store'])->name('admin.smart-assemble.category.gallery.store');
+            Route::delete('/gallery/destroy/{systemCategory}/{gallery}', [SystemGalleryController::class, 'destroy'])->name('admin.smart-assemble.category.gallery.destroy');
+
         });
 
 
@@ -79,16 +97,38 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::get('/status/{systemType}', [SystemTypeController::class, 'status'])->name('admin.smart-assemble.type.status');
         });
 
-        //gen
-        Route::prefix('gen')->group(function () {
-            Route::get('/', [SystemGenController::class, 'index'])->name('admin.smart-assemble.gen.index');
-            Route::get('/create', [SystemGenController::class, 'create'])->name('admin.smart-assemble.gen.create');
-            Route::post('/store', [SystemGenController::class, 'store'])->name('admin.smart-assemble.gen.store');
-            Route::get('/edit/{systemGen}', [SystemGenController::class, 'edit'])->name('admin.smart-assemble.gen.edit');
-            Route::put('/update/{systemGen}', [SystemGenController::class, 'update'])->name('admin.smart-assemble.gen.update');
-            Route::delete('/destroy/{systemGen}', [SystemGenController::class, 'destroy'])->name('admin.smart-assemble.gen.destroy');
-            Route::get('/status/{systemGen}', [SystemGenController::class, 'status'])->name('admin.smart-assemble.gen.status');
+        //cpu
+        Route::prefix('cpu')->group(function () {
+            Route::get('/', [SystemCpuController::class, 'index'])->name('admin.smart-assemble.cpu.index');
+            Route::get('/create', [SystemCpuController::class, 'create'])->name('admin.smart-assemble.cpu.create');
+            Route::post('/store', [SystemCpuController::class, 'store'])->name('admin.smart-assemble.cpu.store');
+            Route::get('/edit/{systemCpu}', [SystemCpuController::class, 'edit'])->name('admin.smart-assemble.cpu.edit');
+            Route::put('/update/{systemCpu}', [SystemCpuController::class, 'update'])->name('admin.smart-assemble.cpu.update');
+            Route::delete('/destroy/{systemCpu}', [SystemCpuController::class, 'destroy'])->name('admin.smart-assemble.cpu.destroy');
+            Route::get('/status/{systemCpu}', [SystemCpuController::class, 'status'])->name('admin.smart-assemble.cpu.status');
         });
+
+        //ram
+//        Route::prefix('ram')->group(function () {
+//            Route::get('/', [SystemRamController::class, 'index'])->name('admin.smart-assemble.ram.index');
+//            Route::get('/create', [SystemRamController::class, 'create'])->name('admin.smart-assemble.ram.create');
+//            Route::post('/store', [SystemRamController::class, 'store'])->name('admin.smart-assemble.ram.store');
+//            Route::get('/edit/{systemRam}', [SystemRamController::class, 'edit'])->name('admin.smart-assemble.ram.edit');
+//            Route::put('/update/{systemRam}', [SystemRamController::class, 'update'])->name('admin.smart-assemble.ram.update');
+//            Route::delete('/destroy/{systemRam}', [SystemRamController::class, 'destroy'])->name('admin.smart-assemble.ram.destroy');
+//            Route::get('/status/{systemRam}', [SystemRamController::class, 'status'])->name('admin.smart-assemble.ram.status');
+//        });
+
+        //gpu
+//        Route::prefix('gpu')->group(function () {
+//            Route::get('/', [SystemGpuController::class, 'index'])->name('admin.smart-assemble.gpu.index');
+//            Route::get('/create', [SystemGpuController::class, 'create'])->name('admin.smart-assemble.gpu.create');
+//            Route::post('/store', [SystemGpuController::class, 'store'])->name('admin.smart-assemble.gpu.store');
+//            Route::get('/edit/{systemGpu}', [SystemGpuController::class, 'edit'])->name('admin.smart-assemble.gpu.edit');
+//            Route::put('/update/{systemGpu}', [SystemGpuController::class, 'update'])->name('admin.smart-assemble.gpu.update');
+//            Route::delete('/destroy/{systemGpu}', [SystemGpuController::class, 'destroy'])->name('admin.smart-assemble.gpu.destroy');
+//            Route::get('/status/{systemGpu}', [SystemGpuController::class, 'status'])->name('admin.smart-assemble.gpu.status');
+//        });
 
 
         //config

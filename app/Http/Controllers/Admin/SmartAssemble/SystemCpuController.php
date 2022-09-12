@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\SmartAssemble;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\SmartAssemble\SystemGenRequest;
+use App\Http\Requests\Admin\SmartAssemble\SystemCpuRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
-use App\Models\SmartAssemble\SystemGen;
+use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
 
-class SystemGenController extends Controller
+class SystemCpuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class SystemGenController extends Controller
      */
     public function index()
     {
-        $systemGens = SystemGen::orderBy('created_at', 'desc')->simplePaginate(15);
-        return view('admin.smart-assemble.gen.index', compact('systemGens'));
+        $systemCpus = SystemCpu::orderBy('created_at', 'desc')->simplePaginate(15);
+        return view('admin.smart-assemble.cpu.index', compact('systemCpus'));
     }
 
     /**
@@ -32,7 +32,7 @@ class SystemGenController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        return view('admin.smart-assemble.gen.create', compact('categories', 'types'));
+        return view('admin.smart-assemble.cpu.create', compact('categories', 'types'));
     }
 
     /**
@@ -41,19 +41,19 @@ class SystemGenController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SystemGenRequest $request, ImageService $imageService)
+    public function store(SystemCpuRequest $request, ImageService $imageService)
     {
         $inputs = $request->all();
         if ($request->hasFile('image')) {
-            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-gen');
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-cpu');
             $result = $imageService->createIndexAndSave($request->file('image'));
         }
         if ($result === false) {
-            return redirect()->route('admin.smart-assemble.gen.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
-        $systemGen = SystemGen::create($inputs);
-        return redirect()->route('admin.smart-assemble.gen.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
+        $systemCpu = SystemCpu::create($inputs);
+        return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-success', 'پردازنده جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -73,11 +73,11 @@ class SystemGenController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(SystemGen $systemGen)
+    public function edit(SystemCpu $systemCpu)
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        return view('admin.smart-assemble.gen.edit', compact('systemGen', 'categories', 'types'));
+        return view('admin.smart-assemble.cpu.edit', compact('systemCpu', 'categories', 'types'));
     }
 
     /**
@@ -87,29 +87,29 @@ class SystemGenController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SystemGenRequest $request, SystemGen $systemGen, ImageService $imageService)
+    public function update(SystemCpuRequest $request, SystemCpu $systemCpu, ImageService $imageService)
     {
         $inputs = $request->all();
 
         if ($request->hasFile('image')) {
-            if (!empty($systemGen->image)) {
-                $imageService->deleteDirectoryAndFiles($systemGen->image['directory']);
+            if (!empty($systemCpu->image)) {
+                $imageService->deleteDirectoryAndFiles($systemCpu->image['directory']);
             }
-            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-gen');
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-cpu');
             $result = $imageService->createIndexAndSave($request->file('image'));
             if ($result === false) {
-                return redirect()->route('admin.smart-assemble.gen.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+                return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['image'] = $result;
         } else {
-            if (isset($inputs['currentImage']) && !empty($systemGen->image)) {
-                $image = $systemGen->image;
+            if (isset($inputs['currentImage']) && !empty($systemCpu->image)) {
+                $image = $systemCpu->image;
                 $image['currentImage'] = $inputs['currentImage'];
                 $inputs['image'] = $image;
             }
         }
-        $systemGen->update($inputs);
-        return redirect()->route('admin.smart-assemble.gen.index')->with('swal-success', 'دسته بندی شما با موفقیت ویرایش شد');
+        $systemCpu->update($inputs);
+        return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-success', 'پردازنده شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -118,19 +118,19 @@ class SystemGenController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SystemGen $systemGen)
+    public function destroy(Systemژحع $systemCpu)
     {
-        $result = $systemGen->delete();
-        return redirect()->route('admin.smart-assemble.gen.index')->with('swal-success', 'دسته بندی شما با موفقیت حذف شد');
+        $result = $systemCpu->delete();
+        return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-success', 'پردازنده شما با موفقیت حذف شد');
     }
 
-    public function status(SystemGen $systemGen)
+    public function status(SystemCpu $systemCpu)
     {
 
-        $systemGen->status = $systemGen->status == 0 ? 1 : 0;
-        $result = $systemGen->save();
+        $systemCpu->status = $systemCpu->status == 0 ? 1 : 0;
+        $result = $systemCpu->save();
         if ($result) {
-            if ($systemGen->status == 0) {
+            if ($systemCpu->status == 0) {
                 return response()->json(['status' => true, 'checked' => false]);
             } else {
                 return response()->json(['status' => true, 'checked' => true]);

@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Market\Brand;
 use App\Models\Market\Product;
 use App\Models\Market\ProductCategory;
+use App\Models\SmartAssemble\System;
+use App\Models\SmartAssemble\SystemBrand;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemConfig;
-use App\Models\SmartAssemble\SystemConfigItems;
-use App\Models\SmartAssemble\SystemGen;
+use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
 
@@ -47,8 +48,8 @@ class SmartAssembleController extends Controller
 
     public function systemCategories()
     {
-        $brands = Brand::all();
-        $offeredSystems = Product::all();
+        $brands = SystemBrand::all();
+        $offeredSystems = System::where(['system_rating' => 5] , ['status' => 1])->take(5)->get();
         $systemCategories = SystemCategory::all();
         return view('smart-assemble.category', compact('systemCategories', 'offeredSystems', 'brands'));
     }
@@ -61,18 +62,18 @@ class SmartAssembleController extends Controller
 
     public function systemGens(SystemCategory $systemCategory, SystemType $systemType)
     {
-        $systemGens = SystemGen::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->get();
-        return view('smart-assemble.gen', compact('systemCategory', 'systemType', 'systemGens'));
+        $systemGens = SystemCpu::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->get();
+        return view('smart-assemble.cpu', compact('systemCategory', 'systemType', 'systemGens'));
     }
 
-    public function systemConfigs(SystemCategory $systemCategory, SystemType $systemType, SystemGen $systemGen)
+    public function systemConfigs(SystemCategory $systemCategory, SystemType $systemType, SystemCpu $systemGen)
     {
         $systemConfigs = SystemConfig::where('system_category_id', $systemCategory->id)
             ->where('system_type_id', $systemType->id)->where('system_gen_id', $systemGen->id)->get();
         return view('smart-assemble.config', compact('systemCategory', 'systemType', 'systemGen', 'systemConfigs'));
     }
 
-    public function offeredSystems(SystemCategory $systemCategory, SystemType $systemType, SystemGen $systemGen, SystemConfig $systemConfig)
+    public function offeredSystems(SystemCategory $systemCategory, SystemType $systemType, SystemCpu $systemGen, SystemConfig $systemConfig)
     {
         return view('smart-assemble.build', compact('systemCategory', 'systemType', 'systemGen', 'systemConfig'));
     }

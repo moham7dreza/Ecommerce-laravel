@@ -26,10 +26,14 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="{{ route('admin.smart-assemble.category.index') }}">دسته بندی</a>
-                    <a href="{{ route('admin.smart-assemble.type.index') }}">نوع</a>
-                    <a href="{{ route('admin.smart-assemble.gen.index') }}">نسل</a>
+                    <a href="{{ route('admin.smart-assemble.category.index') }}">دسته بندی کلی</a>
+                    <a href="{{ route('admin.smart-assemble.type.index') }}">کلاس</a>
+                    <a href="{{ route('admin.smart-assemble.cpu.index') }}">نسل پردازنده</a>
+{{--                    <a href="{{ route('admin.smart-assemble.ram.index') }}">نسل رم</a>--}}
+{{--                    <a href="{{ route('admin.smart-assemble.gpu.index') }}">نسل گرافیک</a>--}}
+{{--                    <a href="{{ route('admin.smart-assemble.mb.index') }}">مادربرد</a>--}}
                     <a href="{{ route('admin.smart-assemble.config.index') }}">کانفیگ</a>
+                    <a href="{{ route('admin.smart-assemble.brand.index') }}">برندها</a>
                     <a href="{{ route('admin.smart-assemble.system.index') }}">سیستم پیشنهادی</a>
                     <a href="{{ route('admin.smart-assemble.menu.index') }}">منو</a>
 

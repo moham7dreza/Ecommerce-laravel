@@ -48,4 +48,6 @@ class ProductController extends Controller
         return response()->json(['status' => 3]);
        }
     }
+
+
 }

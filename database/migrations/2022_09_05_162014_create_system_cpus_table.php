@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSystemGensTable extends Migration
+class CreateSystemCpusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSystemGensTable extends Migration
      */
     public function up()
     {
-        Schema::create('system_gens', function (Blueprint $table) {
+        Schema::create('system_cpus', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('brief');
@@ -39,6 +39,6 @@ class CreateSystemGensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('system_gens');
+        Schema::dropIfExists('system_cpus');
     }
 }

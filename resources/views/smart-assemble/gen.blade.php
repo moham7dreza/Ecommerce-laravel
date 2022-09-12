@@ -1,4 +1,4 @@
-@extends('smart-assemble.layouts.master')
+@extends('customer.layouts.master-one-col')
 @section('head-tag')
     <title>
         {{ $systemCategory->name. ' ' .$systemType->name }}

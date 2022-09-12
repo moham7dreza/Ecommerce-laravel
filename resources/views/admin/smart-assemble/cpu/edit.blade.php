@@ -26,11 +26,11 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.smart-assemble.gen.index') }}" class="btn btn-info btn-sm">بازگشت</a>
+                <a href="{{ route('admin.smart-assemble.cpu.index') }}" class="btn btn-info btn-sm">بازگشت</a>
             </section>
 
             <section>
-                <form action="{{ route('admin.smart-assemble.gen.update', $systemGen->id) }}" method="post" enctype="multipart/form-data" id="form">
+                <form action="{{ route('admin.smart-assemble.cpu.update', $systemCpu->id) }}" method="post" enctype="multipart/form-data" id="form">
                     @csrf
                     @method('PUT')
                     <section class="row">
@@ -38,7 +38,7 @@
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">نسل سیستم</label>
-                                <input type="text" name="name" value="{{ old('name', $systemGen->name) }}" class="form-control form-control-sm">
+                                <input type="text" name="name" value="{{ old('name', $systemCpu->name) }}" class="form-control form-control-sm">
                             </div>
                             @error('name')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -54,7 +54,7 @@
                                 <label for="">انتخاب نوع سیستم</label>
                                 <select name="system_type_id" id="" class="form-control form-control-sm">
                                     @foreach ($types as $type)
-                                        <option value="{{ $type->id }}"  @if(old('system_type_id', $systemGen->system_type_id) == $type->id) selected @endif>{{ $type->name }}</option>
+                                        <option value="{{ $type->id }}"  @if(old('system_type_id', $systemCpu->system_type_id) == $type->id) selected @endif>{{ $type->name }}</option>
                                     @endforeach
 
                                 </select>
@@ -74,7 +74,7 @@
                                 <select name="system_category_id" id="" class="form-control form-control-sm">
                                     @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
-                                            @if(old('system_category_id', $systemGen->system_category_id) == $category->id) selected @endif>
+                                            @if(old('system_category_id', $systemCpu->system_category_id) == $category->id) selected @endif>
                                         {{ $category->name }}
                                     </option>
                                     @endforeach
@@ -92,7 +92,7 @@
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="start_price_from">شروع قیمت از</label>
-                                <input type="text" name="start_price_from" value="{{ old('start_price_from', $systemGen->start_price_from) }}" class="form-control form-control-sm">
+                                <input type="text" name="start_price_from" value="{{ old('start_price_from', $systemCpu->start_price_from) }}" class="form-control form-control-sm">
                             </div>
                             @error('start_price_from')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -106,7 +106,7 @@
                         <section class="col-12">
                             <div class="form-group">
                                 <label for="">خلاصه</label>
-                                <input type="text" name="brief" value="{{ old('brief', $systemGen->brief) }}" class="form-control form-control-sm">
+                                <input type="text" name="brief" value="{{ old('brief', $systemCpu->brief) }}" class="form-control form-control-sm">
                             </div>
                             @error('brief')
                             <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -123,7 +123,7 @@
                             <div class="form-group">
                                 <label for="">توضیحات</label>
                                 <textarea name="description" id="description"  class="form-control form-control-sm" rows="6">
-                                    {{ old('description', $systemGen->description) }}
+                                    {{ old('description', $systemCpu->description) }}
                                 </textarea>
                             </div>
                             @error('description')
@@ -153,10 +153,10 @@
                             @php
                                 $number = 1;
                                 @endphp
-                            @foreach ($systemGen->image['indexArray'] as $key => $value )
+                            @foreach ($systemCpu->image['indexArray'] as $key => $value )
                             <section class="col-md-{{ 6 / $number }}">
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($systemGen->image['currentImage'] == $key) checked @endif>
+                                    <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($systemCpu->image['currentImage'] == $key) checked @endif>
                                     <label for="{{ $number }}" class="form-check-label mx-2">
                                         <img src="{{ asset($value) }}" class="w-100" alt="">
                                     </label>
@@ -174,8 +174,8 @@
                             <div class="form-group">
                                 <label for="status">وضعیت</label>
                                 <select name="status" id="" class="form-control form-control-sm" id="status">
-                                    <option value="0" @if (old('status', $systemGen->status) == 0) selected @endif>غیرفعال</option>
-                                    <option value="1" @if (old('status', $systemGen->status) == 1) selected @endif>فعال</option>
+                                    <option value="0" @if (old('status', $systemCpu->status) == 0) selected @endif>غیرفعال</option>
+                                    <option value="1" @if (old('status', $systemCpu->status) == 1) selected @endif>فعال</option>
                                 </select>
                             </div>
                             @error('status')
@@ -191,8 +191,8 @@
                             <div class="form-group">
                                 <label for="show_in_menu">وضعیت نمایش در منو</label>
                                 <select name="show_in_menu" id="" class="form-control form-control-sm" id="show_in_menu">
-                                    <option value="0" @if (old('show_in_menu', $systemGen->show_in_menu) == 0) selected @endif>غیرفعال</option>
-                                    <option value="1" @if (old('show_in_menu', $systemGen->show_in_menu) == 1) selected @endif>فعال</option>
+                                    <option value="0" @if (old('show_in_menu', $systemCpu->show_in_menu) == 0) selected @endif>غیرفعال</option>
+                                    <option value="1" @if (old('show_in_menu', $systemCpu->show_in_menu) == 1) selected @endif>فعال</option>
                                 </select>
                             </div>
                             @error('show_in_menu')
@@ -209,7 +209,7 @@
                             <div class="form-group">
                                 <label for="tags">تگ ها</label>
                                 <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
-                                    value="{{ old('tags', $systemGen->tags) }}">
+                                    value="{{ old('tags', $systemCpu->tags) }}">
                                 <select class="select2 form-control form-control-sm" id="select_tags" multiple>
 
                                 </select>

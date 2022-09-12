@@ -29,7 +29,7 @@ class System extends Model
 
     public function gen()
     {
-        return $this->belongsTo(SystemGen::class, 'system_gen_id');
+        return $this->belongsTo(SystemCpu::class, 'system_gen_id');
     }
 
     public function config()

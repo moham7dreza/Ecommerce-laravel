@@ -26,7 +26,7 @@
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.smart-assemble.gen.create') }}" class="btn btn-info btn-sm">ایجاد نسل جدید</a>
+                <a href="{{ route('admin.smart-assemble.cpu.create') }}" class="btn btn-info btn-sm">ایجاد نسل جدید</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -51,31 +51,31 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($systemGens as $systemGen)
+                        @foreach ($systemCpus as $systemCpu)
 
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $systemGen->name }}</td>
-                            <td>{{ $systemGen->system_type_id ? $systemGen->system_type->name : '-' }}</td>
-                            <td>{{ $systemGen->system_category_id ? $systemGen->category->name : '-' }}</td>
-                            <td>{{ $systemGen->start_price_from }}</td>
-                            <td>{{ $systemGen->brief }}</td>
-                            <td>{{ $systemGen->description }}</td>
-                            <td>{{ $systemGen->slug }}</td>
+                            <td>{{ $systemCpu->name }}</td>
+                            <td>{{ $systemCpu->system_type_id ? $systemCpu->system_type->name : '-' }}</td>
+                            <td>{{ $systemCpu->system_category_id ? $systemCpu->category->name : '-' }}</td>
+                            <td>{{ $systemCpu->start_price_from }}</td>
+                            <td>{{ $systemCpu->brief }}</td>
+                            <td>{{ $systemCpu->description }}</td>
+                            <td>{{ $systemCpu->slug }}</td>
                             <td>
-                                <img src="{{ asset($systemGen->image['indexArray'][$systemGen->image['currentImage']] ) }}" alt="" width="100" height="50">
+                                <img src="{{ asset($systemCpu->image['indexArray'][$systemCpu->image['currentImage']] ) }}" alt="" width="100" height="50">
                             </td>
-                            <td>{{ $systemGen->tags }}</td>
+                            <td>{{ $systemCpu->tags }}</td>
                             <td>
                                 <label>
-                                    <input id="{{ $systemGen->id }}" onchange="changeStatus({{ $systemGen->id }})" data-url="{{ route('admin.smart-assemble.type.status', $systemGen->id) }}" type="checkbox" @if ($systemGen->status === 1)
+                                    <input id="{{ $systemCpu->id }}" onchange="changeStatus({{ $systemCpu->id }})" data-url="{{ route('admin.smart-assemble.type.status', $systemCpu->id) }}" type="checkbox" @if ($systemCpu->status === 1)
                                         checked
                                         @endif>
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.smart-assemble.gen.edit', $systemGen->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.smart-assemble.type.destroy', $systemGen->id) }}" method="post">
+                                <a href="{{ route('admin.smart-assemble.cpu.edit', $systemCpu->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="{{ route('admin.smart-assemble.type.destroy', $systemCpu->id) }}" method="post">
                                     @csrf
                                     {{ method_field('delete') }}
                                 <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>

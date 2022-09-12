@@ -9,7 +9,7 @@
                 <section class="d-md-flex justify-content-md-between align-items-md-center py-3">
 
                     <section class="d-flex justify-content-between align-items-center d-md-block">
-                        <a class="text-decoration-none" href="index.html"><img src="assets/images/logo/8.png" alt="logo"></a>
+                        <a class="text-decoration-none" href="{{ route('customer.home') }}"><img src="{{ asset('customer-assets/images/logo/8.png') }}" alt="logo"></a>
                         <button class="btn btn-link text-dark d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                             <i class="fa fa-bars me-1"></i>
                         </button>
@@ -43,11 +43,11 @@
                                 <i class="fa fa-user"></i>
                             </button>
                             <section class="dropdown-menu dropdown-menu-end custom-drop-down" aria-labelledby="dropdownMenuButton1">
-                                <section><a class="dropdown-item" href="my-profile.html"><i class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
-                                <section><a class="dropdown-item" href="my-orders.html"><i class="fa fa-newspaper"></i>سفارشات</a></section>
-                                <section><a class="dropdown-item" href="my-favorites.html"><i class="fa fa-heart"></i>لیست علاقه مندی</a></section>
+                                <section><a class="dropdown-item" href="{{ route('user.profile') }}"><i class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
+                                <section><a class="dropdown-item" href="{{ route('user.orders') }}"><i class="fa fa-newspaper"></i>سفارشات</a></section>
+                                <section><a class="dropdown-item" href="{{ route('user.favorites') }}"><i class="fa fa-heart"></i>لیست علاقه مندی</a></section>
                                 <section><hr class="dropdown-divider"></section>
-                                <section><a class="dropdown-item" href="#"><i class="fa fa-sign-out-alt"></i>خروج</a></section>
+                                <section><a class="dropdown-item" href="{{ route('customer.home') }}"><i class="fa fa-sign-out-alt"></i>خروج</a></section>
 
                             </section>
                             @endauth
@@ -100,7 +100,7 @@
                                 </section>
                                 <section class="header-cart-dropdown-footer border-top d-flex justify-content-between align-items-center p-2">
                                     <section class=""><section>مبلغ قابل پرداخت</section><section> {{ priceFormat($totalProductPrice - $totalDiscount) }}تومان</section></section>
-                                    <section class=""><a class="btn btn-danger btn-sm d-block" href="cart.html">ثبت سفارش</a></section>
+                                    <section class=""><a class="btn btn-danger btn-sm d-block" href="{{ route('customer.sales-process.cart') }}">ثبت سفارش</a></section>
                                 </section>
                             </section>
                         </section>
@@ -826,6 +826,9 @@
                         <section class="navbar-item"><a href="#">درباره ما</a></section>
                         <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
                         <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
+                        <section class="navbar-item"><a href="/admin">پنل ادمین</a></section>
+                        <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a></section>
+                        <section class="navbar-item"><a href="{{ route('customer.product.filter') }}">فیلتر</a></section>
 
                     </section>
 
@@ -833,7 +836,7 @@
                     <!--mobile view-->
                     <section class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" style="z-index: 9999999;">
                         <section class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="text-decoration-none" href="index.html"><img src="assets/images/logo/8.png" alt="logo"></a></h5>
+                            <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="text-decoration-none" href="index.html"><img src="{{ asset('customer-assets/images/logo/8.png') }}" alt="logo"></a></h5>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </section>
                         <section class="offcanvas-body">

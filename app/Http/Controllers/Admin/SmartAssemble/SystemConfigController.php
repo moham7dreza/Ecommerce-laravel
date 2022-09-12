@@ -7,7 +7,7 @@ use App\Http\Requests\Admin\SmartAssemble\SystemConfigRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemConfig;
-use App\Models\SmartAssemble\SystemGen;
+use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class SystemConfigController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        $gens = SystemGen::all();
+        $gens = SystemCpu::all();
         return view('admin.smart-assemble.config.create', compact('categories', 'types', 'gens'));
     }
 
@@ -80,7 +80,7 @@ class SystemConfigController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        $gens = SystemGen::all();
+        $gens = SystemCpu::all();
         return view('admin.smart-assemble.config.edit', compact('systemConfig', 'categories', 'types', 'gens'));
     }
 

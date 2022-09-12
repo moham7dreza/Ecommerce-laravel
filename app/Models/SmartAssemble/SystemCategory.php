@@ -22,7 +22,7 @@ class SystemCategory extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'brief','description', 'slug', 'image', 'status', 'type', 'tags', 'show_in_menu', 'parent_id'];
+    protected $fillable = ['name', 'brief', 'description', 'slug', 'image', 'status', 'type', 'tags', 'show_in_menu', 'parent_id'];
 
     public function parent()
     {
@@ -38,9 +38,10 @@ class SystemCategory extends Model
     {
         return $this->hasMany(SystemType::class, 'system_category_id');
     }
+
     public function getTypeValueAttribute()
     {
-        switch ($this->type){
+        switch ($this->type) {
             case 0:
                 $result = 'سیستم گیمینگ';
                 break;
@@ -54,5 +55,10 @@ class SystemCategory extends Model
                 $result = 'سیستم تریدینگ';
         }
         return $result;
+    }
+
+    public function images()
+    {
+        return $this->hasMany(SystemGallery::class);
     }
 }

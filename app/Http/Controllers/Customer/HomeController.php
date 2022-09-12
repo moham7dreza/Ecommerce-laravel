@@ -30,5 +30,28 @@ class HomeController extends Controller
 
     }
 
+    public function myProfile()
+    {
+        return view('customer.user.profile');
+    }
 
+    public function myOrders()
+    {
+        return view('customer.user.orders');
+    }
+
+    public function myAddresses()
+    {
+        return view('customer.user.addresses');
+    }
+
+    public function myFavorites()
+    {
+        return view('customer.user.favorites');
+    }
+
+    public function filter()
+    {
+        return view('customer.market.product.filter');
+    }
 }
