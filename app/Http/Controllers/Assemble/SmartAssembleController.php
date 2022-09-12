@@ -56,14 +56,16 @@ class SmartAssembleController extends Controller
 
     public function systemTypes(SystemCategory $systemCategory)
     {
+        $offeredSystems = System::where(['system_rating' => 5] , ['status' => 1])->take(5)->get();
         $systemTypes = SystemType::where('system_category_id', $systemCategory->id)->get();
-        return view('smart-assemble.type', compact('systemCategory', 'systemTypes'));
+        return view('smart-assemble.type', compact('systemCategory', 'systemTypes', 'offeredSystems'));
     }
 
     public function systemGens(SystemCategory $systemCategory, SystemType $systemType)
     {
+        $offeredSystems = System::where(['system_rating' => 5] , ['status' => 1])->take(5)->get();
         $systemGens = SystemCpu::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->get();
-        return view('smart-assemble.cpu', compact('systemCategory', 'systemType', 'systemGens'));
+        return view('smart-assemble.gen', compact('systemCategory', 'systemType', 'systemGens', 'offeredSystems'));
     }
 
     public function systemConfigs(SystemCategory $systemCategory, SystemType $systemType, SystemCpu $systemGen)

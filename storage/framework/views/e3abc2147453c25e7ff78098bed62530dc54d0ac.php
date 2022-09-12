@@ -57,6 +57,7 @@
                 <?php $__currentLoopData = $systemCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col">
                         <div class="card shadow-sm">
+                            <a href="<?php echo e(route('smart.assemble.types', $systemCategory)); ?>">
                             
                             
                             
@@ -86,6 +87,7 @@
                             
                             
                             
+                            </a>
                         </div>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

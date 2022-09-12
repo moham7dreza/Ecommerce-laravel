@@ -58,6 +58,7 @@
                 @foreach($systemCategories as $systemCategory)
                     <div class="col">
                         <div class="card shadow-sm">
+                            <a href="{{ route('smart.assemble.types', $systemCategory) }}">
                             {{--                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--}}
                             {{--                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $systemCategory->name }}"--}}
                             {{--                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ $systemCategory->name }}</title>--}}
@@ -87,6 +88,7 @@
                             {{--                                <a href="#" class="card-link">Card link</a>--}}
                             {{--                                <a href="#" class="card-link">Another link</a>--}}
                             {{--                            </div>--}}
+                            </a>
                         </div>
                     </div>
                 @endforeach

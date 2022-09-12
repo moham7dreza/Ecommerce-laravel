@@ -40,10 +40,10 @@
                             <th>نوع سیستم</th>
                             <th>دسته سیستم</th>
                             <th>خلاصه</th>
-                            <th>توضیحات</th>
-                            <th>اسلاگ</th>
+{{--                            <th>توضیحات</th>--}}
+{{--                            <th>اسلاگ</th>--}}
                             <th>عکس</th>
-                            <th>تگ ها</th>
+{{--                            <th>تگ ها</th>--}}
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -56,12 +56,12 @@
                             <td>{{ $systemType->name }}</td>
                             <td>{{ $systemType->system_category_id ? $systemType->category->name : '-' }}</td>
                             <td>{{ $systemType->brief }}</td>
-                            <td>{{ $systemType->description }}</td>
-                            <td>{{ $systemType->slug }}</td>
+{{--                            <td>{{ $systemType->description }}</td>--}}
+{{--                            <td>{{ $systemType->slug }}</td>--}}
                             <td>
                                 <img src="{{ asset($systemType->image['indexArray'][$systemType->image['currentImage']] ) }}" alt="" width="100" height="50">
                             </td>
-                            <td>{{ $systemType->tags }}</td>
+{{--                            <td>{{ $systemType->tags }}</td>--}}
                             <td>
                                 <label>
                                     <input id="{{ $systemType->id }}" onchange="changeStatus({{ $systemType->id }})" data-url="{{ route('admin.smart-assemble.type.status', $systemType->id) }}" type="checkbox" @if ($systemType->status === 1)

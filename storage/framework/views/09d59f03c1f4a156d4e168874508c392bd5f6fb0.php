@@ -1,17 +1,15 @@
-@extends('admin.layouts.master')
+<?php $__env->startSection('head-tag'); ?>
+<title>تعریف انواع سیستم</title>
+<?php $__env->stopSection(); ?>
 
-@section('head-tag')
-<title>نسل سیستم</title>
-@endsection
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="#">پی سی پیک</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="#"> سیستم اسمبل هوشمند</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page">نسل سیستم</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page">تعریف انواع سیستم</li>
     </ol>
   </nav>
 
@@ -21,12 +19,12 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                    نسل سیستم
+                    تعریف انواع سیستم
                 </h5>
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.smart-assemble.cpu.create') }}" class="btn btn-info btn-sm">ایجاد نسل جدید</a>
+                <a href="<?php echo e(route('admin.smart-assemble.type.create')); ?>" class="btn btn-info btn-sm">ایجاد نوع جدید</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -37,53 +35,50 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نسل سیستم</th>
                             <th>نوع سیستم</th>
                             <th>دسته سیستم</th>
-                            <th>شروع قیمت از</th>
                             <th>خلاصه</th>
-{{--                            <th>توضیحات</th>--}}
-{{--                            <th>اسلاگ</th>--}}
+
+
                             <th>عکس</th>
-{{--                            <th>تگ ها</th>--}}
+
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($systemCpus as $systemCpu)
+                        <?php $__currentLoopData = $systemTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
-                            <td>{{ $systemCpu->name }}</td>
-                            <td>{{ $systemCpu->system_type_id ? $systemCpu->system_type->name : '-' }}</td>
-                            <td>{{ $systemCpu->system_category_id ? $systemCpu->category->name : '-' }}</td>
-                            <td>{{ $systemCpu->start_price_from }}</td>
-                            <td>{{ $systemCpu->brief }}</td>
-{{--                            <td>{{ $systemCpu->description }}</td>--}}
-{{--                            <td>{{ $systemCpu->slug }}</td>--}}
+                            <th><?php echo e($loop->iteration); ?></th>
+                            <td><?php echo e($systemType->name); ?></td>
+                            <td><?php echo e($systemType->system_category_id ? $systemType->category->name : '-'); ?></td>
+                            <td><?php echo e($systemType->brief); ?></td>
+
+
                             <td>
-                                <img src="{{ asset($systemCpu->image['indexArray'][$systemCpu->image['currentImage']] ) }}" alt="" width="100" height="50">
+                                <img src="<?php echo e(asset($systemType->image['indexArray'][$systemType->image['currentImage']] )); ?>" alt="" width="100" height="50">
                             </td>
-{{--                            <td>{{ $systemCpu->tags }}</td>--}}
+
                             <td>
                                 <label>
-                                    <input id="{{ $systemCpu->id }}" onchange="changeStatus({{ $systemCpu->id }})" data-url="{{ route('admin.smart-assemble.type.status', $systemCpu->id) }}" type="checkbox" @if ($systemCpu->status === 1)
+                                    <input id="<?php echo e($systemType->id); ?>" onchange="changeStatus(<?php echo e($systemType->id); ?>)" data-url="<?php echo e(route('admin.smart-assemble.type.status', $systemType->id)); ?>" type="checkbox" <?php if($systemType->status === 1): ?>
                                         checked
-                                        @endif>
+                                        <?php endif; ?>>
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.smart-assemble.cpu.edit', $systemCpu->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.smart-assemble.type.destroy', $systemCpu->id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
+                                <a href="<?php echo e(route('admin.smart-assemble.type.edit', $systemType->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="<?php echo e(route('admin.smart-assemble.type.destroy', $systemType->id)); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo e(method_field('delete')); ?>
+
                                 <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                             </form>
                                         </td>
                         </tr>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                     </tbody>
@@ -94,10 +89,10 @@
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
     <script type="text/javascript">
         function changeStatus(id){
@@ -167,7 +162,9 @@
     </script>
 
 
-    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+    <?php echo $__env->make('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\laravel-shop-project\resources\views/admin/smart-assemble/type/index.blade.php ENDPATH**/ ?>
