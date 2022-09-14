@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Assemble\SmartAssembleController;
 use App\Http\Controllers\Customer\SalesProcess\AddressController;
 use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
 use Illuminate\Support\Facades\Route;
@@ -64,7 +65,7 @@ Route::namespace('SalesProcess')->group(function () {
         Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('customer.sales-process.payment');
         Route::post('/copan-discount', [CustomerPaymentController::class, 'copanDiscount'])->name('customer.sales-process.copan-discount');
         Route::post('/payment-submit', [CustomerPaymentController::class, 'paymentSubmit'])->name('customer.sales-process.payment-submit');
-
+		Route::any('/payment-callback/{order}/{onlinePayment}', [CustomerPaymentController::class, 'paymentCallback'])->name('customer.sales-process.payment-call-back');
     });
 });
 
@@ -78,7 +79,19 @@ Route::namespace('Market')->group(function () {
 
 });
 
-require 'smart-assemble.php';
+Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
+    // assemble by user
+    Route::get('/', [SmartAssembleController::class, 'index'])->name('smart.assemble.index');
+    // recommended system categories, types, cpus and configs
+    Route::get('/systems/', [SmartAssembleController::class, 'systemCategories'])->name('smart.assemble.categories');
+    Route::get('/systems/{systemCategory:slug}', [SmartAssembleController::class, 'systemTypes'])->name('smart.assemble.types');
+    Route::get('/systems/{systemCategory:slug}/{systemType:slug}', [SmartAssembleController::class, 'systemCpus'])->name('smart.assemble.cpus');
+
+
+    Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}', [SmartAssembleController::class, 'systemConfigs'])->name('smart.assemble.configs');
+    // recommended system components according to selected system categories, types, gens and configs
+    Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}/{systemConfig}/config', [SmartAssembleController::class, 'build'])->name('smart.assemble.build');
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

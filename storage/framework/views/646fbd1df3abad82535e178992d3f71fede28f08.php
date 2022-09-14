@@ -1,17 +1,15 @@
-@extends('admin.layouts.master')
+<?php $__env->startSection('head-tag'); ?>
+<title>نسل سیستم</title>
+<?php $__env->stopSection(); ?>
 
-@section('head-tag')
-<title>کانفیگ سیستم</title>
-@endsection
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="#">پی سی پیک</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="#"> سیستم اسمبل هوشمند</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page">کانفیگ سیستم</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page">نسل سیستم</li>
     </ol>
   </nav>
 
@@ -21,12 +19,12 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                    کانفیگ سیستم
+                    نسل سیستم
                 </h5>
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.smart-assemble.config.create') }}" class="btn btn-info btn-sm">ایجاد کانفیگ جدید</a>
+                <a href="<?php echo e(route('admin.smart-assemble.cpu.create')); ?>" class="btn btn-info btn-sm">ایجاد نسل جدید</a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -37,54 +35,54 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>کانفیگ سیستم</th>
                             <th>نسل سیستم</th>
                             <th>نوع سیستم</th>
                             <th>دسته سیستم</th>
                             <th>شروع قیمت از</th>
                             <th>خلاصه</th>
-{{--                            <th>توضیحات</th>--}}
-{{--                            <th>اسلاگ</th>--}}
+
+
                             <th>عکس</th>
-{{--                            <th>تگ ها</th>--}}
+
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($systemConfigs as $systemConfig)
+                        <?php $__currentLoopData = $systemCpus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemCpu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
-                            <td>{{ $systemConfig->name }}</td>
-                            <td>{{ $systemConfig->system_gen_id ? $systemConfig->system_cpu->name : '-' }}</td>
-                            <td>{{ $systemConfig->system_type_id ? $systemConfig->system_type->name : '-'}}</td>
-                            <td>{{ $systemConfig->system_category_id ? $systemConfig->category->name : '-' }}</td>
-                            <td>{{ $systemConfig->start_price_from }}</td>
-                            <td>{{ $systemConfig->brief }}</td>
-{{--                            <td>{{ $systemConfig->description }}</td>--}}
-{{--                            <td>{{ $systemConfig->slug }}</td>--}}
+                            <th><?php echo e($loop->iteration); ?></th>
+                            <td><?php echo e($systemCpu->name); ?></td>
+                            <td><?php echo e($systemCpu->system_type_id ? $systemCpu->system_type->name : '-'); ?></td>
+                            <td><?php echo e($systemCpu->system_category_id ? $systemCpu->category->name : '-'); ?></td>
+                            <td><?php echo e($systemCpu->start_price_from); ?></td>
+                            <td><?php echo e($systemCpu->brief); ?></td>
+
+
                             <td>
-                                <img src="{{ asset($systemConfig->image['indexArray'][$systemConfig->image['currentImage']] ) }}" alt="" width="100" height="50">
+                                <img src="<?php echo e(asset($systemCpu->image['indexArray'][$systemCpu->image['currentImage']] )); ?>" alt="" width="100" height="50">
                             </td>
-{{--                            <td>{{ $systemConfig->tags }}</td>--}}
+
                             <td>
                                 <label>
-                                    <input id="{{ $systemConfig->id }}" onchange="changeStatus({{ $systemConfig->id }})" data-url="{{ route('admin.smart-assemble.config.status', $systemConfig->id) }}" type="checkbox" @if ($systemConfig->status === 1)
+                                    <input id="<?php echo e($systemCpu->id); ?>" onchange="changeStatus(<?php echo e($systemCpu->id); ?>)" data-url="<?php echo e(route('admin.smart-assemble.type.status', $systemCpu->id)); ?>" type="checkbox" <?php if($systemCpu->status === 1): ?>
                                         checked
-                                        @endif>
+                                        <?php endif; ?>>
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.smart-assemble.config.edit', $systemConfig->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.smart-assemble.config.destroy', $systemConfig->id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
+                                <a href="<?php echo e(route('admin.smart-assemble.cpu.edit', $systemCpu->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <form class="d-inline" action="<?php echo e(route('admin.smart-assemble.type.destroy', $systemCpu->id)); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo e(method_field('delete')); ?>
+
                                 <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                             </form>
                                         </td>
                         </tr>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                     </tbody>
@@ -95,10 +93,10 @@
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
     <script type="text/javascript">
         function changeStatus(id){
@@ -168,7 +166,9 @@
     </script>
 
 
-    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+    <?php echo $__env->make('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\1 - laravel-shop-project\resources\views/admin/smart-assemble/cpu/index.blade.php ENDPATH**/ ?>

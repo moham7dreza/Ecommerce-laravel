@@ -1,16 +1,17 @@
 <?php $__env->startSection('head-tag'); ?>
     <title>
-        <?php echo e($systemCategory->name. ' ' .$systemType->name); ?>
+        <?php echo e($systemCategory->name. ' ' .$systemType->name. ' ' . $systemCpu->name); ?>
 
     </title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
     <div class="album py-5 bg-light">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4 text-center"><?php echo e($systemType->name); ?></h1>
-                <p class="lead text-center"><?php echo e($systemType->description); ?></p>
+                <h1 class="display-4 text-center"><?php echo e($systemCpu->name); ?></h1>
+                <p class="lead text-center"><?php echo e($systemCpu->description); ?></p>
             </div>
         </div>
     </div>
@@ -18,23 +19,18 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                <?php $__currentLoopData = $systemGens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemGen): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php $__currentLoopData = $systemConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemConfig): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <a href="<?php echo e(route('smart.assemble.configs', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemGen])); ?>">
+                            
 
-
-
-
-
-
-
-                                <img src="<?php echo e(asset($systemGen->image['indexArray']['medium'])); ?>"
+                            <a href="<?php echo e(route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=> $systemCpu, 'systemConfig'=> $systemConfig])); ?>">
+                                <img src="<?php echo e(asset($systemConfig->image['indexArray']['medium'])); ?>"
                                      class="bd-placeholder-img card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title"><?php echo e($systemGen->name); ?></h5>
-                                <p class="card-text"><?php echo e($systemGen->brief); ?></p>
+                                <h5 class="card-title"><?php echo e($systemConfig->name); ?></h5>
+                                <p class="card-text"><?php echo e($systemConfig->brief); ?></p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">An item</li>
@@ -43,17 +39,19 @@
                             </ul>
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
-
-
-
-
-
+                                    
+                                    
+                                    
+                                    
+                                    
                                     <label for="">شروع قیمت</label>
-                                    <small class="text-muted"><?php echo e(priceFormat($systemGen->start_price_from)); ?><span> تومان</span></small>
+                                    <small class="text-muted"><?php echo e(priceFormat($systemConfig->start_price_from)); ?>
+
+                                        <span> تومان</span></small>
                                 </div>
                                 <a type="button"
-                                   href="<?php echo e(route('smart.assemble.configs', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemGen])); ?>"
-                                   class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
+                                   href="<?php echo e(route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemCpu, 'systemConfig'=> $systemConfig])); ?>"
+                                   class="btn btn-outline-primary card-link mt-3 d-block">مشاهده جزيات</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +65,9 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
-                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه <?php echo e($systemCategory->name); ?>-<?php echo e($systemType->name); ?>
+                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه <?php echo e($systemCategory->name); ?>
+
+                        -<?php echo e($systemType->name); ?>-<?php echo e($systemCpu->name); ?>
 
                         اسمبل شده
                     </li>
@@ -83,93 +83,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\laravel-shop-project\resources\views/smart-assemble/cpu.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\1 - laravel-shop-project\resources\views/smart-assemble/config.blade.php ENDPATH**/ ?>

@@ -26,7 +26,7 @@ class CreateSystemConfigsTable extends Migration
             $table->decimal('start_price_from', 20, 3);
             $table->foreignId('system_category_id')->constrained('system_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('system_type_id')->constrained('system_types')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('system_gen_id')->constrained('system_gens')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('system_gen_id')->constrained('system_cpus')->onUpdate('cascade')->onDelete('cascade');
             $table->text('tags')->nullable();
             $table->timestamps();
             $table->softDeletes();

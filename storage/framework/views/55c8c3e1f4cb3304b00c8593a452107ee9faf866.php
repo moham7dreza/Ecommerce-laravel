@@ -1,45 +1,44 @@
-@extends('customer.layouts.master-one-col')
-
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
-    @if(session('success'))
+    <?php if(session('success')): ?>
         <div class="alert alert-success">
-            {{ session('success') }}
+            <?php echo e(session('success')); ?>
+
         </div>
-        @endif
-		@if(session('danger'))
+        <?php endif; ?>
+		<?php if(session('danger')): ?>
         <div class="alert alert-danger">
-            {{ session('danger') }}
+            <?php echo e(session('danger')); ?>
+
         </div>
-        @endif
+        <?php endif; ?>
         <section class="row">
             <section class="col-md-8 pe-md-1 ">
                 <section id="slideshow" class="owl-carousel owl-theme">
 
-                    @foreach ($slideShowImages as $slideShowImage)
+                    <?php $__currentLoopData = $slideShowImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slideShowImage): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                     <section class="item">
-                        <a class="w-100 d-block h-auto text-decoration-none" href="{{ urldecode($slideShowImage->url) }}">
-                            <img class="w-100 rounded-2 d-block h-auto" src="{{ asset($slideShowImage->image) }}" alt="{{ $slideShowImage->title }}">
+                        <a class="w-100 d-block h-auto text-decoration-none" href="<?php echo e(urldecode($slideShowImage->url)); ?>">
+                            <img class="w-100 rounded-2 d-block h-auto" src="<?php echo e(asset($slideShowImage->image)); ?>" alt="<?php echo e($slideShowImage->title); ?>">
                         </a>
                     </section>
 
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </section>
             </section>
             <section class="col-md-4 ps-md-1 mt-2 mt-md-0">
-                @foreach ($topBanners as $topBanner)
+                <?php $__currentLoopData = $topBanners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $topBanner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <section class="mb-2">
-                    <a href="{{ urldecode($slideShowImage->url) }}" class="d-block">
-                        <img class="w-100 rounded-2" src="{{ asset($topBanner->image) }}" alt="{{ $topBanner->title }}">
+                    <a href="<?php echo e(urldecode($slideShowImage->url)); ?>" class="d-block">
+                        <img class="w-100 rounded-2" src="<?php echo e(asset($topBanner->image)); ?>" alt="<?php echo e($topBanner->title); ?>">
                     </a>
                 </section>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </section>
         </section>
@@ -69,58 +68,58 @@
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
-                                @foreach ($mostVisitedProducts as $mostVisitedProduct)
+                                <?php $__currentLoopData = $mostVisitedProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mostVisitedProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <section class="item">
                                     <section class="lazyload-item-wrapper">
                                         <section class="product">
-                                            {{-- <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section> --}}
-                                            @guest
+                                            
+                                            <?php if(auth()->guard()->guest()): ?>
                                             <section class="product-add-to-favorite">
-                                                <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $mostVisitedProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
+                                                <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $mostVisitedProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
                                                     <i class="fa fa-heart"></i>
                                                 </button>
                                             </section>
-                                            @endguest
-                                            @auth
-                                                @if ($mostVisitedProduct->user->contains(auth()->user()->id))
+                                            <?php endif; ?>
+                                            <?php if(auth()->guard()->check()): ?>
+                                                <?php if($mostVisitedProduct->user->contains(auth()->user()->id)): ?>
                                                 <section class="product-add-to-favorite">
-                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $mostVisitedProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
+                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $mostVisitedProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
                                                         <i class="fa fa-heart text-danger"></i>
                                                     </button>
                                                 </section>
-                                                @else
+                                                <?php else: ?>
                                                 <section class="product-add-to-favorite">
-                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $mostVisitedProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
+                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $mostVisitedProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
                                                         <i class="fa fa-heart"></i>
                                                     </button>
                                                 </section>
-                                                @endif
-                                            @endauth
+                                                <?php endif; ?>
+                                            <?php endif; ?>
 
-                                            <a class="product-link" href="{{ route('customer.market.product', $mostVisitedProduct) }}">
+                                            <a class="product-link" href="<?php echo e(route('customer.market.product', $mostVisitedProduct)); ?>">
                                                 <section class="product-image">
-                                                    <img class="" src="{{ asset($mostVisitedProduct->image['indexArray']['medium']) }}" alt="{{ $mostVisitedProduct->name }}">
+                                                    <img class="" src="<?php echo e(asset($mostVisitedProduct->image['indexArray']['medium'])); ?>" alt="<?php echo e($mostVisitedProduct->name); ?>">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3>{{ Str::limit($mostVisitedProduct->name, 10) }}</h3></section>
+                                                <section class="product-name"><h3><?php echo e(Str::limit($mostVisitedProduct->name, 10)); ?></h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
-                                                        {{-- <span class="product-old-price">6,895,000 </span> --}}
-                                                        {{-- <span class="product-discount-amount">10%</span> --}}
+                                                        
+                                                        
                                                     </section>
-                                                    <section class="product-price">{{ priceFormat($mostVisitedProduct->price) }} تومان</section>
+                                                    <section class="product-price"><?php echo e(priceFormat($mostVisitedProduct->price)); ?> تومان</section>
                                                 </section>
                                                 <section class="product-colors">
-                                                    @foreach ($mostVisitedProduct->colors()->get() as $color)
-                                                    <section class="product-colors-item" style="background-color: {{ $color->color }};"></section>
-                                                    @endforeach
+                                                    <?php $__currentLoopData = $mostVisitedProduct->colors()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <section class="product-colors-item" style="background-color: <?php echo e($color->color); ?>;"></section>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </section>
                                             </a>
                                         </section>
                                     </section>
                                 </section>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </section>
                         </section>
@@ -138,13 +137,13 @@
         <section class="container-xxl">
             <!-- two column-->
             <section class="row py-4">
-                @foreach ($middleBanners as $middleBanner)
+                <?php $__currentLoopData = $middleBanners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $middleBanner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <section class="col-12 col-md-6 mt-2 mt-md-0">
-                    <a href="{{ urldecode($middleBanner->url) }}">
-                        <img class="d-block rounded-2 w-100" src="{{ asset($middleBanner->image) }}" alt="{{ $middleBanner->title }}">
+                    <a href="<?php echo e(urldecode($middleBanner->url)); ?>">
+                        <img class="d-block rounded-2 w-100" src="<?php echo e(asset($middleBanner->image)); ?>" alt="<?php echo e($middleBanner->title); ?>">
                     </a>
                 </section>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </section>
 
@@ -174,57 +173,57 @@
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
-                                @foreach ($offerProducts as $offerProduct)
+                                <?php $__currentLoopData = $offerProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $offerProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <section class="item">
                                     <section class="lazyload-item-wrapper">
                                         <section class="product">
-                                            {{-- <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section> --}}
-                                            @guest
+                                            
+                                            <?php if(auth()->guard()->guest()): ?>
                                             <section class="product-add-to-favorite">
-                                                <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $offerProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
+                                                <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $offerProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
                                                     <i class="fa fa-heart"></i>
                                                 </button>
                                             </section>
-                                            @endguest
-                                            @auth
-                                                @if ($offerProduct->user->contains(auth()->user()->id))
+                                            <?php endif; ?>
+                                            <?php if(auth()->guard()->check()): ?>
+                                                <?php if($offerProduct->user->contains(auth()->user()->id)): ?>
                                                 <section class="product-add-to-favorite">
-                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $offerProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
+                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $offerProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
                                                         <i class="fa fa-heart text-danger"></i>
                                                     </button>
                                                 </section>
-                                                @else
+                                                <?php else: ?>
                                                 <section class="product-add-to-favorite">
-                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $offerProduct) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
+                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $offerProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
                                                         <i class="fa fa-heart"></i>
                                                     </button>
                                                 </section>
-                                                @endif
-                                            @endauth
-                                                <a class="product-link" href="{{ route('customer.market.product', $offerProduct) }}">
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                                <a class="product-link" href="<?php echo e(route('customer.market.product', $offerProduct)); ?>">
                                                 <section class="product-image">
-                                                    <img class="" src="{{ asset($offerProduct->image['indexArray']['medium']) }}" alt="{{ $offerProduct->name }}">
+                                                    <img class="" src="<?php echo e(asset($offerProduct->image['indexArray']['medium'])); ?>" alt="<?php echo e($offerProduct->name); ?>">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3>{{ Str::limit($offerProduct->name, 10) }}</h3></section>
+                                                <section class="product-name"><h3><?php echo e(Str::limit($offerProduct->name, 10)); ?></h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
-                                                        {{-- <span class="product-old-price">6,895,000 </span> --}}
-                                                        {{-- <span class="product-discount-amount">10%</span> --}}
+                                                        
+                                                        
                                                     </section>
-                                                    <section class="product-price">{{ priceFormat($offerProduct->price) }} تومان</section>
+                                                    <section class="product-price"><?php echo e(priceFormat($offerProduct->price)); ?> تومان</section>
                                                 </section>
                                                 <section class="product-colors">
-                                                    @foreach ($offerProduct->colors()->get() as $color)
-                                                    <section class="product-colors-item" style="background-color: {{ $color->color }};"></section>
-                                                    @endforeach
+                                                    <?php $__currentLoopData = $offerProduct->colors()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <section class="product-colors-item" style="background-color: <?php echo e($color->color); ?>;"></section>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </section>
                                             </a>
                                         </section>
                                     </section>
                                 </section>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </section>
                         </section>
@@ -236,15 +235,15 @@
     <!-- end product lazy load -->
 
 
-    @if(!empty($bottomBanner))
+    <?php if(!empty($bottomBanner)): ?>
     <!-- start ads section -->
     <section class="mb-3">
         <section class="container-xxl">
             <!-- one column -->
             <section class="row py-4">
                 <section class="col">
-                    <a href="{{ urldecode($bottomBanner->url) }}">
-                        <img class="d-block rounded-2 w-100" src="{{ asset($bottomBanner->image) }}" alt="{{ $bottomBanner->title }}">
+                    <a href="<?php echo e(urldecode($bottomBanner->url)); ?>">
+                        <img class="d-block rounded-2 w-100" src="<?php echo e(asset($bottomBanner->image)); ?>" alt="<?php echo e($bottomBanner->title); ?>">
                     </a>
                 </section>
             </section>
@@ -253,7 +252,7 @@
     </section>
     <!-- end ads section -->
 
-    @endif
+    <?php endif; ?>
 
 
 
@@ -273,17 +272,17 @@
                     <!-- start vontent header -->
                     <section class="brands-wrapper py-4" >
                         <section class="brands dark-owl-nav owl-carousel owl-theme">
-                            @foreach ($brands as $brand)
+                            <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <section class="item">
                                 <section class="brand-item">
                                     <a href="#">
-                                        <img class="rounded-2" src="{{ asset($brand->logo['indexArray']['medium']) }}" alt="">
+                                        <img class="rounded-2" src="<?php echo e(asset($brand->logo['indexArray']['medium'])); ?>" alt="">
                                     </a>
                                 </section>
                             </section>
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </section>
                     </section>
@@ -304,7 +303,7 @@
                 <strong class="ml-auto">
                     برای افزودن کالا به لیست علاقه مندی ها باید ابتدا وارد حساب کاربری خود شوید
                     <br>
-                    <a href="{{ route('auth.customer.login-register-form') }}" class="text-dark">
+                    <a href="<?php echo e(route('auth.customer.login-register-form')); ?>" class="text-dark">
                         ثبت نام / ورود
                     </a>
                 </strong>
@@ -315,9 +314,9 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
 <script>
     $('.product-add-to-favorite button').click(function() {
@@ -347,4 +346,6 @@
     })
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\1 - laravel-shop-project\resources\views/customer/home.blade.php ENDPATH**/ ?>

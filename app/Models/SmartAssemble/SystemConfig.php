@@ -34,7 +34,7 @@ class SystemConfig extends Model
         return $this->belongsTo(SystemType::class, 'system_type_id');
     }
 
-    public function gen()
+    public function system_cpu()
     {
         return $this->belongsTo(SystemCpu::class, 'system_gen_id');
     }

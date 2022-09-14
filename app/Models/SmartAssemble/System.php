@@ -27,12 +27,12 @@ class System extends Model
         return $this->belongsTo(SystemType::class, 'system_type_id');
     }
 
-    public function gen()
+    public function system_cpu()
     {
         return $this->belongsTo(SystemCpu::class, 'system_gen_id');
     }
 
-    public function config()
+    public function system_config()
     {
         return $this->belongsTo(SystemConfig::class, 'system_config_id');
     }
@@ -44,6 +44,6 @@ class System extends Model
 
     public function system_name()
     {
-        return $this->category->name. '-' . $this->system_type->name. '-' . $this->gen->name. '-' . $this->config->name;
+        return $this->category->name. '-' . $this->system_type->name. '-' . $this->cpu->name. '-' . $this->config->name;
     }
 }

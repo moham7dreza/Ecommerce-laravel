@@ -1,43 +1,32 @@
 @extends('customer.layouts.master-one-col')
 @section('head-tag')
     <title>
-        {{ $systemCategory->name. ' ' .$systemType->name. ' ' . $systemCpu->name }}
+        {{ $systemCategory->name. ' ' .$systemType->name }}
     </title>
 @endsection
 
 @section('content')
-
     <div class="album py-5 bg-light">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4 text-center">{{ $systemCpu->name}}</h1>
-                <p class="lead text-center">{{ $systemCpu->description}}</p>
+                <h1 class="display-4 text-center">{{ $systemType->name}}</h1>
+                <p class="lead text-center">{{ $systemType->description}}</p>
             </div>
         </div>
     </div>
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                @foreach($systemConfigs as $systemConfig)
+                @foreach($systemCpus as $systemCpu)
                     <div class="col">
                         <div class="card shadow-sm">
-                            {{--                            @php--}}
-                            {{--                                $system = \App\Models\SmartAssemble\System::where(--}}
-                            {{--                                    ['system_category_id' => $systemCategory->id],--}}
-                            {{--                                    ['system_type_id' => $systemType->id],--}}
-                            {{--                                    ['system_gen_id' => $systemCpu->id],--}}
-                            {{--                                    ['system_config_id' => $systemConfig->id])->first();--}}
-                            {{--                                dd($systemConfig->id);--}}
-                            {{--                            @endphp--}}
-
-                            <a href="{{ route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=> $systemCpu, 'systemConfig'=> $systemConfig]) }}">
-                                <img src="{{ asset($systemConfig->image['indexArray']['medium']) }}"
+                            <a href="{{ route('smart.assemble.configs', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemCpu]) }}">
+                                <img src="{{ asset($systemCpu->image['indexArray']['medium']) }}"
                                      class="bd-placeholder-img card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $systemConfig->name }}</h5>
-                                <p class="card-text">{{ $systemConfig->brief }}</p>
+                                <h5 class="card-title">{{ $systemCpu->name }}</h5>
+                                <p class="card-text">{{ $systemCpu->brief }}</p>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">An item</li>
@@ -52,12 +41,11 @@
                                     {{--                                            </button>--}}
                                     {{--                                        </div>--}}
                                     <label for="">شروع قیمت</label>
-                                    <small class="text-muted">{{ priceFormat($systemConfig->start_price_from) }}
-                                        <span> تومان</span></small>
+                                    <small class="text-muted">{{ priceFormat($systemCpu->start_price_from) }}<span> تومان</span></small>
                                 </div>
                                 <a type="button"
-                                   href="{{ route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemCpu, 'systemConfig'=> $systemConfig]) }}"
-                                   class="btn btn-outline-primary card-link mt-3 d-block">مشاهده جزيات</a>
+                                   href="{{ route('smart.assemble.configs', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=>$systemCpu]) }}"
+                                   class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
                             </div>
                         </div>
                     </div>
@@ -71,8 +59,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
-                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}
-                        -{{ $systemType->name }}-{{ $systemCpu->name }}
+                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}-{{ $systemType->name }}
                         اسمبل شده
                     </li>
                 </ol>
