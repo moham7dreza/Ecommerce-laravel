@@ -91,6 +91,8 @@ Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
     Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}', [SmartAssembleController::class, 'systemConfigs'])->name('smart.assemble.configs');
     // recommended system components according to selected system categories, types, gens and configs
     Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}/{systemConfig}/config', [SmartAssembleController::class, 'build'])->name('smart.assemble.build');
+    Route::post('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}/{systemConfig}/config', [SmartAssembleController::class, 'builder'])->name('smart.assemble.builder');
+    Route::post('/systems/{system}/add-to-cart', [SmartAssembleController::class, 'addSystemToCart'])->name('smart.assemble.add-system-to-cart');
 });
 
 

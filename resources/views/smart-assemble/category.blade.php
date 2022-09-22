@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-
+    <!-- start carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -18,7 +18,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('assemble-assets/ezpc-baner-4.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('lion-ezpc-images/main-banner.png') }}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
                 <img src="..." class="d-block w-100" alt="...">
@@ -38,27 +38,36 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    <!-- end carousel -->
 
 
-
+    <div class="album py-5 bg-light">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 text-center">سیستم اسمبل هوشمند</h1>
+                <p class="lead text-center text-danger">لطفا متناسب با کاربری دسته بندی موردنطرتون رو انتخاب کنید.</p>
+            </div>
+        </div>
+    </div>
 
     <div class="album py-5 bg-light">
         <div class="container">
 
-
+            <!-- start breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page"> دسته بندی سیستم ها</li>
                 </ol>
             </nav>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <!-- end breadcrumb -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
                 @foreach($systemCategories as $systemCategory)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <a href="{{ route('smart.assemble.types', $systemCategory) }}">
+                            <a class="text-decoration-none text-dark" href="{{ route('smart.assemble.types', $systemCategory) }}">
                             {{--                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--}}
                             {{--                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $systemCategory->name }}"--}}
                             {{--                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ $systemCategory->name }}</title>--}}
@@ -68,15 +77,17 @@
                             {{--                            </svg>--}}
                             <img src="{{ asset($systemCategory->image['indexArray']['medium']) }}"
                                  class="bd-placeholder-img card-img-top" alt="...">
-                            <div class="card-body">
+                            <div class="card-body w-100">
                                 <h5 class="card-title">{{ $systemCategory->name }}</h5>
                                 <p class="card-text">{{ $systemCategory->brief }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>
-                                    </div>
-                                    <small class="text-muted">9 دقائق</small>
+{{--                                    <div class="btn-group">--}}
+{{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>--}}
+{{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>--}}
+{{--                                    </div>--}}
+{{--                                    <small class="text-muted">9 دقائق</small>--}}
+                                    <a type="button" href="{{ route('smart.assemble.types', $systemCategory) }}"
+                                       class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
                                 </div>
                             </div>
                             {{--                            <ul class="list-group list-group-flush">--}}

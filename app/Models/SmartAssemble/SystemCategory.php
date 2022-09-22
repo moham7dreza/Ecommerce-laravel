@@ -22,7 +22,7 @@ class SystemCategory extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'brief', 'description', 'slug', 'image', 'status', 'type', 'tags', 'show_in_menu', 'parent_id'];
+    protected $guarded = ['id'];
 
     public function parent()
     {

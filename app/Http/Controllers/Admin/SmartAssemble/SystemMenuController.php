@@ -17,7 +17,7 @@ class SystemMenuController extends Controller
      */
     public function index()
     {
-        $menus = SystemMenu::orderBy('created_at', 'desc')->simplePaginate(15);
+        $menus = SystemMenu::all();
         return view('admin.smart-assemble.menu.index', compact('menus'));
     }
 

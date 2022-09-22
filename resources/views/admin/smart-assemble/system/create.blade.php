@@ -40,7 +40,7 @@
                                 <label for="system_config_id">کانفیگ سیستم</label>
                                 <select name="system_config_id" id="" class="form-control form-control-sm">
                                     @foreach ($configs as $config)
-                                        <option value="{{ $config->id }}"  @if(old('system_config_id') == $config->id) selected @endif>{{ $config->name }}</option>
+                                        <option value="{{ $config->id }}"  @if(old('system_config_id') == $config->id) selected @endif>{{ $config->name. ' - '.$config->ram_gen }}</option>
                                     @endforeach
                                 </select>
                             </div>

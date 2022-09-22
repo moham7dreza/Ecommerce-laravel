@@ -12,12 +12,12 @@ class SystemGallery extends Model
 
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['image', 'system_category_id'];
+    protected $guarded = ['id'];
 
     protected $casts = ['image' => 'array'];
 
 
-    public function systemCategory()
+    public function category()
     {
         return $this->belongsTo(SystemCategory::class);
     }

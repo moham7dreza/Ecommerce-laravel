@@ -33,7 +33,7 @@ class SystemConfigRequest extends FormRequest
                 'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
                 'system_category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_categories,id',
                 'system_type_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_types,id',
-                'system_gen_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_gens,id',
+                'system_gen_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_cpus,id',
                 'start_price_from' => 'required|numeric',
             ];
         }
@@ -47,7 +47,7 @@ class SystemConfigRequest extends FormRequest
                 'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
                 'system_category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_categories,id',
                 'system_type_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_types,id',
-                'system_gen_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_gens,id',
+                'system_gen_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_cpus,id',
                 'start_price_from' => 'required|numeric',
             ];
         }

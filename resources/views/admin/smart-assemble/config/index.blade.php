@@ -42,7 +42,7 @@
                             <th>نوع سیستم</th>
                             <th>دسته سیستم</th>
                             <th>شروع قیمت از</th>
-                            <th>خلاصه</th>
+{{--                            <th>خلاصه</th>--}}
 {{--                            <th>توضیحات</th>--}}
 {{--                            <th>اسلاگ</th>--}}
                             <th>عکس</th>
@@ -55,12 +55,12 @@
                         @foreach ($systemConfigs as $systemConfig)
                         <tr>
                             <th>{{ $loop->iteration }}</th>
-                            <td>{{ $systemConfig->name }}</td>
+                            <td>{{ $systemConfig->name.'-'.$systemConfig->ram_gen }}</td>
                             <td>{{ $systemConfig->system_gen_id ? $systemConfig->system_cpu->name : '-' }}</td>
                             <td>{{ $systemConfig->system_type_id ? $systemConfig->system_type->name : '-'}}</td>
                             <td>{{ $systemConfig->system_category_id ? $systemConfig->category->name : '-' }}</td>
                             <td>{{ $systemConfig->start_price_from }}</td>
-                            <td>{{ $systemConfig->brief }}</td>
+{{--                            <td>{{ $systemConfig->brief }}</td>--}}
 {{--                            <td>{{ $systemConfig->description }}</td>--}}
 {{--                            <td>{{ $systemConfig->slug }}</td>--}}
                             <td>

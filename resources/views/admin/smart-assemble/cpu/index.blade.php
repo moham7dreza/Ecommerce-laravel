@@ -41,7 +41,7 @@
                             <th>نوع سیستم</th>
                             <th>دسته سیستم</th>
                             <th>شروع قیمت از</th>
-                            <th>خلاصه</th>
+{{--                            <th>خلاصه</th>--}}
 {{--                            <th>توضیحات</th>--}}
 {{--                            <th>اسلاگ</th>--}}
                             <th>عکس</th>
@@ -59,7 +59,7 @@
                             <td>{{ $systemCpu->system_type_id ? $systemCpu->system_type->name : '-' }}</td>
                             <td>{{ $systemCpu->system_category_id ? $systemCpu->category->name : '-' }}</td>
                             <td>{{ $systemCpu->start_price_from }}</td>
-                            <td>{{ $systemCpu->brief }}</td>
+{{--                            <td>{{ $systemCpu->brief }}</td>--}}
 {{--                            <td>{{ $systemCpu->description }}</td>--}}
 {{--                            <td>{{ $systemCpu->slug }}</td>--}}
                             <td>

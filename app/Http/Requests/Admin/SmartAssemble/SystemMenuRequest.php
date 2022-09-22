@@ -27,7 +27,7 @@ class SystemMenuRequest extends FormRequest
             return [
                 'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
                 'brief' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'url' => 'required|max:500|min:5',
+//                'url' => 'required|max:500|min:5',
                 'status' => 'required|numeric|in:0,1',
                 'show_in_menu' => 'numeric|in:0,1',
                 'parent_id' => 'nullable|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_menus,id',
@@ -38,7 +38,7 @@ class SystemMenuRequest extends FormRequest
             return [
                 'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
                 'brief' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-                'url' => 'required|max:500|min:5',
+//                'url' => 'required|max:500|min:5',
                 'status' => 'required|numeric|in:0,1',
                 'show_in_menu' => 'numeric|in:0,1',
                 'parent_id' => 'nullable|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_menus,id',

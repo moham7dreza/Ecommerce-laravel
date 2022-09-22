@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>کانفیگ سیستم</title>
+<title>سیستم پیشنهادی</title>
 @endsection
 
 @section('content')
@@ -38,10 +38,10 @@
                         <tr>
                             <th>#</th>
                             <th>نام سیستم</th>
-                            <th>توضیحات</th>
+{{--                            <th>توضیحات</th>--}}
                             <th>قیمت</th>
                             <th>نوع کاربری</th>
-                            <th>تگ ها</th>
+{{--                            <th>تگ ها</th>--}}
                             <th>محبوبیت</th>
                             <th>عکس</th>
                             <th>وضعیت</th>
@@ -53,10 +53,10 @@
                         <tr>
                             <th>{{ $loop->iteration }}</th>
                             <td>{{ $system->name }}</td>
-                            <td>{{ $system->description }}</td>
-                            <td>{{ priceFormat($system->system_price) }}</td>
+{{--                            <td>{{ $system->description }}</td>--}}
+                            <td>{{ priceFormat($system->system_price) .' تومان' }}</td>
                             <td>{{ $system->system_user_type }}</td>
-                            <td>{{ $system->tags }}</td>
+{{--                            <td>{{ $system->tags }}</td>--}}
                             <td>{{ $system->system_rating }}</td>
                             <td>
                                 <img src="{{ asset($system->image['indexArray'][$system->image['currentImage']] ) }}" alt="" width="100" height="50">

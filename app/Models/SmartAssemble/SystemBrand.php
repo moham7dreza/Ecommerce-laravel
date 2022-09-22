@@ -23,5 +23,5 @@ class SystemBrand extends Model
     protected $casts = ['logo' => 'array'];
 
 
-    protected $fillable = ['persian_name', 'original_name', 'slug', 'logo', 'status', 'tags'];
+    protected $guarded = ['id'];
 }

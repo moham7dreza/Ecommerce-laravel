@@ -33,8 +33,8 @@ class SystemConfigController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        $gens = SystemCpu::all();
-        return view('admin.smart-assemble.config.create', compact('categories', 'types', 'gens'));
+        $cpus = SystemCpu::all();
+        return view('admin.smart-assemble.config.create', compact('categories', 'types', 'cpus'));
     }
 
     /**

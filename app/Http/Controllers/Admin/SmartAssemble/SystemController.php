@@ -11,11 +11,14 @@ use App\Models\Market\ProductCategory;
 use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemConfig;
+use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemGen;
 use App\Models\SmartAssemble\SystemItem;
 use App\Models\SmartAssemble\SystemMenu;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Null_;
 
 class SystemController extends Controller
 {
@@ -39,7 +42,7 @@ class SystemController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        $gens = SystemGen::all();
+        $gens = SystemCpu::all();
         $configs = SystemConfig::all();
         return view('admin.smart-assemble.system.create', compact('categories', 'types', 'gens', 'configs'));
     }
@@ -62,10 +65,11 @@ class SystemController extends Controller
             return redirect()->route('admin.smart-assemble.system.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
-        $inputs['name'] = SystemCategory::where('id', $request->system_category_id)->pluck('name')->first() . '-' .
-            SystemType::where('id', $request->system_type_id)->pluck('name')->first() . '-' .
-            SystemGen::where('id', $request->system_gen_id)->pluck('name')->first() . '-' .
-            SystemConfig::where('id', $request->system_config_id)->pluck('name')->first();
+        $inputs['name'] = SystemCategory::where('id', $request->system_category_id)->pluck('name')->first() . ' - ' .
+            SystemType::where('id', $request->system_type_id)->pluck('name')->first() . ' - ' .
+            SystemCpu::where('id', $request->system_gen_id)->pluck('name')->first() . ' - ' .
+            SystemConfig::where('id', $request->system_config_id)->pluck('name')->first() . ' - ' .
+            SystemConfig::where('id', $request->system_config_id)->pluck('ram_gen')->first();
         //date fixed
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
@@ -94,7 +98,7 @@ class SystemController extends Controller
     {
         $categories = SystemCategory::all();
         $types = SystemType::all();
-        $gens = SystemGen::all();
+        $gens = SystemCpu::all();
         $configs = SystemConfig::all();
         return view('admin.smart-assemble.system.edit', compact('system', 'categories', 'types', 'gens', 'configs'));
     }
@@ -132,7 +136,7 @@ class SystemController extends Controller
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
         $inputs['name'] = SystemCategory::where('id', $request->system_category_id)->pluck('name')->first() . '-' .
             SystemType::where('id', $request->system_type_id)->pluck('name')->first() . '-' .
-            SystemGen::where('id', $request->system_gen_id)->pluck('name')->first() . '-' .
+            SystemCpu::where('id', $request->system_gen_id)->pluck('name')->first() . '-' .
             SystemConfig::where('id', $request->system_config_id)->pluck('name')->first();
         $system->update($inputs);
         return redirect()->route('admin.smart-assemble.system.index')->with('swal-success', 'سیستم پیشنهادی با موفقیت ویرایش شد');
@@ -167,50 +171,51 @@ class SystemController extends Controller
 
     }
 
+    private function findProductCategoryName($categoryName)
+    {
+        $category = ProductCategory::where('name', 'like', '%' . $categoryName . '%')->where('parent_id', '!=', 'null')->first();
+        return $category->products;
+    }
+
     public function componentsCreate(System $system)
     {
         $menus = SystemMenu::all();
-        $case_category = ProductCategory::where('name', 'like', '%case%')
-            ->orWhere('name', 'like', '%کیس%')->orWhere('description', 'like', '%کیس%')->orWhere('description', 'like', '%case%')->first();
-        $cpu_category = ProductCategory::where('name', 'like', '%cpu%')
-            ->orWhere('name', 'like', '%پردازنده%')->orWhere('description', 'like', '%پردازنده%')->orWhere('description', 'like', '%cpu%')->first();
-        $mb_category = ProductCategory::where('name', 'like', '%motherboard%')
-            ->orWhere('name', 'like', '%مادربرد%')->orWhere('description', 'like', '%مادربرد%')->orWhere('description', 'like', '%motherboard%')->first();
-        $gpu_category = ProductCategory::where('name', 'like', '%کارت گرافیک%')
-            ->orWhere('name', 'like', '%کارت گرافیک%')->orWhere('description', 'like', '%کارت گرافیک%')->orWhere('description', 'like', '%gpu%')->first();
-        $psu_category = ProductCategory::where('name', 'like', '%power supply unit%')
-            ->orWhere('name', 'like', '%منبع تغذیه%')->orWhere('description', 'like', '%منبع تغذیه%')->orWhere('description', 'like', '%power supply unit%')->first();
-        $hdd_category = ProductCategory::where('name', 'like', '%hard disk drive%')
-            ->orWhere('name', 'like', '%هارد%')->orWhere('description', 'like', '%هارد%')->orWhere('description', 'like', '%hard disk drive%')->first();
-        $ssd_category = ProductCategory::where('name', 'like', '%solid state drive%')
-            ->orWhere('name', 'like', '%حافظه جامد%')->orWhere('description', 'like', '%حافظه جامد%')->orWhere('description', 'like', '%solid state drive%')->first();
-        $ram_category = ProductCategory::where('name', 'like', '%ram%')
-            ->orWhere('name', 'like', '%حافظه رم%')->orWhere('description', 'like', '%حافظه رم%')->orWhere('description', 'like', '%ram%')->first();
-        $cooler_category = ProductCategory::where('name', 'like', '%cpu cooler%')
-            ->orWhere('name', 'like', '%خنک کننده پردازنده%')->orWhere('description', 'like', '%خنک کننده پردازنده%')->orWhere('description', 'like', '%cpu cooler%')->first();
-        $fan_category = ProductCategory::where('name', 'like', '%fan%')
-            ->orWhere('name', 'like', '%فن های جانبی کیس%')->orWhere('description', 'like', '%فن های جانبی کیس%')->orWhere('description', 'like', '%fan%')->first();
-        return view('admin.smart-assemble.system.components.create', compact('menus', 'system', 'case_category', 'mb_category', 'cpu_category', 'gpu_category',
-            'psu_category', 'fan_category', 'cooler_category', 'ram_category', 'hdd_category', 'ssd_category'));
+        $case_category_products = $this->findProductCategoryName('کیس');
+        $cpu_category_products = $this->findProductCategoryName('پردازنده');
+        $mb_category_products = $this->findProductCategoryName('مادربرد');
+        $gpu_category_products = $this->findProductCategoryName('کارت گرافیک');
+        $psu_category_products = $this->findProductCategoryName('پاور');
+        $hdd_category_products = $this->findProductCategoryName('هارد دیسک');
+        $ssd_category_products = $this->findProductCategoryName('حافظه اس اس دی');
+        $ram_category_products = $this->findProductCategoryName('رم');
+        $cooler_category_products = $this->findProductCategoryName('خنک کننده');
+//        $fan_category = $this->findProductCategoryName('فن های جانبی کیس');
+        return view('admin.smart-assemble.system.components.create',
+            compact('menus', 'system', 'case_category_products', 'mb_category_products', 'cpu_category_products',
+                'gpu_category_products', 'psu_category_products', 'cooler_category_products',
+                'ram_category_products', 'hdd_category_products', 'ssd_category_products'));
     }
 
     public function componentsStore(System $system, SystemComponentsRequest $request)
     {
         $system_price = 0;
         $inputs = $request->all();
-        foreach ($inputs as $key => $value) {
-            if ($key != '_token') {
+        foreach ($inputs as $componentName => $componentID) {
+            if ($componentName != '_token') {
+                $product = Product::where('id', $componentID)->first();
+                $menu_id = SystemMenu::where('name', 'like', '%' . $product->category->name . '%')->pluck('id')->first();
                 $item = SystemItem::create([
-                    'name' => $key,
-                    'user_id' => '1',
+                    'name' => $componentName,
+                    'user_id' => auth()->user()->id,
                     'system_id' => $system->id,
-                    'product_id' => $value,
-                    'price' => Product::where('id', $value)->pluck('price')->first()
+                    'product_id' => $componentID,
+                    'system_menu_id' => $menu_id ? $menu_id : NULL,
+                    'price' => $product->price
                 ]);
                 $system_price += $item->price;
             }
         }
-        $system = System::where('id', $system->id)->update(['system_price' => $system_price]);
+        $system->update(['system_price' => $system_price]);
         return redirect()->route('admin.smart-assemble.system.index')->with('swal-success', 'کانفیگ جدید با موفقیت ثبت شد');
     }
 

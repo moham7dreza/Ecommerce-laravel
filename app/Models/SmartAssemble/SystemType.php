@@ -22,7 +22,7 @@ class SystemType extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'brief','description', 'slug', 'image', 'start_price_from', 'status', 'type', 'tags', 'show_in_menu', 'system_category_id'];
+    protected $guarded = ['id'];
 
     public function category()
     {

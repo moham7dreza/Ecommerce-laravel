@@ -11,11 +11,25 @@
             <div class="container">
                 <h1 class="display-4 text-center"><?php echo e($systemType->name); ?></h1>
                 <p class="lead text-center"><?php echo e($systemType->description); ?></p>
+                <p class="lead text-center text-danger">نسل پردازنده سیستم موردنظر خود را انتخاب کنید.</p>
             </div>
         </div>
     </div>
     <div class="album py-5 bg-light">
         <div class="container">
+            <div class="row">
+                <!-- start breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
+                        <li class="breadcrumb-item font-size-12"><?php echo e($systemCategory->name); ?></li>
+                        <li class="breadcrumb-item font-size-12 active" aria-current="page"><?php echo e($systemType->name); ?></li>
+                    </ol>
+                </nav>
+                <!-- end breadcrumb -->
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php $__currentLoopData = $systemCpus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemCpu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col">

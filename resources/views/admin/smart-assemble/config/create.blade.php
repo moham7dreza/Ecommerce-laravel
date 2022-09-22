@@ -50,10 +50,28 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
+                                <label for="ram_gen">نسل رم</label>
+                                <select name="ram_gen" id="" class="form-control form-control-sm">
+                                        <option value="DDR3">DDR3</option>
+                                        <option value="DDR4" selected>DDR4</option>
+                                        <option value="DDR5">DDR5</option>
+                                </select>
+                            </div>
+                            @error('ram_gen')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="">انتخاب نسل سیستم</label>
                                 <select name="system_gen_id" id="" class="form-control form-control-sm">
-                                    @foreach ($gens as $gen)
-                                    <option value="{{ $gen->id }}"  @if(old('system_gen_id') == $gen->id) selected @endif>{{ $gen->name }}</option>
+                                    @foreach ($cpus as $cpu)
+                                    <option value="{{ $cpu->id }}"  @if(old('system_gen_id') == $cpu->id) selected @endif>{{ $cpu->name }}</option>
                                     @endforeach
 
                                 </select>

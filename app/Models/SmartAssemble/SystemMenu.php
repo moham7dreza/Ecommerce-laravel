@@ -12,7 +12,7 @@ class SystemMenu extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'brief', 'image', 'url', 'parent_id', 'status', 'show_in_menu', 'price'];
+    protected $guarded = ['id'];
 
     public function parent()
     {

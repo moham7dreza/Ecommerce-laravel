@@ -12,17 +12,31 @@
             <div class="container">
                 <h1 class="display-4 text-center"><?php echo e($systemCpu->name); ?></h1>
                 <p class="lead text-center"><?php echo e($systemCpu->description); ?></p>
+                <p class="lead text-center text-danger">چه کانفیگی از سیستم مدنظر شماست؟</p>
             </div>
         </div>
     </div>
     <div class="album py-5 bg-light">
         <div class="container">
+            <div class="row">
+                <!-- start breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
+                        <li class="breadcrumb-item font-size-12"><?php echo e($systemCategory->name); ?></li>
+                        <li class="breadcrumb-item font-size-12"><?php echo e($systemType->name); ?></li>
+                        <li class="breadcrumb-item font-size-12 active" aria-current="page"><?php echo e($systemCpu->name); ?></li>
+                    </ol>
+                </nav>
+                <!-- end breadcrumb -->
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
                 <?php $__currentLoopData = $systemConfigs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemConfig): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            
 
                             <a href="<?php echo e(route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=> $systemCpu, 'systemConfig'=> $systemConfig])); ?>">
                                 <img src="<?php echo e(asset($systemConfig->image['indexArray']['medium'])); ?>"
@@ -63,8 +77,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه <?php echo e($systemCategory->name); ?>
 
                         -<?php echo e($systemType->name); ?>-<?php echo e($systemCpu->name); ?>

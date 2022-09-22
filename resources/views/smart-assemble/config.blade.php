@@ -12,25 +12,34 @@
             <div class="container">
                 <h1 class="display-4 text-center">{{ $systemCpu->name}}</h1>
                 <p class="lead text-center">{{ $systemCpu->description}}</p>
+                <p class="lead text-center text-danger">چه کانفیگی از سیستم مدنظر شماست؟</p>
             </div>
         </div>
     </div>
     <div class="album py-5 bg-light">
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="row">
+                <!-- start breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
+                        <li class="breadcrumb-item font-size-12">{{ $systemCategory->name}}</li>
+                        <li class="breadcrumb-item font-size-12">{{ $systemType->name}}</li>
+                        <li class="breadcrumb-item font-size-12 active" aria-current="page">{{ $systemCpu->name}}</li>
+                    </ol>
+                </nav>
+                <!-- end breadcrumb -->
+            </div>
+            <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-3">
 
                 @foreach($systemConfigs as $systemConfig)
                     <div class="col">
                         <div class="card shadow-sm">
-                            {{--                            @php--}}
-                            {{--                                $system = \App\Models\SmartAssemble\System::where(--}}
-                            {{--                                    ['system_category_id' => $systemCategory->id],--}}
-                            {{--                                    ['system_type_id' => $systemType->id],--}}
-                            {{--                                    ['system_gen_id' => $systemCpu->id],--}}
-                            {{--                                    ['system_config_id' => $systemConfig->id])->first();--}}
-                            {{--                                dd($systemConfig->id);--}}
-                            {{--                            @endphp--}}
-
+{{--                                                        @php--}}
+{{--                                                            $system = \App\Models\SmartAssemble\System::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->where('system_gen_id', $systemCpu->id)->where('system_config_id', $systemConfig->id)->first();--}}
+{{--                                                        @endphp--}}
                             <a href="{{ route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=> $systemCpu, 'systemConfig'=> $systemConfig]) }}">
                                 <img src="{{ asset($systemConfig->image['indexArray']['medium']) }}"
                                      class="bd-placeholder-img card-img-top" alt="...">
@@ -69,8 +78,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}
                         -{{ $systemType->name }}-{{ $systemCpu->name }}
                         اسمبل شده

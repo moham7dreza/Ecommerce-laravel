@@ -23,12 +23,11 @@ class SystemComponentsRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->isMethod('post')){
+        if ($this->isMethod('post')) {
             return [
                 'case' => 'exists:products,id',
                 'cpu' => 'exists:products,id',
                 'gpu' => 'exists:products,id',
-                'fan' => 'exists:products,id',
                 'motherboard' => 'exists:products,id',
                 'cooler' => 'exists:products,id',
                 'ram' => 'exists:products,id',
@@ -36,13 +35,11 @@ class SystemComponentsRequest extends FormRequest
                 'ssd' => 'exists:products,id',
                 'psu' => 'exists:products,id',
             ];
-        }
-        else{
+        } else {
             return [
                 'case' => 'exists:products,id',
                 'cpu' => 'exists:products,id',
                 'gpu' => 'exists:products,id',
-                'fan' => 'exists:products,id',
                 'motherboard' => 'exists:products,id',
                 'cooler' => 'exists:products,id',
                 'ram' => 'exists:products,id',

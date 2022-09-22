@@ -18,7 +18,7 @@ class CreateSystemMenusTable extends Migration
             $table->string('name');
             $table->string('brief')->nullable();
             $table->text('image')->nullable();
-            $table->string('url');
+            $table->text('url')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('show_in_menu')->default(0);
             $table->foreignId('parent_id')->nullable()->constrained('system_menus');

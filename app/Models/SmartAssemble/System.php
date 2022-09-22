@@ -13,9 +13,7 @@ class System extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'system_user_type','description', 'image', 'system_price', 'status', 'system_marketable', 'tags',
-        'system_config_id ', 'system_category_id', 'system_type_id', 'system_gen_id'
-        , 'sold_number', 'frozen_number', 'marketable_number', 'system_view_number', 'system_rating', 'published_at'];
+    protected $guarded = ['id'];
 
     public function category()
     {

@@ -13,8 +13,7 @@ class SystemItem extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['price','name','user_id', 'system_id','product_id', 'color_id', 'guarantee_id', 'number'];
-
+    protected $guarded = ['id'];
 
     public function system()
     {
