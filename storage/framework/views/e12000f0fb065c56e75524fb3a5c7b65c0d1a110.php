@@ -1,10 +1,8 @@
-@extends('admin.layouts.master')
-
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
 <title>گارانتی</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -26,8 +24,8 @@
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
                 <div>
-                <a href="{{ route('admin.market.guarantee.create', $product->id) }}" class="btn btn-info btn-sm">ایجاد گارانتی جدید </a>
-                <a href="{{ route('admin.market.product.index') }}" class="btn btn-info btn-sm">کالاها</a></div>
+                <a href="<?php echo e(route('admin.market.guarantee.create', $product->id)); ?>" class="btn btn-info btn-sm">ایجاد گارانتی جدید </a>
+                <a href="<?php echo e(route('admin.market.product.index')); ?>" class="btn btn-info btn-sm">کالاها</a></div>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -45,29 +43,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product->guarantees as $guarantee)
+                        <?php $__currentLoopData = $product->guarantees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $guarantee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                         <tr>
-                            <th>{{ $loop->iteration }}</th>
-                            <td>{{ $product->name }}</td>
+                            <th><?php echo e($loop->iteration); ?></th>
+                            <td><?php echo e($product->name); ?></td>
                             <td>
-                                {{ $guarantee->name }}
+                                <?php echo e($guarantee->name); ?>
+
                             </td>
                              <td>
-                                {{ $guarantee->price_increase }}
+                                <?php echo e($guarantee->price_increase); ?>
+
                             </td>
 
                             <td class="width-16-rem text-left">
-                                <form class="d-inline" action="{{ route('admin.market.guarantee.destroy', ['product' => $product->id , 'guarantee' => $guarantee->id] ) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
+                                <form class="d-inline" action="<?php echo e(route('admin.market.guarantee.destroy', ['product' => $product->id , 'guarantee' => $guarantee->id] )); ?>" method="post">
+                                    <?php echo csrf_field(); ?>
+                                    <?php echo e(method_field('delete')); ?>
+
                                     <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
                                 </form>
 
                         </td>
                         </tr>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                     </tbody>
@@ -78,12 +79,14 @@
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
-@include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+<?php echo $__env->make('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\mars-shop\resources\views/admin/market/product/guarantee/index.blade.php ENDPATH**/ ?>

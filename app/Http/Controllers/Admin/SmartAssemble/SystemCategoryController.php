@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SmartAssemble\SystemCategoryRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
+use App\Models\SmartAssemble\SystemMeta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SystemCategoryController extends Controller
 {
@@ -51,7 +53,21 @@ class SystemCategoryController extends Controller
             return redirect()->route('admin.smart-assemble.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
-        $SystemCategory = SystemCategory::create($inputs);
+
+        DB::transaction(function () use ($request, $inputs) {
+
+            $systemCategory = SystemCategory::create($inputs);
+            $metas = array_combine($request->meta_key, $request->meta_value);
+            foreach ($metas as $key => $value){
+                $meta = SystemMeta::create([
+                    'meta_key' => $key,
+                    'meta_value' => $value,
+                    'system_category_id' => $systemCategory->id
+                ]);
+            }
+        });
+
+
         return redirect()->route('admin.smart-assemble.category.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
     }
 

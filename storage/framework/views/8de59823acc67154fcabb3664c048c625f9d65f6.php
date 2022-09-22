@@ -55,8 +55,10 @@
             <!-- start breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#"
+                                                                class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                            اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page"> دسته بندی سیستم ها</li>
                 </ol>
             </nav>
@@ -66,38 +68,44 @@
                 <?php $__currentLoopData = $systemCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $systemCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <a class="text-decoration-none text-dark" href="<?php echo e(route('smart.assemble.types', $systemCategory)); ?>">
-                            
-                            
-                            
-                            
+                            <a class="text-decoration-none text-dark"
+                               href="<?php echo e(route('smart.assemble.types', $systemCategory)); ?>">
+                                
+                                
+                                
+                                
 
-                            
-                            
-                            <img src="<?php echo e(asset($systemCategory->image['indexArray']['medium'])); ?>"
-                                 class="bd-placeholder-img card-img-top" alt="...">
-                            <div class="card-body w-100">
-                                <h5 class="card-title"><?php echo e($systemCategory->name); ?></h5>
-                                <p class="card-text"><?php echo e($systemCategory->brief); ?></p>
-                                <div class="d-flex justify-content-between align-items-center">
+                                
+                                
+                                <img src="<?php echo e(asset($systemCategory->image['indexArray']['medium'])); ?>"
+                                     class="bd-placeholder-img card-img-top" alt="...">
+                                <div class="card-body w-100">
+                                    <h5 class="card-title"><?php echo e($systemCategory->name); ?></h5>
+                                    <p class="card-text"><?php echo e($systemCategory->brief); ?></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        
+                                        
+                                        
+                                        
+                                        
 
-
-
-
-
+                                    </div>
+                                </div>
+                                <?php
+                                    $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                                ?>
+                                <ul class="list-group list-group-flush">
+                                    <?php $__currentLoopData = $metas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $meta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li class="list-group-item"><?php echo e($meta->meta_value); ?></li>
+                                        <li class="list-group-item"><?php echo e($meta->meta_value); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                                <div class="card-body">
                                     <a type="button" href="<?php echo e(route('smart.assemble.types', $systemCategory)); ?>"
                                        class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
+                                    
+                                    
                                 </div>
-                            </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
                             </a>
                         </div>
                     </div>
@@ -120,12 +128,12 @@
                     <div class="card">
                         <img src="<?php echo e(asset($offeredSystem->image['indexArray']['medium'] )); ?>" class="card-img-top"
                              alt="...">
-
-
-
-
-
-
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>

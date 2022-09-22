@@ -105,7 +105,9 @@ class SmartAssembleController extends Controller
             foreach ($system_items as $system_item) {
                 $inputs = [];
 //                $inputs['color_id'] = $request->color;
-//                $inputs['guarantee_id'] = $request->guarantee;
+                if (!empty($system_item->product->guarantees[0])) {
+                    $inputs['guarantee_id'] = $system_item->product->guarantees[0]->id;
+                }
                 $inputs['user_id'] = auth()->user()->id;
                 $inputs['product_id'] = $system_item->product->id;
                 CartItem::create($inputs);

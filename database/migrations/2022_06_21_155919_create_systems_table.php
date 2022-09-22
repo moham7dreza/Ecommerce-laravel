@@ -25,7 +25,7 @@ class CreateSystemsTable extends Migration
             $table->tinyInteger('system_marketable')->default(1)->comment('1 => marketable, 0 => is not marketable');
             $table->foreignId('system_category_id')->nullable()->constrained('system_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('system_type_id')->nullable()->constrained('system_types')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('system_gen_id')->nullable()->constrained('system_gens')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('system_gen_id')->nullable()->constrained('system_cpus')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('system_config_id')->nullable()->constrained('system_configs')->onUpdate('cascade')->onDelete('cascade');
             $table->tinyInteger('system_sold_number')->default(0);
             $table->tinyInteger('system_frozen_number')->default(0);

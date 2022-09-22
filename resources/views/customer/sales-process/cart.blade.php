@@ -65,7 +65,8 @@
                                                     <span> گارانتی ندارد</span>
                                                 @endif
                                             </p>
-                                            <p><i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
+                                            <p>
+                                                <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
                                             </p>
                                             <section>
                                                 <section class="cart-product-number d-inline-block ">

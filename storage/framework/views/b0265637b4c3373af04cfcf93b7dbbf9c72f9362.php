@@ -230,7 +230,60 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </section>
 
+                        <section class="col-12 border-top border-bottom py-3 mb-3">
 
+                            <section class="row meta-product">
+
+                                <section class="col-6 col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" name="meta_key[]" class="form-control form-control-sm" placeholder="ویژگی ...">
+                                    </div>
+                                    <?php $__errorArgs = ['meta_key.*'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            <?php echo e($message); ?>
+
+                                        </strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </section>
+
+                                <section class="col-6 col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" name="meta_value[]" class="form-control form-control-sm" placeholder="مقدار ...">
+                                    </div>
+                                    <?php $__errorArgs = ['meta_value.*'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            <?php echo e($message); ?>
+
+                                        </strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </section>
+
+                            </section>
+
+                            <section>
+                                <button type="button" id="btn-copy" class="btn btn-success btn-sm">افزودن</button>
+                            </section>
+
+
+                        </section>
 
 
                         <section class="col-12">
@@ -279,6 +332,15 @@ unset($__errorArgs, $__bag); ?>
                     var selectedSource = select_tags.val().join(',');
                     tags_input.val(selectedSource)
                 }
+            })
+        })
+    </script>
+
+    <script>
+        $(function(){
+            $("#btn-copy").on('click', function(){
+                var ele = $(this).parent().prev().clone(true);
+                $(this).before(ele);
             })
         })
     </script>

@@ -63,9 +63,9 @@
                                                 @endif
                                             </p>
                                             <p>
-                                                @if(!empty($system_item->guarantee))
+                                                @if(!empty($system_item->product->guarantees[0]))
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                                    <span> {{ $system_item->guarantee->name }}</span>
+                                                    <span> {{ $system_item->product->guarantees[0]->name }}</span>
                                                 @else
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
                                                     <span> گارانتی ندارد</span>

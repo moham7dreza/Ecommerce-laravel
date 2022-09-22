@@ -56,8 +56,10 @@
             <!-- start breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#"
+                                                                class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                            اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page"> دسته بندی سیستم ها</li>
                 </ol>
             </nav>
@@ -67,38 +69,42 @@
                 @foreach($systemCategories as $systemCategory)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <a class="text-decoration-none text-dark" href="{{ route('smart.assemble.types', $systemCategory) }}">
-                            {{--                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--}}
-                            {{--                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $systemCategory->name }}"--}}
-                            {{--                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ $systemCategory->name }}</title>--}}
-                            {{--                                <rect width="100%" height="100%" fill="#55595c"/>--}}
+                            <a class="text-decoration-none text-dark"
+                               href="{{ route('smart.assemble.types', $systemCategory) }}">
+                                {{--                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--}}
+                                {{--                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $systemCategory->name }}"--}}
+                                {{--                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ $systemCategory->name }}</title>--}}
+                                {{--                                <rect width="100%" height="100%" fill="#55595c"/>--}}
 
-                            {{--                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $systemCategory->name }}</text>--}}
-                            {{--                            </svg>--}}
-                            <img src="{{ asset($systemCategory->image['indexArray']['medium']) }}"
-                                 class="bd-placeholder-img card-img-top" alt="...">
-                            <div class="card-body w-100">
-                                <h5 class="card-title">{{ $systemCategory->name }}</h5>
-                                <p class="card-text">{{ $systemCategory->brief }}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-{{--                                    <div class="btn-group">--}}
-{{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>--}}
-{{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>--}}
-{{--                                    </div>--}}
-{{--                                    <small class="text-muted">9 دقائق</small>--}}
+                                {{--                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ $systemCategory->name }}</text>--}}
+                                {{--                            </svg>--}}
+                                <img src="{{ asset($systemCategory->image['indexArray']['medium']) }}"
+                                     class="bd-placeholder-img card-img-top" alt="...">
+                                <div class="card-body w-100">
+                                    <h5 class="card-title">{{ $systemCategory->name }}</h5>
+                                    <p class="card-text">{{ $systemCategory->brief }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        {{--                                    <div class="btn-group">--}}
+                                        {{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>--}}
+                                        {{--                                        <button type="button" class="btn btn-sm btn-outline-secondary">تعديل</button>--}}
+                                        {{--                                    </div>--}}
+                                        {{--                                    <small class="text-muted">9 دقائق</small>--}}
+                                    </div>
+                                </div>
+                                @php
+                                    $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                                @endphp
+                                <ul class="list-group list-group-flush">
+                                    @foreach($metas as $meta)
+                                        <li class="list-group-item">{{ $meta->meta_value }}</li>
+                                    @endforeach
+                                </ul>
+                                <div class="card-body">
                                     <a type="button" href="{{ route('smart.assemble.types', $systemCategory) }}"
                                        class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
+                                    {{--                                                            <a href="#" class="card-link">Card link</a>--}}
+                                    {{--                                                            <a href="#" class="card-link">Another link</a>--}}
                                 </div>
-                            </div>
-                            {{--                            <ul class="list-group list-group-flush">--}}
-                            {{--                                <li class="list-group-item">An item</li>--}}
-                            {{--                                <li class="list-group-item">A second item</li>--}}
-                            {{--                                <li class="list-group-item">A third item</li>--}}
-                            {{--                            </ul>--}}
-                            {{--                            <div class="card-body">--}}
-                            {{--                                <a href="#" class="card-link">Card link</a>--}}
-                            {{--                                <a href="#" class="card-link">Another link</a>--}}
-                            {{--                            </div>--}}
                             </a>
                         </div>
                     </div>
@@ -121,12 +127,12 @@
                     <div class="card">
                         <img src="{{ asset($offeredSystem->image['indexArray']['medium'] ) }}" class="card-img-top"
                              alt="...">
-{{--                        <div class="card-body">--}}
-{{--                            <h5 class="card-title">Card title</h5>--}}
-{{--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--}}
-{{--                                additional content. This content is a little bit longer.</p>--}}
-{{--                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="card-body">--}}
+                        {{--                            <h5 class="card-title">Card title</h5>--}}
+                        {{--                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to--}}
+                        {{--                                additional content. This content is a little bit longer.</p>--}}
+                        {{--                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>--}}
+                        {{--                        </div>--}}
                     </div>
                 @endforeach
             </div>

@@ -63,9 +63,9 @@
                                                 <?php endif; ?>
                                             </p>
                                             <p>
-                                                <?php if(!empty($system_item->guarantee)): ?>
+                                                <?php if(!empty($system_item->product->guarantees[0])): ?>
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                                    <span> <?php echo e($system_item->guarantee->name); ?></span>
+                                                    <span> <?php echo e($system_item->product->guarantees[0]->name); ?></span>
                                                 <?php else: ?>
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
                                                     <span> گارانتی ندارد</span>
