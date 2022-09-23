@@ -51,10 +51,13 @@
                                     <h5 class="card-title">{{ $systemType->name }}</h5>
                                     <p class="card-text">{{ $systemType->brief }}</p>
                                 </div>
+                                    @php
+                                        $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                                    @endphp
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">پردازنده</li>
-                                    <li class="list-group-item">بازی</li>
-                                    <li class="list-group-item">وارزون</li>
+                                @foreach($metas as $meta)
+                                    <li class="list-group-item">{{ $meta->meta_value }}</li>
+                                @endforeach
                                 </ul>
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -64,7 +67,7 @@
                                         {{--                                            </button>--}}
                                         {{--                                        </div>--}}
                                         <label for="">شروع قیمت</label>
-                                        <small class="text-muted">{{ priceFormat($systemType->start_price_from) }}<span> تومان</span></small>
+                                        <small class="text-dark">{{ priceFormat($systemType->start_price_from) }}<span> تومان</span></small>
                                     </div>
                                     <a type="button" href="{{ route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType]) }}"
                                        class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>

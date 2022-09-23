@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\SmartAssemble;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Image\ImageService;
-use App\Models\SmartAssemble\SystemCategory;
+use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemGallery;
 use Illuminate\Http\Request;
 
@@ -15,9 +15,11 @@ class SystemGalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(SystemCategory $systemCategory)
+    public function index(System $system)
     {
-        return view('admin.smart-assemble.category.gallery.index', compact('systemCategory'));
+        // TODO implement method
+        // add method
+        return view('admin.smart-assemble.system.gallery.index', compact('system'));
     }
 
     /**
@@ -25,9 +27,9 @@ class SystemGalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(SystemCategory $systemCategory)
+    public function create(System $system)
     {
-        return view('admin.smart-assemble.category.gallery.create', compact('systemCategory'));
+        return view('admin.smart-assemble.system.gallery.create', compact('system'));
     }
 
     /**
@@ -36,22 +38,22 @@ class SystemGalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, SystemCategory $systemCategory, ImageService $imageService)
+    public function store(Request $request, System $system, ImageService $imageService)
     {
         $validated = $request->validate([
             'image' => 'required|image|mimes:png,jpg,jpeg,gif',
         ]);
         $inputs = $request->all();
         if ($request->hasFile('image')) {
-            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-category-gallery');
+            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-gallery');
             $result = $imageService->createIndexAndSave($request->file('image'));
             if ($result === false) {
-                return redirect()->route('admin.smart-assemble.category.gallery.index', $systemCategory->id)->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+                return redirect()->route('admin.smart-assemble.system.gallery.index', $system->id)->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['image'] = $result;
-            $inputs['system_category_id'] = $systemCategory->id;
+            $inputs['system_id'] = $system->id;
             $gallery = SystemGallery::create($inputs);
-            return redirect()->route('admin.smart-assemble.category.gallery.index', $systemCategory->id)->with('swal-success', 'عکس شما با موفقیت ثبت شد');
+            return redirect()->route('admin.smart-assemble.system.gallery.index', $system->id)->with('swal-success', 'عکس شما با موفقیت ثبت شد');
         }
     }
 
@@ -95,9 +97,9 @@ class SystemGalleryController extends Controller
      * @param  \App\Models\SmartAssemble\SystemGallery  $systemGallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SystemGallery $systemGallery, SystemCategory $systemCategory)
+    public function destroy(SystemGallery $systemGallery, System $system)
     {
         $result = $systemGallery->delete();
-        return redirect()->route('admin.market.gallery.index', $systemCategory->id)->with('swal-success', 'عکس شما با موفقیت حذف شد');
+        return redirect()->route('admin.smart-assemble.system.gallery.index', $system->id)->with('swal-success', 'عکس شما با موفقیت حذف شد');
     }
 }

@@ -198,7 +198,44 @@
                             </span>
                         @enderror
                         </section>
+                        <section class="col-12 border-top border-bottom py-3 mb-3">
 
+                            <section class="row meta-product">
+
+                                <section class="col-6 col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" name="meta_key[]" class="form-control form-control-sm" placeholder="ویژگی ...">
+                                    </div>
+                                    @error('meta_key.*')
+                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                    @enderror
+                                </section>
+
+                                <section class="col-6 col-md-3">
+                                    <div class="form-group">
+                                        <input type="text" name="meta_value[]" class="form-control form-control-sm" placeholder="مقدار ...">
+                                    </div>
+                                    @error('meta_value.*')
+                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                    @enderror
+                                </section>
+
+                            </section>
+
+                            <section>
+                                <button type="button" id="btn-copy" class="btn btn-success btn-sm">افزودن</button>
+                            </section>
+
+
+                        </section>
                         <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>
                         </section>
@@ -248,6 +285,13 @@
             })
         })
     </script>
-
+    <script>
+        $(function(){
+            $("#btn-copy").on('click', function(){
+                var ele = $(this).parent().prev().clone(true);
+                $(this).before(ele);
+            })
+        })
+    </script>
 @endsection
 

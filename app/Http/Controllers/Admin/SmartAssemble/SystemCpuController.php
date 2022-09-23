@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\SmartAssemble\SystemCpuRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemCpu;
+use App\Models\SmartAssemble\SystemMeta;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SystemCpuController extends Controller
 {
@@ -52,7 +54,21 @@ class SystemCpuController extends Controller
             return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
-        $systemCpu = SystemCpu::create($inputs);
+
+        DB::transaction(function () use ($request, $inputs) {
+
+            $systemCpu = SystemCpu::create($inputs);
+            $metas = array_combine($request->meta_key, $request->meta_value);
+            foreach ($metas as $key => $value){
+                $meta = SystemMeta::create([
+                    'meta_key' => $key,
+                    'meta_value' => $value,
+                    'system_category_id' => $request->system_category_id,
+                    'system_type_id' =>$request->system_type_id,
+                    'system_gen_id' => $systemCpu->id
+                ]);
+            }
+        });
         return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-success', 'پردازنده جدید شما با موفقیت ثبت شد');
     }
 
@@ -108,7 +124,26 @@ class SystemCpuController extends Controller
                 $inputs['image'] = $image;
             }
         }
-        $systemCpu->update($inputs);
+
+        DB::transaction(function () use ($request, $inputs, $systemCpu) {
+            $systemCpu->update($inputs);
+            if ($request->meta_key != null) {
+                $meta_keys = $request->meta_key;
+                $meta_values = $request->meta_value;
+                $meta_ids = array_keys($request->meta_key);
+                $metas = array_map(function ($meta_id, $meta_key, $meta_value) {
+                    return array_combine(
+                        ['meta_id', 'meta_key', 'meta_value'],
+                        [$meta_id, $meta_key, $meta_value]
+                    );
+                }, $meta_ids, $meta_keys, $meta_values);
+                foreach ($metas as $meta) {
+                    SystemMeta::where('id', $meta['meta_id'])->update(
+                        ['meta_key' => $meta['meta_key'], 'meta_value' => $meta['meta_value']]
+                    );
+                }
+            }
+        });
         return redirect()->route('admin.smart-assemble.cpu.index')->with('swal-success', 'پردازنده شما با موفقیت ویرایش شد');
     }
 

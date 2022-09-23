@@ -12,10 +12,10 @@
                 <span>فروشگاه</span>
             </a>
 
-            <a href="<?php echo e(route('smart.assemble.index')); ?>" class="sidebar-link">
-                <i class="fas fa-gift"></i>
-                <span>پی سی پیک - اسمبل سیستم</span>
-            </a>
+
+
+
+
 
             <section class="sidebar-part-title">پی سی پیک</section>
 
@@ -26,16 +26,17 @@
                     <i class="fas fa-angle-left angle"></i>
                 </section>
                 <section class="sidebar-dropdown">
-                    <a href="<?php echo e(route('admin.smart-assemble.category.index')); ?>">دسته بندی کلی</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.type.index')); ?>">کلاس</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.system.index')); ?>">سیستم پیشنهادی</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.category.index')); ?>">دسته بندی</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.type.index')); ?>">کلاس سیستم</a>
                     <a href="<?php echo e(route('admin.smart-assemble.cpu.index')); ?>">نسل پردازنده</a>
 
 
 
-                    <a href="<?php echo e(route('admin.smart-assemble.config.index')); ?>">کانفیگ</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.config.index')); ?>">کانفیگ و رم</a>
+
                     <a href="<?php echo e(route('admin.smart-assemble.brand.index')); ?>">برندها</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.system.index')); ?>">سیستم پیشنهادی</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.menu.index')); ?>">منو</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.menu.index')); ?>">منوها</a>
 
                 </section>
             </section>

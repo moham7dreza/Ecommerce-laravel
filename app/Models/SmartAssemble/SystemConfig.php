@@ -38,4 +38,9 @@ class SystemConfig extends Model
     {
         return $this->belongsTo(SystemCpu::class, 'system_gen_id');
     }
+
+    public function metas()
+    {
+        return $this->hasMany(SystemMeta::class);
+    }
 }

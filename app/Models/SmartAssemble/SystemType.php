@@ -28,4 +28,14 @@ class SystemType extends Model
     {
         return $this->belongsTo(SystemCategory::class, 'system_category_id');
     }
+
+    public function images()
+    {
+        return $this->hasMany(SystemGallery::class);
+    }
+
+    public function metas()
+    {
+        return $this->hasMany(SystemMeta::class);
+    }
 }

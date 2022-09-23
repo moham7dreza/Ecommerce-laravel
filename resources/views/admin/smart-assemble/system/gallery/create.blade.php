@@ -11,7 +11,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
         <li class="breadcrumb-item font-size-12"> <a href="#">اسمبل هوشمند</a></li>
-        <li class="breadcrumb-item font-size-12"> <a href="#">دسته بندی سیستم ها</a></li>
+        <li class="breadcrumb-item font-size-12"> <a href="#">سیستم ها</a></li>
       <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد عکس</li>
     </ol>
   </nav>
@@ -22,7 +22,7 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                  ایجاد عکس
+                    ایجاد عکس برای {{ $system->name }}
                 </h5>
             </section>
 
@@ -30,7 +30,7 @@
             </section>
 
             <section>
-                <form action="{{ route('admin.smart-assemble.category.gallery.store', $systemCategory->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.smart-assemble.system.gallery.store', $system) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <section class="row">
 

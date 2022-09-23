@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SmartAssemble\SystemTypeRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
+use App\Models\SmartAssemble\SystemMeta;
 use App\Models\SmartAssemble\SystemType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SystemTypeController extends Controller
 {
@@ -51,8 +53,21 @@ class SystemTypeController extends Controller
             return redirect()->route('admin.smart-assemble.type.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
-        $SystemType = SystemType::create($inputs);
-        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
+
+        DB::transaction(function () use ($request, $inputs) {
+
+            $systemType = SystemType::create($inputs);
+            $metas = array_combine($request->meta_key, $request->meta_value);
+            foreach ($metas as $key => $value){
+                $meta = SystemMeta::create([
+                    'meta_key' => $key,
+                    'meta_value' => $value,
+                    'system_category_id' => $request->system_category_id,
+                    'system_type_id' => $systemType->id
+                ]);
+            }
+        });
+        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'کلاس سیستم جدید شما با موفقیت ثبت شد');
     }
 
     /**
@@ -106,8 +121,27 @@ class SystemTypeController extends Controller
                 $inputs['image'] = $image;
             }
         }
-        $systemType->update($inputs);
-        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'دسته بندی شما با موفقیت ویرایش شد');
+
+        DB::transaction(function () use ($request, $inputs, $systemType) {
+            $systemType->update($inputs);
+            if ($request->meta_key != null) {
+                $meta_keys = $request->meta_key;
+                $meta_values = $request->meta_value;
+                $meta_ids = array_keys($request->meta_key);
+                $metas = array_map(function ($meta_id, $meta_key, $meta_value) {
+                    return array_combine(
+                        ['meta_id', 'meta_key', 'meta_value'],
+                        [$meta_id, $meta_key, $meta_value]
+                    );
+                }, $meta_ids, $meta_keys, $meta_values);
+                foreach ($metas as $meta) {
+                    SystemMeta::where('id', $meta['meta_id'])->update(
+                        ['meta_key' => $meta['meta_key'], 'meta_value' => $meta['meta_value']]
+                    );
+                }
+            }
+        });
+        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'کلاس سیستم شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -119,7 +153,7 @@ class SystemTypeController extends Controller
     public function destroy(SystemType $systemType)
     {
         $result = $systemType->delete();
-        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'دسته بندی شما با موفقیت حذف شد');
+        return redirect()->route('admin.smart-assemble.type.index')->with('swal-success', 'کلاس سیستم شما با موفقیت حذف شد');
     }
 
     public function status(SystemType $systemType)

@@ -190,6 +190,48 @@
                         </section>
 
 
+                        @php
+                            $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                        @endphp
+
+                        <section class="col-12 border-top border-bottom py-3 mb-3">
+                            @foreach ($metas as $meta)
+
+
+                                <section class="row meta-product">
+
+                                    <section class="col-6 col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="meta_key[{{ $meta->id }}]" class="form-control form-control-sm" value="{{ $meta->meta_key }}">
+                                        </div>
+                                        @error('meta_key.*')
+                                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                        @enderror
+                                    </section>
+
+                                    <section class="col-6 col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" name="meta_value[]" class="form-control form-control-sm" value="{{ $meta->meta_value }}">
+                                        </div>
+                                        @error('meta_value.*')
+                                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                        @enderror
+                                    </section>
+
+                                </section>
+
+                            @endforeach
+
+
+                        </section>
 
 
                         <section class="col-12">

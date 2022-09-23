@@ -200,22 +200,24 @@ class SystemController extends Controller
     {
         $system_price = 0;
         $inputs = $request->all();
-        foreach ($inputs as $componentName => $componentID) {
-            if ($componentName != '_token') {
-                $product = Product::where('id', $componentID)->first();
-                $menu_id = SystemMenu::where('name', 'like', '%' . $product->category->name . '%')->pluck('id')->first();
-                $item = SystemItem::create([
-                    'name' => $componentName,
-                    'user_id' => auth()->user()->id,
-                    'system_id' => $system->id,
-                    'product_id' => $componentID,
-                    'system_menu_id' => $menu_id ? $menu_id : NULL,
-                    'price' => $product->price
-                ]);
-                $system_price += $item->price;
+        DB::transaction(function () use ($inputs, $system_price, $system) {
+            foreach ($inputs as $componentName => $componentID) {
+                if ($componentName != '_token') {
+                    $product = Product::where('id', $componentID)->first();
+                    $menu_id = SystemMenu::where('name', 'like', '%' . $product->category->name . '%')->pluck('id')->first();
+                    $item = SystemItem::create([
+                        'name' => $componentName,
+                        'user_id' => auth()->user()->id,
+                        'system_id' => $system->id,
+                        'product_id' => $componentID,
+                        'system_menu_id' => $menu_id ? $menu_id : NULL,
+                        'price' => $product->price
+                    ]);
+                    $system_price += $item->price;
+                }
             }
-        }
-        $system->update(['system_price' => $system_price]);
+            $system->update(['system_price' => $system_price]);
+        });
         return redirect()->route('admin.smart-assemble.system.index')->with('swal-success', 'کانفیگ جدید با موفقیت ثبت شد');
     }
 

@@ -44,4 +44,9 @@ class System extends Model
     {
         return $this->category->name. '-' . $this->system_type->name. '-' . $this->cpu->name. '-' . $this->config->name;
     }
+
+    public function images()
+    {
+        return $this->hasMany(SystemGallery::class);
+    }
 }

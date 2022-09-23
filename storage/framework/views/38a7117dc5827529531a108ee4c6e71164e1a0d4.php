@@ -67,15 +67,25 @@
                                         <?php endif; ?>>
                                 </label>
                             </td>
-                            <td class="width-16-rem text-left">
-                                <a href="<?php echo e(route('admin.smart-assemble.type.edit', $systemType->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="<?php echo e(route('admin.smart-assemble.type.destroy', $systemType->id)); ?>" method="post">
-                                    <?php echo csrf_field(); ?>
-                                    <?php echo e(method_field('delete')); ?>
-
-                                <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </form>
-                                        </td>
+                            <?php
+                                $systemCategory = \App\Models\SmartAssemble\SystemCategory::where('id', $systemType->system_category_id)->first();
+                            ?>
+                            <td class="width-8-rem text-left">
+                                <div class="dropdown">
+                                    <a href="#" class="btn btn-success btn-sm btn-block dorpdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-tools"></i> عملیات
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a href="<?php echo e(route('admin.smart-assemble.type.gallery.index', [$systemCategory, $systemType])); ?>" class="dropdown-item text-right"><i class="fa fa-images"></i> گالری</a>
+                                        <a href="<?php echo e(route('admin.smart-assemble.type.edit', $systemType)); ?>" class="dropdown-item text-right"><i class="fa fa-edit"></i> ویرایش</a>
+                                        <form class="d-inline" action="<?php echo e(route('admin.smart-assemble.type.destroy', $systemType)); ?>" method="post">
+                                            <?php echo csrf_field(); ?>
+                                            <?php echo method_field('Delete'); ?>
+                                            <button type="submit" class="dropdown-item text-right"><i class="fa fa-window-close"></i> حذف</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -73,7 +73,6 @@
                                         <i class="fa fa-tools"></i> عملیات
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a href="<?php echo e(route('admin.smart-assemble.category.gallery.index', $systemCategory->id)); ?>" class="dropdown-item text-right"><i class="fa fa-images"></i> گالری</a>
                                         <a href="<?php echo e(route('admin.smart-assemble.category.edit', $systemCategory->id)); ?>" class="dropdown-item text-right"><i class="fa fa-edit"></i> ویرایش</a>
                                         <form class="d-inline" action="<?php echo e(route('admin.smart-assemble.category.destroy', $systemCategory->id)); ?>" method="post">
                                             <?php echo csrf_field(); ?>

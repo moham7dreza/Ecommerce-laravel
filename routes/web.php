@@ -23,6 +23,11 @@ use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaym
 */
 require 'admin.php';
 
+/*
+ * login system
+ *
+ *  */
+
 Route::namespace('Auth')->group(function () {
     Route::get('login-register', [LoginRegisterController::class, 'loginRegisterForm'])->name('auth.customer.login-register-form');
     Route::middleware('throttle:customer-login-register-limiter')->post('/login-register', [LoginRegisterController::class, 'loginRegister'])->name('auth.customer.login-register');
@@ -32,14 +37,28 @@ Route::namespace('Auth')->group(function () {
     Route::get('/logout', [LoginRegisterController::class, 'logout'])->name('auth.customer.logout');
 });
 
+/*
+ * main market page
+ *
+ *  */
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
 
+/*
+ * user profile pages
+ *
+ *  */
 Route::prefix('user')->group(function (){
     Route::get('/profile', [HomeController::class, 'myProfile'])->name('user.profile');
     Route::get('/orders', [HomeController::class, 'myOrders'])->name('user.orders');
     Route::get('/favorites', [HomeController::class, 'myFavorites'])->name('user.favorites');
     Route::get('/addresses', [HomeController::class, 'myAddresses'])->name('user.addresses');
 });
+
+
+/*
+ * sales process pages
+ *
+ *  */
 
 Route::namespace('SalesProcess')->group(function () {
 
@@ -70,35 +89,53 @@ Route::namespace('SalesProcess')->group(function () {
 });
 
 
+/*
+ * single product page
+ *
+ *  */
+
 Route::namespace('Market')->group(function () {
 
     Route::get('/product/{product:slug}', [MarketProductController::class, 'product'])->name('customer.market.product');
     Route::post('/add-comment/prodcut/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
     Route::get('/add-to-favorite/prodcut/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
-
-
 });
+/*
+ * apply filter for products
+ *
+ *  */
+Route::get('filter', [HomeController::class, 'filter'])->name('customer.product.filter');
+
+
+/*
+ * system smart assemble pages
+ *
+ *  */
 
 Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
+
     // assemble by user
     Route::get('/', [SmartAssembleController::class, 'index'])->name('smart.assemble.index');
+
     // recommended system categories, types, cpus and configs
     Route::get('/systems/', [SmartAssembleController::class, 'systemCategories'])->name('smart.assemble.categories');
     Route::get('/systems/{systemCategory:slug}', [SmartAssembleController::class, 'systemTypes'])->name('smart.assemble.types');
     Route::get('/systems/{systemCategory:slug}/{systemType:slug}', [SmartAssembleController::class, 'systemCpus'])->name('smart.assemble.cpus');
-
-
     Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}', [SmartAssembleController::class, 'systemConfigs'])->name('smart.assemble.configs');
+
     // recommended system components according to selected system categories, types, gens and configs
     Route::get('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}/{systemConfig}/config', [SmartAssembleController::class, 'build'])->name('smart.assemble.build');
     Route::post('/systems/{systemCategory:slug}/{systemType:slug}/{systemCpu}/{systemConfig}/config', [SmartAssembleController::class, 'builder'])->name('smart.assemble.builder');
+
+    // add system components to cart
     Route::post('/systems/{system}/add-to-cart', [SmartAssembleController::class, 'addSystemToCart'])->name('smart.assemble.add-system-to-cart');
 });
 
+/*
+ * dashboard
+ *
+ *  */
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
-Route::get('filter', [HomeController::class, 'filter'])->name('customer.product.filter');

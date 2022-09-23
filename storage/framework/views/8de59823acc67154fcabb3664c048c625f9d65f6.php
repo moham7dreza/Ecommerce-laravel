@@ -88,7 +88,6 @@
                                         
                                         
                                         
-
                                     </div>
                                 </div>
                                 <?php
@@ -96,7 +95,6 @@
                                 ?>
                                 <ul class="list-group list-group-flush">
                                     <?php $__currentLoopData = $metas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $meta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <li class="list-group-item"><?php echo e($meta->meta_value); ?></li>
                                         <li class="list-group-item"><?php echo e($meta->meta_value); ?></li>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
@@ -136,6 +134,19 @@
                         
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                    <?php $__currentLoopData = $sampleOfGamingSystemImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $system): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="card">
+                            <img src="<?php echo e(asset($system->image['indexArray']['medium'] )); ?>" class="card-img-top"
+                                 alt="...">
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>

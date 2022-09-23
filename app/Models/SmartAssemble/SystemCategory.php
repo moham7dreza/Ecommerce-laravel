@@ -57,8 +57,8 @@ class SystemCategory extends Model
         return $result;
     }
 
-    public function images()
+    public function metas()
     {
-        return $this->hasMany(SystemGallery::class);
+        return $this->hasMany(SystemMeta::class);
     }
 }

@@ -82,6 +82,7 @@
                                         @else
                                         <a href="{{ route('admin.smart-assemble.system.components.create', $system->id) }}" class="dropdown-item text-right"><i class="fa fa-shield-alt"></i>افزودن کانفیگ جدید</a>
                                         @endif
+                                            <a href="{{ route('admin.smart-assemble.system.gallery.index', $system) }}" class="dropdown-item text-right"><i class="fa fa-images"></i> گالری</a>
                                         <a href="{{ route('admin.smart-assemble.system.edit', $system->id) }}" class="dropdown-item text-right"><i class="fa fa-edit"></i> ویرایش</a>
                                         <form class="d-inline" action="{{ route('admin.smart-assemble.system.destroy', $system->id) }}" method="post">
                                             @csrf

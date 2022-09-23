@@ -33,4 +33,9 @@ class SystemCpu extends Model
     {
         return $this->belongsTo(SystemType::class, 'system_type_id');
     }
+
+    public function metas()
+    {
+        return $this->hasMany(SystemMeta::class);
+    }
 }

@@ -55,8 +55,9 @@ class SmartAssembleController extends Controller
     {
         $brands = SystemBrand::all();
         $offeredSystems = System::where('system_rating', 5)->where('status', 1)->take(5)->get();
+        $sampleOfGamingSystemImages = SystemType::where('name','like', '%کولاک مینی%')->first()->images;
         $systemCategories = SystemCategory::all();
-        return view('smart-assemble.category', compact('systemCategories', 'offeredSystems', 'brands'));
+        return view('smart-assemble.category', compact('systemCategories', 'offeredSystems', 'brands', 'sampleOfGamingSystemImages'));
     }
 
     public function systemTypes(SystemCategory $systemCategory)

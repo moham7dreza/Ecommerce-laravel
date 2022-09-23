@@ -17,10 +17,13 @@ class SystemGallery extends Model
     protected $casts = ['image' => 'array'];
 
 
-    public function category()
+    public function system_type()
     {
-        return $this->belongsTo(SystemCategory::class);
+        return $this->belongsTo(SystemType::class);
     }
 
-
+    public function system()
+    {
+        return $this->belongsTo(System::class);
+    }
 }
