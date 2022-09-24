@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Customer\Market;
 
+use App\Models\Market\AmazingSale;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Market\Product;
 use App\Models\Content\Comment;
@@ -49,5 +51,10 @@ class ProductController extends Controller
        }
     }
 
-
+    public function bestOffers()
+    {
+        $productsWithActiveAmazingSales = AmazingSale::where('start_date', '<', Carbon::now())->where('end_date', '>', Carbon::now())->where('status', 1)->
+            where('percentage', '>=', 10)->get();
+        return view('customer.market.product.best-offers', compact('productsWithActiveAmazingSales'));
+    }
 }

@@ -291,4 +291,4 @@
     </section>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('customer.layouts.filter-two-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/market/product/filter.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('customer.layouts.filter-two-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\laravel-shop-project\resources\views/customer/market/product/best-offers.blade.php ENDPATH**/ ?>

@@ -64,7 +64,7 @@
                                 </section>
                             </section>
                         </section>
-                        <!-- start vontent header -->
+                        <!-- start content header -->
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
@@ -102,7 +102,7 @@
                                                     <img class="" src="<?php echo e(asset($mostVisitedProduct->image['indexArray']['medium'])); ?>" alt="<?php echo e($mostVisitedProduct->name); ?>">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3><?php echo e(Str::limit($mostVisitedProduct->name, 10)); ?></h3></section>
+                                                <section class="product-name"><h3><?php echo e(Str::limit($mostVisitedProduct->name, 30)); ?></h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
                                                         
@@ -158,7 +158,7 @@
             <section class="row">
                 <section class="col">
                     <section class="content-wrapper bg-white p-3 rounded-2">
-                        <!-- start vontent header -->
+                        <!-- start content header -->
                         <section class="content-header">
                             <section class="d-flex justify-content-between align-items-center">
                                 <h2 class="content-header-title">
@@ -206,7 +206,7 @@
                                                     <img class="" src="<?php echo e(asset($offerProduct->image['indexArray']['medium'])); ?>" alt="<?php echo e($offerProduct->name); ?>">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3><?php echo e(Str::limit($offerProduct->name, 10)); ?></h3></section>
+                                                <section class="product-name"><h3><?php echo e(Str::limit($offerProduct->name, 30)); ?></h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
                                                         
@@ -269,10 +269,10 @@
                             </h2>
                         </section>
                     </section>
-                    <!-- start vontent header -->
+                    <!-- start content header -->
                     <section class="brands-wrapper py-4" >
                         <section class="brands dark-owl-nav owl-carousel owl-theme">
-                            <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $systemBrands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <section class="item">
                                 <section class="brand-item">

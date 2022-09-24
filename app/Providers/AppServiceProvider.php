@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Market\CartItem;
 use App\Models\Notification;
 use App\Models\Content\Comment;
+use App\Models\SmartAssemble\SystemMenu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -38,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::check()) {
                 $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
                 $view->with('cartItems', $cartItems);
+                $view->with('menus', SystemMenu::where('status', 1)->get());
             }
         });
 

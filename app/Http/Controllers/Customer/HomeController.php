@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Models\Market\Brand;
+use App\Models\SmartAssemble\SystemBrand;
+use App\Models\SmartAssemble\SystemMenu;
 use Illuminate\Http\Request;
 use App\Models\Content\Banner;
 use App\Models\Market\Product;
@@ -23,10 +25,11 @@ class HomeController extends Controller
         $bottomBanner = Banner::where('position', 3)->where('status', 1)->first();
 
         $brands = Brand::all();
+        $systemBrands = SystemBrand::all();
 
         $mostVisitedProducts = Product::latest()->take(10)->get();
         $offerProducts = Product::latest()->take(10)->get();
-        return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner', 'brands', 'mostVisitedProducts', 'offerProducts'));
+        return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner', 'brands', 'mostVisitedProducts', 'offerProducts', 'systemBrands'));
 
     }
 
@@ -50,8 +53,8 @@ class HomeController extends Controller
         return view('customer.user.favorites');
     }
 
-    public function filter()
+    public function admin()
     {
-        return view('customer.market.product.filter');
+        return view('admin.index');
     }
 }

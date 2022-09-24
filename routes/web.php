@@ -97,14 +97,10 @@ Route::namespace('SalesProcess')->group(function () {
 Route::namespace('Market')->group(function () {
 
     Route::get('/product/{product:slug}', [MarketProductController::class, 'product'])->name('customer.market.product');
+    Route::get('/products/offers', [MarketProductController::class, 'bestOffers'])->name('customer.market.products.offers');
     Route::post('/add-comment/prodcut/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
     Route::get('/add-to-favorite/prodcut/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
 });
-/*
- * apply filter for products
- *
- *  */
-Route::get('filter', [HomeController::class, 'filter'])->name('customer.product.filter');
 
 
 /*

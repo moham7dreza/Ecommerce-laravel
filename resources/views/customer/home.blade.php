@@ -65,7 +65,7 @@
                                 </section>
                             </section>
                         </section>
-                        <!-- start vontent header -->
+                        <!-- start content header -->
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
@@ -103,7 +103,7 @@
                                                     <img class="" src="{{ asset($mostVisitedProduct->image['indexArray']['medium']) }}" alt="{{ $mostVisitedProduct->name }}">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3>{{ Str::limit($mostVisitedProduct->name, 10) }}</h3></section>
+                                                <section class="product-name"><h3>{{ Str::limit($mostVisitedProduct->name, 30) }}</h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
                                                         {{-- <span class="product-old-price">6,895,000 </span> --}}
@@ -159,7 +159,7 @@
             <section class="row">
                 <section class="col">
                     <section class="content-wrapper bg-white p-3 rounded-2">
-                        <!-- start vontent header -->
+                        <!-- start content header -->
                         <section class="content-header">
                             <section class="d-flex justify-content-between align-items-center">
                                 <h2 class="content-header-title">
@@ -207,7 +207,7 @@
                                                     <img class="" src="{{ asset($offerProduct->image['indexArray']['medium']) }}" alt="{{ $offerProduct->name }}">
                                                 </section>
                                                 <section class="product-colors"></section>
-                                                <section class="product-name"><h3>{{ Str::limit($offerProduct->name, 10) }}</h3></section>
+                                                <section class="product-name"><h3>{{ Str::limit($offerProduct->name, 30) }}</h3></section>
                                                 <section class="product-price-wrapper">
                                                     <section class="product-discount">
                                                         {{-- <span class="product-old-price">6,895,000 </span> --}}
@@ -270,10 +270,10 @@
                             </h2>
                         </section>
                     </section>
-                    <!-- start vontent header -->
+                    <!-- start content header -->
                     <section class="brands-wrapper py-4" >
                         <section class="brands dark-owl-nav owl-carousel owl-theme">
-                            @foreach ($brands as $brand)
+                            @foreach ($systemBrands as $brand)
 
                             <section class="item">
                                 <section class="brand-item">
