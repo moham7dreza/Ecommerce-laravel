@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Content\Menu;
 use App\Models\Market\CartItem;
 use App\Models\Notification;
 use App\Models\Content\Comment;
@@ -39,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::check()) {
                 $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
                 $view->with('cartItems', $cartItems);
-                $view->with('menus', SystemMenu::where('status', 1)->get());
+                $view->with('menus', Menu::where('status', 1)->get());
             }
         });
 

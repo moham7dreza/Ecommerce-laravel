@@ -47,15 +47,26 @@
                             </span>
                         @enderror
                         </section>
-
+                    <section class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="">نوع منو</label>
+                            <select name="menu_type" id="type" class="form-control form-control-sm">
+                                <option value="1" @if(old('menu_type') == 1) selected @endif>منوی اصلی</option>
+                                <option value="2" @if(old('menu_type') == 2) selected @endif>زیر منوی اصلی</option>
+                                <option value="3" @if(old('menu_type') == 3) selected @endif>فرزند زیر منوی اصلی</option>
+                            </select>
+                        </div>
+                    </section>
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">منو والد</label>
-                                <select name="parent_id" id="" class="form-control form-control-sm">
-                                    <option value="">منوی اصلی</option>
+                                <select name="parent_id" id="main-menus" class="form-control form-control-sm" disabled>
+                                    <option value=""> منوی اصلی را انتخاب کنید.</option>
                                     @foreach ($menus as $menu)
 
-                                    <option value="{{ $menu->id }}"  @if(old('parent_id') == $menu->id) selected @endif>{{ $menu->name }}</option>
+                                    <option value="{{ $menu->id }}"  @if(old('parent_id') == $menu->id) selected @endif
+                                    data-url="{{ route('admin.content.menu.get-sub-menus', $menu->id) }}"
+                                    >{{ $menu->name }}</option>
 
                                     @endforeach
 
@@ -83,6 +94,22 @@
                             </span>
                         @enderror
                         </section>
+
+                    <section class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="sub_menu_id">زیر منو</label>
+                            <select name="sub_menu_id" class="form-control form-control-sm" id="sub-menus" disabled>
+                                <option selected>زیر منو را انتخاب کنید</option>
+                            </select>
+                        </div>
+                        @error('sub_menu_id')
+                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                        @enderror
+                    </section>
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
@@ -113,4 +140,53 @@
     </section>
 </section>
 
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#main-menus').change(function() {
+                var element = $('#main-menus option:selected');
+                var url = element.attr('data-url');
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function(response) {
+
+                        if (response.status) {
+                            let subMenus = response.subMenus;
+                            console.log(subMenus);
+                            $('#sub-menus').empty();
+                            subMenus.map((subMenu) => {
+                                $('#sub-menus').append($('<option/>').val(subMenu.id).text(subMenu
+                                    .name))
+                            })
+                        } else {
+                            errorToast('خطا پیش آمده است')
+                        }
+                    },
+                    error: function() {
+                        errorToast('خطا پیش آمده است')
+                    }
+                })
+            })
+        })
+    </script>
+
+    <script>
+        $("#type").change(function(){
+
+            if($('#type').find(':selected').val() == '2') {
+                $('#main-menus').removeAttr('disabled');
+            }
+            else if($('#type').find(':selected').val() == '3'){
+                $('#main-menus').removeAttr('disabled');
+                $('#sub-menus').removeAttr('disabled');
+            }
+            else if($('#type').find(':selected').val() == '1'){
+                $('#main-menus').attr('disabled', 'disabled');
+                $('#sub-menus').attr('disabled', 'disabled');
+            }
+        });
+
+    </script>
 @endsection

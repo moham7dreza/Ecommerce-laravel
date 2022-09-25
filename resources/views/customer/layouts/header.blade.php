@@ -125,20 +125,19 @@
                             <section class="sublist-wrapper position-absolute w-100">
                                 <section class="position-relative sublist-area">
 @foreach($menus as $menu)
-
-                                        @if($menu->show_in_menu == 1 && $menu->parent_id == NULL)
-    @php
-        $subMenus = \App\Models\SmartAssemble\SystemMenu::where('parent_id', $menu->id)->get();
-    @endphp
+                                        @if($menu->parent_id == NULL)
+{{--    @php--}}
+{{--        $subMenus = \App\Models\Content\Menu::where('parent_id', $menu->id)->get();--}}
+{{--    @endphp--}}
 
                                     <section class="sublist-item">
                                         <section class="sublist-item-toggle">{{ $menu->name }}</section>
                                         <section class="sublist-item-sublist">
                                             <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
-                                                @foreach($subMenus as $subMenu)
+                                                @foreach($menu->children as $subMenu)
                                                 <section class="sublist-column col">
 
-                                                    <a href="#" class="sub-category">{{ $subMenu->name }}</a>
+                                                    <a href="{{ $subMenu->url }}" class="sub-category">{{ $subMenu->name }}</a>
 
                                                 </section>
                                                 @endforeach
@@ -151,8 +150,8 @@
                             </section>
                         </section>
                         <section class="border-start my-2 mx-1"></section>
-                        <section class="navbar-item"><a href="#">سوپرمارکت</a></section>
-                        <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>
+{{--                        <section class="navbar-item"><a href="#">سوپرمارکت</a></section>--}}
+{{--                        <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>--}}
                         <section class="navbar-item"><a href="#">آمازون من</a></section>
                         <section class="navbar-item"><a href="#">آمازون پلاس</a></section>
                         <section class="navbar-item"><a href="#">درباره ما</a></section>

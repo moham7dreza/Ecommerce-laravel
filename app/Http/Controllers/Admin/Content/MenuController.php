@@ -41,6 +41,10 @@ class MenuController extends Controller
     public function store(MenuRequest $request)
     {
         $inputs = $request->all();
+        if ($request->menu_type == 3)
+        {
+            $inputs['parent_id'] = $request->sub_menu_id;
+        }
         $menu = Menu::create($inputs);
         return redirect()->route('admin.content.menu.index')->with('swal-success', 'منوی  جدید شما با موفقیت ثبت شد');
     }
@@ -111,5 +115,17 @@ class MenuController extends Controller
             return response()->json(['status' => false]);
         }
 
+    }
+
+    public function getSubMenus(Menu $menu)
+    {
+        $subMenus = $menu->children;
+        if($subMenus != null)
+        {
+            return response()->json(['status' => true, 'subMenus' => $subMenus]);
+        }
+        else{
+            return response()->json(['status' => false, 'subMenus' => null]);
+        }
     }
 }

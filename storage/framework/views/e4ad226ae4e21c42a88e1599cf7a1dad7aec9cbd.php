@@ -125,20 +125,17 @@
                             <section class="sublist-wrapper position-absolute w-100">
                                 <section class="position-relative sublist-area">
 <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($menu->parent_id == NULL): ?>
 
-                                        <?php if($menu->show_in_menu == 1 && $menu->parent_id == NULL): ?>
-    <?php
-        $subMenus = \App\Models\SmartAssemble\SystemMenu::where('parent_id', $menu->id)->get();
-    ?>
 
                                     <section class="sublist-item">
                                         <section class="sublist-item-toggle"><?php echo e($menu->name); ?></section>
                                         <section class="sublist-item-sublist">
                                             <section class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
-                                                <?php $__currentLoopData = $subMenus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php $__currentLoopData = $menu->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <section class="sublist-column col">
 
-                                                    <a href="#" class="sub-category"><?php echo e($subMenu->name); ?></a>
+                                                    <a href="<?php echo e($subMenu->url); ?>" class="sub-category"><?php echo e($subMenu->name); ?></a>
 
                                                 </section>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -151,8 +148,8 @@
                             </section>
                         </section>
                         <section class="border-start my-2 mx-1"></section>
-                        <section class="navbar-item"><a href="#">سوپرمارکت</a></section>
-                        <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>
+
+
                         <section class="navbar-item"><a href="#">آمازون من</a></section>
                         <section class="navbar-item"><a href="#">آمازون پلاس</a></section>
                         <section class="navbar-item"><a href="#">درباره ما</a></section>
