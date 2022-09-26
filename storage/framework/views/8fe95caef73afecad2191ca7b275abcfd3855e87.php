@@ -2,7 +2,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/bootstrap/bootstrap-reboot.rtl.min.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/bootstrap/bootstrap.rtl.min.css')); ?>">
@@ -17,5 +16,4 @@
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/product.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/profile.css')); ?>">
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/login.css')); ?>">
-
 <?php /**PATH C:\CODEX\mars-shop\resources\views/customer/layouts/head-tag.blade.php ENDPATH**/ ?>

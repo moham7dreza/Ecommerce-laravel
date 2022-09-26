@@ -204,7 +204,7 @@
         <section class="row">
             <section class="col">
                 <section class="content-wrapper bg-white p-3 rounded-2">
-                    <!-- start vontent header -->
+                    <!-- start content header -->
                     <section class="content-header">
                         <section class="d-flex justify-content-between align-items-center">
                             <h2 class="content-header-title">
@@ -247,7 +247,7 @@
                                             </section>
                                             <?php endif; ?>
                                         <?php endif; ?>
-                                           <a class="product-link" href="#">
+                                           <a class="product-link" href="<?php echo e(route('customer.market.product', $relatedProduct)); ?>">
                                             <section class="product-image">
                                                 <img class="" src="<?php echo e(asset($relatedProduct->image['indexArray']['medium'])); ?>" alt="">
                                             </section>

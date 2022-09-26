@@ -6,9 +6,8 @@
         <section class="top-header">
             <section class="container-xxl ">
                 <section class="d-md-flex justify-content-md-between align-items-md-center py-3">
-
                     <section class="d-flex justify-content-between align-items-center d-md-block">
-                        <a class="text-decoration-none" href="<?php echo e(route('customer.home')); ?>"><img src="<?php echo e(asset('customer-assets/images/logo/8.png')); ?>" alt="logo"></a>
+                        <a class="text-decoration-none" href="<?php echo e(route('customer.home')); ?>"><img src="<?php echo e(asset($logo)); ?>" alt="logo"></a>
                         <button class="btn btn-link text-dark d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                             <i class="fa fa-bars me-1"></i>
                         </button>
@@ -45,6 +44,8 @@
                                 <section><a class="dropdown-item" href="<?php echo e(route('user.profile')); ?>"><i class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
                                 <section><a class="dropdown-item" href="<?php echo e(route('user.orders')); ?>"><i class="fa fa-newspaper"></i>سفارشات</a></section>
                                 <section><a class="dropdown-item" href="<?php echo e(route('user.favorites')); ?>"><i class="fa fa-heart"></i>لیست علاقه مندی</a></section>
+                                <section><hr class="dropdown-divider"></section>
+                                <section><a class="dropdown-item" href="<?php echo e(route('admin.home')); ?>"><i class="fa fa-heart"></i>پنل ادمین</a></section>
                                 <section><hr class="dropdown-divider"></section>
                                 <section><a class="dropdown-item" href="<?php echo e(route('customer.home')); ?>"><i class="fa fa-sign-out-alt"></i>خروج</a></section>
 
@@ -150,14 +151,14 @@
                         <section class="border-start my-2 mx-1"></section>
 
 
-                        <section class="navbar-item"><a href="#">آمازون من</a></section>
-                        <section class="navbar-item"><a href="#">آمازون پلاس</a></section>
-                        <section class="navbar-item"><a href="#">درباره ما</a></section>
-                        <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
-                        <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
-                        <section class="navbar-item"><a href="#"></a></section>
+
+
+
+
+
+
                         <section class="navbar-item"><a href="<?php echo e(route('customer.market.products.offers')); ?>">فروش ویژه</a></section>
-                        <section class="navbar-item"><a href="<?php echo e(route('admin.home')); ?>">پنل ادمین</a></section>
+
                         <section class="navbar-item"><a href="<?php echo e(route('smart.assemble.categories')); ?>">اسمبل هوشمند</a></section>
 
                     </section>

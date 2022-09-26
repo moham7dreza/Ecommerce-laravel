@@ -6,6 +6,7 @@ use App\Models\Content\Menu;
 use App\Models\Market\CartItem;
 use App\Models\Notification;
 use App\Models\Content\Comment;
+use App\Models\Setting\Setting;
 use App\Models\SmartAssemble\SystemMenu;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
@@ -40,9 +41,9 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::check()) {
                 $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
                 $view->with('cartItems', $cartItems);
-                $view->with('menus', Menu::where('status', 1)->get());
             }
+            $view->with('menus', Menu::where('status', 1)->get());
+            $view->with('logo', Setting::where('id', 1)->pluck('logo')->first());
         });
-
     }
 }

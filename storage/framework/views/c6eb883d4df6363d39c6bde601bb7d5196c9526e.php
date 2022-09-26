@@ -51,10 +51,13 @@
                                     <h5 class="card-title"><?php echo e($systemType->name); ?></h5>
                                     <p class="card-text"><?php echo e($systemType->brief); ?></p>
                                 </div>
+                                    <?php
+                                        $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                                    ?>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">پردازنده</li>
-                                    <li class="list-group-item">بازی</li>
-                                    <li class="list-group-item">وارزون</li>
+                                <?php $__currentLoopData = $metas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $meta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li class="list-group-item"><?php echo e($meta->meta_value); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between align-items-center">
@@ -64,7 +67,7 @@
                                         
                                         
                                         <label for="">شروع قیمت</label>
-                                        <small class="text-muted"><?php echo e(priceFormat($systemType->start_price_from)); ?><span> تومان</span></small>
+                                        <small class="text-dark"><?php echo e(priceFormat($systemType->start_price_from)); ?><span> تومان</span></small>
                                     </div>
                                     <a type="button" href="<?php echo e(route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType])); ?>"
                                        class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
