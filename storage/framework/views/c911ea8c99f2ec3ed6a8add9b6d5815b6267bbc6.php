@@ -68,9 +68,17 @@
                                     <?php endif; ?>>
                                 </label>
                             </td>
-                            <td>سوپر ادمین	</td>
+                            <td>
+                                <?php if(empty($admin->roles()->get()->toArray())): ?>
+                                    <span class="text-danger">برای این کاربر هیچ نقشی تعریف نشده است</span>
+                                <?php else: ?>
+                                    <?php $__currentLoopData = $admin->roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php echo e($role->name); ?> <br>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endif; ?>
+                            </td>
                             <td class="width-22-rem text-left">
-                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
+                                <a href="<?php echo e(route('admin.user.admin-user.role-form', $admin->id)); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>نقش ها</a>
                                 <a href="<?php echo e(route('admin.user.admin-user.edit', $admin->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="<?php echo e(route('admin.user.admin-user.destroy', $admin->id)); ?>" method="post">
                                     <?php echo csrf_field(); ?>

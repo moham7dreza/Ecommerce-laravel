@@ -100,7 +100,6 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
         return view('admin.user.role.set-permission', compact('role', 'permissions'));
-
     }
 
 
@@ -110,6 +109,5 @@ class RoleController extends Controller
         $inputs['permissions'] = $inputs['permissions'] ?? [];
         $role->permissions()->sync($inputs['permissions']);
         return redirect()->route('admin.user.role.index')->with('swal-success', 'نقش جدید با موفقیت ویرایش شد');
-
     }
 }

@@ -145,10 +145,30 @@
                         <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>
                         </section>
+                        <section class="col-12">
+                            <section class="row border-top mt-3 py-3">
+                                @foreach ($roles as $key => $role)
+                                    <section class="col-md-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="roles[]" value="{{ $role->id }}" id="{{ $role->id }}">\
+                                            <label for="{{ $role->id }}" class="form-check-label mr-3 mt-1">{{ $role->name }}</label>
+                                        </div>
+                                        <div class="mt-2">
+                                            @error('errors.' . $key)
+                                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                            <strong>
+                                                {{ $message }}
+                                            </strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+                                    </section>
+                                @endforeach
+                            </section>
+                        </section>
                     </section>
                 </form>
             </section>
-
         </section>
     </section>
 </section>

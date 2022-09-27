@@ -73,7 +73,7 @@
 
                                 <section class="col-md-3">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="permissions[]" value="{{ $permission->id }}" id="{{ $permission->id }}" checked>\
+                                        <input type="checkbox" class="form-check-input" name="permissions[]" value="{{ $permission->id }}" id="{{ $permission->id }}">\
                                         <label for="{{ $permission->id }}" class="form-check-label mr-3 mt-1">{{ $permission->name }}</label>
                                     </div>
                                     <div class="mt-2">

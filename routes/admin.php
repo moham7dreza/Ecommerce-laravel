@@ -405,6 +405,8 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
             Route::delete('/destroy/{admin}', [AdminUserController::class, 'destroy'])->name('admin.user.admin-user.destroy');
             Route::get('/status/{user}', [AdminUserController::class, 'status'])->name('admin.user.admin-user.status');
             Route::get('/activation/{user}', [AdminUserController::class, 'activation'])->name('admin.user.admin-user.activation');
+            Route::get('/role-form/{user}', [AdminUserController::class, 'roleForm'])->name('admin.user.admin-user.role-form');
+            Route::put('/role-update/{user}', [AdminUserController::class, 'roleUpdate'])->name('admin.user.admin-user.role-update');
         });
 
         //customer

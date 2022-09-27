@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Models\User;
+use App\Models\User\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Image\ImageService;
@@ -29,7 +30,8 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.admin-user.create');
+        $roles = Role::all();
+        return view('admin.user.admin-user.create', compact('roles'));
 
     }
 
@@ -54,6 +56,8 @@ class AdminUserController extends Controller
         $inputs['password'] = Hash::make($request->password);
         $inputs['user_type'] = 1;
         $user = User::create($inputs);
+        $inputs['roles'] = $inputs['roles'] ?? [];
+        $user->roles()->sync($inputs['roles']);
         return redirect()->route('admin.user.admin-user.index')->with('swal-success', 'ادمین جدید با موفقیت ثبت شد');
     }
 
@@ -155,5 +159,19 @@ class AdminUserController extends Controller
             return response()->json(['status' => false]);
         }
 
+    }
+
+    public function roleForm(User $user)
+    {
+        $roles = Role::all();
+        return view('admin.user.admin-user.set-role', compact('user', 'roles'));
+    }
+
+    public function roleUpdate(AdminUserRequest $request, User $user)
+    {
+        $inputs = $request->all();
+        $inputs['roles'] = $inputs['roles'] ?? [];
+        $user->roles()->sync($inputs['roles']);
+        return redirect()->route('admin.user.admin-user.index')->with('swal-success', 'نقش جدید با موفقیت ویرایش شد');
     }
 }

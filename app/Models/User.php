@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Market\Payment;
 use App\Models\Ticket\Ticket;
+use App\Models\User\Role;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Ticket\TicketAdmin;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -72,11 +74,12 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-    return "{$this->first_name} {$this->last_name}";
+        return "{$this->first_name} {$this->last_name}";
     }
 
 
-    public function ticketAdmin(){
+    public function ticketAdmin()
+    {
         return $this->hasOne(TicketAdmin::class);
     }
 
@@ -85,7 +88,8 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsToMany(Role::class);
     }
 

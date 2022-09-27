@@ -70,9 +70,17 @@
                                     @endif>
                                 </label>
                             </td>
-                            <td>سوپر ادمین	</td>
+                            <td>
+                                @if(empty($admin->roles()->get()->toArray()))
+                                    <span class="text-danger">برای این کاربر هیچ نقشی تعریف نشده است</span>
+                                @else
+                                    @foreach($admin->roles as $role)
+                                        {{ $role->name }} <br>
+                                    @endforeach
+                                @endif
+                            </td>
                             <td class="width-22-rem text-left">
-                                <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> نقش</a>
+                                <a href="{{ route('admin.user.admin-user.role-form', $admin->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>نقش ها</a>
                                 <a href="{{ route('admin.user.admin-user.edit', $admin->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                                 <form class="d-inline" action="{{ route('admin.user.admin-user.destroy', $admin->id) }}" method="post">
                                     @csrf

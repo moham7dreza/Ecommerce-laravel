@@ -28,14 +28,15 @@
             </section>
 
             <section>
-                <form action="<?php echo e(route('admin.user.role.store')); ?>" method="post">
+                <form action="<?php echo e(route('admin.user.role.update', $role->id)); ?>" method="post">
+                    <?php echo method_field('put'); ?>
                     <?php echo csrf_field(); ?>
                     <section class="row">
 
                         <section class="col-12 col-md-5">
                             <div class="form-group">
                                 <label for="">عنوان نقش</label>
-                                <input type="text" name="name" value="<?php echo e(old('name')); ?>" class="form-control form-control-sm">
+                                <input type="text" name="name" value="<?php echo e(old('name', $role->name)); ?>" class="form-control form-control-sm">
                             </div>
                             <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -56,7 +57,7 @@ unset($__errorArgs, $__bag); ?>
                         <section class="col-12 col-md-5">
                             <div class="form-group">
                                 <label for="">توضیح نقش</label>
-                                <input type="text" name="description" value="<?php echo e(old('description')); ?>" class="form-control form-control-sm">
+                                <input type="text" name="description" value="<?php echo e(old('description', $role->description)); ?>" class="form-control form-control-sm">
                             </div>
                             <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -82,38 +83,6 @@ unset($__errorArgs, $__bag); ?>
                         <section class="col-12">
                             <section class="row border-top mt-3 py-3">
 
-                                <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-
-                                <section class="col-md-3">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="permissions[]" value="<?php echo e($permission->id); ?>" id="<?php echo e($permission->id); ?>">\
-                                        <label for="<?php echo e($permission->id); ?>" class="form-check-label mr-3 mt-1"><?php echo e($permission->name); ?></label>
-                                    </div>
-                                    <div class="mt-2">
-                                        <?php $__errorArgs = ['permissions.' . $key];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
-                                            <strong>
-                                                <?php echo e($message); ?>
-
-                                            </strong>
-                                        </span>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </section>
-
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-
-
                             </section>
                         </section>
 
@@ -127,4 +96,4 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\mars-shop\resources\views/admin/user/role/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\mars-shop\resources\views/admin/user/role/edit.blade.php ENDPATH**/ ?>
