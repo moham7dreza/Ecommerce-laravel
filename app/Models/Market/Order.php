@@ -18,23 +18,28 @@ class Order extends Model
     {
         return $this->belongsTo(Payment::class);
     }
-     public function delivery()
+
+    public function delivery()
     {
         return $this->belongsTo(Delivery::class);
     }
-      public function user()
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-        public function address()
+
+    public function address()
     {
         return $this->belongsTo(Address::class);
     }
-        public function copan()
+
+    public function copan()
     {
         return $this->belongsTo(Copan::class);
     }
-          public function commonDiscount()
+
+    public function commonDiscount()
     {
         return $this->belongsTo(CommonDiscount::class);
     }
@@ -46,17 +51,17 @@ class Order extends Model
 
     public function getPaymentStatusValueAttribute()
     {
-        switch ($this->payment_status){
+        switch ($this->payment_status) {
             case 0:
                 $result = 'پرداخت نشده';
                 break;
-                  case 1:
+            case 1:
                 $result = 'پرداخت شده';
                 break;
-                  case 2:
+            case 2:
                 $result = 'باطل شده';
                 break;
-                  default :
+            default :
                 $result = 'برگشت داده شده';
         }
         return $result;
@@ -64,14 +69,14 @@ class Order extends Model
 
     public function getPaymentTypeValueAttribute()
     {
-        switch ($this->payment_type){
+        switch ($this->payment_type) {
             case 0:
                 $result = 'آنلاین';
                 break;
-                  case 1:
+            case 1:
                 $result = 'آفلاین';
                 break;
-                  default :
+            default :
                 $result = 'در محل';
         }
         return $result;
@@ -79,17 +84,17 @@ class Order extends Model
 
     public function getDeliveryStatusValueAttribute()
     {
-        switch ($this->delivery_status){
+        switch ($this->delivery_status) {
             case 0:
                 $result = 'ارسال نشده';
                 break;
-                  case 1:
+            case 1:
                 $result = 'در حال ارسال';
                 break;
-                 case 2:
+            case 2:
                 $result = 'ارسال شده';
                 break;
-                  default :
+            default :
                 $result = 'تحویل شده';
         }
         return $result;
@@ -98,23 +103,23 @@ class Order extends Model
 
     public function getOrderStatusValueAttribute()
     {
-        switch ($this->order_status){
+        switch ($this->order_status) {
             case 1:
                 $result = 'در انتظار تایید';
                 break;
-                  case 2:
+            case 2:
                 $result = 'تاییده نشده';
                 break;
-                 case 3:
+            case 3:
                 $result = 'تایید شده';
                 break;
-                 case 4:
+            case 4:
                 $result = 'باطل شده';
                 break;
-                case 5:
+            case 5:
                 $result = 'مرجوع شده';
                 break;
-                  default :
+            default :
                 $result = 'بررسی نشده';
         }
         return $result;

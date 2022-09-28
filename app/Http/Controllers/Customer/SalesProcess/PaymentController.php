@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Customer\SalesProcess;
 
 use App\Models\Market\Copan;
 use App\Models\Market\Order;
+use App\Models\User;
+use App\Notifications\NewOrderRegistered;
 use Illuminate\Http\Request;
 use App\Models\Market\Payment;
 use App\Models\Market\CartItem;
@@ -106,8 +108,7 @@ class PaymentController extends Controller
         ]);
 
 
-        if($request->payment_type == 1)
-        {
+        if ($request->payment_type == 1) {
             $paymentService->zarinpal($order->order_final_amount, $order, $paymented);
         }
 
@@ -123,39 +124,33 @@ class PaymentController extends Controller
             ]
         );
 
-            $order->update(
-                ['order_status' => 3]
-            );
+        $order->update(
+            ['order_status' => 3]
+        );
 
-            foreach($cartItems as $cartItem)
-            {
-                $cartItem->delete();
-            }
+        foreach ($cartItems as $cartItem) {
+            $cartItem->delete();
+        }
 
-            return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
+        $details = [
+            'message' => 'یک سفارش جدید در سایت ثبت شد.'
+        ];
+        $adminUser = User::find(1);
+        $adminUser->notify(new NewOrderRegistered($details));
 
-
-
+        return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
     }
-
-
-
 
 
     public function paymentCallback(Order $order, OnlinePayment $onlinePayment, PaymentService $paymentService)
     {
         $amount = $onlinePayment->amount * 10;
         $result = $paymentService->zarinpalVerify($amount, $onlinePayment);
-        if($result['success'])
-        {
+        if ($result['success']) {
             return 'ok';
-        }
-        else{
+        } else {
             return redirect()->route('customer.home')->with('danger', 'سفارش شما با  خطا مواجه شد');
         }
 
     }
-
-
-
 }
