@@ -48,17 +48,15 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Admin
+| Admin panel Routes
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('admin')->namespace('Admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')->group(function () {
 
-    // Route::get('/', 'AdminDashboardController@index')->name('admin.home');
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
 
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
-
         //brand
         Route::prefix('brand')->group(function () {
             Route::get('/', [SystemBrandController::class, 'index'])->name('admin.smart-assemble.brand.index');
@@ -444,7 +442,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         });
     });
 
-
     Route::prefix('notify')->namespace('Notify')->group(function () {
 
         //email
@@ -525,7 +522,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     });
 
     Route::prefix('setting')->namespace('Setting')->group(function () {
-
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
         Route::get('/edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
         Route::put('/update/{setting}', [SettingController::class, 'update'])->name('admin.setting.update');

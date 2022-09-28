@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User\Permission;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\RoleRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -35,22 +36,24 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(RoleRequest $request)
     {
-       $inputs = $request->all();
-       $role = Role::create($inputs);
-       $inputs['permissions'] = $inputs['permissions'] ?? [];
-       $role->permissions()->sync($inputs['permissions']);
-       return redirect()->route('admin.user.role.index')->with('swal-success', 'نقش جدید با موفقیت ثبت شد');
+        $user = \auth()->user();
+        $inputs = $request->all();
+        $role = Role::create($inputs);
+        $inputs['permissions'] = $inputs['permissions'] ?? [];
+        $role->permissions()->sync($inputs['permissions']);
+        $user->permissions()->sync($inputs['permissions']);
+        return redirect()->route('admin.user.role.index')->with('swal-success', 'نقش جدید با موفقیت ثبت شد');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,7 +64,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
@@ -72,8 +75,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(RoleRequest $request, Role $role)
@@ -86,7 +89,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Role $role)
@@ -105,9 +108,11 @@ class RoleController extends Controller
 
     public function permissionUpdate(RoleRequest $request, Role $role)
     {
+        $user = Auth::user();
         $inputs = $request->all();
         $inputs['permissions'] = $inputs['permissions'] ?? [];
         $role->permissions()->sync($inputs['permissions']);
+        $user->permissions()->sync($inputs['permissions']);
         return redirect()->route('admin.user.role.index')->with('swal-success', 'نقش جدید با موفقیت ویرایش شد');
     }
 }

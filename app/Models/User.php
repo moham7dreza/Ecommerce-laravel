@@ -4,7 +4,9 @@ namespace App\Models;
 
 use App\Models\Market\Payment;
 use App\Models\Ticket\Ticket;
+use App\Models\User\Permission;
 use App\Models\User\Role;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Ticket\TicketAdmin;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -101,5 +103,20 @@ class User extends Authenticatable
     public function addresses()
     {
         return $this->hasMany(Address::class);
+    }
+
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
+
+
+    public function isPermission($permission)
+    {
+        return $this->permissions->contains('name', $permission->name) || $this->isRole($permission->roles);
+    }
+
+    public function isRole($roles)
+    {
+        return !!$roles->intersect($this->roles)->all();
     }
 }
