@@ -18,14 +18,13 @@ use App\Models\Content\Banner;
 use App\Models\Market\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
-
-
     public function home()
     {
-        Auth::loginUsingId(4);
+        Auth::loginUsingId(1);
         // بنرها
         $slideShowImages = Banner::where('position', 0)->where('status', 1)->get();
         $topBanners = Banner::where('position', 1)->where('status', 1)->take(2)->get();
@@ -101,8 +100,10 @@ class HomeController extends Controller
         return view('customer.user.favorites');
     }
 
-    public function admin()
+    public function posts()
     {
-        return view('admin.index');
+
     }
+
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Market\ProductCategory;
 use App\Http\Services\Image\ImageService;
 use App\Http\Requests\Admin\Market\ProductCategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -51,6 +52,7 @@ class CategoryController extends Controller
             return redirect()->route('admin.market.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
+        $inputs['route_code'] = Str::random(6);
         $productCategory = ProductCategory::create($inputs);
         return redirect()->route('admin.market.category.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
     }

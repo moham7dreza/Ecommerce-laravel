@@ -44,10 +44,30 @@ Route::namespace('Auth')->group(function () {
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
 
 /*
+ *  technology news section
+ * implement with livewire
+ *
+ * **/
+
+Route::prefix('techno')->group(function () {
+    // main page - show all posts
+    Route::get('/posts', \App\Http\Livewire\Techno\Posts::class)->name('techno.posts');
+    // single page of show post details
+    Route::get('/post/{post:slug}', \App\Http\Livewire\Techno\PostDetail::class)->name('techno.post.detail');
+    // add comment to post in that page
+    Route::post('/add-comment/post/{post:slug}', \App\Http\Livewire\Techno\PostDetail::class)->name('techno.post.add-comment');
+    // add post to favorites in main page of all posts
+    Route::get('/add-to-favorite/post/{post:slug}', \App\Http\Livewire\Techno\Posts::class)->name('techno.post.add-to-favorite');
+    // show all posts of one special category
+    Route::get('/category/{postCategory}/posts', \App\Http\Livewire\Techno\CategoryPosts::class)->name('techno.category.posts');
+});
+
+
+/*
  * user profile pages
  *
  *  */
-Route::prefix('user')->group(function (){
+Route::prefix('user')->group(function () {
     Route::get('/profile', [HomeController::class, 'myProfile'])->name('user.profile');
     Route::get('/orders', [HomeController::class, 'myOrders'])->name('user.orders');
     Route::get('/favorites', [HomeController::class, 'myFavorites'])->name('user.favorites');
@@ -78,13 +98,13 @@ Route::namespace('SalesProcess')->group(function () {
         Route::post('/add-address', [AddressController::class, 'addAddress'])->name('customer.sales-process.add-address');
         Route::put('/update-address/{address}', [AddressController::class, 'updateAddress'])->name('customer.sales-process.update-address');
         Route::get('/get-cities/{province}', [AddressController::class, 'getCities'])->name('customer.sales-process.get-cities');
-		Route::post('/choose-address-and-delivery', [AddressController::class, 'chooseAddressAndDelivery'])->name('customer.sales-process.choose-address-and-delivery');
+        Route::post('/choose-address-and-delivery', [AddressController::class, 'chooseAddressAndDelivery'])->name('customer.sales-process.choose-address-and-delivery');
 
-		 //payment
+        //payment
         Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('customer.sales-process.payment');
         Route::post('/copan-discount', [CustomerPaymentController::class, 'copanDiscount'])->name('customer.sales-process.copan-discount');
         Route::post('/payment-submit', [CustomerPaymentController::class, 'paymentSubmit'])->name('customer.sales-process.payment-submit');
-		Route::any('/payment-callback/{order}/{onlinePayment}', [CustomerPaymentController::class, 'paymentCallback'])->name('customer.sales-process.payment-call-back');
+        Route::any('/payment-callback/{order}/{onlinePayment}', [CustomerPaymentController::class, 'paymentCallback'])->name('customer.sales-process.payment-call-back');
     });
 });
 

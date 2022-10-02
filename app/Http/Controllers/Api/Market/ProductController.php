@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function all()
     {
-        $products = Product::orderBy('created_at', 'desc')->all();
+        $products = Product::orderBy('created_at', 'desc')->get();
 //        return response()->json(['data' => [
 //            'products' => $products,
 //            'message' => 'all products',

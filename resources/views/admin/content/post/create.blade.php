@@ -57,7 +57,6 @@
                                     @foreach ($postCategories as $postCategory)
                                     <option value="{{ $postCategory->id }}" @if(old('category_id') == $postCategory->id) selected @endif>{{ $postCategory->name }}</option>
                                     @endforeach
-
                                 </select>
                             </div>
                             @error('category_id')
@@ -67,6 +66,20 @@
                                 </strong>
                             </span>
                         @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="time_to_read">زمان مطالعه پست بر حسب دقیقه</label>
+                                <input type="text" class="form-control form-control-sm" name="time_to_read" value="{{ old('time_to_read') }}">
+                            </div>
+                            @error('time_to_read')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
                         </section>
 
                         <section class="col-12 col-md-6">
@@ -118,8 +131,6 @@
                         @enderror
                         </section>
 
-
-
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">تاریخ انتشار</label>
@@ -135,7 +146,7 @@
                         @enderror
                         </section>
 
-                        <section class="col-12">
+                        <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="tags">تگ ها</label>
                                 <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags') }}">

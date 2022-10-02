@@ -2,6 +2,7 @@
 
 namespace App\Models\Content;
 
+use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,14 +14,15 @@ class Post extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'title'
             ]
         ];
     }
 
     protected $casts = ['image' => 'array'];
+
     protected $fillable = ['title', 'summary', 'slug', 'image', 'status', 'tags', 'body', 'published_at', 'author_id', 'category_id', 'commentable'];
 
     public function postCategory()
@@ -33,5 +35,13 @@ class Post extends Model
         return $this->morphMany('App\Models\Content\Comment', 'commentable');
     }
 
+    public function activeComments()
+    {
+        return $this->comments()->where('approved', 1)->whereNull('parent_id')->get();
+    }
 
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

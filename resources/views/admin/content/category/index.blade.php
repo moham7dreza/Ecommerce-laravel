@@ -39,10 +39,11 @@
                         <tr>
                             <th>#</th>
                             <th>نام دسته بندی</th>
-                            <th>توضیحات</th>
-                            <th>اسلاگ</th>
+                            <th>دسته والد</th>
+{{--                            <th>توضیحات</th>--}}
+{{--                            <th>اسلاگ</th>--}}
                             <th>عکس</th>
-                            <th>تگ ها</th>
+{{--                            <th>تگ ها</th>--}}
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -54,12 +55,13 @@
                         <tr>
                             <th>{{ $key += 1 }}</th>
                             <td>{{ $postCategory->name }}</td>
-                            <td>{{ $postCategory->description }}</td>
-                            <td>{{ $postCategory->slug }}</td>
+                            <td>{{ $postCategory->parent_id ? $postCategory->parent->name : 'دسته اصلی' }}</td>
+{{--                            <td>{{ $postCategory->description }}</td>--}}
+{{--                            <td>{{ $postCategory->slug }}</td>--}}
                             <td>
                                 <img src="{{ asset($postCategory->image['indexArray'][$postCategory->image['currentImage']] ) }}" alt="" width="100" height="50">
                             </td>
-                            <td>{{ $postCategory->tags }}</td>
+{{--                            <td>{{ $postCategory->tags }}</td>--}}
                             <td>
                                 <label>
                                     <input id="{{ $postCategory->id }}" onchange="changeStatus({{ $postCategory->id }})" data-url="{{ route('admin.content.category.status', $postCategory->id) }}" type="checkbox" @if ($postCategory->status === 1)

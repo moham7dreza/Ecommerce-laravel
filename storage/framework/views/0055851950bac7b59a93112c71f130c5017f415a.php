@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('admin-assets/select2/css/select2.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('admin-assets/sweetalert/sweetalert2.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('admin-assets/css/style.css')); ?>">
+    <?php echo \Livewire\Livewire::styles(); ?>
 
 
 <?php /**PATH C:\CODEX\mars-shop\resources\views/admin/layouts/head-tag.blade.php ENDPATH**/ ?>

@@ -10,7 +10,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
+            <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
             <li class="breadcrumb-item font-size-12"> <a href="#">دسته بندی</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد دسته بندی</li>
         </ol>
@@ -45,6 +45,44 @@
                                 </div>
                                 @error('name')
                                     <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                        <strong>
+                                            {{ $message }}
+                                        </strong>
+                                    </span>
+                                @enderror
+                            </section>
+                            <section class="col-12 col-md-6 my-2">
+                                <div class="form-group">
+                                    <label for="">منو والد</label>
+                                    <select name="parent_id" id="" class="form-control form-control-sm">
+                                        <option value="">منوی اصلی</option>
+                                        @foreach ($parent_categories as $parent_category)
+
+                                            <option value="{{ $parent_category->id }}"  @if(old('parent_id', $postCategory->parent_id) == $parent_category->id) selected @endif>{{ $parent_category->name }}</option>
+
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                @error('parent_id')
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                                @enderror
+                            </section>
+
+                            <section class="col-12">
+                                <div class="form-group">
+                                    <label for="">توضیحات</label>
+                                    <textarea name="description" id="description" class="form-control form-control-sm"
+                                              rows="6">
+                                        {{ old('description', $postCategory->description) }}
+                                    </textarea>
+                                </div>
+                                @error('description')
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                         <strong>
                                             {{ $message }}
                                         </strong>
@@ -122,25 +160,6 @@
                                 </section>
 
                             </section>
-
-
-                            <section class="col-12">
-                                <div class="form-group">
-                                    <label for="">توضیحات</label>
-                                    <textarea name="description" id="description" class="form-control form-control-sm"
-                                        rows="6">
-                                        {{ old('description', $postCategory->description) }}
-                                    </textarea>
-                                </div>
-                                @error('description')
-                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
-                                        <strong>
-                                            {{ $message }}
-                                        </strong>
-                                    </span>
-                                @enderror
-                            </section>
-
 
                             <section class="col-12 my-3">
                                 <button class="btn btn-primary btn-sm">ثبت</button>

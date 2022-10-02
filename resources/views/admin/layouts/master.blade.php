@@ -4,7 +4,6 @@
 <head>
     @include('admin.layouts.head-tag')
     @yield('head-tag')
-
 </head>
 
 <body dir="rtl">
@@ -36,7 +35,5 @@
 
     @include('admin.alerts.sweetalert.error')
     @include('admin.alerts.sweetalert.success')
-
-
 </body>
 </html>

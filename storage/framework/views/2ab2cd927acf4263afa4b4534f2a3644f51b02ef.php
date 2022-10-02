@@ -1,6 +1,5 @@
 <aside id="sidebar" class="sidebar">
     <section class="sidebar-container">
-
         <section class="sidebar-wrapper">
             <a href="<?php echo e(route('admin.home')); ?>" class="sidebar-link">
                 <i class="fas fa-home"></i>
@@ -10,6 +9,7 @@
                 <i class="fas fa-gift"></i>
                 <span>فروشگاه</span>
             </a>
+
 
 
 

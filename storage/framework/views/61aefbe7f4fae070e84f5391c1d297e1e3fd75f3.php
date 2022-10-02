@@ -20,5 +20,6 @@
             })
         });
     </script>
+    <?php echo \Livewire\Livewire::scripts(); ?>
 
 <?php /**PATH C:\CODEX\mars-shop\resources\views/admin/layouts/script.blade.php ENDPATH**/ ?>

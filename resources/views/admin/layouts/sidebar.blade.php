@@ -1,6 +1,5 @@
 <aside id="sidebar" class="sidebar">
     <section class="sidebar-container">
-{{--        @can('سوپر ادمین')--}}
         <section class="sidebar-wrapper">
             <a href="{{ route('admin.home') }}" class="sidebar-link">
                 <i class="fas fa-home"></i>
@@ -15,6 +14,7 @@
 {{--                <i class="fas fa-gift"></i>--}}
 {{--                <span>پی سی پیک - اسمبل سیستم</span>--}}
 {{--            </a>--}}
+
 @can('اسمبل هوشمند')
             <section class="sidebar-part-title">پی سی پیک</section>
 
@@ -40,6 +40,7 @@
                 </section>
             </section>
             @endcan
+
 @can('بخش فروش')
             <section class="sidebar-part-title">بخش فروش</section>
 

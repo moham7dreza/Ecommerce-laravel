@@ -125,7 +125,7 @@
                             </section>
                             <section class="sublist-wrapper position-absolute w-100">
                                 <section class="position-relative sublist-area">
-@foreach($menus as $menu)
+                                    @foreach($menus as $menu)
                                         @if($menu->parent_id == NULL)
 {{--    @php--}}
 {{--        $subMenus = \App\Models\Content\Menu::where('parent_id', $menu->id)->get();--}}
@@ -151,17 +151,18 @@
                             </section>
                         </section>
                         <section class="border-start my-2 mx-1"></section>
-{{--                        <section class="navbar-item"><a href="#">سوپرمارکت</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">آمازون من</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">آمازون پلاس</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">درباره ما</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">فروشنده شوید</a></section>--}}
-{{--                        <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>--}}
+                        <section class="navbar-item"><a href="#">سوپرمارکت</a></section>
+                        <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>
+                        <section class="navbar-item"><a href="#">آمازون من</a></section>
+                        <section class="navbar-item"><a href="#">آمازون پلاس</a></section>
+                        <section class="navbar-item"><a href="#">درباره ما</a></section>
+                        <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
+                        <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
 {{--                        <section class="navbar-item"><a href="#"></a></section>--}}
                         <section class="navbar-item"><a href="{{ route('customer.market.products.offers') }}">فروش ویژه</a></section>
 {{--                        <section class="navbar-item"><a href="{{ route('admin.home') }}">پنل ادمین</a></section>--}}
                         <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a></section>
+                        <section class="navbar-item"><a href="{{ route('techno.posts') }}">تکنولوژی نیوز</a></section>
 
                     </section>
 

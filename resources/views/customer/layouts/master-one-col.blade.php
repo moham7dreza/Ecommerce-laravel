@@ -3,6 +3,7 @@
 <head>
     @include('customer.layouts.head-tag')
     @yield('head-tag')
+    @livewireStyles
 </head>
 <body>
 
@@ -21,5 +22,6 @@
 
     @include('customer.layouts.script')
     @yield('script')
+    @livewireScripts
 </body>
 </html>

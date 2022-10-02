@@ -72,6 +72,20 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
+                                <label for="time_to_read">زمان مطالعه پست بر حسب دقیقه</label>
+                                <input type="text" class="form-control form-control-sm" name="time_to_read"  value="{{ old('time_to_read', $post->time_to_read) }}">
+                            </div>
+                            @error('time_to_read')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
                                 <label for="image">تصویر</label>
                                 <input type="file" class="form-control form-control-sm" name="image" id="image">
                                 {{-- <img src="{{ asset($post->image['indexArray'][$post->image['currentImage']] ) }}" alt="" width="100" height="50" class="mt-3"> --}}
@@ -122,8 +136,6 @@
                             @enderror
                         </section>
 
-
-
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="commentable">امکان درج کامنت</label>
@@ -141,9 +153,6 @@
                             @enderror
                         </section>
 
-
-
-
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">تاریخ انتشار</label>
@@ -159,7 +168,7 @@
                         @enderror
                         </section>
 
-                        <section class="col-12">
+                        <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="tags">تگ ها</label>
                                 <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"

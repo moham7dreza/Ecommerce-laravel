@@ -3,8 +3,8 @@
 @section('head-tag')
     <title>{{ $siteSetting->title }}</title>
 @endsection
-@section('content')
 
+@section('content')
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
