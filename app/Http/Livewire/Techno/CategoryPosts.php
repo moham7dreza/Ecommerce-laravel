@@ -6,8 +6,10 @@ use Livewire\Component;
 
 class CategoryPosts extends Component
 {
+
+
     public function render()
     {
-        return view('livewire.techno.category-posts');
+        return view('livewire.techno.category-posts')->extends('customer.layouts.master-one-col');
     }
 }

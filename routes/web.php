@@ -55,9 +55,9 @@ Route::prefix('techno')->group(function () {
     // single page of show post details
     Route::get('/post/{post:slug}', \App\Http\Livewire\Techno\PostDetail::class)->name('techno.post.detail');
     // add comment to post in that page
-    Route::post('/add-comment/post/{post:slug}', \App\Http\Livewire\Techno\PostDetail::class)->name('techno.post.add-comment');
+//    Route::post('/add-comment/post/{post:slug}', \App\Http\Livewire\Techno\AddCommentToPost::class)->name('techno.post.add-comment');
     // add post to favorites in main page of all posts
-    Route::get('/add-to-favorite/post/{post:slug}', \App\Http\Livewire\Techno\Posts::class)->name('techno.post.add-to-favorite');
+//    Route::get('/add-to-favorite/post/{post:slug}', \App\Http\Livewire\Techno\Posts::class)->name('techno.post.add-to-favorite');
     // show all posts of one special category
     Route::get('/category/{postCategory}/posts', \App\Http\Livewire\Techno\CategoryPosts::class)->name('techno.category.posts');
 });

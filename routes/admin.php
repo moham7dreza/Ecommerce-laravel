@@ -354,6 +354,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
             Route::delete('/destroy/{menu}', [MenuController::class, 'destroy'])->name('admin.content.menu.destroy');
             Route::get('/status/{menu}', [MenuController::class, 'status'])->name('admin.content.menu.status');
             Route::get('/get-sub-menus/{menu}', [MenuController::class, 'getSubMenus'])->name('admin.content.menu.get-sub-menus');
+            Route::get('/get-menus/{location}', [MenuController::class, 'getMenus'])->name('admin.content.menu.get-menus');
         });
 
         //page

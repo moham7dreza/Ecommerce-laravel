@@ -34,24 +34,21 @@
 <section class="container-xxl my-4">
     <section class="row">
             <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="card mb-3" style="max-width: 650px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <a href="<?php echo e(route('techno.post.detail', $post)); ?>">
-                            <img src="<?php echo e(asset($post->image['indexArray']['medium'])); ?>" class="img-fluid rounded-start" alt="<?php echo e(asset($post->image['indexArray']['medium'])); ?>">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo e($post->title); ?></h5>
-                            <p class="card-text"><?php echo e(Str::limit($post->summary, 60)); ?></p>
-                            <p class="card-text"><small class="text-muted">آخرین آپدیت : <?php echo e(jalaliDate($post->created_at)); ?></small></p>
-                            <p class="card-text"><small class="text-muted">زمان مطالعه : <?php echo e($post->time_to_read); ?></small></p>
-                            <p class="card-text"><small class="text-muted">نویسنده : <?php echo e($post->author->fullName); ?></small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('techno.post-card', ['post' => $post])->html();
+} elseif ($_instance->childHasBeenRendered('l2239081462-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l2239081462-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l2239081462-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l2239081462-0');
+} else {
+    $response = \Livewire\Livewire::mount('techno.post-card', ['post' => $post]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l2239081462-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </section>
 </section>

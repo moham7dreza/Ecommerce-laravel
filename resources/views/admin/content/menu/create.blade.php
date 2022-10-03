@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>منو</title>
+<title>ایجاد منو</title>
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">منو</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد منو</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page">ایجاد منو</li>
     </ol>
   </nav>
 
@@ -34,6 +34,27 @@
                     @csrf
                 <section class="row">
 
+                    <section class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="">جایگاه منو</label>
+                            <select name="location" id="location" class="form-control form-control-sm">
+                                <option value="">جایگاه منو را انتخاب کنید.</option>
+                                @foreach($locations as $location => $value)
+                                <option value="{{ $location }}"
+                                        @if(old('menu_location') == $value) selected @endif
+                                data-url="{{ route('admin.content.menu.get-menus', $location) }}">
+                                    {{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('location')
+                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                        @enderror
+                    </section>
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">عنوان منو</label>
@@ -47,29 +68,35 @@
                             </span>
                         @enderror
                         </section>
+
                     <section class="col-12 col-md-6">
                         <div class="form-group">
-                            <label for="">نوع منو</label>
-                            <select name="menu_type" id="type" class="form-control form-control-sm">
-                                <option value="1" @if(old('menu_type') == 1) selected @endif>منوی اصلی</option>
-                                <option value="2" @if(old('menu_type') == 2) selected @endif>زیر منوی اصلی</option>
-                                <option value="3" @if(old('menu_type') == 3) selected @endif>فرزند زیر منوی اصلی</option>
+                            <label for="menu_level">سطوح منو</label>
+                            <select name="menu_level" id="level" class="form-control form-control-sm">
+                                @foreach($levels as $level => $value)
+                                <option value="{{ $level }}" @if(old('menu_level') == $level) selected @endif>{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
+                        @error('menu_level')
+                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                        @enderror
                     </section>
+
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">منو والد</label>
                                 <select name="parent_id" id="main-menus" class="form-control form-control-sm" disabled>
-                                    <option value=""> منوی اصلی را انتخاب کنید.</option>
-                                    @foreach ($menus as $menu)
-
-                                    <option value="{{ $menu->id }}"  @if(old('parent_id') == $menu->id) selected @endif
-                                    data-url="{{ route('admin.content.menu.get-sub-menus', $menu->id) }}"
-                                    >{{ $menu->name }}</option>
-
-                                    @endforeach
-
+                                    <option value="" selected> منوی اصلی را انتخاب کنید.</option>
+{{--                                    @foreach ($menus as $menu)--}}
+{{--                                    <option value="{{ $menu->id }}" @if(old('parent_id') == $menu->id) selected @endif--}}
+{{--                                    data-url="{{ route('admin.content.menu.get-sub-menus', $menu->id) }}"--}}
+{{--                                    >{{ $menu->name }}</option>--}}
+{{--                                    @endforeach--}}
                                 </select>
                             </div>
                             @error('parent_id')
@@ -99,7 +126,7 @@
                         <div class="form-group">
                             <label for="sub_menu_id">زیر منو</label>
                             <select name="sub_menu_id" class="form-control form-control-sm" id="sub-menus" disabled>
-                                <option selected>زیر منو را انتخاب کنید</option>
+                                <option value="" selected>زیر منو را انتخاب کنید</option>
                             </select>
                         </div>
                         @error('sub_menu_id')
@@ -128,7 +155,6 @@
                         @enderror
                         </section>
 
-
                         <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>
                         </section>
@@ -142,6 +168,38 @@
 
 @endsection
 @section('script')
+    <script>
+        $(document).ready(function() {
+            $('#location').change(function() {
+                var element = $('#location option:selected');
+                var url = element.attr('data-url');
+                $.ajax({
+                    url: url,
+                    type: "GET",
+                    success: function(response) {
+                        console.log(response);
+                        if (response.status) {
+                            let menus = response.menus;
+                            $('#main-menus').empty();
+                            menus.map((menu) => {
+                                const menu_id = menu.id;
+
+                                var data_url = "{{ route('admin.content.menu.get-sub-menus', 1) }}"
+                                $('#main-menus').append($('<option/>').val(menu.id).text(menu.name)
+                                    .attr('data-url', data_url)
+                                )
+                            })
+                        } else {
+                            errorToast('خطا پیش آمده است')
+                        }
+                    },
+                    error: function() {
+                        errorToast('خطا پیش آمده است')
+                    }
+                })
+            })
+        })
+    </script>
     <script>
         $(document).ready(function() {
             $('#main-menus').change(function() {
@@ -173,16 +231,16 @@
     </script>
 
     <script>
-        $("#type").change(function(){
+        $("#level").change(function(){
 
-            if($('#type').find(':selected').val() == '2') {
+            if($('#level').find(':selected').val() == '2') {
                 $('#main-menus').removeAttr('disabled');
             }
-            else if($('#type').find(':selected').val() == '3'){
+            else if($('#level').find(':selected').val() == '3'){
                 $('#main-menus').removeAttr('disabled');
                 $('#sub-menus').removeAttr('disabled');
             }
-            else if($('#type').find(':selected').val() == '1'){
+            else if($('#level').find(':selected').val() == '1'){
                 $('#main-menus').attr('disabled', 'disabled');
                 $('#sub-menus').attr('disabled', 'disabled');
             }

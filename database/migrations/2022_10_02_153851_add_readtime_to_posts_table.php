@@ -15,6 +15,10 @@ class AddReadtimeToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->tinyInteger('time_to_read')->default(0)->after('status');
+            $table->integer('view_count')->default(0)->after('time_to_read');
+            $table->integer('comment_count')->default(0)->after('view_count');
+            $table->integer('like_count')->default(0)->after('comment_count');
+            $table->double('rating')->default(0)->after('like_count');
         });
     }
 
@@ -26,7 +30,7 @@ class AddReadtimeToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            //
+            $table->dropColumn(['time_to_read', 'view_count', 'comment_count', 'like_count', 'rating']);
         });
     }
 }

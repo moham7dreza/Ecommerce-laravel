@@ -1,16 +1,14 @@
-@extends('admin.layouts.master')
+<?php $__env->startSection('head-tag'); ?>
+<title>نظرات</title>
+<?php $__env->stopSection(); ?>
 
-@section('head-tag')
-<title>منوها</title>
-@endsection
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page">منو</li>
+      <li class="breadcrumb-item font-size-12"> <a href="#"> خانه</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#"> بخش محتوی</a></li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page"> نظرات</li>
     </ol>
   </nav>
 
@@ -20,12 +18,12 @@
         <section class="main-body-container">
             <section class="main-body-container-header">
                 <h5>
-                  منو
+                 نظرات
                 </h5>
             </section>
 
             <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.content.menu.create') }}" class="btn btn-info btn-sm">ایجاد منوی جدید</a>
+                <a href="#" class="btn btn-info btn-sm disabled">ایجاد نظر </a>
                 <div class="max-width-16-rem">
                     <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
                 </div>
@@ -36,40 +34,48 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>نام منو</th>
-                            <th>جایگاه منو</th>
-                            <th>سطح منو</th>
-                            <th>منوی والد</th>
-{{--                            <th> لینک منو</th>--}}
-                            <th>وضعیت</th>
+                            <th>نظر</th>
+                            <th>پاسخ به</th>
+                            <th>کد کاربر</th>
+                            <th>نویسنده نظر</th>
+                            <th>کد پست</th>
+                            <th>پست</th>
+                            <th>وضعیت تایید</th>
+                            <th>وضعیت کامنت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($menus as $key => $menu)
+                      <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                         <tr>
-                            <th>{{ $key + 1 }}</th>
-                            <td>{{ $menu->name }}</td>
-                            <td>{{ \App\Models\Content\Menu::$locations[$menu->location] }}</td>
-                            <td>{{ \App\Models\Content\Menu::$levels[$menu->level] }}</td>
-                            <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
-{{--                            <td>{{ $menu->url }}</td>--}}
+                            <th><?php echo e($key + 1); ?></th>
+                            <td><?php echo e(Str::limit($comment->body, 10)); ?></td>
+                            <td><?php echo e($comment->parent_id ? Str::limit($comment->parent->body, 10) : ''); ?></td>
+                            <td><?php echo e($comment->author_id); ?></td>
+                            <td><?php echo e($comment->user->fullName); ?></td>
+                            <td><?php echo e($comment->commentable_id); ?></td>
+                            <td><?php echo e($comment->commentable->title); ?></td>
+                            <td><?php echo e($comment->approved == 1 ? 'تایید شده ' : 'تایید نشده'); ?> </td>
                             <td>
                                 <label>
-                                    <input id="{{ $menu->id }}" onchange="changeStatus({{ $menu->id }})" data-url="{{ route('admin.content.menu.status', $menu->id) }}" type="checkbox" @if ($menu->status === 1)
+                                    <input id="<?php echo e($comment->id); ?>" onchange="changeStatus(<?php echo e($comment->id); ?>)" data-url="<?php echo e(route('admin.content.comment.status', $comment->id)); ?>" type="checkbox" <?php if($comment->status === 1): ?>
                                     checked
-                                    @endif>
+                                    <?php endif; ?>>
                                 </label>
                             </td>
                             <td class="width-16-rem text-left">
-                                <a href="{{ route('admin.content.menu.edit', $menu->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                <form class="d-inline" action="{{ route('admin.content.menu.destroy', $menu->id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('delete') }}
-                                <button class="btn btn-danger btn-sm delete" type="submit"><i class="fa fa-trash-alt"></i> حذف</button>
-                            </form>                            </td>
+                                <a href="<?php echo e(route('admin.content.comment.show', $comment->id)); ?>" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> نمایش</a>
+
+                                <?php if($comment->approved == 1): ?>
+                                <a href="<?php echo e(route('admin.content.comment.approved', $comment->id)); ?> "class="btn btn-warning btn-sm" type="submit"><i class="fa fa-clock"></i> عدم تایید</a>
+                                <?php else: ?>
+                                <a href="<?php echo e(route('admin.content.comment.approved', $comment->id)); ?>" class="btn btn-success btn-sm text-white" type="submit"><i class="fa fa-check"></i>تایید</a>
+                                <?php endif; ?>
+                            </td>
+
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                     </tbody>
                 </table>
@@ -79,9 +85,9 @@
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
     <script type="text/javascript">
         function changeStatus(id){
@@ -96,11 +102,11 @@
                     if(response.status){
                         if(response.checked){
                             element.prop('checked', true);
-                            successToast('منو  با موفقیت فعال شد')
+                            successToast('نظر  با موفقیت فعال شد')
                         }
                         else{
                             element.prop('checked', false);
-                            successToast('منو  با موفقیت غیر فعال شد')
+                            successToast('نظر  با موفقیت غیر فعال شد')
                         }
                     }
                     else{
@@ -151,7 +157,7 @@
     </script>
 
 
-@include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
+<?php $__env->stopSection(); ?>
 
 
-@endsection
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/admin/content/comment/index.blade.php ENDPATH**/ ?>

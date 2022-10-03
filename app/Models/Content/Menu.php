@@ -12,7 +12,7 @@ class Menu extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'url', 'parent_id', 'status'];
+    protected $guarded = ['id'];
 
     public function parent()
     {
@@ -24,6 +24,15 @@ class Menu extends Model
         return $this->hasMany($this, 'parent_id')->with('children');
     }
 
+    public static $levels = [
+        1 => 'منوی اصلی',
+        2 => 'زیر منوی اصلی',
+        3 => 'فرزند زیر منوی اصلی',
+    ];
 
-
+    public static $locations = [
+        1 => 'فروشگاه - صفحه اصلی',
+        2 => 'سیستم اسمبل هوشمند',
+        3 => 'تکنولوژی نیوز',
+    ];
 }

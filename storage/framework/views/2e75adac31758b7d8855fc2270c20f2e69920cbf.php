@@ -1,5 +1,5 @@
 <?php $__env->startSection('head-tag'); ?>
-<title>منو</title>
+<title>منوها</title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -8,7 +8,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> منو</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page">منو</li>
     </ol>
   </nav>
 
@@ -35,8 +35,10 @@
                         <tr>
                             <th>#</th>
                             <th>نام منو</th>
+                            <th>جایگاه منو</th>
+                            <th>سطح منو</th>
                             <th>منوی والد</th>
-                            <th> لینک منو</th>
+
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
@@ -46,8 +48,10 @@
                         <tr>
                             <th><?php echo e($key + 1); ?></th>
                             <td><?php echo e($menu->name); ?></td>
+                            <td><?php echo e(\App\Models\Content\Menu::$locations[$menu->location]); ?></td>
+                            <td><?php echo e(\App\Models\Content\Menu::$levels[$menu->level]); ?></td>
                             <td><?php echo e($menu->parent_id ? $menu->parent->name : 'منوی اصلی'); ?></td>
-                            <td><?php echo e($menu->url); ?></td>
+
                             <td>
                                 <label>
                                     <input id="<?php echo e($menu->id); ?>" onchange="changeStatus(<?php echo e($menu->id); ?>)" data-url="<?php echo e(route('admin.content.menu.status', $menu->id)); ?>" type="checkbox" <?php if($menu->status === 1): ?>

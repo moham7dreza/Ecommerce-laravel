@@ -1,4 +1,11 @@
 <section class="container">
+    <?php if($errors->any()): ?>
+        <ul>
+            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <li><?php echo e($error); ?></li>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </ul>
+    <?php endif; ?>
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">عنوان تدوينة مميزة أطول</h1>
@@ -152,5 +159,116 @@
         </div>
     </div>
 
+    <!-- start content header -->
+    <section id="comments" class="content-header mt-2 mb-4">
+        <section class="d-flex justify-content-between align-items-center">
+            <h2 class="content-header-title content-header-title-small">
+                دیدگاه ها
+            </h2>
+            <section class="content-header-link">
+                <!--<a href="#">مشاهده همه</a>-->
+            </section>
+        </section>
+    </section>
+    <section class="product-comments mb-4">
+
+        <section class="comment-add-wrapper">
+            <button class="comment-add-button" type="button" data-bs-toggle="modal" data-bs-target="#add-comment" ><i class="fa fa-plus"></i> افزودن دیدگاه</button>
+            <!-- start add comment Modal -->
+            <section class="modal fade" id="add-comment" tabindex="-1" aria-labelledby="add-comment-label" aria-hidden="true">
+                <section class="modal-dialog">
+                    <section class="modal-content">
+                        <section class="modal-header">
+                            <h5 class="modal-title" id="add-comment-label"><i class="fa fa-plus"></i> افزودن دیدگاه</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </section>
+                        <?php if(auth()->guard()->guest()): ?>
+                            <section class="modal-body">
+                                <p>کاربر گرامی لطفا برای ثبت نظر ابتدا وارد حساب کاربری خود شوید </p>
+                                <p>لینک ثبت نام و یا ورود
+                                    <a href="<?php echo e(route('auth.customer.login-register-form')); ?>">کلیک کنید</a>
+                                </p>
+                            </section>
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->check()): ?>
+                            <section class="modal-body">
+                                <form class="row" wire:submit.prevent="addComment">
+                                    <?php echo csrf_field(); ?>
+                                    
+
+                                    <section class="col-12 mb-2">
+                                        <label for="comment" class="form-label mb-1">دیدگاه شما</label>
+                                        <textarea wire:model.lazy="comment_body" class="form-control form-control-sm" id="comment" placeholder="دیدگاه شما ..." rows="4" name="comment_body"></textarea>
+
+
+
+
+
+                                    </section>
+
+                                    <section class="modal-footer py-1">
+                                        <button type="submit" class="btn btn-sm btn-primary">ثبت دیدگاه</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
+                                    </section>
+                                </form>
+                            </section>
+                        <?php endif; ?>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <?php if(count($post->activeComments()) > 0): ?>
+        <?php $__currentLoopData = $post->activeComments(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $activeComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <section class="product-comment">
+                <section class="product-comment-header d-flex justify-content-start">
+                    <section class="product-comment-date"><?php echo e(jalaliDate($activeComment->created_at)); ?></section>
+                    <?php
+                        $author = $activeComment->user()->first();
+                    ?>
+                    <section class="product-comment-title">
+                        <?php if(empty($author->first_name) && empty($author->last_name)): ?>
+                            ناشناس
+                        <?php else: ?>
+                            <?php echo e($author->first_name . ' ' . $author->last_name); ?>
+
+                        <?php endif; ?>
+                    </section>
+                </section>
+                <section class="product-comment-body <?php if($activeComment->answers()->count() > 0): ?> border-bottom  <?php endif; ?>">
+                    <?php echo $activeComment->body; ?>
+
+                </section>
+
+
+                <?php $__currentLoopData = $activeComment->answers()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $commentAnswer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <section class="product-comment">
+                        <section class="product-comment-header d-flex justify-content-start">
+                            <section class="product-comment-date"><?php echo e(jalaliDate($commentAnswer->created_at)); ?></section>
+                            <?php
+                                $author = $commentAnswer->user()->first();
+                            ?>
+                            <section class="product-comment-title">
+                                <?php if(empty($author->first_name) && empty($author->last_name)): ?>
+                                    ناشناس
+                                <?php else: ?>
+                                    <?php echo e($author->first_name . ' ' . $author->last_name); ?>
+
+                                <?php endif; ?>
+                            </section>
+                        </section>
+                        <section class="product-comment-body <?php if($commentAnswer->answers()->count() > 0): ?> border-bottom <?php endif; ?>">
+                            <?php echo $commentAnswer->body; ?>
+
+                        </section>
+                    </section>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+            </section>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endif; ?>
+
+
+    </section>
 </section>
 <?php /**PATH C:\CODEX\techzilla\resources\views/livewire/techno/post-detail.blade.php ENDPATH**/ ?>

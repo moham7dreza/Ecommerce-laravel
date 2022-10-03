@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('head-tag')
-<title>منو</title>
+<title>ویرایش منو</title>
 @endsection
 
 @section('content')
@@ -9,9 +9,9 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-      <li class="breadcrumb-item font-size-12"> <a href="#">بخش فروش</a></li>
+      <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
       <li class="breadcrumb-item font-size-12"> <a href="#">منو</a></li>
-      <li class="breadcrumb-item font-size-12 active" aria-current="page"> ویرایش منو</li>
+      <li class="breadcrumb-item font-size-12 active" aria-current="page">ویرایش منو</li>
     </ol>
   </nav>
 
@@ -50,17 +50,32 @@
                         @enderror
                         </section>
 
+                    <section class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="menu_level">سطوح منو</label>
+                            <select name="menu_level" id="level" class="form-control form-control-sm">
+                                @foreach($levels as $level => $value)
+                                    <option value="{{ $level }}" @if(old('menu_level', $menu->level) == $level) selected @endif>{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        @error('menu_level')
+                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                        @enderror
+                    </section>
+
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">منو والد</label>
                                 <select name="parent_id" id="" class="form-control form-control-sm">
                                     <option value="">منوی اصلی</option>
                                     @foreach ($parent_menus as $parent_menu)
-
                                     <option value="{{ $parent_menu->id }}"  @if(old('parent_id', $menu->parent_id) == $parent_menu->id) selected @endif>{{ $parent_menu->name }}</option>
-
                                     @endforeach
-
                                 </select>
                             </div>
                             @error('parent_id')
@@ -102,7 +117,6 @@
                                 </span>
                             @enderror
                         </section>
-
 
                         <section class="col-12">
                             <button class="btn btn-primary btn-sm">ثبت</button>

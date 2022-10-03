@@ -9,10 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/graham-campbell/result-type" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-common" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dragonmantank/cron-expression" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
@@ -89,7 +86,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-timer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-file-iterator" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-invoker" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/phpspec/prophecy" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpunit/php-code-coverage" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phar-io/version" />

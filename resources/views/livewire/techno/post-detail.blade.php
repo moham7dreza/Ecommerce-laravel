@@ -1,4 +1,11 @@
 <section class="container">
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">عنوان تدوينة مميزة أطول</h1>
@@ -152,4 +159,119 @@
         </div>
     </div>
 
+    <!-- start content header -->
+    <section id="comments" class="content-header mt-2 mb-4">
+        <section class="d-flex justify-content-between align-items-center">
+            <h2 class="content-header-title content-header-title-small">
+                دیدگاه ها
+            </h2>
+            <section class="content-header-link">
+                <!--<a href="#">مشاهده همه</a>-->
+            </section>
+        </section>
+    </section>
+    <section class="product-comments mb-4">
+
+        <section class="comment-add-wrapper">
+            <button class="comment-add-button" type="button" data-bs-toggle="modal" data-bs-target="#add-comment" ><i class="fa fa-plus"></i> افزودن دیدگاه</button>
+            <!-- start add comment Modal -->
+            <section class="modal fade" id="add-comment" tabindex="-1" aria-labelledby="add-comment-label" aria-hidden="true">
+                <section class="modal-dialog">
+                    <section class="modal-content">
+                        <section class="modal-header">
+                            <h5 class="modal-title" id="add-comment-label"><i class="fa fa-plus"></i> افزودن دیدگاه</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </section>
+                        @guest
+                            <section class="modal-body">
+                                <p>کاربر گرامی لطفا برای ثبت نظر ابتدا وارد حساب کاربری خود شوید </p>
+                                <p>لینک ثبت نام و یا ورود
+                                    <a href="{{ route('auth.customer.login-register-form') }}">کلیک کنید</a>
+                                </p>
+                            </section>
+                        @endguest
+                        @auth
+                            <section class="modal-body">
+                                <form class="row" wire:submit.prevent="addComment">
+                                    @csrf
+                                    {{-- <section class="col-6 mb-2">
+                                        <label for="first_name" class="form-label mb-1">نام</label>
+                                        <input type="text" class="form-control form-control-sm" id="first_name" placeholder="نام ...">
+                                    </section>
+
+                                    <section class="col-6 mb-2">
+                                        <label for="last_name" class="form-label mb-1">نام خانوادگی</label>
+                                        <input type="text" class="form-control form-control-sm" id="last_name" placeholder="نام خانوادگی ...">
+                                    </section> --}}
+
+                                    <section class="col-12 mb-2">
+                                        <label for="comment" class="form-label mb-1">دیدگاه شما</label>
+                                        <textarea wire:model.lazy="comment_body" class="form-control form-control-sm" id="comment" placeholder="دیدگاه شما ..." rows="4" name="comment_body"></textarea>
+{{--                                        @error('body')--}}
+{{--                                        <span class="alert_required bg-danger text-white p-1 rounded" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @enderror--}}
+                                    </section>
+
+                                    <section class="modal-footer py-1">
+                                        <button type="submit" class="btn btn-sm btn-primary">ثبت دیدگاه</button>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">بستن</button>
+                                    </section>
+                                </form>
+                            </section>
+                        @endauth
+                    </section>
+                </section>
+            </section>
+        </section>
+        @if(count($post->activeComments()) > 0)
+        @foreach ($post->activeComments() as $activeComment)
+            <section class="product-comment">
+                <section class="product-comment-header d-flex justify-content-start">
+                    <section class="product-comment-date">{{ jalaliDate($activeComment->created_at) }}</section>
+                    @php
+                        $author = $activeComment->user()->first();
+                    @endphp
+                    <section class="product-comment-title">
+                        @if(empty($author->first_name) && empty($author->last_name))
+                            ناشناس
+                        @else
+                            {{ $author->first_name . ' ' . $author->last_name }}
+                        @endif
+                    </section>
+                </section>
+                <section class="product-comment-body @if($activeComment->answers()->count() > 0) border-bottom  @endif">
+                    {!! $activeComment->body !!}
+                </section>
+
+
+                @foreach ($activeComment->answers()->get() as $commentAnswer)
+                    <section class="product-comment">
+                        <section class="product-comment-header d-flex justify-content-start">
+                            <section class="product-comment-date">{{ jalaliDate($commentAnswer->created_at) }}</section>
+                            @php
+                                $author = $commentAnswer->user()->first();
+                            @endphp
+                            <section class="product-comment-title">
+                                @if(empty($author->first_name) && empty($author->last_name))
+                                    ناشناس
+                                @else
+                                    {{ $author->first_name . ' ' . $author->last_name }}
+                                @endif
+                            </section>
+                        </section>
+                        <section class="product-comment-body @if($commentAnswer->answers()->count() > 0) border-bottom @endif">
+                            {!! $commentAnswer->body !!}
+                        </section>
+                    </section>
+                @endforeach
+
+
+            </section>
+        @endforeach
+        @endif
+
+
+    </section>
 </section>
