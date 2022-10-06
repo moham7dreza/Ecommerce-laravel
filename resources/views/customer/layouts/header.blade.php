@@ -160,7 +160,7 @@
                         <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
 {{--                        <section class="navbar-item"><a href="#"></a></section>--}}
                         <section class="navbar-item"><a href="{{ route('customer.market.products.offers') }}">فروش ویژه</a></section>
-{{--                        <section class="navbar-item"><a href="{{ route('admin.home') }}">پنل ادمین</a></section>--}}
+                        <section class="navbar-item"><a href="{{ route('customer.market.category.products', \App\Models\Market\ProductCategory::find(6)) }}">تست رم</a></section>
                         <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a></section>
                         <section class="navbar-item"><a href="{{ route('techno.posts') }}">تکنولوژی نیوز</a></section>
 

@@ -13,7 +13,7 @@ use Illuminate\Http\Client\RequestException;
 class PaymentService
 {
 
-    public function zarinpal($amount, $onlinePayment, $order)
+    public function zarinpal($amount, $onlinePayment, $order, $paymented)
     {
         $merchantID = Config::get('payment.zarinpal_api_key');
         $sandbox = false;
@@ -27,11 +27,20 @@ class PaymentService
             'amount' => (int)$amount * 10,
             'description' => 'the order',
         ];
+
         try {
             $response = $zarinpal->request($payment);
             $code = $response['data']['code'];
             $message = $zarinpal->getCodeMessage($code);
             if ($code === 100) {
+                $order->update(
+                    [
+                        'payment_type' => 0,
+                        'payment_id' => $paymented->id,
+                        'payment_object' => $paymented,
+                        'delivery_status' => 1,
+                        'delivery_date' => now()]
+                );
                 $onlinePayment->update(['bank_first_response' => ($response)]);
                 $authority = $response['data']['authority'];
                 return $zarinpal->redirect($authority);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\Models\Address;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Market\AmazingSale;
@@ -43,7 +44,7 @@ class HomeController extends Controller
         // فروش ویژه هفته
         $weeklyAmazingSales = AmazingSale::where('start_date', '<', Carbon::now())
             ->where('end_date', '>', Carbon::now())->where('status', 1)->
-        where('percentage', '>=', 10)->take(10)->get();
+            where('percentage', '>=', 10)->take(10)->get();
         // جدید ترین کالاها
         $newestProducts = Product::latest()->take(10)->get();
         // جدیدترین قطعات جانبی
@@ -69,14 +70,14 @@ class HomeController extends Controller
         // محبوب ترین سیستم ها
         $popularSystems = System::where('system_rating', '>=', 4)->where('status', 1)->where('system_view_number', '>=', 99)->take(10)->get();
         // نمونه سیستم های اسمبل شده
-        $sampleOfGamingSystemImages = SystemType::where('name','like', '%کولاک مینی%')->first()->images;
+        $sampleOfGamingSystemImages = SystemType::where('name', 'like', '%کولاک مینی%')->first()->images;
         $sampleOfAssembledSystems = System::latest()->take(10)->get();
         // تنطیمات سایت
         $siteSetting = Setting::find(1);
 
         return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner',
             'brands', 'mostVisitedProducts', 'offerProducts', 'systemBrands', 'siteSetting', 'productsWithActiveAmazingSales',
-        'newestProducts', 'systemCategories', 'bottomMiddleBanners', 'brandsBanner', 'sampleOfGamingSystemImages'));
+            'newestProducts', 'systemCategories', 'bottomMiddleBanners', 'brandsBanner', 'sampleOfGamingSystemImages'));
 
     }
 
@@ -87,12 +88,18 @@ class HomeController extends Controller
 
     public function myOrders()
     {
-        return view('customer.user.orders');
+        if (isset(request()->type)) {
+            $orders = auth()->user()->orders()->where('order_status', request()->type)->orderBy('id', 'desc')->get();
+        } else {
+            $orders = auth()->user()->orders()->orderBy('id', 'desc')->get();
+        }
+        return view('customer.user.orders', compact('orders'));
     }
 
     public function myAddresses()
     {
-        return view('customer.user.addresses');
+        $addresses = auth()->user()->addresses()->orderBy('id', 'desc')->get();
+        return view('customer.user.addresses', compact('addresses'));
     }
 
     public function myFavorites()

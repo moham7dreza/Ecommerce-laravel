@@ -12,20 +12,16 @@ class CartController extends Controller
 {
     public function cart()
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
-            if($cartItems->count() > 0)
-            {
+            if ($cartItems->count() > 0) {
                 $relatedProducts = Product::all();
                 return view('customer.sales-process.cart', compact('cartItems', 'relatedProducts'));
-            }
-            else{
+            } else {
                 return redirect()->back();
             }
 
-        }
-        else{
+        } else {
             return redirect()->route('auth.customer.login-register-form');
         }
     }
@@ -34,9 +30,8 @@ class CartController extends Controller
     {
         $inputs = $request->all();
         $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
-        foreach($cartItems as $cartItem){
-            if(isset($inputs['number'][$cartItem->id]))
-            {
+        foreach ($cartItems as $cartItem) {
+            if (isset($inputs['number'][$cartItem->id])) {
                 $cartItem->update(['number' => $inputs['number'][$cartItem->id]]);
             }
         }
@@ -46,8 +41,7 @@ class CartController extends Controller
 
     public function addToCart(Product $product, Request $request)
     {
-        if(Auth::check())
-        {
+        if (Auth::check()) {
             $request->validate([
                 'color' => 'nullable|exists:product_colors,id',
                 'guarantee' => 'nullable|exists:guarantees,id',
@@ -56,39 +50,33 @@ class CartController extends Controller
 
             $cartItems = CartItem::where('product_id', $product->id)->where('user_id', auth()->user()->id)->get();
 
-            if(!isset($request->color))
-            {
+            if (!isset($request->color)) {
                 $request->color = null;
             }
-            if(!isset($request->guarantee))
-            {
+            if (!isset($request->guarantee)) {
                 $request->guarantee = null;
             }
 
-                foreach($cartItems as $cartItem)
-                {
-                    if($cartItem->color_id == $request->color && $cartItem->guarantee_id == $request->guarantee)
-                    {
-                        if($cartItem->number != $request->number)
-                        {
-                            $cartItem->update(['number' => $request->number]);
-                        }
-                        return back();
+            foreach ($cartItems as $cartItem) {
+                if ($cartItem->color_id == $request->color && $cartItem->guarantee_id == $request->guarantee) {
+                    if ($cartItem->number != $request->number) {
+                        $cartItem->update(['number' => $request->number]);
                     }
+                    return back();
                 }
+            }
 
-                $inputs = [];
-                $inputs['color_id'] = $request->color;
-                $inputs['guarantee_id'] = $request->guarantee;
-                $inputs['user_id'] =  auth()->user()->id;
-                $inputs['product_id'] =  $product->id;
+            $inputs = [];
+            $inputs['color_id'] = $request->color;
+            $inputs['guarantee_id'] = $request->guarantee;
+            $inputs['user_id'] = auth()->user()->id;
+            $inputs['product_id'] = $product->id;
 
-                CartItem::create($inputs);
+            CartItem::create($inputs);
 
-                return back()->with('alert-section-success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
+            return back()->with('alert-section-success', 'محصول مورد نظر با موفقیت به سبد خرید اضافه شد');
 
-        }
-        else{
+        } else {
             return redirect()->route('auth.customer.login-register-form');
         }
     }
@@ -96,10 +84,9 @@ class CartController extends Controller
 
     public function removeFromCart(CartItem $cartItem)
     {
-       if($cartItem->user_id === Auth::user()->id)
-       {
-        $cartItem->delete();
-       }
-       return back();
+        if ($cartItem->user_id === Auth::user()->id) {
+            $cartItem->delete();
+        }
+        return back();
     }
 }

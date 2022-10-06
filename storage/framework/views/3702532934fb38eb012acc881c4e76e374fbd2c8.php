@@ -348,7 +348,7 @@
                             </table>
                         </section>
 
-                        <!-- start vontent header -->
+                        <!-- start content header -->
                         <section id="comments" class="content-header mt-2 mb-4">
                             <section class="d-flex justify-content-between align-items-center">
                                 <h2 class="content-header-title content-header-title-small">

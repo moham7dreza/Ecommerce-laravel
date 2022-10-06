@@ -89,10 +89,4 @@ class Product extends Model
         return $this->belongsToMany(User::class);
     }
 
-
-//    public function productCategory($category = 'gpu')
-//    {
-//        return $this->category()->where('name', 'like', '%' . $category . '%')->orWhere('description', 'like', '%' . $category . '%')->get();
-//    }
-
 }

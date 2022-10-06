@@ -10,7 +10,9 @@ use App\Models\Market\Copan;
 use App\Models\Market\OfflinePayment;
 use App\Models\Market\OnlinePayment;
 use App\Models\Market\Order;
+use App\Models\Market\OrderItem;
 use App\Models\Market\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -57,7 +59,10 @@ class PaymentController extends Controller
                 $finalDiscount = $order->order_total_products_discount_amount + $copanDiscountAmount;
 
                 $order->update(
-                    ['copan_id' => $copan->id, 'order_copan_discount_amount' => $copanDiscountAmount, 'order_total_products_discount_amount' => $finalDiscount]
+                    ['copan_id' => $copan->id,
+                        'copan_object' => $copan,
+                        'order_copan_discount_amount' => $copanDiscountAmount,
+                        'order_total_products_discount_amount' => $finalDiscount]
                 );
 
                 return redirect()->back()->with(['copan' => 'کد تخفیف با موفقیت اعمال شد']);
@@ -117,16 +122,32 @@ class PaymentController extends Controller
             ]
         );
 
+        //online pay
         if ($request->payment_type == 1) {
-            $paymentService->zarinpal($order->order_final_amount, $paymented, $order);
-        } else {
             $order->update(
-                ['order_status' => 3]
+                ['payment_type' => $type]
             );
+            $paymentService->zarinpal($order->order_final_amount, $paymented, $order, $payment);
+        }
+        else
+        {
+//            DB::transaction(function () use ($order, $cartItems, $type, $payment) {
+                // offline pay or cash pay
+                $order->update(
+                    ['order_status' => 3,
+                        'payment_type' => $type,
+                        'payment_id' => $payment->id,
+                        'payment_object' => $payment,
+                        'payment_status' => 1,
+                        'delivery_status' => 1,
+                        'delivery_date' => now()]
+                );
+                $this->addOrderItems($order, $cartItems);
 
-            foreach ($cartItems as $cartItem) {
-                $cartItem->delete();
-            }
+                foreach ($cartItems as $cartItem) {
+                    $cartItem->delete();
+                }
+//            });
             return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
         }
     }
@@ -137,13 +158,17 @@ class PaymentController extends Controller
         $result = $paymentService->zarinpalVerify($amount, $onlinePayment);
         $cartItems = CartItem::where('user_id', Auth::user()->id)->get();
         DB::transaction(function () use ($result, $cartItems, $order) {
-            foreach ($cartItems as $cartItem) {
-                $cartItem->delete();
-            }
+
             if ($result['success']) {
                 $order->update(
-                    ['order_status' => 3]
+                    ['order_status' => 3,
+                        'payment_status' => 1]
                 );
+                $this->addOrderItems($order, $cartItems);
+
+                foreach ($cartItems as $cartItem) {
+                    $cartItem->delete();
+                }
                 return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
             }
             $order->update(
@@ -151,5 +176,31 @@ class PaymentController extends Controller
             );
             return redirect()->route('customer.home')->with('danger', 'پرداخت ناموفق بود');
         });
+    }
+
+    public function addOrderItems($order, $cartItems)
+    {
+        global $inputs;
+        foreach ($cartItems as $cartItem) {
+            $cartItemActiveAmazingSales = $cartItem->product->activeAmazingSales();
+            $cartItemActiveAmazingSalesDiscountAmount = empty($cartItemActiveAmazingSales) ? 0 :
+                $cartItem->cartItemProductPrice() * ($cartItemActiveAmazingSales->percentage / 100);
+            $finalProductPrice = $cartItem->cartItemProductPrice() - $cartItemActiveAmazingSalesDiscountAmount;
+            $finalTotalPrice = $finalProductPrice * $cartItem->number;
+
+            $inputs['order_id'] = $order->id;
+            $inputs['product_id'] = $cartItem->product_id;
+            $inputs['product'] = $cartItem->product;
+            $inputs['number'] = $cartItem->number;
+            $inputs['color_id'] = $cartItem->color_id ?? null;
+            $inputs['guarantee_id'] = $cartItem->guarantee_id ?? null;
+            $inputs['amazing_sale_id'] = $cartItemActiveAmazingSales->id ?? null;
+            $inputs['amazing_sale_object'] = $cartItemActiveAmazingSales ?? null;
+            $inputs['amazing_sale_discount_amount'] = $cartItemActiveAmazingSalesDiscountAmount ?? null;
+            $inputs['final_product_price'] = $finalProductPrice;
+            $inputs['final_total_price'] = $finalTotalPrice;
+
+            OrderItem::query()->create($inputs);
+        }
     }
 }
