@@ -7,6 +7,7 @@ use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\Brand;
+use App\Models\Province;
 use App\Models\Setting\Setting;
 use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemBrand;
@@ -98,19 +99,19 @@ class HomeController extends Controller
 
     public function myAddresses()
     {
+        $provinces = Province::all();
         $addresses = auth()->user()->addresses()->orderBy('id', 'desc')->get();
-        return view('customer.user.addresses', compact('addresses'));
+        return view('customer.user.addresses', compact('addresses', 'provinces'));
     }
 
     public function myFavorites()
     {
-        return view('customer.user.favorites');
+        $products = Product::all();
+        return view('customer.user.favorites', compact('products'));
     }
 
     public function posts()
     {
 
     }
-
-
 }

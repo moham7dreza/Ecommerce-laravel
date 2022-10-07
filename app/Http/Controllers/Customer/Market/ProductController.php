@@ -58,7 +58,11 @@ class ProductController extends Controller
 
     public function categoryProducts(ProductCategory $productCategory)
     {
+//        if ($productCategory->children()) {
+//            $categoryChilds = $productCategory->children()->orderBy('id', 'desc')->get();
+//            return view('customer.market.product.category-products', compact('categoryChilds'));
+//        }
         $products = $productCategory->products()->orderBy('id', 'desc')->get();
-        return view('customer.market.product.category-products', compact('products'));
+        return view('customer.market.product.category-products', compact('productCategory', 'products'));
     }
 }

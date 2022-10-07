@@ -1,13 +1,12 @@
-@extends('customer.layouts.master-one-col')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
         پروفایل کاربری
     </title>
-@endsection
-@php
+<?php $__env->stopSection(); ?>
+<?php
     $user = auth()->user();
-@endphp
-@section('content')
+?>
+<?php $__env->startSection('content'); ?>
     <section id="main-body-two-col" class="container-xxl body-container mb-5">
         <section class="row">
             <aside id="sidebar" class="sidebar col-md-3">
@@ -16,21 +15,21 @@
                     <section class="sidebar-nav">
                         <section class="sidebar-nav-item">
                     <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.orders') }}">سفارش های من</a></span>
+                                                            href="<?php echo e(route('user.orders')); ?>">سفارش های من</a></span>
                         </section>
                         <section class="sidebar-nav-item">
                     <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.addresses') }}">آدرس های من</a></span>
+                                                            href="<?php echo e(route('user.addresses')); ?>">آدرس های من</a></span>
                         </section>
                         <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('user.favorites') }}">لیست علاقه مندی</a></span>
+                            <span class="sidebar-nav-item-title"><a class="p-3" href="<?php echo e(route('user.favorites')); ?>">لیست علاقه مندی</a></span>
                         </section>
                         <section class="sidebar-nav-item">
                     <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.profile') }}">ویرایش حساب</a></span>
+                                                            href="<?php echo e(route('user.profile')); ?>">ویرایش حساب</a></span>
                         </section>
                         <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('auth.customer.logout') }}">خروج از حساب کاربری</a></span>
+                            <span class="sidebar-nav-item-title"><a class="p-3" href="<?php echo e(route('auth.customer.logout')); ?>">خروج از حساب کاربری</a></span>
                         </section>
 
                     </section>
@@ -64,27 +63,27 @@
                     <section class="row">
                         <section class="col-6 border-bottom mb-2 py-2">
                             <section class="field-title">نام</section>
-                            <section class="field-value overflow-auto">{{ $user->first_name }}</section>
+                            <section class="field-value overflow-auto"><?php echo e($user->first_name); ?></section>
                         </section>
 
                         <section class="col-6 border-bottom my-2 py-2">
                             <section class="field-title">نام خانوادگی</section>
-                            <section class="field-value overflow-auto">{{ $user->last_name }}</section>
+                            <section class="field-value overflow-auto"><?php echo e($user->last_name); ?></section>
                         </section>
 
                         <section class="col-6 border-bottom my-2 py-2">
                             <section class="field-title">شماره تلفن همراه</section>
-                            <section class="field-value overflow-auto">{{ $user->mobile }}</section>
+                            <section class="field-value overflow-auto"><?php echo e($user->mobile); ?></section>
                         </section>
 
                         <section class="col-6 border-bottom my-2 py-2">
                             <section class="field-title">ایمیل</section>
-                            <section class="field-value overflow-auto">{{ $user->email }}</section>
+                            <section class="field-value overflow-auto"><?php echo e($user->email); ?></section>
                         </section>
 
                         <section class="col-6 my-2 py-2">
                             <section class="field-title">کد ملی</section>
-                            <section class="field-value overflow-auto">{{ $user->national_code }}</section>
+                            <section class="field-value overflow-auto"><?php echo e($user->national_code); ?></section>
                         </section>
 
                         <section class="col-6 my-2 py-2">
@@ -97,4 +96,6 @@
             </main>
         </section>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/user/profile.blade.php ENDPATH**/ ?>

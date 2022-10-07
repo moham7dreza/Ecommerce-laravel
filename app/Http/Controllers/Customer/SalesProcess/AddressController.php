@@ -50,6 +50,9 @@ class AddressController extends Controller
         $inputs['postal_code'] = convertArabicToEnglish($request->postal_code);
         $inputs['postal_code'] = convertPersianToEnglish($inputs['postal_code']);
         $address = Address::create($inputs);
+        auth()->user()->update([
+            'selected_address_id' => $address->id
+        ]);
         return redirect()->back();
     }
 
@@ -60,6 +63,9 @@ class AddressController extends Controller
         $inputs['postal_code'] = convertArabicToEnglish($request->postal_code);
         $inputs['postal_code'] = convertPersianToEnglish($inputs['postal_code']);
         $address->update($inputs);
+        auth()->user()->update([
+            'selected_address_id' => $address->id
+        ]);
         return redirect()->back();
     }
 

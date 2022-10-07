@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Market\Order;
 use App\Models\Market\Payment;
+use App\Models\Market\Product;
 use App\Models\Ticket\Ticket;
 use App\Models\User\Permission;
 use App\Models\User\Role;
@@ -125,4 +126,9 @@ class User extends Authenticatable
     {
         return !!$roles->intersect($this->roles)->all();
     }
+
+//    public function products()
+//    {
+//        return $this->hasMany(Product::class);
+//    }
 }

@@ -198,10 +198,6 @@
                                     <!-- end add address Modal -->
                                     @endforeach
 
-
-
-
-
                                     <section class="address-add-wrapper">
                                         <button class="address-add-button" type="button" data-bs-toggle="modal"
                                             data-bs-target="#add-address"><i class="fa fa-plus"></i> ایجاد آدرس

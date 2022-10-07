@@ -2,6 +2,7 @@
 
 namespace App\Models\Content;
 
+use App\Models\Market\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,6 +23,11 @@ class Menu extends Model
     public function children()
     {
         return $this->hasMany($this, 'parent_id')->with('children');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(ProductCategory::class);
     }
 
     public static $levels = [

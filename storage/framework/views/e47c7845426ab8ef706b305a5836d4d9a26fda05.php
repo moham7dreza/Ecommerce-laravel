@@ -163,3 +163,4 @@
     </section>
 
 </aside>
+<?php /**PATH C:\CODEX\techzilla\resources\views/customer/layouts/sidebar.blade.php ENDPATH**/ ?>

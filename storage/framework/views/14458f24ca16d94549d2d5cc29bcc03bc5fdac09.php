@@ -1,6 +1,7 @@
 <?php $__env->startSection('head-tag'); ?>
     <title>
-       فیلتر
+       محصولات دسته بندی <?php echo e($productCategory->name); ?>
+
     </title>
 <?php $__env->stopSection(); ?>
 <?php
@@ -29,7 +30,7 @@
 
         <section class="main-product-wrapper row my-4" >
 
-<?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <section class="col-md-3 p-0">
                 <section class="product">
                     <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
@@ -51,8 +52,8 @@
                     </a>
                 </section>
             </section>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php if(count($products) > 20): ?>
             <section class="col-12">
                 <section class="my-4 d-flex justify-content-center">

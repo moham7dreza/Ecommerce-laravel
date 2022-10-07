@@ -21,4 +21,9 @@ class Address extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+//    public function getRecipientFullNameAttribute()
+//    {
+//        return "{$this->recipient_first_name} {$this->recipient_last_name}";
+//    }
 }
