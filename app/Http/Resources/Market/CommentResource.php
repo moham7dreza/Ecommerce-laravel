@@ -22,7 +22,7 @@ class CommentResource extends ResourceCollection
                     'comment_author' => $comment->user->fullName,
                     'comment_body' => $comment->body,
                     'comment_parent' => $comment->parent_id == null ? 'کامنت اصلی' : 'جواب کامنت',
-                    'comment_answers' => $comment->answers,
+//                    'comment_answers' => $comment->answers,
                     'comment_approved' => $comment->approved == 1 ? 'تایید شده' : 'تایید نشده',
                     'comment_product' => $comment->commentable_type::findOrFail($comment->commentable_id)->name,
                     'comment_created_date' => jalaliDate($comment->created_at),

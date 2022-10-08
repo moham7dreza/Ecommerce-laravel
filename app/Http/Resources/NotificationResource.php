@@ -17,6 +17,7 @@ class NotificationResource extends ResourceCollection
         return [
             'message' => 'داده های مربوطه به اعلانات',
             'status' => 'success',
+            'total_notifs' => convertEnglishToPersian(count($this->collection)),
             'data' => $this->collection->map(function ($notification) {
                 return [
                     'notif_send_to' => $notification->notifiable_type::findOrFail($notification->notifiable_id)->fullName,

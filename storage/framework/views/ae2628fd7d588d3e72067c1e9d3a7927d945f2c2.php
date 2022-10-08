@@ -219,4 +219,4 @@
         <?php endif; ?>
     </section>
 </aside>
-<?php /**PATH C:\CODEX\techzilla\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\wamp64\www\CODEX\techzilla\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>

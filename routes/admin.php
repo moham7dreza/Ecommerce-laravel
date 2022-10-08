@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SmartAssemble\SystemCpuController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemGalleryController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemMenuController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemTypeController;
+use App\Http\Controllers\Admin\TelegramBot\SendController;
 use App\Http\Controllers\Admin\user\RoleController;
 use App\Http\Controllers\Admin\notify\SMSController;
 use App\Http\Controllers\Admin\Content\FAQController;
@@ -55,6 +56,18 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')->group(function () {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
+
+    /*
+    *  telegram bot
+    *
+    * */
+
+    Route::prefix('telegram-bot')->namespace('TelegramBot')->group(function () {
+        Route::prefix('send')->group(function () {
+            Route::get('/', [SendController::class, 'message'])->name('admin.bot.message');
+            Route::post('/message', [SendController::class, 'sendMessage'])->name('admin.bot.send.message');
+        });
+    });
 
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
         //brand

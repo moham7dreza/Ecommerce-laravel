@@ -1,7 +1,7 @@
 <!-- start header -->
 <header class="header mb-4">
 
-    <!-- start top-header logo, searchbox and cart -->
+    <!-- start top-header logo, search box and cart -->
     <section class="top-header">
         <section class="container-xxl ">
             <section class="d-md-flex justify-content-md-between align-items-md-center py-3">
@@ -147,7 +147,7 @@
             </section>
         </section>
     </section>
-    <!-- end top-header logo, searchbox and cart -->
+    <!-- end top-header logo, search box and cart -->
 
 
     <!-- start menu -->
@@ -173,7 +173,7 @@
                                                     <?php $__currentLoopData = $menu->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                         <section class="sublist-column col">
                                                             <a <?php if($subMenu->category): ?> href="<?php echo e(route('customer.market.category.products', $subMenu->category)); ?>"
-                                                                <?php else: ?> href="<?php echo e($subMenu->url); ?>" <?php endif; ?>
+                                                               <?php else: ?> href="<?php echo e($subMenu->url); ?>" <?php endif; ?>
                                                                class="sub-category"><?php echo e($subMenu->name); ?></a>
                                                         </section>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -211,8 +211,8 @@
                          aria-labelledby="offcanvasExampleLabel" style="z-index: 9999999;">
                     <section class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasExampleLabel"><a class="text-decoration-none"
-                                                                                  href="index.html"><img
-                                    src="<?php echo e(asset('customer-assets/images/logo/8.png')); ?>" alt="logo"></a></h5>
+                                                                                  href="<?php echo e(route('customer.home')); ?>"><img
+                                    src="<?php echo e(asset($logo)); ?>" alt="logo"></a></h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                 aria-label="Close"></button>
                     </section>
@@ -231,56 +231,28 @@
                         <section class="navbar-item"><a href="javascript:void(0)">دسته بندی</a></section>
                         <!-- start sidebar nav-->
                         <section class="sidebar-nav mt-2 px-3">
+
                             <section class="sidebar-nav-item">
                                 <span class="sidebar-nav-item-title">کالای دیجیتال <i
                                         class="fa fa-angle-left"></i></span>
                                 <section class="sidebar-nav-sub-wrapper">
+
                                     <section class="sidebar-nav-sub-item">
+
                                         <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i
                                                 class="fa fa-angle-left"></i></span>
                                         <section class="sidebar-nav-sub-sub-wrapper">
+
                                             <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
+
                                         </section>
                                     </section>
-                                    <section class="sidebar-nav-sub-item">
-                                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i
-                                                class="fa fa-angle-left"></i></span>
-                                        <section class="sidebar-nav-sub-sub-wrapper">
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">اسپیکر موبایل</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">پاوربانک</a></section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری بیسیم</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">قاب موبایل</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">هولدر نگهدارنده</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">شارژر بیسیم</a>
-                                            </section>
-                                            <section class="sidebar-nav-sub-sub-item"><a href="#">مونوپاد</a></section>
-                                        </section>
-                                    </section>
+
                                 </section>
                             </section>
 
                         </section>
                         <!--end sidebar nav-->
-
 
                     </section>
                 </section>
@@ -290,10 +262,6 @@
     </nav>
     <!-- end menu -->
 
-
 </header>
 <!-- end header -->
-
-
-
 <?php /**PATH C:\CODEX\techzilla\resources\views/customer/layouts/header.blade.php ENDPATH**/ ?>
