@@ -17,6 +17,7 @@ class OrderResource extends ResourceCollection
         return [
             'message' => 'داده های مربوطه به سفارشات فروشگاه',
             'status' => 'success',
+            'count' => count($this->collection),
             'data' => $this->collection->map(function ($order) {
                 return [
                     'order_user_name' => $order->user->fullName,

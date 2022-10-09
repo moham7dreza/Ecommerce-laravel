@@ -17,6 +17,7 @@ class CommentResource extends ResourceCollection
         return [
             'message' => 'داده های مربوطه به کامنت محصولات',
             'status' => 'success',
+            'count' => count($this->collection),
             'data' => $this->collection->map(function ($comment) {
                 return [
                     'comment_author' => $comment->user->fullName,

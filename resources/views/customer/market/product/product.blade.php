@@ -1,4 +1,4 @@
-@extends('customer.layouts.master-two-col')
+@extends('customer.layouts.master-one-col')
 
 @section('head-tag')
 <title>{{ $product->name }}</title>

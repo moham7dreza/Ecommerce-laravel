@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Market;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Market\ProductResource;
 use App\Models\Market\Product;
+use App\Models\Market\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function all()
     {
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::query()->orderBy('created_at', 'desc')->get();
 //        return response()->json(['data' => [
 //            'products' => $products,
 //            'message' => 'all products',
@@ -39,12 +40,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $name
+     * @return ProductResource
      */
-    public function show($id)
+    public function show($name)
     {
-        //
+        $category = ProductCategory::query()->where("name", "like", "%" . $name . "%")->first();
+        return new ProductResource($category->products);
     }
 
     /**

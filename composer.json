@@ -32,7 +32,8 @@
     },
     "autoload": {
         "files": [
-            "app/Helpers/helpers.php"
+            "app/Helpers/helpers.php",
+            "app/Helpers/TelegramBot.php"
         ],
         "psr-4": {
             "App\\": "app/",

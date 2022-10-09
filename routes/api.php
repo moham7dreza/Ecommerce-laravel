@@ -26,6 +26,7 @@ Route::prefix('admin')->group(function () {
     Route::prefix('market')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/all', [ProductController::class, 'all'])->name('api.market.product.all');
+            Route::get('/cat/{name}', [ProductController::class, 'show'])->name('api.market.product.show');
         });
         Route::prefix('order')->group(function () {
             Route::get('/all', [OrderController::class, 'all'])->name('api.market.order.all');

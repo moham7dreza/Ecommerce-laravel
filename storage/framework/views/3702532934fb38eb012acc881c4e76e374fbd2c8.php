@@ -604,4 +604,4 @@ $(document).ready(function() {
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('customer.layouts.master-two-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/market/product/product.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/market/product/product.blade.php ENDPATH**/ ?>

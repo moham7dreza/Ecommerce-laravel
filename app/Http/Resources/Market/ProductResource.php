@@ -17,10 +17,14 @@ class ProductResource extends ResourceCollection
         return [
             'message' => 'داده های مربوطه به کالاهای فروشگاه',
             'status' => 'success',
+            'count' => count($this->collection),
             'data' => $this->collection->map(function ($product) {
                 return [
                     'product_name' => $product->name,
+                    'product_intro' => $product->introduction,
+                    'product_url' => route('customer.market.product', $product),
                     'product_price' => priceFormat($product->price),
+                    'product_image' => asset($product->image),
                     'product_sold_number' => $product->sold_number,
                     'product_marketable_number' => $product->marketable_number,
                     'product_category_name' => $product->category->name,
