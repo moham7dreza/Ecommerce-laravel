@@ -15,7 +15,7 @@ class ProductController extends Controller
      *
      * @return ProductResource
      */
-    public function all()
+    public function all(): ProductResource
     {
         $products = Product::query()->orderBy('created_at', 'desc')->get();
 //        return response()->json(['data' => [
@@ -43,10 +43,9 @@ class ProductController extends Controller
      * @param string $name
      * @return ProductResource
      */
-    public function show($name)
+    public function show($id)
     {
-        $category = ProductCategory::query()->where("name", "like", "%" . $name . "%")->first();
-        return new ProductResource($category->products);
+
     }
 
     /**

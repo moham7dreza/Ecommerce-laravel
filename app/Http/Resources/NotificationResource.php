@@ -20,9 +20,9 @@ class NotificationResource extends ResourceCollection
             'count' => count($this->collection),
             'data' => $this->collection->map(function ($notification) {
                 return [
-                    'notif_send_to' => $notification->notifiable_type::findOrFail($notification->notifiable_id)->fullName,
-                    'notif_data' => $notification->data['message'],
-                    'notif_created_date' => jalaliDate($notification->created_at),
+                    'notify_send_to' => $notification->notifiable_type::findOrFail($notification->notifiable_id)->fullName,
+                    'notify_data' => $notification->data['message'],
+                    'notify_created_date' => jalaliDate($notification->created_at),
                 ];
             }),
         ];

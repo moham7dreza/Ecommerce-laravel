@@ -21,7 +21,9 @@ class SendController extends Controller
     {
         //        $update = json_decode(file_get_contents('php://input'), true);
         $bot = new \basicbot();
+
         $responses = $bot->getDataFromApis();
+
 //        dd(json_decode($this->apiRequest('/setWebhook', ['url' => 'https://localhost/php-project/index.php'])));
         $updates = json_decode($bot->apiRequest('getUpdates', []));
         dump($updates);
@@ -99,7 +101,8 @@ class SendController extends Controller
                         $bot->SendMessage($chat_id, 'اطلاعاتی از پیام وارد شده برای نمایش وجود ندارد.');
                         break;
                 }
-            } elseif (isset($update->callback_query)) //answer to queez
+            }
+            elseif (isset($update->callback_query)) //answer to queez
             {
                 $msg_flag = false;
                 $chat_id = $update->callback_query->from->id;
@@ -159,7 +162,8 @@ class SendController extends Controller
                         $bot->SendMessage($chat_id, 'اطلاعاتی برای نمایش وجود ندارد.');
                         break;
                 }
-            } elseif (isset($update->inline_query)) {
+            }
+            elseif (isset($update->inline_query)) {
                 $id = $update->inline_query->from->id;
                 $name = $update->inline_query->from->first_name;
                 $user_name = $update->inline_query->from->username;
@@ -299,7 +303,7 @@ _" . $product_category_name . "_
         return Http::acceptJson()->pool(fn(Pool $pool) => [
             $pool->as('notifs')->get('127.0.0.1:8001/api/admin/notification/all'),
             $pool->as('products')->get('127.0.0.1:8001/api/admin/market/product/all'),
-            $pool->as('orders')->get('127.0.0.1:8001/api/admin/market/orders/all'),
+            $pool->as('orders')->get('127.0.0.1:8001/api/admin/market/order/all'),
             $pool->as('comments')->get('127.0.0.1:8001/api/admin/market/comment/all'),
         ]);
     }

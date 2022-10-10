@@ -69,6 +69,7 @@ Route::prefix('techno')->group(function () {
  *  */
 Route::prefix('user')->group(function () {
     Route::get('/profile', [HomeController::class, 'myProfile'])->name('user.profile');
+    Route::put('/{user}/update', [HomeController::class, 'updateUserInfo'])->name('user.update.info');
     Route::get('/orders', [HomeController::class, 'myOrders'])->name('user.orders');
     Route::get('/favorites', [HomeController::class, 'myFavorites'])->name('user.favorites');
     Route::get('/addresses', [HomeController::class, 'myAddresses'])->name('user.addresses');

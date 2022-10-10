@@ -26,7 +26,6 @@ Route::prefix('admin')->group(function () {
     Route::prefix('market')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/all', [ProductController::class, 'all'])->name('api.market.product.all');
-            Route::get('/cat/{name}', [ProductController::class, 'show'])->name('api.market.product.show');
         });
         Route::prefix('order')->group(function () {
             Route::get('/all', [OrderController::class, 'all'])->name('api.market.order.all');
@@ -35,7 +34,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/all', [CommentController::class, 'all'])->name('api.market.comment.all');
         });
     });
-    Route::prefix('notification')->group(function () {
-        Route::get('/all', [NotificationController::class, 'all'])->name('api.notification.all');
+    Route::prefix('notify')->group(function () {
+        Route::get('/all', [NotificationController::class, 'all'])->name('api.admin.notify.all');
     });
 });

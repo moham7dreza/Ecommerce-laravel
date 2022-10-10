@@ -55,17 +55,30 @@ class basicbot
 
     public function getProductsFromApi($name)
     {
-        return Http::acceptJson()->get('127.0.0.1:8001/api/admin/market/product/show/' . $name);
+        return Http::acceptJson()->get('127.0.0.1:8001/api/admin/market/product/show?name=' . $name);
     }
 
     public function getDataFromApis()
     {
         return Http::acceptJson()->pool(fn(Pool $pool) => [
-            $pool->as('notifs')->get('127.0.0.1:8001/api/admin/notification/all'),
+            $pool->as('notifs')->get('127.0.0.1:8001/api/admin/notify/all'),
             $pool->as('products')->get('127.0.0.1:8001/api/admin/market/product/all'),
-            $pool->as('orders')->get('127.0.0.1:8001/api/admin/market/orders/all'),
+            $pool->as('orders')->get('127.0.0.1:8001/api/admin/market/order/all'),
             $pool->as('comments')->get('127.0.0.1:8001/api/admin/market/comment/all'),
         ]);
+    }
+
+    public function apiProductRequest()
+    {
+        $handle = curl_init('127.0.0.1:8001/api/admin/market/product/all');
+        curl_setopt($handle, CURLOPT_HTTPHEADER, array( 'Accept: application/json', 'Content-Type: application/json'));
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($handle, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+        //return exec_curl_request($handle);
+        $result = curl_exec($handle);
+        curl_close($handle);
+        return $result;
     }
 
     public function apiRequest($method, $parameters)

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Customer;
 
+use App\Http\Requests\Customer\User\UpdateUserInfoRequest;
 use App\Models\Address;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\Brand;
+use App\Models\Market\Order;
 use App\Models\Province;
 use App\Models\Setting\Setting;
 use App\Models\SmartAssemble\System;
@@ -14,6 +16,7 @@ use App\Models\SmartAssemble\SystemBrand;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemMenu;
 use App\Models\SmartAssemble\SystemType;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Content\Banner;
@@ -87,14 +90,41 @@ class HomeController extends Controller
         return view('customer.user.profile');
     }
 
+    public function updateUserInfo(User $user, UpdateUserInfoRequest $request)
+    {
+        $inputs = $request->all();
+        $user->update($inputs);
+        return redirect()->back();
+    }
+
     public function myOrders()
     {
+        $order_status_value= null;
         if (isset(request()->type)) {
             $orders = auth()->user()->orders()->where('order_status', request()->type)->orderBy('id', 'desc')->get();
+            switch (request()->type) {
+                case 1:
+                    $order_status_value = 'در انتظار تایید';
+                    break;
+                case 2:
+                    $order_status_value = 'تاییده نشده';
+                    break;
+                case 3:
+                    $order_status_value = 'تایید شده';
+                    break;
+                case 4:
+                    $order_status_value = 'باطل شده';
+                    break;
+                case 5:
+                    $order_status_value = 'مرجوع شده';
+                    break;
+                default :
+                    $order_status_value = 'بررسی نشده';
+            }
         } else {
             $orders = auth()->user()->orders()->orderBy('id', 'desc')->get();
         }
-        return view('customer.user.orders', compact('orders'));
+        return view('customer.user.orders', compact('orders', 'order_status_value'));
     }
 
     public function myAddresses()

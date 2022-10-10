@@ -55,11 +55,87 @@
                     <!-- end content header -->
 
                     <section class="d-flex justify-content-end my-4">
-                        <a class="btn btn-link btn-sm text-info text-decoration-none mx-1" href="#"><i
+                        <a class="btn btn-link btn-sm text-info text-decoration-none mx-1" href="#"
+                           data-bs-toggle="modal" data-bs-target="#edit-user-info"><i
                                 class="fa fa-edit px-1"></i>ویرایش
                             حساب</a>
                     </section>
+                    <!-- start edit address Modal -->
+                    <section class="modal fade" id="edit-user-info" tabindex="-1"
+                             aria-labelledby="add-address-label" aria-hidden="true">
+                        <section class="modal-dialog">
+                            <section class="modal-content">
+                                <section class="modal-header">
+                                    <h5 class="modal-title" id="add-address-label"><i
+                                            class="fa fa-plus"></i> ویرایش حساب </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </section>
+                                <section class="modal-body">
+                                    <form class="row" method="post"
+                                          action="{{ route('user.update.info', $user) }}">
+                                        @csrf
+                                        @method('PUT')
 
+
+                                        <section class="col-6 mb-2">
+                                            <label for="first_name" class="form-label mb-1">نام</label>
+                                            <input
+                                                value="{{ $user->first_name  }}"
+                                                type="text" name="first_name"
+                                                class="form-control form-control-sm" id="first_name"
+                                                placeholder="نام">
+                                        </section>
+
+                                        <section class="col-6 mb-2">
+                                            <label for="last_name" class="form-label mb-1">نام
+                                                خانوادگی</label>
+                                            <input
+                                                value="{{ $user->last_name  }}"
+                                                type="text" name="last_name"
+                                                class="form-control form-control-sm" id="last_name"
+                                                placeholder="نام خانوادگی">
+                                        </section>
+
+                                        <section class="col-6 mb-2">
+                                            <label for="mobile" class="form-label mb-1">ایمیل</label>
+                                            <input value="{{ $user->email  ?? $user->email }}"
+                                                   type="text" name="email"
+                                                   class="form-control form-control-sm" id="email"
+                                                   placeholder="ایمیل">
+                                        </section>
+
+                                        <section class="col-6 mb-2">
+                                            <label for="mobile" class="form-label mb-1">شماره
+                                                موبایل</label>
+                                            <input value="{{ $user->mobile ?? $user->mobile }}"
+                                                   type="text" name="mobile"
+                                                   class="form-control form-control-sm" id="mobile"
+                                                   placeholder="شماره موبایل">
+                                        </section>
+
+                                        <section class="col-6 mb-2">
+                                            <label for="mobile" class="form-label mb-1">کد ملی</label>
+                                            <input value="{{ $user->national_code  ?? $user->national_code }}"
+                                                   type="text" name="national_code"
+                                                   class="form-control form-control-sm" id="national_code"
+                                                   placeholder="کد ملی">
+                                        </section>
+
+                                        <section class="modal-footer py-1">
+                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                ثبت
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                    data-bs-dismiss="modal">بستن
+                                            </button>
+                                        </section>
+                                    </form>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                    <!-- end edit address Modal -->
 
                     <section class="row">
                         <section class="col-6 border-bottom mb-2 py-2">

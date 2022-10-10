@@ -333,7 +333,6 @@
                                         </section>
                                     </section>
                                 </section>
-                                <!-- end add address Modal -->
                             </section>
                             <!-- end add address Modal -->
                         </section>
