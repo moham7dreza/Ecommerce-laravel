@@ -53,11 +53,11 @@
                             </button>
                             <section class="dropdown-menu dropdown-menu-end custom-drop-down"
                                      aria-labelledby="dropdownMenuButton1">
-                                <section><a class="dropdown-item" href="{{ route('user.profile') }}"><i
+                                <section><a class="dropdown-item" href="{{ route('customer.profile.info') }}"><i
                                             class="fa fa-user-circle"></i>پروفایل کاربری</a></section>
-                                <section><a class="dropdown-item" href="{{ route('user.orders') }}"><i
+                                <section><a class="dropdown-item" href="{{ route('customer.profile.orders') }}"><i
                                             class="fa fa-newspaper"></i>سفارشات</a></section>
-                                <section><a class="dropdown-item" href="{{ route('user.favorites') }}"><i
+                                <section><a class="dropdown-item" href="{{ route('customer.profile.favorites') }}"><i
                                             class="fa fa-heart"></i>لیست علاقه مندی</a></section>
                                 <section>
                                     <hr class="dropdown-divider">
@@ -67,7 +67,7 @@
                                 <section>
                                     <hr class="dropdown-divider">
                                 </section>
-                                <section><a class="dropdown-item" href="{{ route('customer.home') }}"><i
+                                <section><a class="dropdown-item" href="{{ route('auth.customer.logout') }}"><i
                                             class="fa fa-sign-out-alt"></i>خروج</a></section>
 
                             </section>

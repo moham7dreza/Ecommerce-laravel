@@ -127,8 +127,8 @@ class User extends Authenticatable
         return !!$roles->intersect($this->roles)->all();
     }
 
-//    public function products()
-//    {
-//        return $this->hasMany(Product::class);
-//    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
 }

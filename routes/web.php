@@ -1,14 +1,15 @@
 <?php
 
 use App\Http\Controllers\Assemble\SmartAssembleController;
-use App\Http\Controllers\Customer\SalesProcess\AddressController;
-use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Customer\HomeController;
-use App\Http\Controllers\Customer\SalesProcess\CartController;
-use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
+use App\Http\Controllers\Customer\HomeController;
+use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
+use App\Http\Controllers\Customer\SalesProcess\AddressController;
+use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaymentController;
+use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
+use App\Http\Controllers\Customer\UserProfile\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -67,14 +68,14 @@ Route::prefix('techno')->group(function () {
  * user profile pages
  *
  *  */
-Route::prefix('user')->group(function () {
-    Route::get('/profile', [HomeController::class, 'myProfile'])->name('user.profile');
-    Route::put('/{user}/update', [HomeController::class, 'updateUserInfo'])->name('user.update.info');
-    Route::get('/orders', [HomeController::class, 'myOrders'])->name('user.orders');
-    Route::get('/favorites', [HomeController::class, 'myFavorites'])->name('user.favorites');
-    Route::get('/addresses', [HomeController::class, 'myAddresses'])->name('user.addresses');
+Route::prefix('user')->namespace('UserProfile')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'myProfile'])->name('customer.profile.info');
+    Route::put('/{user}/update', [ProfileController::class, 'updateUserInfo'])->name('customer.profile.update.info');
+    Route::get('/orders', [ProfileController::class, 'myOrders'])->name('customer.profile.orders');
+    Route::get('/favorites', [ProfileController::class, 'myFavorites'])->name('customer.profile.favorites');
+    Route::get('/favorites/delete/{product}', [ProfileController::class, 'deleteFromFavorites'])->name('customer.profile.favorites.delete');
+    Route::get('/addresses', [ProfileController::class, 'myAddresses'])->name('customer.profile.addresses');
 });
-
 
 /*
  * sales process pages

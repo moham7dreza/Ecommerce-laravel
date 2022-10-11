@@ -4,41 +4,20 @@
         لیست علاقه مندی ها
     </title>
 @endsection
-@php
-    $user = auth()->user();
-@endphp
+
 @section('content')
 
     <section id="main-body-two-col" class="container-xxl body-container mb-5">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <section class="row">
-            <aside id="sidebar" class="sidebar col-md-3">
-                <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
-                    <!-- start sidebar nav-->
-                    <section class="sidebar-nav">
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.orders') }}">سفارش های من</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.addresses') }}">آدرس های من</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('user.favorites') }}">لیست علاقه مندی</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="{{ route('user.profile') }}">ویرایش حساب</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="{{ route('customer.home') }}">خروج از حساب کاربری</a></span>
-                        </section>
 
-                    </section>
-                    <!--end sidebar nav-->
-                </section>
+            @include('customer.layouts.partials.profile-sidebar')
 
-            </aside>
             <main id="main-body" class="main-body col-md-9">
                 <section class="content-wrapper bg-white p-3 rounded-2 mb-2">
 
@@ -55,68 +34,71 @@
                     </section>
                     <!-- end content header -->
 
-                    @foreach ($products as $product)
-                        @if($product->user->contains(Auth::user()->id))
-                            <section class="cart-item d-flex py-3">
-                                <section class="cart-img align-self-start flex-shrink-1"><img
-                                        src="{{ asset($product->image['indexArray']['medium']) }}" alt=""></section>
-                                <section class="align-self-start w-100">
-                                    <p class="fw-bold">{{ $product->name }}</p>
-                                    @php
-                                        $colors = $product->colors()->get();
-                                    @endphp
+                    @forelse (auth()->user()->products as $product)
+                        <section class="cart-item d-flex py-3">
+                            <section class="cart-img align-self-start flex-shrink-1"><img
+                                    src="{{ asset($product->image['indexArray']['medium']) }}" alt=""></section>
+                            <section class="align-self-start w-100">
+                                <p class="fw-bold">{{ $product->name }}</p>
+                                @php
+                                    $colors = $product->colors()->get();
+                                @endphp
 
-                                    @if($colors->count() != 0)
-                                        <p>
-                                            {{--                                        @foreach ($colors as $color)--}}
-                                            {{--                                        <span style="background-color: {{ $color->color }};"--}}
-                                            {{--                                             class="cart-product-selected-color me-1"></span>--}}
-                                            {{--                                        <span>{{ $colors->color_name }}</span>--}}
-                                            {{--                                        @endforeach--}}
-                                            <span style="background-color: {{ $colors->first()->color }};" --}}
-                                                  class="cart-product-selected-color me-1"></span>
-                                            <span>{{ $colors->first()->color_name }}</span>
-                                        </p>
-                                    @else
-                                        <p><span>رنگ منتخب وجود ندارد</span></p>
-                                    @endif
-
-                                    @php
-                                        $guarantees = $product->guarantees()->get();
-                                    @endphp
-                                    @if($guarantees->count() != 0)
-                                        <p><i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                            <span>{{ $guarantees->first()->name }}</span>
-                                        </p>
-                                    @else
-                                        <p><span>گارانتی منتخب وجود ندارد</span></p>
-                                    @endif
-
-
+                                @if($colors->count() != 0)
                                     <p>
-                                        @if($product->marketable_number > 0)
-                                            <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
-                                        @else
-                                            <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا ناموجود</span>
-                                        @endif
+                                        {{--                                        @foreach ($colors as $color)--}}
+                                        {{--                                        <span style="background-color: {{ $color->color }};"--}}
+                                        {{--                                             class="cart-product-selected-color me-1"></span>--}}
+                                        {{--                                        <span>{{ $colors->color_name }}</span>--}}
+                                        {{--                                        @endforeach--}}
+                                        <span style="background-color: {{ $colors->first()->color }};" --}}
+                                              class="cart-product-selected-color me-1"></span>
+                                        <span>{{ $colors->first()->color_name }}</span>
                                     </p>
+                                @else
+                                    <p><span>رنگ منتخب وجود ندارد</span></p>
+                                @endif
 
-                                    <section class="remove_product_from_favorite">
-                                        <button type="button"
-                                                data-url="{{ route('customer.market.add-to-favorite', $product) }}"
-                                                class="btn btn-light btn-sm text-decoration-none cart-delete"><i
-                                                class="fa fa-trash-alt"></i> حذف
-                                            از لیست علاقه ها
-                                        </button>
-                                    </section>
-                                </section>
-                                <section class="align-self-end flex-shrink-1">
-                                    <section class="text-nowrap fw-bold"><span>{{ priceFormat($product->price) }}</span>
-                                        <span class="small">تومان</span></section>
+                                @php
+                                    $guarantees = $product->guarantees()->get();
+                                @endphp
+                                @if($guarantees->count() != 0)
+                                    <p><i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
+                                        <span>{{ $guarantees->first()->name }}</span>
+                                    </p>
+                                @else
+                                    <p><span>گارانتی منتخب وجود ندارد</span></p>
+                                @endif
+
+
+                                <p>
+                                    @if($product->marketable_number > 0)
+                                        <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
+                                    @else
+                                        <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا ناموجود</span>
+                                    @endif
+                                </p>
+
+                                <section class="remove_product_from_favorite">
+                                    <a href="{{ route('customer.profile.favorites.delete', $product) }}"
+                                        class="text-decoration-none cart-delete"><i
+                                            class="fa fa-trash-alt"></i> حذف
+                                        از لیست علاقه ها
+                                    </a>
                                 </section>
                             </section>
-                        @endif
-                    @endforeach
+                            <section class="align-self-end flex-shrink-1">
+                                <section class="text-nowrap fw-bold"><span>{{ priceFormat($product->price) }}</span>
+                                    <span class="small">تومان</span></section>
+                            </section>
+                        </section>
+                    @empty
+                        <section class="order-item">
+                            <section class="d-flex justify-content-between">
+                                <p>محصولی یافت نشد</p>
+                            </section>
+                        </section>
+                    @endforelse
                 </section>
             </main>
         </section>

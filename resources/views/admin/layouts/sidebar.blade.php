@@ -14,6 +14,7 @@
             {{--                <i class="fas fa-gift"></i>--}}
             {{--                <span>پی سی پیک - اسمبل سیستم</span>--}}
             {{--            </a>--}}
+
 {{--            @can('ربات تلگرام')--}}
                 <section class="sidebar-part-title">ربات تلگرام</section>
                 <a href="{{ route('admin.bot.message') }}" class="sidebar-link">
@@ -21,6 +22,15 @@
                     <span>ارسال پیام</span>
                 </a>
 {{--            @endcan--}}
+
+            {{--            @can('ربات تلگرام')--}}
+            <section class="sidebar-part-title">گزارشات</section>
+            <a href="{{ route('admin.reports.charts.sales') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>نمودار فروش</span>
+            </a>
+            {{--            @endcan--}}
+
             @can('اسمبل هوشمند')
                 <section class="sidebar-part-title">پی سی پیک</section>
 

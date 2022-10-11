@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Report\ChartController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemBrandController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemCategoryController;
 use App\Http\Controllers\Admin\SmartAssemble\SystemClassGalleryController;
@@ -66,6 +67,12 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         Route::prefix('send')->group(function () {
             Route::get('/', [SendController::class, 'message'])->name('admin.bot.message');
             Route::post('/message', [SendController::class, 'sendMessage'])->name('admin.bot.send.message');
+        });
+    });
+
+    Route::prefix('reports')->namespace('Report')->group(function () {
+        Route::prefix('charts')->group(function () {
+            Route::get('sales', [ChartController::class, 'salesChart'])->name('admin.reports.charts.sales');
         });
     });
 

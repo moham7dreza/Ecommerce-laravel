@@ -9,34 +9,9 @@
 <?php $__env->startSection('content'); ?>
     <section id="main-body-two-col" class="container-xxl body-container mb-5">
         <section class="row">
-            <aside id="sidebar" class="sidebar col-md-3">
-                <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
-                    <!-- start sidebar nav-->
-                    <section class="sidebar-nav">
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="<?php echo e(route('user.orders')); ?>">سفارش های من</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="<?php echo e(route('user.addresses')); ?>">آدرس های من</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="<?php echo e(route('user.favorites')); ?>">لیست علاقه مندی</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                    <span class="sidebar-nav-item-title"><a class="p-3"
-                                                            href="<?php echo e(route('user.profile')); ?>">ویرایش حساب</a></span>
-                        </section>
-                        <section class="sidebar-nav-item">
-                            <span class="sidebar-nav-item-title"><a class="p-3" href="<?php echo e(route('auth.customer.logout')); ?>">خروج از حساب کاربری</a></span>
-                        </section>
 
-                    </section>
-                    <!--end sidebar nav-->
-                </section>
+            <?php echo $__env->make('customer.layouts.partials.profile-sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-            </aside>
             <main id="main-body" class="main-body col-md-9">
                 <section class="content-wrapper bg-white p-3 rounded-2 mb-2">
 
@@ -72,7 +47,7 @@
                                 </section>
                                 <section class="modal-body">
                                     <form class="row" method="post"
-                                          action="<?php echo e(route('user.update.info', $user)); ?>">
+                                          action="<?php echo e(route('customer.profile.update.info', $user)); ?>">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('PUT'); ?>
 

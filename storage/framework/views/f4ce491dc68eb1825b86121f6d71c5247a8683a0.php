@@ -15,11 +15,21 @@
             
             
 
+
                 <section class="sidebar-part-title">ربات تلگرام</section>
                 <a href="<?php echo e(route('admin.bot.message')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>ارسال پیام</span>
                 </a>
+
+
+            
+            <section class="sidebar-part-title">گزارشات</section>
+            <a href="<?php echo e(route('admin.reports.charts.sales')); ?>" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>نمودار فروش</span>
+            </a>
+            
 
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('اسمبل هوشمند')): ?>
                 <section class="sidebar-part-title">پی سی پیک</section>
