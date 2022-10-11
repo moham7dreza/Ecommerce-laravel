@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\Market\CommentController;
 use App\Http\Controllers\Api\Market\OrderController;
 use App\Http\Controllers\Api\Market\ProductController;
+use App\Http\Controllers\Api\Market\ReportController;
 use App\Http\Controllers\Api\NotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::prefix('admin')->group(function () {
-    Route::prefix('market')->group(function () {
+    Route::prefix('market')->namespace('Market')->group(function () {
         Route::prefix('product')->group(function () {
             Route::get('/all', [ProductController::class, 'all'])->name('api.market.product.all');
         });
@@ -32,6 +33,10 @@ Route::prefix('admin')->group(function () {
         });
         Route::prefix('comment')->group(function () {
             Route::get('/all', [CommentController::class, 'all'])->name('api.market.comment.all');
+        });
+        Route::prefix('report')->group(function () {
+            Route::get('/weekly-sales', [ReportController::class, 'weeklyTotalSales'])->name('api.market.report.weekly.sales');
+            Route::get('/monthly-sales', [ReportController::class, 'monthlyTotalSales'])->name('api.market.report.monthly.sales');
         });
     });
     Route::prefix('notify')->group(function () {
