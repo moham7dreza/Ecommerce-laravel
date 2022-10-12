@@ -46,6 +46,10 @@ use App\Http\Controllers\Admin\Ticket\TicketCategoryController;
 use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
+
+use App\Http\Controllers\Panel\PanelController;
+use App\Http\Controllers\Panel\TelegramBot\SendController as BotSendController;
+use App\Http\Controllers\Panel\Report\ChartController as PanelChartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,7 +66,6 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
     *  telegram bot
     *
     * */
-
     Route::prefix('telegram-bot')->namespace('TelegramBot')->group(function () {
         Route::prefix('send')->group(function () {
             Route::get('/', [SendController::class, 'message'])->name('admin.bot.message');
@@ -70,12 +73,20 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*
+    *  system usage reports
+    *
+    * */
     Route::prefix('reports')->namespace('Report')->group(function () {
         Route::prefix('charts')->group(function () {
             Route::get('sales', [ChartController::class, 'salesChart'])->name('admin.reports.charts.sales');
         });
     });
 
+    /*
+        *  smart assemble system
+        *
+        * */
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
         //brand
         Route::prefix('brand')->group(function () {
@@ -552,3 +563,37 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
     Route::post('/notification/read-all', [NotificationController::class, 'readAll'])->name('admin.notification.readAll');
 });
 
+Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')->group(function () {
+
+    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
+
+    /*
+        *  telegram bot
+        *
+        * */
+    Route::prefix('telegram-bot')->namespace('TelegramBot')->group(function () {
+        Route::prefix('send')->group(function () {
+            Route::get('/', [BotSendController::class, 'message'])->name('panel.bot.message');
+            Route::post('/message', [BotSendController::class, 'sendMessage'])->name('panel.bot.send.message');
+        });
+    });
+
+    /*
+    *  system usage reports
+    *
+    * */
+    Route::prefix('reports')->namespace('Report')->group(function () {
+        Route::prefix('charts')->group(function () {
+            Route::get('sales', [PanelChartController::class, 'salesChart'])->name('panel.reports.charts.sales');
+        });
+    });
+
+    /*
+        *  smart assemble system
+        *
+        * */
+    Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
+
+    });
+
+});

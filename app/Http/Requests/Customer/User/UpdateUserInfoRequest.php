@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Customer\User;
 
+use App\Rules\NationalCode;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserInfoRequest extends FormRequest
 {
@@ -24,11 +26,10 @@ class UpdateUserInfoRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'national_code' => 'required',
-            'mobile' => 'required',
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'national_code' => ['sometimes', 'required', new NationalCode(),
+                Rule::unique('users')->ignore($this->user->national_code, 'national_code')],
         ];
     }
 }

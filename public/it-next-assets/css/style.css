@@ -10,8 +10,8 @@
 	3.  BASIC
     4.  LOADER
 	5.  HEADER
-	      - Header Top
-	      - Menu
+	      - Header Top 
+	      - Menu 
 	      - Search Bar
 	      - Side Menu
 		  - Fix Header
@@ -30,13 +30,13 @@
 	11. INNER PAGE BANNER
 	12. SIDEBAR
 	     - Sidebar Search
-	13. BLOG
-         - Blog Detail
+	13. BLOG	
+         - Blog Detail	
 	14. CASE STUDIES
 	15. SHOP
     16. FOOTER
 	17. CUSTOM
-
+		
 	-------------------------------------------------------------------*/
 
 
@@ -746,8 +746,6 @@ hr.dottad_border {
 }
 
 .section {
-    direction: rtl;
-    text-align: right;
 	float: left;
 	width: 100%;
 }
@@ -3203,7 +3201,7 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-	17. TESTMONIAL
+	17. TESTMONIAL 
 	-------------------------------------------------------------------*/
 
 .testmonial_section {

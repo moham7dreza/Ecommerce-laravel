@@ -15,11 +15,16 @@ class ProfileController extends Controller
         return view('customer.user.profile');
     }
 
-    public function updateUserInfo(User $user, UpdateUserInfoRequest $request)
+    public function updateUserInfo(UpdateUserInfoRequest $request)
     {
-        $inputs = $request->all();
+        $inputs = [
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'national_code' => $request->national_code
+        ];
+        $user = auth()->user();
         $user->update($inputs);
-        return redirect()->back();
+        return redirect()->route('customer.profile.info')->with('success', 'حساب کاربری با موفقیت ویرایش شد');
     }
 
     public function myOrders()

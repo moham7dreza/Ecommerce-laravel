@@ -65,6 +65,9 @@
                                 <section><a class="dropdown-item" href="<?php echo e(route('admin.home')); ?>"><i
                                             class="fa fa-heart"></i>پنل ادمین</a></section>
                                 <section>
+                                    <section><a class="dropdown-item" href="<?php echo e(route('panel.home')); ?>"><i
+                                            class="fa fa-heart"></i>پنل جدید</a></section>
+                                <section>
                                     <hr class="dropdown-divider">
                                 </section>
                                 <section><a class="dropdown-item" href="<?php echo e(route('auth.customer.logout')); ?>"><i

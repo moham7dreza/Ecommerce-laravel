@@ -70,7 +70,7 @@ Route::prefix('techno')->group(function () {
  *  */
 Route::prefix('user')->namespace('UserProfile')->group(function () {
     Route::get('/profile', [ProfileController::class, 'myProfile'])->name('customer.profile.info');
-    Route::put('/{user}/update', [ProfileController::class, 'updateUserInfo'])->name('customer.profile.update.info');
+    Route::put('/update', [ProfileController::class, 'updateUserInfo'])->name('customer.profile.update.info');
     Route::get('/orders', [ProfileController::class, 'myOrders'])->name('customer.profile.orders');
     Route::get('/favorites', [ProfileController::class, 'myFavorites'])->name('customer.profile.favorites');
     Route::get('/favorites/delete/{product}', [ProfileController::class, 'deleteFromFavorites'])->name('customer.profile.favorites.delete');

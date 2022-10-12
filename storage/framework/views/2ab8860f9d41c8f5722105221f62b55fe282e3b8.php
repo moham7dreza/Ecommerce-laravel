@@ -112,7 +112,7 @@
 
                     </section>
                         <?php
-                            $user = \App\Models\User::find(auth()->user()->id);
+                            $user = auth()->user();
                         ?>
                     </span>
                     <span class="ml-3 ml-md-5 position-relative">
