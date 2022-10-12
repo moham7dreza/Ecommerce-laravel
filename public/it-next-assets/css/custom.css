@@ -3,3 +3,25 @@
 -------------------------------------------------------------------*/
 
 /** ADD YOUR AWESOME CODES HERE **/
+
+@font-face {
+    font-family: IRANSans;
+    src: url('../fonts/IRANSans/IRANSansWeb_Light.woff'),
+    url('../fonts/IRANSans/IRANSansWeb_Light.woff') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir/Vazir.eot'); /* IE9 Compat Modes */
+    /*src: url('../fonts/Vazir/Vazir.eot?#iefix') format('embedded-opentype'), !* IE6-IE8 *!*/
+url('../fonts/Vazir/Vazir.woff2') format('woff2'), /* Super Modern Browsers */
+url('../fonts/Vazir/Vazir.woff') format('woff'), /* Pretty Modern Browsers */
+url('../fonts/Vazir/Vazir.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+* {
+    /*direction: rtl;*/
+    /*text-align: right;*/
+    /*font-family: 'Vazir', Arial, Helvetica, sans-serif;*/
+    font-family: IRANSans, sans-serif;
+}

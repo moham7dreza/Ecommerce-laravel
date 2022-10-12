@@ -135,6 +135,7 @@ Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
 
     // assemble by user
     Route::get('/', [SmartAssembleController::class, 'index'])->name('smart.assemble.index');
+    Route::get('/pc-part-picker', [SmartAssembleController::class, 'pcPartPicker'])->name('smart.assemble.pc-part-picker');
 
     // recommended system categories, types, cpus and configs
     Route::get('/systems/', [SmartAssembleController::class, 'systemCategories'])->name('smart.assemble.categories');

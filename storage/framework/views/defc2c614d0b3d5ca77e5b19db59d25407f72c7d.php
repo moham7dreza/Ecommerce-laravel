@@ -80,3 +80,4 @@
     </div>
 </footer>
 <!-- end footer -->
+<?php /**PATH C:\CODEX\techzilla\resources\views/smart-assemble/layouts/footer.blade.php ENDPATH**/ ?>
