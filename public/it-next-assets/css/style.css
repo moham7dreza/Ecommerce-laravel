@@ -10,8 +10,8 @@
 	3.  BASIC
     4.  LOADER
 	5.  HEADER
-	      - Header Top 
-	      - Menu 
+	      - Header Top
+	      - Menu
 	      - Search Bar
 	      - Side Menu
 		  - Fix Header
@@ -30,13 +30,13 @@
 	11. INNER PAGE BANNER
 	12. SIDEBAR
 	     - Sidebar Search
-	13. BLOG	
-         - Blog Detail	
+	13. BLOG
+         - Blog Detail
 	14. CASE STUDIES
 	15. SHOP
     16. FOOTER
 	17. CUSTOM
-		
+
 	-------------------------------------------------------------------*/
 
 
@@ -810,23 +810,23 @@ hr.dottad_border {
 
 .loader_animation {
 	animation-name: rotatey;
-	animation-duration: 2s;
+	animation-duration: 1s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	-webkit-animation-name: rotatey;
-	-webkit-animation-duration: 2s;
+	-webkit-animation-duration: 1s;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 	-moz-animation-name: rotatey;
-	-moz-animation-duration: 2s;
+	-moz-animation-duration: 1s;
 	-moz-animation-iteration-count: infinite;
 	-moz-animation-timing-function: linear;
 	-ms-animation-name: rotatey;
-	-ms-animation-duration: 2s;
+	-ms-animation-duration: 1s;
 	-ms-animation-iteration-count: infinite;
 	-ms-animation-timing-function: linear;
 	-o-animation-name: rotatey;
-	-o-animation-duration: 2s;
+	-o-animation-duration: 1s;
 	-o-animation-iteration-count: infinite;
 	-o-animation-timing-function: linear;
 }
@@ -3201,7 +3201,7 @@ span.skill {
 
 
 /*------------------------------------------------------------------
-	17. TESTMONIAL 
+	17. TESTMONIAL
 	-------------------------------------------------------------------*/
 
 .testmonial_section {

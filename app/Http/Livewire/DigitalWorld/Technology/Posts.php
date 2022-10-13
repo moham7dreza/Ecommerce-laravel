@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Livewire\Techno;
+namespace App\Http\Livewire\DigitalWorld\Technology;
 
-use App\Models\Content\Banner;
 use App\Models\Content\Post;
 use Livewire\Component;
 
@@ -17,7 +16,7 @@ class Posts extends Component
 
     public function render()
     {
-        return view('livewire.techno.posts', [
+        return view('livewire.digital-world.technology.posts', [
             'posts' => $this->posts,
             ])
             ->extends('customer.layouts.master-one-col');

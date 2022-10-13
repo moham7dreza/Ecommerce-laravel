@@ -11,6 +11,11 @@
             <span
                 class="badge badge-pill badge-success">تک زیلا</span></a>
     </li>
+    <li class="side a-collapse short m-2 pr-1 pl-1">
+        <a href="<?php echo e(route('it-city.pc.smart-assemble.index')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>آی تی سی تی
+            <span
+                class="badge badge-pill badge-success">تکنولوژی</span></a>
+    </li>
     <ul class="side a-collapse short ">
         <a class="ul-text  fnt-mxs"><i class="fas fa-tachometer-alt mr-1"></i> صفحه
             <!-- <span class="badge badge-info">4</span> -->

@@ -48,15 +48,16 @@
                     <div class="menu_side">
                         <div id="navbar_menu">
                             <ul class="first-ul">
-                                <li> <a class="active" href="{{ route('customer.home') }}">خانه</a>
-                                    <ul>
+                                <li> <a class="active" href="{{ route('it-city.pc.smart-assemble.index') }}">خانه</a>
+                                    <ul class="text-right">
                                         <li><a href="{{ route('customer.home') }}">فروشگاه</a></li>
-                                        <li><a href="{{ route('techno.posts') }}">تکنولوزی نیوز</a></li>
+                                        <li><a href="{{ route('digital-world.technology.index') }}">دنیای دیجیتالی</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="it_about.html">درباره ما</a></li>
+                                <li><a href="{{ route('panel.home') }}">پنل</a></li>
+                                <li><a href="{{ route('it-city.pc.smart-assemble.pages.about-us') }}">درباره ما</a></li>
                                 <li> <a href="it_service.html">سرویس ها</a>
-                                    <ul>
+                                    <ul class="text-right">
                                         <li><a href="it_service_list.html">لیست سرویس ها</a></li>
                                         <li><a href="it_service_detail.html">جزئیات سرویس ها</a></li>
                                     </ul>
@@ -69,7 +70,7 @@
 {{--                                    </ul>--}}
                                 </li>
                                 <li> <a href="#">محصولات</a>
-                                    <ul>
+                                    <ul class="text-right">
                                         <li><a href="it_career.html">سیستم های گیمینگ</a></li>
                                         <li><a href="it_price.html">اداری</a></li>
                                         <li><a href="it_faq.html">رندرینگ</a></li>

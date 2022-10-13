@@ -563,6 +563,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
     Route::post('/notification/read-all', [NotificationController::class, 'readAll'])->name('admin.notification.readAll');
 });
 
+/*
+ * new admin panel section
+ * */
+
 Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')->group(function () {
 
     Route::get('/', [PanelController::class, 'index'])->name('panel.home');

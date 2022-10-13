@@ -45,17 +45,17 @@
                 </div>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                     <!-- menu start -->
-                    <div class="menu_side d-flex justify-content-between">
+                    <div class="menu_side">
                         <div id="navbar_menu">
                             <ul class="first-ul">
-                                <li> <a class="active" href="<?php echo e(route('customer.home')); ?>">خانه</a>
+                                <li> <a class="active" href="<?php echo e(route('it-city.pc.smart-assemble.index')); ?>">خانه</a>
                                     <ul class="text-right">
                                         <li><a href="<?php echo e(route('customer.home')); ?>">فروشگاه</a></li>
-                                        <li><a href="<?php echo e(route('technology.posts')); ?>">تکنولوزی نیوز</a></li>
+                                        <li><a href="<?php echo e(route('digital-world.technology.index')); ?>">دنیای دیجیتالی</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo e(route('panel.home')); ?>">پنل</a></li>
-                                <li><a href="<?php echo e(route('smart.assemble.pages.about-us')); ?>">درباره ما</a></li>
+                                <li><a href="<?php echo e(route('it-city.pc.smart-assemble.pages.about-us')); ?>">درباره ما</a></li>
                                 <li> <a href="it_service.html">سرویس ها</a>
                                     <ul class="text-right">
                                         <li><a href="it_service_list.html">لیست سرویس ها</a></li>
@@ -108,4 +108,4 @@
     <!-- header bottom end -->
 </header>
 <!-- end header -->
-<?php /**PATH C:\CODEX\techzilla\resources\views/smart-assemble/layouts/header.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\techzilla\resources\views/it-city/layouts/header.blade.php ENDPATH**/ ?>

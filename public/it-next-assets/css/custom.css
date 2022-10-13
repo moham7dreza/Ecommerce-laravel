@@ -25,3 +25,7 @@ url('../fonts/Vazir/Vazir.ttf')  format('truetype'), /* Safari, Android, iOS */
     /*font-family: 'Vazir', Arial, Helvetica, sans-serif;*/
     font-family: IRANSans, sans-serif;
 }
+.padding_layout_1 {
+    padding-top: 20px;
+    padding-bottom: 25px;
+}

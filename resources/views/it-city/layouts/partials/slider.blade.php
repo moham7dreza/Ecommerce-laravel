@@ -11,7 +11,7 @@
                         <li data-index="rs-1812" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
                             data-thumb="{{ asset('it-next-assets/images/it_service/slide1.jpg') }}" data-rotate="0" data-saveperformance="off"
-                            data-title="Computer Services" data-description="">
+                            data-title="سرویس های کامپیوتری" data-description="">
                             <!-- MAIN IMAGE -->
                             <img
                                 src="{{ asset('it-next-assets/images/it_service/slide1.jpg') }}" alt="#"
@@ -73,7 +73,7 @@
                                  data-splitout="none"
                                  data-responsive_offset="on"
                                  data-elementdelay="0.05"
-                                 style="z-index: 6; white-space: nowrap;">Laptops and Widgets
+                                 style="z-index: 6; white-space: nowrap;">ROG Strix
                             </div>
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
@@ -98,7 +98,7 @@
                         <li data-index="rs-181" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
                             data-thumb="{{ asset('it-next-assets/images/it_service/slide2.jpg') }}" data-rotate="0" data-saveperformance="off"
-                            data-title="Easy To Use & Customize" data-description="">
+                            data-title="سرویس اسمبل هوشمند" data-description="">
                             <!-- MAIN IMAGE -->
                             <img src="{{ asset('it-next-assets/images/it_service/slide2.jpg') }}" alt=""
                                  data-bgposition="center center"
@@ -159,7 +159,7 @@
                                  data-splitout="none"
                                  data-responsive_offset="on"
                                  data-elementdelay="0.05"
-                                 style="z-index: 6; white-space: nowrap;">Computer Services
+                                 style="z-index: 6; white-space: nowrap;">TUF Gaming
                             </div>
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
@@ -184,7 +184,7 @@
                         <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
                             data-thumb="{{ asset('it-next-assets/images/it_service/slide3.jpg') }}" data-rotate="0" data-saveperformance="off"
-                            data-title="Perfectly Responsive" data-description="">
+                            data-title="اخبار سخت افزار" data-description="">
                             <!-- MAIN IMAGE -->
                             <img src="{{ asset('it-next-assets/images/it_service/slide3.jpg') }}" alt=""
                                  data-bgposition="center center"
@@ -245,7 +245,7 @@
                                  data-splitout="none"
                                  data-responsive_offset="on"
                                  data-elementdelay="0.05"
-                                 style="z-index: 6; white-space: nowrap;">Smart Assemble
+                                 style="z-index: 6; white-space: nowrap;">NVIDIA Geforce Alliance
                             </div>
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"

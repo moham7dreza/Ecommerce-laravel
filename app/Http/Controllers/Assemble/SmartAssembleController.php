@@ -119,9 +119,4 @@ class SmartAssembleController extends Controller
             return redirect()->route('auth.customer.login-register-form');
         }
     }
-
-    public function pcPartPicker()
-    {
-        return view('smart-assemble.pc-part-pick');
-    }
 }

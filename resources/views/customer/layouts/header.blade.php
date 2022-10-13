@@ -204,8 +204,8 @@
                             رم</a></section>
                     <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a>
                     </section>
-                    <section class="navbar-item"><a href="{{ route('techno.posts') }}">تکنولوژی نیوز</a></section>
-                    <section class="navbar-item"><a href="{{ route('smart.assemble.pc-part-picker') }}">آی تی</a></section>
+                    <section class="navbar-item"><a href="{{ route('digital-world.technology.index') }}">دنیای دیجیتالی</a></section>
+                    <section class="navbar-item"><a href="{{ route('it-city.pc.smart-assemble.index') }}">آی تی سی تی</a></section>
 
                 </section>
 

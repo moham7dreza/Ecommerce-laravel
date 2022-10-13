@@ -9,6 +9,10 @@ use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaymentController;
 use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
 use App\Http\Controllers\Customer\UserProfile\ProfileController;
+use App\Http\Controllers\ItCity\PC\PcSmartAssembleController;
+use \App\Http\Livewire\DigitalWorld\Technology\Posts;
+use \App\Http\Livewire\DigitalWorld\Technology\PostDetail;
+use \App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use Illuminate\Support\Facades\Route;
 
 
@@ -49,18 +53,19 @@ Route::get('/', [HomeController::class, 'home'])->name('customer.home');
  * implement with livewire
  *
  * **/
-
-Route::prefix('techno')->group(function () {
-    // main page - show all posts
-    Route::get('/posts', \App\Http\Livewire\Techno\Posts::class)->name('techno.posts');
-    // single page of show post details
-    Route::get('/post/{post:slug}', \App\Http\Livewire\Techno\PostDetail::class)->name('techno.post.detail');
-    // add comment to post in that page
-//    Route::post('/add-comment/post/{post:slug}', \App\Http\Livewire\Techno\AddCommentToPost::class)->name('techno.post.add-comment');
-    // add post to favorites in main page of all posts
-//    Route::get('/add-to-favorite/post/{post:slug}', \App\Http\Livewire\Techno\Posts::class)->name('techno.post.add-to-favorite');
-    // show all posts of one special category
-    Route::get('/category/{postCategory}/posts', \App\Http\Livewire\Techno\CategoryPosts::class)->name('techno.category.posts');
+Route::prefix('digital-world')->group(function () {
+    Route::prefix('technology')->group(function () {
+        // main page - show all posts
+        Route::get('/posts', Posts::class)->name('digital-world.technology.index');
+        // single page of show post details
+        Route::get('/post/{post:slug}', PostDetail::class)->name('digital-world.technology.post.detail');
+        // add comment to post in that page
+//    Route::post('/add-comment/post/{post:slug}', \App\Http\Livewire\Techno\AddCommentToPost::class)->name('technology.post.add-comment');
+        // add post to favorites in main page of all posts
+//    Route::get('/add-to-favorite/post/{post:slug}', \App\Http\Livewire\Techno\Posts::class)->name('technology.post.add-to-favorite');
+        // show all posts of one special category
+        Route::get('/category/{postCategory}/posts', CategoryPosts::class)->name('digital-world.technology.category.posts');
+    });
 });
 
 
@@ -125,6 +130,21 @@ Route::namespace('Market')->group(function () {
     Route::get('/add-to-favorite/prodcut/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
 });
 
+/*
+ * new it city section
+ *
+ *  */
+
+Route::prefix('it-city')->namespace('ItCity')->group(function () {
+    Route::prefix('pc')->namespace('PC')->group(function () {
+        Route::prefix('smart-assemble')->group(function () {
+            Route::get('/', [PcSmartAssembleController::class, 'index'])->name('it-city.pc.smart-assemble.index');
+            Route::prefix('pages')->group(function () {
+                Route::get('/about-us', [PcSmartAssembleController::class, 'aboutUs'])->name('it-city.pc.smart-assemble.pages.about-us');
+            });
+        });
+    });
+});
 
 /*
  * system smart assemble pages
@@ -135,7 +155,6 @@ Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
 
     // assemble by user
     Route::get('/', [SmartAssembleController::class, 'index'])->name('smart.assemble.index');
-    Route::get('/pc-part-picker', [SmartAssembleController::class, 'pcPartPicker'])->name('smart.assemble.pc-part-picker');
 
     // recommended system categories, types, cpus and configs
     Route::get('/systems/', [SmartAssembleController::class, 'systemCategories'])->name('smart.assemble.categories');

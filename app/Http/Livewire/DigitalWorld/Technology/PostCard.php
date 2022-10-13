@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Techno;
+namespace App\Http\Livewire\DigitalWorld\Technology;
 
 use App\Models\Content\Post;
 use Livewire\Component;
@@ -16,6 +16,6 @@ class PostCard extends Component
 
     public function render()
     {
-        return view('livewire.techno.post-card');
+        return view('livewire.digital-world.technology.post-card');
     }
 }

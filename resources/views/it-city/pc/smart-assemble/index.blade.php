@@ -1,11 +1,12 @@
-<?php $__env->startSection('head-tag'); ?>
+@extends('it-city.layouts.master')
+@section('head-tag')
     <title>
         پی سی پارت پیک
     </title>
-<?php $__env->stopSection(); ?>
+@endsection
 
-<?php $__env->startSection('content'); ?>
-    <?php echo $__env->make('smart-assemble.layouts.partials.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+@section('content')
+    @include('it-city.layouts.partials.slider')
 
     <!-- section heading systems intro -->
     <div class="section padding_layout_1">
@@ -24,7 +25,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="full text_align_center margin_bottom_30">
                         <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
+                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
                         </div>
                         <h4 class="theme_color">سیستم های گیمینگ</h4>
                         <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
@@ -33,7 +34,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="full text_align_center margin_bottom_30">
                         <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
+                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
                         </div>
                         <h4 class="theme_color">سیستم های گیمینگ</h4>
                         <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
@@ -42,7 +43,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="full text_align_center margin_bottom_30">
                         <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
+                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
                         </div>
                         <h4 class="theme_color">سیستم های گیمینگ</h4>
                         <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
@@ -51,7 +52,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="full text_align_center margin_bottom_30">
                         <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
+                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
                         </div>
                         <h4 class="theme_color">سیستم های گیمینگ</h4>
                         <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
@@ -80,7 +81,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                     <div class="product_list">
                         <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
+                                                      src="{{ asset('it-next-assets/system.png') }}" alt=""></div>
                         <div class="product_detail_btm">
                             <div class="center">
                                 <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
@@ -102,7 +103,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                     <div class="product_list">
                         <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
+                                                      src="{{ asset('it-next-assets/system.png') }}" alt=""></div>
                         <div class="product_detail_btm">
                             <div class="center">
                                 <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
@@ -124,7 +125,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                     <div class="product_list">
                         <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
+                                                      src="{{ asset('it-next-assets/system.png') }}" alt=""></div>
                         <div class="product_detail_btm">
                             <div class="center">
                                 <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
@@ -146,7 +147,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
                     <div class="product_list">
                         <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
+                                                      src="{{ asset('it-next-assets/system.png') }}" alt=""></div>
                         <div class="product_detail_btm">
                             <div class="center">
                                 <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
@@ -186,7 +187,7 @@
                 <div class="col-md-4 text-right">
                     <div class="full blog_colum">
                         <div class="blog_feature_img"><img
-                                src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
+                                src="{{ asset('it-next-assets/images/it_service/post-03.jpg') }}" alt="#"/></div>
                         <div class="post_time">
                             <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
                         </div>
@@ -201,7 +202,7 @@
                 <div class="col-md-4 text-right">
                     <div class="full blog_colum">
                         <div class="blog_feature_img"><img
-                                src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
+                                src="{{ asset('it-next-assets/images/it_service/post-03.jpg') }}" alt="#"/></div>
                         <div class="post_time">
                             <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
                         </div>
@@ -216,7 +217,7 @@
                 <div class="col-md-4 text-right">
                     <div class="full blog_colum">
                         <div class="blog_feature_img"><img
-                                src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
+                                src="{{ asset('it-next-assets/images/it_service/post-03.jpg') }}" alt="#"/></div>
                         <div class="post_time">
                             <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
                         </div>
@@ -250,7 +251,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="full team_blog_colum">
                         <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-1.jpg')); ?>"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-1.jpg') }}"
                                                       alt="#"></div>
                         <div class="team_feature_head">
                             <h4>محمدرضا رضایی</h4>
@@ -276,7 +277,7 @@
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
                         <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
                                                       alt="#"></div>
                         <div class="team_feature_head">
                             <h4>سارا امینی</h4>
@@ -302,7 +303,7 @@
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
                         <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-3.jpg')); ?>"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-3.jpg') }}"
                                                       alt="#"></div>
                         <div class="team_feature_head">
                             <h4>سینا حسینی</h4>
@@ -328,7 +329,7 @@
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
                         <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
                                                       alt="#"></div>
                         <div class="team_feature_head">
                             <h4>سارا</h4>
@@ -364,7 +365,7 @@
                     <div class="full">
                         <div class="contact_us_section rtl">
                             <div class="call_icon"><img
-                                    src="<?php echo e(asset('it-next-assets/images/it_service/phone_icon.png')); ?>" alt="#"/></div>
+                                    src="{{ asset('it-next-assets/images/it_service/phone_icon.png') }}" alt="#"/></div>
                             <div class="inner_cont">
                                 <h2>درخواست یک نقل قول رایگان</h2>
                                 <p>از افرادی که می خواهید پاسخ و مشاوره دریافت کنید.</p>
@@ -386,11 +387,11 @@
                 <div class="col-md-12">
                     <div class="full">
                         <ul class="brand_list">
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
+                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
+                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
+                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
+                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
+                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
                         </ul>
                     </div>
                 </div>
@@ -398,6 +399,4 @@
         </div>
     </div>
     <!-- end section -->
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('smart-assemble.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/smart-assemble/index.blade.php ENDPATH**/ ?>
+@endsection

@@ -1,7 +1,7 @@
 <div class="card mb-3" style="max-width: 650px;">
     <div class="row g-0">
         <div class="col-md-4">
-            <a href="{{ route('techno.post.detail', $post) }}">
+            <a href="{{ route('digital-world.technology.post.detail', $post) }}">
                 <img src="{{ asset($post->image['indexArray']['medium']) }}" class="img-fluid rounded-start" alt="{{ asset($post->image['indexArray']['medium']) }}">
             </a>
         </div>

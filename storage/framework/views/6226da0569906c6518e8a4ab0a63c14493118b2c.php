@@ -1,7 +1,7 @@
 <div class="card mb-3" style="max-width: 650px;">
     <div class="row g-0">
         <div class="col-md-4">
-            <a href="<?php echo e(route('technology.post.detail', $post)); ?>">
+            <a href="<?php echo e(route('digital-world.technology.post.detail', $post)); ?>">
                 <img src="<?php echo e(asset($post->image['indexArray']['medium'])); ?>" class="img-fluid rounded-start" alt="<?php echo e(asset($post->image['indexArray']['medium'])); ?>">
             </a>
         </div>
@@ -16,4 +16,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/technology/post-card.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/digital-world/technology/post-card.blade.php ENDPATH**/ ?>

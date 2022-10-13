@@ -193,7 +193,7 @@
                     <section class="navbar-item"><a href="#">درباره ما</a></section>
                     <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
                     <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
-                    
+
                     <section class="navbar-item"><a href="<?php echo e(route('customer.market.products.offers')); ?>">فروش ویژه</a>
                     </section>
                     <section class="navbar-item"><a
@@ -201,7 +201,7 @@
                             رم</a></section>
                     <section class="navbar-item"><a href="<?php echo e(route('smart.assemble.categories')); ?>">اسمبل هوشمند</a>
                     </section>
-                    <section class="navbar-item"><a href="<?php echo e(route('techno.posts')); ?>">تکنولوژی نیوز</a></section>
+                    <section class="navbar-item"><a href="<?php echo e(route('technology.posts')); ?>">تکنولوژی نیوز</a></section>
 
                 </section>
 

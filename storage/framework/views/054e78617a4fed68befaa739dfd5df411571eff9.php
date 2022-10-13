@@ -13,7 +13,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('lion-ezpc-images/main-banner.png') }}" class="d-block w-100" alt="...">
+                <img src="<?php echo e(asset('lion-ezpc-images/main-banner.png')); ?>" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
@@ -33,9 +33,23 @@
 
 <section class="container-xxl my-4">
     <section class="row">
-            @foreach($posts as $post)
-                @livewire('techno.post-card', ['post' => $post])
-            @endforeach
+            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('digital-world.technology.post-card', ['post' => $post])->html();
+} elseif ($_instance->childHasBeenRendered('l3910842208-0')) {
+    $componentId = $_instance->getRenderedChildComponentId('l3910842208-0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('l3910842208-0');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('l3910842208-0');
+} else {
+    $response = \Livewire\Livewire::mount('digital-world.technology.post-card', ['post' => $post]);
+    $html = $response->html();
+    $_instance->logRenderedChild('l3910842208-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </section>
 </section>
 <div class="row" data-masonry='{"percentPosition": true }'>
@@ -121,3 +135,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/digital-world/technology/posts.blade.php ENDPATH**/ ?>

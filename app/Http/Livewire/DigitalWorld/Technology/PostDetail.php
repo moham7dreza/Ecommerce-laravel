@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Techno;
+namespace App\Http\Livewire\DigitalWorld\Technology;
 
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
-use App\Models\Market\Product;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -55,7 +54,7 @@ class PostDetail extends Component
 
     public function render()
     {
-        return view('livewire.techno.post-detail', [
+        return view('livewire.digital-world.technology.post-detail', [
             'post' => $this->post
         ])->extends('customer.layouts.master-one-col');
     }

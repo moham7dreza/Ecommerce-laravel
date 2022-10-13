@@ -194,7 +194,7 @@
                             <section class="modal-body">
                                 <form class="row" wire:submit.prevent="addComment">
                                     <?php echo csrf_field(); ?>
-
+                                    
 
                                     <section class="col-12 mb-2">
                                         <label for="comment" class="form-label mb-1">دیدگاه شما</label>
@@ -271,4 +271,4 @@
 
     </section>
 </section>
-<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/technology/post-detail.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/digital-world/technology/post-detail.blade.php ENDPATH**/ ?>

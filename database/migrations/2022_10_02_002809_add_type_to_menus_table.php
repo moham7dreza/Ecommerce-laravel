@@ -14,7 +14,7 @@ class AddTypeToMenusTable extends Migration
     public function up()
     {
         Schema::table('menus', function (Blueprint $table) {
-            $table->tinyInteger('type')->default(0)->after('status')->comment('0 => home menus, 1 => assemble menus, 2 => techno menus');
+            $table->tinyInteger('type')->default(0)->after('status')->comment('0 => home menus, 1 => assemble menus, 2 => technology menus');
         });
     }
 

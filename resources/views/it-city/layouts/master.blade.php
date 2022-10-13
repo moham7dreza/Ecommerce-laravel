@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    @include('smart-assemble.layouts.head-tag')
+    @include('it-city.layouts.head-tag')
     @yield('head-tag')
 </head>
 <body id="default_theme" class="it_service">
@@ -9,15 +9,15 @@
 <div class="bg_load"><img class="loader_animation" src="{{ asset('it-next-assets/images/loaders/loader_1.png') }}"
                           alt="#"/></div>
 <!-- end loader -->
-@include('smart-assemble.layouts.header')
+@include('it-city.layouts.header')
 
 @yield('content')
 
-@include('smart-assemble.layouts.search-modal')
+@include('it-city.layouts.search-modal')
 
-@include('smart-assemble.layouts.footer')
+@include('it-city.layouts.footer')
 
-@include('smart-assemble.layouts.script')
+@include('it-city.layouts.script')
 
 @yield('script')
 

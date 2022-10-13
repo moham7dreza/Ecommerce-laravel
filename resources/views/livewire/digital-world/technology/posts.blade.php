@@ -13,7 +13,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="<?php echo e(asset('lion-ezpc-images/main-banner.png')); ?>" class="d-block w-100" alt="...">
+                <img src="{{ asset('lion-ezpc-images/main-banner.png') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
@@ -33,23 +33,9 @@
 
 <section class="container-xxl my-4">
     <section class="row">
-            <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php
-if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('technology.post-card', ['post' => $post])->html();
-} elseif ($_instance->childHasBeenRendered('l2239081462-0')) {
-    $componentId = $_instance->getRenderedChildComponentId('l2239081462-0');
-    $componentTag = $_instance->getRenderedChildComponentTagName('l2239081462-0');
-    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('l2239081462-0');
-} else {
-    $response = \Livewire\Livewire::mount('technology.post-card', ['post' => $post]);
-    $html = $response->html();
-    $_instance->logRenderedChild('l2239081462-0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
-}
-echo $html;
-?>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            @foreach($posts as $post)
+                @livewire('digital-world.technology.post-card', ['post' => $post])
+            @endforeach
     </section>
 </section>
 <div class="row" data-masonry='{"percentPosition": true }'>
@@ -135,4 +121,3 @@ echo $html;
         </div>
     </div>
 </div>
-<?php /**PATH C:\CODEX\techzilla\resources\views/livewire/technology/posts.blade.php ENDPATH**/ ?>

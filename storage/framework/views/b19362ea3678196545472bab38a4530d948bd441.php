@@ -275,4 +275,4 @@
     </div>
 </div>
 <!-- end section -->
-<?php /**PATH C:\CODEX\techzilla\resources\views/smart-assemble/layouts/partials/slider.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\techzilla\resources\views/it-city/layouts/partials/slider.blade.php ENDPATH**/ ?>
