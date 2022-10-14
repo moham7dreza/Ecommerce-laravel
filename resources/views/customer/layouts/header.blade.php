@@ -205,7 +205,7 @@
                     <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a>
                     </section>
                     <section class="navbar-item"><a href="{{ route('digital-world.technology.index') }}">دنیای دیجیتالی</a></section>
-                    <section class="navbar-item"><a href="{{ route('it-city.pc.smart-assemble.index') }}">آی تی سی تی</a></section>
+                    <section class="navbar-item"><a href="{{ route('it-city.home') }}">آیتی سیتی</a></section>
 
                 </section>
 

@@ -11,9 +11,4 @@ class PcSmartAssembleController extends Controller
     {
         return view('it-city.pc.smart-assemble.index');
     }
-
-    public function aboutUs()
-    {
-        return view('it-city.pc.smart-assemble.pages.about-us');
-    }
 }

@@ -48,14 +48,27 @@
                     <div class="menu_side">
                         <div id="navbar_menu">
                             <ul class="first-ul">
-                                <li> <a class="active" href="{{ route('it-city.pc.smart-assemble.index') }}">خانه</a>
+                                <li> <a class="active" href="{{ route('it-city.home') }}">خانه</a>
                                     <ul class="text-right">
                                         <li><a href="{{ route('customer.home') }}">فروشگاه</a></li>
                                         <li><a href="{{ route('digital-world.technology.index') }}">دنیای دیجیتالی</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('panel.home') }}">پنل</a></li>
-                                <li><a href="{{ route('it-city.pc.smart-assemble.pages.about-us') }}">درباره ما</a></li>
+                                <li> <a href="#">صفحات سایت</a>
+                                    <ul class="text-right">
+                                        <li><a href="{{ route('it-city.pages.about-us') }}">درباره ما</a></li>
+                                        <li><a href="{{ route('it-city.pages.why-this-shop') }}">چرا این شاپ</a></li>
+                                        <li><a href="{{ route('it-city.pages.warranty-rules') }}">شرایط گارانتی</a></li>
+                                        <li><a href="{{ route('it-city.pages.installment') }}">خرید اقساطی</a></li>
+                                        <li><a href="{{ route('it-city.pages.contact-us') }}">تماس با ما</a></li>
+                                        <li><a href="{{ route('it-city.pages.faq') }}">سوالات متداول</a></li>
+                                        <li><a href="{{ route('it-city.pages.price') }}">پلن قیمت گذاری</a></li>
+                                        <li><a href="{{ route('it-city.pages.career') }}">پرسنل</a></li>
+                                        <li><a href="{{ route('it-city.pages.privacy-policy') }}">سیاست های حریم خصوصی</a></li>
+                                        <li><a href="{{ route('it-city.pages.make-appointment') }}">ثبت قرار ملاقات</a></li>
+                                    </ul>
+                                </li>
                                 <li> <a href="it_service.html">سرویس ها</a>
                                     <ul class="text-right">
                                         <li><a href="it_service_list.html">لیست سرویس ها</a></li>
@@ -86,12 +99,12 @@
 {{--                                        <li><a href="it_checkout.html">Checkout</a></li>--}}
 {{--                                    </ul>--}}
 {{--                                </li>--}}
-                                <li> <a href="it_contact.html">ارتباط با ما</a>
+{{--                                <li> <a href="it_contact.html">ارتباط با ما</a>--}}
 {{--                                    <ul>--}}
 {{--                                        <li><a href="it_contact.html">Contact Page 1</a></li>--}}
 {{--                                        <li><a href="it_contact_2.html">Contact Page 2</a></li>--}}
 {{--                                    </ul>--}}
-                                </li>
+{{--                                </li>--}}
                             </ul>
                         </div>
                         <div class="search_icon">

@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+
+/***********************************************************************************************************************
+ * some api routes for ADMIN section to get some useful data to known how is the shop going
+ *
+ *  */
 Route::prefix('admin')->group(function () {
     Route::prefix('market')->namespace('Market')->group(function () {
         Route::prefix('product')->group(function () {
@@ -43,3 +48,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/all', [NotificationController::class, 'all'])->name('api.admin.notify.all');
     });
 });
+/***********************************************************************************************************************
+ *
+ *
+ *  */

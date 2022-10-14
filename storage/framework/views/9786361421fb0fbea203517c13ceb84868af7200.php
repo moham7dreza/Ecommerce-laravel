@@ -5,14 +5,19 @@
             </object>
         </a>
     </header>
-    <p class="side-comment  fnt-mxs">گشت</p>
+    <p class="side-comment  fnt-mxs">زیر مجموعه های تک زیلا</p>
     <li class="side a-collapse short m-2 pr-1 pl-1">
         <a href="<?php echo e(route('customer.home')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>فروشگاه
             <span
                 class="badge badge-pill badge-success">تک زیلا</span></a>
     </li>
     <li class="side a-collapse short m-2 pr-1 pl-1">
-        <a href="<?php echo e(route('it-city.pc.smart-assemble.index')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>آی تی سی تی
+        <a href="<?php echo e(route('it-city.home')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>آیتی سیتی
+            <span
+                class="badge badge-pill badge-success">اسمبل</span></a>
+    </li>
+    <li class="side a-collapse short m-2 pr-1 pl-1">
+        <a href="<?php echo e(route('digital-world.technology.index')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>دنیای دیجیتالی
             <span
                 class="badge badge-pill badge-success">تکنولوژی</span></a>
     </li>

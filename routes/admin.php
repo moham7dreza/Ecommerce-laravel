@@ -47,9 +47,11 @@ use App\Http\Controllers\Admin\Ticket\TicketPriorityController;
 use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryController;
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 
+// new panel namespaces
 use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\TelegramBot\SendController as BotSendController;
 use App\Http\Controllers\Panel\Report\ChartController as PanelChartController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,10 +64,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
 
-    /*
-    *  telegram bot
-    *
-    * */
+    /*******************************************************************************************************************
+     *  telegram bot
+     *
+     * */
     Route::prefix('telegram-bot')->namespace('TelegramBot')->group(function () {
         Route::prefix('send')->group(function () {
             Route::get('/', [SendController::class, 'message'])->name('admin.bot.message');
@@ -73,20 +75,20 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
-    /*
-    *  system usage reports
-    *
-    * */
+    /*******************************************************************************************************************
+     *  system usage reports
+     *
+     * */
     Route::prefix('reports')->namespace('Report')->group(function () {
         Route::prefix('charts')->group(function () {
             Route::get('sales', [ChartController::class, 'salesChart'])->name('admin.reports.charts.sales');
         });
     });
 
-    /*
-        *  smart assemble system
-        *
-        * */
+    /*******************************************************************************************************************
+     *  smart assemble system
+     *
+     * */
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
         //brand
         Route::prefix('brand')->group(function () {
@@ -186,6 +188,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin market section
+     *  */
     Route::prefix('market')->namespace('Market')->group(function () {
 
         //category
@@ -342,6 +348,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin content section
+     *  */
     Route::prefix('content')->namespace('Content')->group(function () {
 
         //category
@@ -423,6 +433,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin user section
+     *  */
     Route::prefix('user')->namespace('User')->group(function () {
 
         //admin-user
@@ -474,6 +488,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin notify section
+     *  */
     Route::prefix('notify')->namespace('Notify')->group(function () {
 
         //email
@@ -511,6 +529,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         });
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin ticket section
+     *  */
     Route::prefix('ticket')->namespace('Ticket')->group(function () {
 
         //category
@@ -553,6 +575,10 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         Route::get('/change/{ticket}', [TicketController::class, 'change'])->name('admin.ticket.change');
     });
 
+    /*******************************************************************************************************************
+     *
+     *  admin setting section
+     *  */
     Route::prefix('setting')->namespace('Setting')->group(function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting.index');
         Route::get('/edit/{setting}', [SettingController::class, 'edit'])->name('admin.setting.edit');
@@ -560,21 +586,22 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
         Route::delete('/destroy/{setting}', [SettingController::class, 'destroy'])->name('admin.setting.destroy');
     });
 
+    // read all admin notifications
     Route::post('/notification/read-all', [NotificationController::class, 'readAll'])->name('admin.notification.readAll');
 });
 
-/*
- * new admin panel section
- * */
-
+/***********************************************************************************************************************
+ *
+ *  new admin panel section
+ *  */
 Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')->group(function () {
 
     Route::get('/', [PanelController::class, 'index'])->name('panel.home');
 
-    /*
-        *  telegram bot
-        *
-        * */
+    /*******************************************************************************************************************
+     *
+     *  telegram bot
+     *  */
     Route::prefix('telegram-bot')->namespace('TelegramBot')->group(function () {
         Route::prefix('send')->group(function () {
             Route::get('/', [BotSendController::class, 'message'])->name('panel.bot.message');
@@ -582,20 +609,20 @@ Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')-
         });
     });
 
-    /*
-    *  system usage reports
-    *
-    * */
+    /*******************************************************************************************************************
+     *  system usage reports
+     *
+     * */
     Route::prefix('reports')->namespace('Report')->group(function () {
         Route::prefix('charts')->group(function () {
             Route::get('sales', [PanelChartController::class, 'salesChart'])->name('panel.reports.charts.sales');
         });
     });
 
-    /*
-        *  smart assemble system
-        *
-        * */
+    /*******************************************************************************************************************
+     *  smart assemble system
+     *
+     * */
     Route::prefix('smart-assemble')->namespace('SmartAssemble')->group(function () {
 
     });
