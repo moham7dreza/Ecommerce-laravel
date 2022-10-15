@@ -16,8 +16,8 @@
                             <div class="title-holder-cell text-right">
                                 <h1 class="page-title">سرویس ها</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('customer.home') }}">خانه</a></li>
-                                    <li><a href="{{ route('it-city.pc.smart-assemble.index') }}">اسمبل هوشمند</a></li>
+                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
+                                    <li><a href="{{ route('it-city.service.index') }}">سرویس ها</a></li>
                                     <li class="active">سرویس ها</li>
                                 </ol>
                             </div>
@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_left">
-                            <h2>Service Process</h2>
-                            <p class="large">Easy and effective way to get your device repaired.</p>
+                        <div class="main_heading text_align_center">
+                            <h2>فرآیند خدمات</h2>
+                            <p class="large">راه آسان و موثر برای تعمیر دستگاه شما.</p>
                         </div>
                     </div>
                 </div>
@@ -46,55 +46,55 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si1.png" alt="#"></div>
-                                    <h4 class="service-heading">Fast service</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si1.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">خدمات سریع</h4>
+                                    <p>خدمات سریع</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si2.png" alt="#"></div>
-                                    <h4 class="service-heading">Secure payments</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si2.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">پرداخت های مطمئن</h4>
+                                    <p>پرداخت های مطمئن</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si3.png" alt="#"></div>
-                                    <h4 class="service-heading">Expert team</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si3.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">تیم متخصص</h4>
+                                    <p>تیم متخصص</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si4.png" alt="#"></div>
-                                    <h4 class="service-heading">Affordable services</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si4.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">خدمات مقرون به صرفه</h4>
+                                    <p>خدمات مقرون به صرفه</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si5.png" alt="#"></div>
-                                    <h4 class="service-heading">90 Days warranty</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si5.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">90 روز گارانتی</h4>
+                                    <p>90 روز گارانتی</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="full">
-                                <div class="service_blog_inner">
-                                    <div class="icon text_align_left"><img src="images/it_service/si6.png" alt="#"></div>
-                                    <h4 class="service-heading">Award winning</h4>
-                                    <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo.</p>
+                                <div class="service_blog_inner text_align_center">
+                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si6.png') }}" alt="#"></div>
+                                    <h4 class="service-heading">برنده جایزه</h4>
+                                    <p>برنده جایزه</p>
                                 </div>
                             </div>
                         </div>
@@ -104,51 +104,42 @@
         </div>
     </div>
     <!-- section -->
-    <div class="section padding_layout_1 light_silver service_list">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 service_blog">
-                    <div class="full">
-                        <div class="service_img"> <img class="img-responsive" src="images/it_service/post-01.jpg" alt="#" /> </div>
-                        <div class="service_cont">
-                            <h3 class="service_head">Data recovery</h3>
-                            <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                            <div class="bt_cont"> <a class="btn sqaure_bt" href="it_service_detail.html">View Service</a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 service_blog">
-                    <div class="full">
-                        <div class="service_img"> <img class="img-responsive" src="images/it_service/post-02.jpg" alt="#" /> </div>
-                        <div class="service_cont">
-                            <h3 class="service_head">Computer repair</h3>
-                            <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                            <div class="bt_cont"> <a class="btn sqaure_bt" href="it_service_detail.html">View Service</a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 service_blog">
-                    <div class="full">
-                        <div class="service_img"> <img class="img-responsive" src="images/it_service/post-03.jpg" alt="#" /> </div>
-                        <div class="service_cont">
-                            <h3 class="service_head">Network solutions</h3>
-                            <p>Exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-                            <div class="bt_cont"> <a class="btn sqaure_bt" href="it_service_detail.html">View Service</a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
-    <div class="section padding_layout_1">
+    <div class="section padding_layout_1 light_silver service_list rtl">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_left">
-                            <h2>Experienced Staff</h2>
-                            <p class="large">Our experts have been featured in press numerous times.</p>
+                        <div class="main_heading text_align_center">
+                            <h3>سرویس های قابل ارائه در مجموعه تک زیلا</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($services as $service)
+                <div class="col-md-4 service_blog text_align_right">
+                    <div class="full">
+                        <div class="service_img"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-01.jpg') }}" alt="#" /> </div>
+                        <div class="service_cont">
+                            <h3 class="service_head">{{ $service->name }}</h3>
+                            <p>{{ \Illuminate\Support\Str::limit($service->description, 20) }}</p>
+                            <div class="bt_cont"> <a class="btn sqaure_bt" href="{{ route('it-city.service.service', $service) }}">جزئیات سرویس</a> </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- section staff -->
+    <div class="section padding_layout_1 service_list border-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h3>پرسنل ارائه سرویس</h3>
+                            <p class="large">کارشناسان ما بارها در مطبوعات معرفی شده اند.</p>
                         </div>
                     </div>
                 </div>
@@ -156,18 +147,25 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="full team_blog_colum">
-                        <div class="it_team_img"> <img class="img-responsive" src="images/it_service/team-member-1.jpg" alt="#"> </div>
+                        <div class="it_team_img"><img class="img-responsive"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-1.jpg') }}"
+                                                      alt="#"></div>
                         <div class="team_feature_head">
-                            <h4>Dean Michael</h4>
+                            <h4>محمدرضا رضایی</h4>
                         </div>
                         <div class="team_feature_social">
                             <div class="social_icon">
                                 <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
+                                           target="_blank"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -175,18 +173,25 @@
                 </div>
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
-                        <div class="it_team_img"> <img class="img-responsive" src="images/it_service/team-member-2.jpg" alt="#"> </div>
+                        <div class="it_team_img"><img class="img-responsive"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
+                                                      alt="#"></div>
                         <div class="team_feature_head">
-                            <h4>Ruby Jake</h4>
+                            <h4>سارا امینی</h4>
                         </div>
                         <div class="team_feature_social">
                             <div class="social_icon">
                                 <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
+                                           target="_blank"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -194,18 +199,25 @@
                 </div>
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
-                        <div class="it_team_img"> <img class="img-responsive" src="images/it_service/team-member-3.jpg" alt="#"> </div>
+                        <div class="it_team_img"><img class="img-responsive"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-3.jpg') }}"
+                                                      alt="#"></div>
                         <div class="team_feature_head">
-                            <h4>David Hussay</h4>
+                            <h4>سینا حسینی</h4>
                         </div>
                         <div class="team_feature_social">
                             <div class="social_icon">
                                 <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
+                                           target="_blank"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -213,18 +225,25 @@
                 </div>
                 <div class="col-md-3">
                     <div class="full team_blog_colum">
-                        <div class="it_team_img"> <img class="img-responsive" src="images/it_service/team-member-1.jpg" alt="#"> </div>
+                        <div class="it_team_img"><img class="img-responsive"
+                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
+                                                      alt="#"></div>
                         <div class="team_feature_head">
-                            <h4>Dean Michael</h4>
+                            <h4>سارا</h4>
                         </div>
                         <div class="team_feature_social">
                             <div class="social_icon">
                                 <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
+                                           target="_blank"></a></li>
+                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
+                                           target="_blank"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -233,5 +252,5 @@
             </div>
         </div>
     </div>
-    <!-- section -->
+    <!-- end section -->
 @endsection

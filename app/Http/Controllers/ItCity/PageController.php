@@ -61,4 +61,9 @@ class PageController extends Controller
     {
         return view('it-city.pages.make-appointment');
     }
+
+    public function smartAssembleSystem()
+    {
+        return view('it-city.pages.smart-assemble-system');
+    }
 }

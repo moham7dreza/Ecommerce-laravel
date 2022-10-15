@@ -16,8 +16,8 @@
                             <div class="title-holder-cell text-right">
                                 <h1 class="page-title">ثبت قرار ملاقات</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('customer.home') }}">خانه</a></li>
-                                    <li><a href="{{ route('it-city.pc.smart-assemble.index') }}">اسمبل هوشمند</a></li>
+                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
+                                    <li><a href="{{ route('it-city.service.index') }}">سرویس ها</a></li>
                                     <li class="active">ثبت قرار ملاقات</li>
                                 </ol>
                             </div>
@@ -29,7 +29,7 @@
     </div>
     <!-- end inner page banner -->
 
-    <div class="section padding_layout_1">
+    <div class="section padding_layout_1 rtl text_align_right">
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-xs-12"></div>
@@ -38,33 +38,33 @@
                         <div class="full">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="main_heading text_align_center">
-                                    <h2>Make	Appointment</h2>
+                                    <h3>ثبت قرار ملاقات</h3>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 appointment_form">
                                 <div class="form_section">
-                                    <form class="form_contant" action="index.html">
+                                    <form class="form_section" action="index.html">
                                         <fieldset class="row">
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="First Name*" type="text" required>
+                                                <input class="field_custom" placeholder="نام*" type="text" required>
                                             </div>
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="Last Name" type="text" required>
+                                                <input class="field_custom" placeholder="نام خانوادگی" type="text" required>
                                             </div>
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="Your Email" type="email" required>
+                                                <input class="field_custom" placeholder="ایمیل" type="email" required>
                                             </div>
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="Your Phone Number" type="text" required>
+                                                <input class="field_custom" placeholder="موبایل" type="text" required>
                                             </div>
                                             <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="Subject" type="text" required>
+                                                <input class="field_custom" placeholder="عنوان ملاقات" type="text" required>
                                             </div>
                                             <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <textarea class="field_custom" placeholder="Description" required></textarea>
+                                                <textarea class="field_custom" placeholder="توضیحات" required></textarea>
                                             </div>
                                             <div class="center">
-                                                <button class="btn main_bt">SUBMIT NOW</button>
+                                                <button class="btn main_bt">ثبت</button>
                                             </div>
                                         </fieldset>
                                     </form>

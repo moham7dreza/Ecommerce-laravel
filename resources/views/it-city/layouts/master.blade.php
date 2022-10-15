@@ -22,16 +22,23 @@
 @yield('script')
 <script>
     function dark() {
-        var css_link = "{{ asset('it-next-assets/css/colors1_dark.css') }}";
+        var main_css_link = "{{ asset('it-next-assets/css/colors1.css') }}";
+        var dark_css_link = "{{ asset('it-next-assets/css/colors1_dark.css') }}";
         if ( $('#main-dark-color').length === 0 ) { // does not yet exist
+            $('#main-color').remove();
             $('<link />', {
                 id   : 'main-dark-color',
                 rel  : 'stylesheet',
-                href : css_link
+                href : dark_css_link
             }).appendTo('head');
 
         } else { // exists, remove it
             $('#main-dark-color').remove();
+            $('<link />', {
+                id   : 'main-color',
+                rel  : 'stylesheet',
+                href : main_css_link
+            }).appendTo('head');
         }
     }
 </script>

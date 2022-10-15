@@ -1,11 +1,11 @@
-@extends('it-city.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        {{ $service->name }}
-    </title>
-@endsection
+        زیر مجموعه ی <?php echo e($service->name); ?>
 
-@section('content')
+    </title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -14,11 +14,11 @@
                     <div class="full">
                         <div class="title-holder">
                             <div class="title-holder-cell text-right">
-                                <h1 class="page-title">{{ $service->name }}</h1>
+                                <h1 class="page-title">زیر سرویس ها</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
-                                    <li><a href="{{ route('it-city.service.index') }}">سرویس ها</a></li>
-                                    <li class="active">{{ $service->name }}</li>
+                                    <li><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></li>
+                                    <li><a href="<?php echo e(route('it-city.service.index')); ?>">سرویس ها</a></li>
+                                    <li class="active"> زیر مجموعه ی <?php echo e($service->name); ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -35,35 +35,18 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="col-md-12 service_blog margin_bottom_50">
-                            <div class="full">
-                                <div class="service_img"><img class="img-responsive"
-                                                              src="{{ asset('it-next-assets/images/it_service/post-02.jpg') }}"
-                                                              alt="#"/></div>
-                                <div class="service_cont">
-                                    <h3 class="service_head">{{ $service->name }}</h3>
-                                    <p>{{ $service->description }}</p>
-                                    <div class="bt_cont"><a class="btn sqaure_bt" href="it_service_detail.html">View
-                                            Service</a></div>
-                                </div>
-                            </div>
-                        </div>
-                        @foreach($relatedServices as $service)
-                            <div class="col-md-6 service_blog margin_bottom_50">
+                        <?php $__currentLoopData = $subServices; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="col-md-4 service_blog margin_bottom_50 text_align_right">
                                 <div class="full">
-                                    <div class="service_img"><img class="img-responsive"
-                                                                  src="{{ asset('it-next-assets/images/it_service/post-03.jpg') }}"
-                                                                  alt="#"/></div>
+                                    <div class="service_img"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/post-01.jpg')); ?>" alt="#" /> </div>
                                     <div class="service_cont">
-                                        <h3 class="service_head">{{ $service->name }}</h3>
-                                        <p>{{ \Illuminate\Support\Str::limit($service->description, 20) }}</p>
-                                        <div class="bt_cont"><a class="btn sqaure_bt"
-                                                                href="{{ route('it-city.service.detail', $service) }}">جزئیات
-                                                سرویس</a></div>
+                                        <h3 class="service_head"><?php echo e($service->name); ?></h3>
+                                        <p><?php echo e(\Illuminate\Support\Str::limit($service->description, 20)); ?></p>
+                                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo e(route('it-city.service.service', $service)); ?>">جزئیات سرویس</a> </div>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col-md-12">
@@ -140,7 +123,7 @@
                         <div class="col-md-4">
                             <div class="full">
                                 <div class="service_blog_inner text_align_center">
-                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si4.png') }}"
+                                    <div class="icon"><img src="<?php echo e(asset('it-next-assets/images/it_service/si4.png')); ?>"
                                                            alt="#"></div>
                                     <h4 class="service-heading">خدمات مقرون به صرفه</h4>
                                     <p>خدمات مقرون به صرفه</p>
@@ -150,7 +133,7 @@
                         <div class="col-md-4">
                             <div class="full">
                                 <div class="service_blog_inner text_align_center">
-                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si1.png') }}"
+                                    <div class="icon"><img src="<?php echo e(asset('it-next-assets/images/it_service/si1.png')); ?>"
                                                            alt="#"></div>
                                     <h4 class="service-heading">خدمات سریع</h4>
                                     <p>خدمات سریع</p>
@@ -160,7 +143,7 @@
                         <div class="col-md-4">
                             <div class="full">
                                 <div class="service_blog_inner text_align_center">
-                                    <div class="icon"><img src="{{ asset('it-next-assets/images/it_service/si2.png') }}"
+                                    <div class="icon"><img src="<?php echo e(asset('it-next-assets/images/it_service/si2.png')); ?>"
                                                            alt="#"></div>
                                     <h4 class="service-heading">پرداخت های مطمئن</h4>
                                     <p>پرداخت های مطمئن</p>
@@ -171,7 +154,7 @@
                             <div class="full" style="margin-top: 35px;">
                                 <h3>نمیدونی چه سیستمی مناسب کاربری تو هست؟</h3>
                                 <p>همین الان وارد بخش اسمبل هوشمند شو و با چند کلیک ساده سیستم خودتو بساز!</p>
-                                <p><a class="btn main_bt" href="{{ route('it-city.pc.smart-assemble.index') }}">اسمبل
+                                <p><a class="btn main_bt" href="<?php echo e(route('it-city.pc.smart-assemble.index')); ?>">اسمبل
                                         هوشمند</a></p>
                             </div>
                         </div>
@@ -192,7 +175,7 @@
                         <div class="col-md-3 col-sm-6">
                             <div class="full team_blog_colum">
                                 <div class="it_team_img"><img class="img-responsive"
-                                                              src="{{ asset('it-next-assets/images/it_service/team-member-1.jpg') }}"
+                                                              src="<?php echo e(asset('it-next-assets/images/it_service/team-member-1.jpg')); ?>"
                                                               alt="#"></div>
                                 <div class="team_feature_head">
                                     <h4>محمدرضا رضایی</h4>
@@ -222,7 +205,7 @@
                         <div class="col-md-3">
                             <div class="full team_blog_colum">
                                 <div class="it_team_img"><img class="img-responsive"
-                                                              src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
+                                                              src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
                                                               alt="#"></div>
                                 <div class="team_feature_head">
                                     <h4>سارا امینی</h4>
@@ -252,7 +235,7 @@
                         <div class="col-md-3">
                             <div class="full team_blog_colum">
                                 <div class="it_team_img"><img class="img-responsive"
-                                                              src="{{ asset('it-next-assets/images/it_service/team-member-3.jpg') }}"
+                                                              src="<?php echo e(asset('it-next-assets/images/it_service/team-member-3.jpg')); ?>"
                                                               alt="#"></div>
                                 <div class="team_feature_head">
                                     <h4>سینا حسینی</h4>
@@ -282,7 +265,7 @@
                         <div class="col-md-3">
                             <div class="full team_blog_colum">
                                 <div class="it_team_img"><img class="img-responsive"
-                                                              src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
+                                                              src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
                                                               alt="#"></div>
                                 <div class="team_feature_head">
                                     <h4>سارا</h4>
@@ -310,11 +293,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                @include('it-city.layouts.partials.sidebar')
+                <?php echo $__env->make('it-city.layouts.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
         </div>
     </div>
     <!-- end section -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('it-city.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/it-city/service-and-repair/service.blade.php ENDPATH**/ ?>

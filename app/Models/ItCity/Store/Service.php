@@ -27,6 +27,16 @@ class Service extends Model
 
     protected $casts = ['image' => 'array'];
 
+    public function parent()
+    {
+        return $this->belongsTo($this, 'parent_id')->with('parent');
+    }
+
+    public function children()
+    {
+        return $this->hasMany($this, 'parent_id')->with('children');
+    }
+
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');

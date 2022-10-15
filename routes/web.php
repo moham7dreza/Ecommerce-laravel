@@ -176,6 +176,7 @@ Route::prefix('it-city')->namespace('ItCity')->group(function () {
     });
     Route::prefix('pages')->group(function () {
         Route::get('/about-us', [ItCityPageController::class, 'aboutUs'])->name('it-city.pages.about-us');
+        Route::get('/smart-assemble-system', [ItCityPageController::class, 'smartAssembleSystem'])->name('it-city.pages.smart-assemble-system');
         Route::get('/contact-us', [ItCityPageController::class, 'contactUs'])->name('it-city.pages.contact-us');
         Route::get('/privacy-policy', [ItCityPageController::class, 'privacyPolicy'])->name('it-city.pages.privacy-policy');
         Route::get('/make-appointment', [ItCityPageController::class, 'makeAppointment'])->name('it-city.pages.make-appointment');
@@ -189,9 +190,13 @@ Route::prefix('it-city')->namespace('ItCity')->group(function () {
     });
 
     Route::prefix('service')->namespace('ServiceAndRepair')->group(function () {
+        // all parent services
         Route::get('/', [ServiceController::class, 'index'])->name('it-city.service.index');
+        // all sub services
         Route::get('/all-services', [ServiceController::class, 'allServices'])->name('it-city.service.all-services');
-        Route::get('/{service}', [ServiceController::class, 'service'])->name('it-city.service.service');
+        // main service children
+        Route::get('/{service:slug}', [ServiceController::class, 'service'])->name('it-city.service.service');
+        // service details
         Route::get('/detail/{service:slug}', [ServiceController::class, 'serviceDetail'])->name('it-city.service.detail');
     });
 
