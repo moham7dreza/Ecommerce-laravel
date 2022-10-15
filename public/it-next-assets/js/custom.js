@@ -36,7 +36,7 @@ $("#navbar_menu").menumaker({
     });
 
 /** progress_bar js **/
-	
+
 	 $(document).ready(function() {
       $('.progress .progress-bar').css("width",
                 function() {
@@ -44,14 +44,14 @@ $("#navbar_menu").menumaker({
                 }
         )
     });
-	
-/** Casestudies Tab_bar js **/	
-	
+
+/** Casestudies Tab_bar js **/
+
 	$(document).ready(function(){
 
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
-        
+
         if(value == "all")
         {
             //$('.filter').removeClass('hidden');
@@ -63,10 +63,10 @@ $("#navbar_menu").menumaker({
 //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
             $(".filter").not('.'+value).hide('3000');
             $('.filter').filter('.'+value).show('3000');
-            
+
         }
     });
-    
+
     if ($(".filter-button").removeClass("active")) {
 $(this).removeClass("active");
 }
@@ -186,8 +186,8 @@ tpj(document).ready(function() {
 });
 
 /**===== End slider =====**/
-	
-	
+
+
 /** header fixed js **/
 
 $(window).scroll(function(){
@@ -198,7 +198,3 @@ $(window).scroll(function(){
        $('.header_fixed_on_scroll').removeClass('fixed-header');
     }
 });
-
-	
-	
-	

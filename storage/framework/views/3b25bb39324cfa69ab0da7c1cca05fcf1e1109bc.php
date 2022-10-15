@@ -18,7 +18,7 @@
 <!-- responsive css -->
 <link rel="stylesheet" href="<?php echo e(asset('it-next-assets/css/responsive.css')); ?>"/>
 <!-- colors css -->
-<link rel="stylesheet" href="<?php echo e(asset('it-next-assets/css/colors1.css')); ?>"/>
+<link rel="stylesheet" href="<?php echo e(asset('it-next-assets/css/colors2.css')); ?>" id="main-color"/>
 <!-- custom css -->
 <link rel="stylesheet" href="<?php echo e(asset('it-next-assets/css/custom.css')); ?>"/>
 <!-- wow Animation css -->

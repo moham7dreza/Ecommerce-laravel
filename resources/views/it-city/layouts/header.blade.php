@@ -55,6 +55,9 @@
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('panel.home') }}">پنل</a></li>
+                                <li><a onclick="dark()" type="button"><i
+                                            class="fa fa-moon-o fa-sm mr-2"></i>حالت شب
+                                    </a></li>
                                 <li> <a href="#">صفحات سایت</a>
                                     <ul class="text-right">
                                         <li><a href="{{ route('it-city.pages.about-us') }}">درباره ما</a></li>
@@ -69,10 +72,10 @@
                                         <li><a href="{{ route('it-city.pages.make-appointment') }}">ثبت قرار ملاقات</a></li>
                                     </ul>
                                 </li>
-                                <li> <a href="it_service.html">سرویس ها</a>
+                                <li> <a href="#">سرویس ها</a>
                                     <ul class="text-right">
-                                        <li><a href="it_service_list.html">لیست سرویس ها</a></li>
-                                        <li><a href="it_service_detail.html">جزئیات سرویس ها</a></li>
+                                        <li><a href="{{ route('it-city.service.index') }}">سرویس های کلی</a></li>
+                                        <li><a href="{{ route('it-city.service.all-services') }}">همه ی سرویس های قابل ارائه</a></li>
                                     </ul>
                                 </li>
                                 <li> <a href="it_blog.html">گالری</a>

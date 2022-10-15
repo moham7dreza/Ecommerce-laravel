@@ -20,6 +20,20 @@
 @include('it-city.layouts.script')
 
 @yield('script')
+<script>
+    function dark() {
+        var css_link = "{{ asset('it-next-assets/css/colors1_dark.css') }}";
+        if ( $('#main-dark-color').length === 0 ) { // does not yet exist
+            $('<link />', {
+                id   : 'main-dark-color',
+                rel  : 'stylesheet',
+                href : css_link
+            }).appendTo('head');
 
+        } else { // exists, remove it
+            $('#main-dark-color').remove();
+        }
+    }
+</script>
 </body>
 </html>

@@ -20,7 +20,21 @@
 <?php echo $__env->make('it-city.layouts.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 <?php echo $__env->yieldContent('script'); ?>
+<script>
+    function dark() {
+        var css_link = "<?php echo e(asset('it-next-assets/css/colors1_dark.css')); ?>";
+        if ( $('#main-dark-color').length === 0 ) { // does not yet exist
+            $('<link />', {
+                id   : 'main-dark-color',
+                rel  : 'stylesheet',
+                href : css_link
+            }).appendTo('head');
 
+        } else { // exists, remove it
+            $('#main-dark-color').remove();
+        }
+    }
+</script>
 </body>
 </html>
 <?php /**PATH C:\CODEX\techzilla\resources\views/it-city/layouts/master.blade.php ENDPATH**/ ?>
