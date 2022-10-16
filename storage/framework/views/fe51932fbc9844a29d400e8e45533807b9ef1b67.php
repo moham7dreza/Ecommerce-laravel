@@ -1,11 +1,10 @@
-@extends('it-city.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
         اخبار
     </title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -16,8 +15,8 @@
                             <div class="title-holder-cell text-right">
                                 <h1 class="page-title">اخبار</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
-                                    <li><a href="{{ route('it-city.blog.index') }}">بلاگ</a></li>
+                                    <li><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></li>
+                                    <li><a href="<?php echo e(route('it-city.blog.index')); ?>">بلاگ</a></li>
                                     <li class="active">اخبار</li>
                                 </ol>
                             </div>
@@ -33,7 +32,7 @@
     <div class="section padding_layout_1 blog_grid rtl text_align_right">
         <div class="container">
             <div class="row">
-{{--                blog with images--}}
+
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="full">
 
@@ -70,7 +69,7 @@
 
                     </div>
                 </div>
-{{--                blog without images--}}
+
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="full">
 
@@ -106,7 +105,7 @@
 
                     </div>
                 </div>
-{{--                blog only image and blog with images--}}
+
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="full">
                         <div class="blog_section">
@@ -162,4 +161,6 @@
     </div>
     <!-- end section -->
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('it-city.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/it-city/blog/news.blade.php ENDPATH**/ ?>

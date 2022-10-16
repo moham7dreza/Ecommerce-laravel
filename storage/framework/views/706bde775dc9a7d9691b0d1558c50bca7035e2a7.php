@@ -67,6 +67,9 @@
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo e(route('panel.home')); ?>">پنل</a></li>
+                                <li><a href="<?php echo e(route('it-city.store.special-sale')); ?>">فروش ویژه</a></li>
+                                <li><a href="<?php echo e(route('it-city.blog.index')); ?>">بلاگ</a></li>
+                                <li><a href="<?php echo e(route('it-city.blog.news')); ?>">اخبار</a></li>
                                 <li><a onclick="dark()" type="button"><i
                                             class="fa fa-moon-o fa-sm mr-2"></i>حالت شب
                                     </a></li>

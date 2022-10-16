@@ -1,11 +1,11 @@
-@extends('it-city.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        {{ $post->title }}
-    </title>
-@endsection
+        <?php echo e($post->title); ?>
 
-@section('content')
+    </title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -14,11 +14,11 @@
                     <div class="full">
                         <div class="title-holder">
                             <div class="title-holder-cell text-right">
-                                <h1 class="page-title">{{ $post->title }}</h1>
+                                <h1 class="page-title"><?php echo e($post->title); ?></h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
-                                    <li><a href="{{ route('it-city.blog.index') }}">بلاگ</a></li>
-                                    <li class="active">{{ $post->title }}</li>
+                                    <li><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></li>
+                                    <li><a href="<?php echo e(route('it-city.blog.index')); ?>">بلاگ</a></li>
+                                    <li class="active"><?php echo e($post->title); ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -37,24 +37,24 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
                     <div class="full">
                         <div class="blog_section margin_bottom_0">
-                            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-05.jpg') }}" alt="#"> </div>
+                            <div class="blog_feature_img"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/post-05.jpg')); ?>" alt="#"> </div>
                             <div class="blog_feature_cantant">
-                                <p class="blog_head">{{ $post->title }}</p>
+                                <p class="blog_head"><?php echo e($post->title); ?></p>
                                 <div class="post_info">
                                     <ul>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i> {{ $post->postCategory->name ?? '-' }}</li>
-                                        <li><i class="fa fa-comment" aria-hidden="true"></i> {{ $post->comment_count ?? 0 }}</li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ jalaliDate($post->created_at) }}</li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> <?php echo e($post->postCategory->name ?? '-'); ?></li>
+                                        <li><i class="fa fa-comment" aria-hidden="true"></i> <?php echo e($post->comment_count ?? 0); ?></li>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo e(jalaliDate($post->created_at)); ?></li>
                                     </ul>
                                 </div>
-                                <p>{{ $post->summary ?? '-' }}</p>
+                                <p><?php echo e($post->summary ?? '-'); ?></p>
                             </div>
                             <div class="full testimonial_simple_say margin_bottom_30_all" style="margin-top:0;">
                                 <div class="qoute_testimonial"><i class="fa fa-quote-left" aria-hidden="true"></i></div>
-                                <p class="margin_bottom_0"><i>{{ $post->summary ?? '-' }}</i></p>
-                                <p class="large_2 theme_color text-danger pt-2">{{ $post->author->fullName ?? '-' }}</p>
+                                <p class="margin_bottom_0"><i><?php echo e($post->summary ?? '-'); ?></i></p>
+                                <p class="large_2 theme_color text-danger pt-2"><?php echo e($post->author->fullName ?? '-'); ?></p>
                             </div>
-                            <p> {{ $post->body ?? '-' }} </p>
+                            <p> <?php echo e($post->body ?? '-'); ?> </p>
                             <div class="bottom_info margin_bottom_30_all">
                                 <div class="pull-right">
 
@@ -72,12 +72,12 @@
                             <div class="comment_section">
                                 <div class="pull-left text_align_left">
                                     <div class="full">
-                                        <div class="preview_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-04.jpg') }}" alt="#"> <span><i class="fa fa-angle-left"></i> Previous</span> </a> </div>
+                                        <div class="preview_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/post-04.jpg')); ?>" alt="#"> <span><i class="fa fa-angle-left"></i> Previous</span> </a> </div>
                                     </div>
                                 </div>
                                 <div class="pull-right text_align_right">
                                     <div class="full">
-                                        <div class="next_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-08.jpg') }}" alt="#"> <span>Next <i class="fa fa-angle-right"></i></span> </a> </div>
+                                        <div class="next_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/post-08.jpg')); ?>" alt="#"> <span>Next <i class="fa fa-angle-right"></i></span> </a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -244,4 +244,6 @@
         </div>
     </div>
     <!-- end section -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('it-city.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/it-city/blog/detail.blade.php ENDPATH**/ ?>

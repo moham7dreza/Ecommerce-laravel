@@ -1,11 +1,11 @@
-@extends('it-city.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        محصولات فروش ویژه
-    </title>
-@endsection
+        اجزای سخت افزاری دسته بندی <?php echo e($productCategory->name); ?>
 
-@section('content')
+    </title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -14,11 +14,11 @@
                     <div class="full">
                         <div class="title-holder">
                             <div class="title-holder-cell text-right">
-                                <h1 class="page-title"> محصولات فروش ویژه</h1>
+                                <h6 class="page-title"> <?php echo e($productCategory->name); ?></h6>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('customer.home') }}">خانه</a></li>
+                                    <li><a href="<?php echo e(route('customer.home')); ?>">خانه</a></li>
                                     <li><a href="#">استور</a></li>
-                                    <li class="active"> محصولات فروش ویژه</li>
+                                    <li class="active"><?php echo e($productCategory->name); ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -36,26 +36,27 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        @foreach($productsWithActiveAmazingSales as $hardware)
+                        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hardware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-                            <div class="product_list">
-                                <a href="{{ route('it-city.store.hardware', $hardware->product) }}">
-                                <div class="product_img"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/1.jpg') }}" alt=""> </div>
-                                <div class="product_detail_btm">
-                                    <div class="center text_align_center">
-                                        <h5>{{ $hardware->product->name }}</h5>
-                                    </div>
-                                    <div class="starratin">
-                                        <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                    </div>
-                                    <div class="product_price">
-                                        <p><span class="old_price">$15.00</span> – <span class="new_price">{{ priceFormat($hardware->product->price)  }} تومان</span></p>
-                                    </div>
+                                <div class="product_list">
+                                    <a href="<?php echo e(route('it-city.store.hardware', $hardware)); ?>">
+                                        <div class="product_img"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/1.jpg')); ?>" alt=""> </div>
+                                        <div class="product_detail_btm">
+                                            <div class="center text_align_center">
+                                                <h5><?php echo e($hardware->name); ?></h5>
+                                            </div>
+                                            <div class="starratin">
+                                                <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                            </div>
+                                            <div class="product_price">
+                                                <p><span class="old_price">$15.00</span> – <span class="new_price"><?php echo e(priceFormat($hardware->price)); ?> تومان</span></p>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                </a>
                             </div>
-                        </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -115,4 +116,6 @@
         </div>
     </div>
     <!-- end section -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('it-city.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/it-city/store/hardware/category-components.blade.php ENDPATH**/ ?>

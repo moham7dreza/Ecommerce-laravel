@@ -10,16 +10,20 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('it-city.blog.index');
+        // جدید ترین مقالات
+        $posts = Post::query()->where('status', 1)->latest()->take(5)->get();
+        return view('it-city.blog.index', compact('posts'));
     }
 
     public function news()
     {
-        return view('it-city.blog.news');
+        $posts = Post::query()->where('status', 1)->get();
+        return view('it-city.blog.news', compact('posts'));
     }
 
     public function postDetail(Post $post)
     {
-        return view('it-city.blog.detail', compact('post'));
+        $relatedPosts = Post::query()->where('status', 1)->latest()->take(5)->get();
+        return view('it-city.blog.detail', compact('post', 'relatedPosts'));
     }
 }

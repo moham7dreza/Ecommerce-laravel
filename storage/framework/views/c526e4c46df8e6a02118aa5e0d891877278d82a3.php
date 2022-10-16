@@ -63,6 +63,54 @@
     </div>
     <!-- end section -->
 
+    <!-- section hardware-->
+    <div class="section padding_layout_1 border-bottom danger">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="full">
+                        <div class="main_heading text_align_center">
+                            <h3>اجرای سخت افزاری</h3>
+                            <p class="large">در هر دسته بندی</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <?php $__currentLoopData = $mostVisitedHardwares; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hardware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all rtl text_align_center">
+                        <div class="product_list">
+                            <a href="<?php echo e(route('it-city.store.hardware', $hardware)); ?>">
+                                <div class="product_img"><img class="img-responsive"
+                                                              src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <h5><?php echo e($hardware->name); ?></h5>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i
+                                                class="fa fa-star"
+                                                aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i
+                                                class="fa fa-star-o" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p><span class="old_price">۱۰۰۰۰۰ تومان</span> –
+                                            <span
+                                                class="new_price"><?php echo e(priceFormat($hardware->price)); ?> تومان</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+        </div>
+    </div>
+    <!-- end section -->
+
     <!-- section systems-->
     <div class="section padding_layout_1 border-bottom danger">
         <div class="container">
@@ -70,101 +118,41 @@
                 <div class="col-md-12">
                     <div class="full">
                         <div class="main_heading text_align_center">
-                            <h2>بهترین سیستم های تک زیلا</h2>
+                            <h3>بهترین سیستم های تک زیلا</h3>
                             <p class="large">نمونه هایی از سیستم ها با کارایی و محبوبیت خوب از نظر مشتری</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                    <div class="product_list">
-                        <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
-                        <div class="product_detail_btm">
-                            <div class="center">
-                                <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
-                            </div>
-                            <div class="starratin">
-                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                                     aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                     aria-hidden="true"></i> <i
-                                        class="fa fa-star-o" aria-hidden="true"></i></div>
-                            </div>
-                            <div class="product_price">
-                                <p><span class="old_price">۳۰۰۰۰۰۰ تومان</span> – <span
-                                        class="new_price">۴۰۰۰۰۰۰ تومان</span></p>
-                            </div>
+                <?php $__currentLoopData = $sampleOfAssembledSystems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $system): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all rtl text_align_center">
+                        <div class="product_list">
+                            <a href="#">
+                                <div class="product_img"><img class="img-responsive"
+                                                              src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt="">
+                                </div>
+                                <div class="product_detail_btm">
+                                    <div class="center">
+                                        <h5><?php echo e($system->name); ?></h5>
+                                    </div>
+                                    <div class="starratin">
+                                        <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i
+                                                class="fa fa-star"
+                                                aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                             aria-hidden="true"></i> <i
+                                                class="fa fa-star-o" aria-hidden="true"></i></div>
+                                    </div>
+                                    <div class="product_price">
+                                        <p><span class="old_price">۳۰۰۰۰۰۰ تومان</span> – <span
+                                                class="new_price"><?php echo e(priceFormat($system->system_price)); ?> تومان</span></p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                    <div class="product_list">
-                        <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
-                        <div class="product_detail_btm">
-                            <div class="center">
-                                <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
-                            </div>
-                            <div class="starratin">
-                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                                     aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                     aria-hidden="true"></i> <i
-                                        class="fa fa-star-o" aria-hidden="true"></i></div>
-                            </div>
-                            <div class="product_price">
-                                <p><span class="old_price">۳۰۰۰۰۰۰ تومان</span> – <span
-                                        class="new_price">۴۰۰۰۰۰۰ تومان</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                    <div class="product_list">
-                        <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
-                        <div class="product_detail_btm">
-                            <div class="center">
-                                <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
-                            </div>
-                            <div class="starratin">
-                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                                     aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                     aria-hidden="true"></i> <i
-                                        class="fa fa-star-o" aria-hidden="true"></i></div>
-                            </div>
-                            <div class="product_price">
-                                <p><span class="old_price">۳۰۰۰۰۰۰ تومان</span> – <span
-                                        class="new_price">۴۰۰۰۰۰۰ تومان</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
-                    <div class="product_list">
-                        <div class="product_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/system.png')); ?>" alt=""></div>
-                        <div class="product_detail_btm">
-                            <div class="center">
-                                <h4><a href="it_shop_detail.html">سیستم گیمینگ رویال</a></h4>
-                            </div>
-                            <div class="starratin">
-                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                                     aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                     aria-hidden="true"></i> <i
-                                        class="fa fa-star-o" aria-hidden="true"></i></div>
-                            </div>
-                            <div class="product_price">
-                                <p><span class="old_price">۳۰۰۰۰۰۰ تومان</span> – <span
-                                        class="new_price">۴۰۰۰۰۰۰ تومان</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
@@ -176,58 +164,30 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_right">
-                            <h2>آخرین اخبار از دنیای سخت افزار</h2>
+                        <div class="main_heading text_align_center">
+                            <h3>آخرین اخبار از دنیای سخت افزار</h3>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 text-right">
+                <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="col-md-4 rtl text_align_right">
                     <div class="full blog_colum">
                         <div class="blog_feature_img"><img
                                 src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
                         <div class="post_time">
-                            <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
+                            <p><?php echo e(jalaliDate($post->created_at)); ?> <i class="fa fa-clock-o"></i></p>
                         </div>
                         <div class="blog_feature_head">
-                            <h4>کارت گرافیک های جدید انویدیا</h4>
+                            <h4><?php echo e($post->title); ?></h4>
                         </div>
                         <div class="blog_feature_cont">
-                            <p>کارت گرافیک های سری RTX 40 شرکت انویدیا معرفی شدند.</p>
+                            <p><?php echo e(\Illuminate\Support\Str::limit($post->summary, 200)); ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-right">
-                    <div class="full blog_colum">
-                        <div class="blog_feature_img"><img
-                                src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
-                        <div class="post_time">
-                            <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
-                        </div>
-                        <div class="blog_feature_head">
-                            <h4>کارت گرافیک های جدید انویدیا</h4>
-                        </div>
-                        <div class="blog_feature_cont">
-                            <p>کارت گرافیک های سری RTX 40 شرکت انویدیا معرفی شدند.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 text-right">
-                    <div class="full blog_colum">
-                        <div class="blog_feature_img"><img
-                                src="<?php echo e(asset('it-next-assets/images/it_service/post-03.jpg')); ?>" alt="#"/></div>
-                        <div class="post_time">
-                            <p><i class="fa fa-clock-o"></i> پنج شنبه ۲۱ ام مهر سال ۱۴۰۱ </p>
-                        </div>
-                        <div class="blog_feature_head">
-                            <h4>کارت گرافیک های جدید انویدیا</h4>
-                        </div>
-                        <div class="blog_feature_cont">
-                            <p>کارت گرافیک های سری RTX 40 شرکت انویدیا معرفی شدند.</p>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
@@ -357,26 +317,26 @@
     <!-- end section -->
 
     <!-- section contact us -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- end section -->
 
     <!-- section brand -->

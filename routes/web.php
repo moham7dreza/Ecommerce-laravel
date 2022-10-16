@@ -211,7 +211,7 @@ Route::prefix('it-city')->namespace('ItCity')->group(function () {
         Route::namespace('Hardware')->group(function (){
             Route::get('/hardware/{hardware:slug}', [HardwareController::class, 'hardware'])->name('it-city.store.hardware');
             Route::get('/special-sale', [HardwareController::class, 'specialSale'])->name('it-city.store.special-sale');
-            Route::get('/{hardwareCategory:slug}/components', [HardwareController::class, 'categoryComponents'])->name('it-city.store.category.components');
+            Route::get('/{productCategory}/components', [HardwareController::class, 'categoryComponents'])->name('it-city.store.category.components');
         });
 
         Route::namespace('SalesSteps')->group(function (){

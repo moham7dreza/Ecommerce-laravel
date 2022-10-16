@@ -1,11 +1,10 @@
-@extends('it-city.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
         بلاگ
     </title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- inner page banner -->
     <div id="inner_banner" class="section inner_banner_section">
         <div class="container">
@@ -16,8 +15,8 @@
                             <div class="title-holder-cell text-right">
                                 <h1 class="page-title">بلاگ</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
-                                    <li><a href="{{ route('it-city.blog.index') }}">بلاگ</a></li>
+                                    <li><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></li>
+                                    <li><a href="<?php echo e(route('it-city.blog.index')); ?>">بلاگ</a></li>
                                     <li class="active">پست ها</li>
                                 </ol>
                             </div>
@@ -36,27 +35,27 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
                     <div class="full">
-                        @foreach($posts as $post)
+                        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="blog_section">
                                 <div class="blog_feature_img"><img class="img-responsive"
-                                                                   src="{{ asset('it-next-assets/images/it_service/post-06.jpg') }}"
+                                                                   src="<?php echo e(asset('it-next-assets/images/it_service/post-06.jpg')); ?>"
                                                                    alt="#"></div>
                                 <div class="blog_feature_cantant">
-                                    <p class="blog_head">{{ $post->title ?? '-' }}</p>
+                                    <p class="blog_head"><?php echo e($post->title ?? '-'); ?></p>
                                     <div class="post_info">
                                         <ul>
                                             <li><i class="fa fa-user"
-                                                   aria-hidden="true"></i> {{ $post->postCategory->name ?? '-' }}</li>
+                                                   aria-hidden="true"></i> <?php echo e($post->postCategory->name ?? '-'); ?></li>
                                             <li><i class="fa fa-comment"
-                                                   aria-hidden="true"></i> {{ $post->comment_count ?? 0 }}</li>
+                                                   aria-hidden="true"></i> <?php echo e($post->comment_count ?? 0); ?></li>
                                             <li><i class="fa fa-calendar"
-                                                   aria-hidden="true"></i>{{ jalaliDate($post->created_at) }}</li>
+                                                   aria-hidden="true"></i><?php echo e(jalaliDate($post->created_at)); ?></li>
                                         </ul>
                                     </div>
-                                    <p>{{ $post->summary ?? '-' }}</p>
+                                    <p><?php echo e($post->summary ?? '-'); ?></p>
                                     <div class="bottom_info">
                                         <div class="pull-left"><a class="btn sqaure_bt"
-                                                                  href="{{ route('it-city.blog.post.detail', $post) }}"><i class="fa fa-angle-right"></i>
+                                                                  href="<?php echo e(route('it-city.blog.post.detail', $post)); ?>"><i class="fa fa-angle-right"></i>
                                                 ادامه مطلب </a></div>
                                         <div class="pull-right">
 
@@ -77,7 +76,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <div class="center">
                             <ul class="pagination style_1">
                                 <li><a href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
@@ -171,4 +170,6 @@
         </div>
     </div>
     <!-- end section -->
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('it-city.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/it-city/blog/index.blade.php ENDPATH**/ ?>
