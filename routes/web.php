@@ -19,6 +19,7 @@ use App\Http\Controllers\ItCity\Store\HardwareController;
 use App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use App\Http\Livewire\DigitalWorld\Technology\PostDetail;
 use App\Http\Livewire\DigitalWorld\Technology\Posts;
+use App\Http\Controllers\SinglePage\HomeController as SinglePageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -243,4 +244,15 @@ Route::prefix('smart-assemble')->namespace('Assemble')->group(function () {
 
     // add system components to cart
     Route::post('/systems/{system}/add-to-cart', [SmartAssembleController::class, 'addSystemToCart'])->name('smart.assemble.add-system-to-cart');
+});
+/***********************************************************************************************************************
+ *
+ * SECTION #5 : SinglePage ( WORK, PORTFOLIO, RESUME, ... )
+ * */
+
+Route::prefix('single-pages')->namespace('SinglePage')->group(function () {
+    Route::get('/ultra-profile', [SinglePageController::class, 'ultraProfile'])->name('single-pages.ultra-profile');
+    Route::get('/letter', [SinglePageController::class, 'letter'])->name('single-pages.letter');
+    Route::get('/app', [SinglePageController::class, 'app'])->name('single-pages.app');
+    Route::get('/astro-motion', [SinglePageController::class, 'astroMotion'])->name('single-pages.motion');
 });

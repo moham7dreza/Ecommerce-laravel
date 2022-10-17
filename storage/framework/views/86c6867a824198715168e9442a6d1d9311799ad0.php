@@ -22,7 +22,7 @@
 <?php echo $__env->yieldContent('script'); ?>
 <script>
     function dark() {
-        var main_css_link = "<?php echo e(asset('it-next-assets/css/colors1.css')); ?>";
+        var main_css_link = "<?php echo e(asset('it-next-assets/css/colors2.css')); ?>";
         var dark_css_link = "<?php echo e(asset('it-next-assets/css/colors1_dark.css')); ?>";
         if ( $('#main-dark-color').length === 0 ) { // does not yet exist
             $('#main-color').remove();

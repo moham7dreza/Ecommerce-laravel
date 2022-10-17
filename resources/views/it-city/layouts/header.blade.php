@@ -67,9 +67,36 @@
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('panel.home') }}">پنل</a></li>
-                                <li><a href="{{ route('it-city.store.special-sale') }}">فروش ویژه</a></li>
-                                <li><a href="{{ route('it-city.blog.index') }}">بلاگ</a></li>
-                                <li><a href="{{ route('it-city.blog.news') }}">اخبار</a></li>
+                                <li><a href="#">تک صفحه</a>
+                                    <ul class="text-right">
+                                        <li><a href="{{ route('single-pages.letter') }}">ایمیل</a></li>
+                                        <li><a href="{{ route('single-pages.ultra-profile') }}">پروفایل</a></li>
+                                        <li><a href="{{ route('single-pages.motion') }}">استرو</a></li>
+                                        <li><a href="{{ route('single-pages.app') }}">اپ موبایل</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">استور</a>
+                                    <ul class="text-right">
+                                        <li><a href="{{ route('it-city.store.special-sale') }}">فروش ویژه</a></li>
+                                        <li><a href="#">محصولات</a>
+                                            <ul class="text-right">
+                                                <li><a href="it_career.html">سیستم های گیمینگ</a></li>
+                                                <li><a href="it_price.html">اداری</a></li>
+                                                <li><a href="it_faq.html">رندرینگ</a></li>
+                                                <li><a href="it_privacy_policy.html">اقتصادی</a></li>
+                                                <li><a href="it_error.html">تریدینگ</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">بلاگ</a>
+                                    <ul class="text-right">
+                                        <li><a href="{{ route('it-city.blog.index') }}">بلاگ</a></li>
+                                        <li><a href="{{ route('it-city.blog.news') }}">اخبار</a></li>
+                                    </ul>
+                                </li>
+
                                 <li><a onclick="dark()" type="button"><i
                                             class="fa fa-moon-o fa-sm mr-2"></i>حالت شب
                                     </a></li>
@@ -96,22 +123,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">محصولات</a>
-                                    <ul class="text-right">
-                                        <li><a href="it_career.html">سیستم های گیمینگ</a></li>
-                                        <li><a href="it_price.html">اداری</a></li>
-                                        <li><a href="it_faq.html">رندرینگ</a></li>
-                                        <li><a href="it_privacy_policy.html">اقتصادی</a></li>
-                                        <li><a href="it_error.html">تریدینگ</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="it_blog.html">گالری</a>
+
+{{--                                <li><a href="it_blog.html">گالری</a>--}}
                                     {{--                                    <ul>--}}
                                     {{--                                        <li><a href="it_blog.html">Blog List</a></li>--}}
                                     {{--                                        <li><a href="it_blog_grid.html">Blog Grid</a></li>--}}
                                     {{--                                        <li><a href="it_blog_detail.html">Blog Detail</a></li>--}}
                                     {{--                                    </ul>--}}
-                                </li>
+{{--                                </li>--}}
 
                                 {{--                                <li> <a href="it_shop.html">Shop</a>--}}
                                 {{--                                    <ul>--}}
