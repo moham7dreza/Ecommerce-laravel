@@ -6,59 +6,36 @@
 @endsection
 
 @section('content')
+
     @include('it-city.layouts.partials.slider')
 
     <!-- section heading systems intro -->
-    <div class="section padding_layout_1">
+    <div class="section padding_layout_1 text_align_center border-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_center">
-                            <h2>سیستم اسمبل هوشمند</h2>
+                        <div class="main_heading">
+                            <h3>دسته بندی سیستم ها</h3>
                             <p class="large">قطعات سیستم تون رو همین حالا با بهترین قیمت خودتون اسمبل کنید.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach($systemCategories as $category)
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
+                    <div class="full margin_bottom_30">
+                        <a href="{{ route('it-city.pc.smart-assemble.system-types', $category) }}">
                         <div class="center">
                             <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
                         </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
+                        <h4 class="theme_color">{{ $category->name }}</h4>
+                        <p>{{ $category->brief }}</p>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="{{ asset('it-next-assets/gaming.png') }}" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
     </div>
@@ -194,128 +171,7 @@
     </div>
     <!-- end section -->
 
-    <!-- section staff -->
-    <div class="section padding_layout_1 service_list border-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="main_heading text_align_center">
-                            <h2>پرسنل اسمبل سیستم</h2>
-                            <p class="large">کارشناسان ما بارها در مطبوعات معرفی شده اند.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="{{ asset('it-next-assets/images/it_service/team-member-1.jpg') }}"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>محمدرضا رضایی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سارا امینی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="{{ asset('it-next-assets/images/it_service/team-member-3.jpg') }}"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سینا حسینی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="{{ asset('it-next-assets/images/it_service/team-member-2.jpg') }}"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سارا</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
+    <x-personnel :personnel="$personnel"/>
 
     <!-- section contact us -->
     {{--    <div class="section">--}}
@@ -347,11 +203,9 @@
                 <div class="col-md-12">
                     <div class="full">
                         <ul class="brand_list">
+                            @foreach($brands as $brand)
                             <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
-                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
-                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
-                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
-                            <li><img src="{{ asset('it-next-assets/nvidia-white-logo.png') }}" alt="#"/></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

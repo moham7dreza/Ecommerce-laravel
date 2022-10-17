@@ -15,7 +15,7 @@
                             <div class="title-holder-cell text-right">
                                 <h1 class="page-title"> محصولات فروش ویژه</h1>
                                 <ol class="breadcrumb rtl">
-                                    <li><a href="<?php echo e(route('customer.home')); ?>">خانه</a></li>
+                                    <li><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></li>
                                     <li><a href="#">استور</a></li>
                                     <li class="active"> محصولات فروش ویژه</li>
                                 </ol>
@@ -37,74 +37,86 @@
                     <div class="row">
                         <?php $__currentLoopData = $productsWithActiveAmazingSales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $hardware): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
-                            <div class="product_list">
-                                <a href="<?php echo e(route('it-city.store.hardware', $hardware->product)); ?>">
-                                <div class="product_img"> <img class="img-responsive" src="<?php echo e(asset('it-next-assets/images/it_service/1.jpg')); ?>" alt=""> </div>
-                                <div class="product_detail_btm">
-                                    <div class="center text_align_center">
-                                        <h5><?php echo e($hardware->product->name); ?></h5>
-                                    </div>
-                                    <div class="starratin">
-                                        <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                    </div>
-                                    <div class="product_price">
-                                        <p><span class="old_price">$15.00</span> – <span class="new_price"><?php echo e(priceFormat($hardware->product->price)); ?> تومان</span></p>
-                                    </div>
+                                <div class="product_list">
+                                    <a href="<?php echo e(route('it-city.store.hardware', $hardware->product)); ?>">
+                                        <div class="product_img"><img class="img-responsive"
+                                                                      src="<?php echo e(asset('it-next-assets/images/it_service/1.jpg')); ?>"
+                                                                      alt=""></div>
+                                        <div class="product_detail_btm">
+                                            <div class="center text_align_center">
+                                                <h5><?php echo e($hardware->product->name); ?></h5>
+                                            </div>
+                                            <div class="starratin">
+                                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i
+                                                        class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                      aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i> <i
+                                                        class="fa fa-star-o" aria-hidden="true"></i></div>
+                                            </div>
+                                            <div class="product_price">
+                                                <p><span class="old_price">$15.00</span> – <span class="new_price"><?php echo e(priceFormat($hardware->product->price)); ?> تومان</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                </a>
                             </div>
-                        </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="side_bar">
                         <div class="side_bar_blog">
-                            <h4>SEARCH</h4>
+                            <h5>جست و جو</h5>
                             <div class="side_bar_search">
                                 <div class="input-group stylish-input-group">
                                     <input class="form-control" placeholder="Search" type="text">
                                     <span class="input-group-addon">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
+                </span></div>
                             </div>
                         </div>
                         <div class="side_bar_blog">
-                            <h4>GET A QUOTE</h4>
-                            <p>An duo lorem altera gloriatur. No imperdiet adver sarium pro. No sit sumo lorem. Mei ea eius elitr consequ unturimperdiet.</p>
-                            <a class="btn sqaure_bt" href="it_service.html">View Service</a> </div>
+                            <h5>سرویس</h5>
+                            <p>سرویس</p>
+                            <a class="btn sqaure_bt" href="it_service.html">مشاهده</a></div>
                         <div class="side_bar_blog">
-                            <h4>OUR SERVICE</h4>
+                            <h4>سرویس های اصلی مجموعه</h4>
                             <div class="categary">
                                 <ul>
-                                    <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
-                                    <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
-                                    <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
-                                    <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
-                                    <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
+                                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li>
+                                            <a href="<?php echo e(route('it-city.service.service', $service)); ?>"><?php echo e($service->name); ?>
+
+                                                <i class="fa fa-angle-left mr-2"></i></a>
+                                        </li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="side_bar_blog">
-                            <h4>RECENT NEWS</h4>
+                            <h4>آخرین پست ها</h4>
                             <div class="categary">
                                 <ul>
-                                    <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Land lights let be divided</a></li>
-                                    <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Seasons over bearing air</a></li>
-                                    <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Greater open after grass</a></li>
-                                    <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Gathered was divide second</a></li>
+                                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><a href="<?php echo e(route('it-city.blog.post.detail', $post)); ?>"><?php echo e($post->title); ?>
+
+                                                <i class="fa fa-angle-left mr-2"></i></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="side_bar_blog">
-                            <h4>TAG</h4>
+                            <h4>برچسب ها</h4>
                             <div class="tags">
                                 <ul>
-                                    <li><a href="#">Bootstrap</a></li>
-                                    <li><a href="#">HTML5</a></li>
-                                    <li><a href="#">Wordpress</a></li>
-                                    <li><a href="#">Bootstrap</a></li>
-                                    <li><a href="#">HTML5</a></li>
+                                    <?php $__currentLoopData = explode(',',$productsWithActiveAmazingSales[0]->product->tags); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php
+                                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();
+                                        ?>
+                                        <li><a <?php if($category): ?> href="<?php echo e(route('it-city.store.category.components', $category)); ?>"
+                                            <?php else: ?> href="<?php echo e(route('it-city.error.404')); ?>" <?php endif; ?>><?php echo e($tag); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
                         </div>

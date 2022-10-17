@@ -42,7 +42,7 @@
                                     <div class="service_cont">
                                         <h3 class="service_head"><?php echo e($service->name); ?></h3>
                                         <p><?php echo e(\Illuminate\Support\Str::limit($service->description, 20)); ?></p>
-                                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo e(route('it-city.service.service', $service)); ?>">جزئیات سرویس</a> </div>
+                                        <div class="bt_cont"> <a class="btn sqaure_bt" href="<?php echo e(route('it-city.service.detail', $service)); ?>">جزئیات سرویس</a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +294,61 @@
                         </div>
                     </div>
                 </div>
-                <?php echo $__env->make('it-city.layouts.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                <div class="col-md-3">
+                    <div class="side_bar">
+                        <div class="side_bar_blog">
+                            <h5>جست و جو</h5>
+                            <div class="side_bar_search">
+                                <div class="input-group stylish-input-group">
+                                    <input class="form-control" placeholder="Search" type="text">
+                                    <span class="input-group-addon">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span></div>
+                            </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <h5>سرویس</h5>
+                            <p>سرویس</p>
+                            <a class="btn sqaure_bt" href="it_service.html">مشاهده</a></div>
+                        <div class="side_bar_blog">
+                            <h4>سرویس های اصلی مجموعه</h4>
+                            <div class="categary">
+                                <ul>
+                                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li>
+                                            <a href="<?php echo e(route('it-city.service.service', $service)); ?>"><?php echo e($service->name); ?>
+
+                                                <i class="fa fa-angle-left mr-2"></i></a>
+                                        </li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <h4>آخرین پست ها</h4>
+                            <div class="categary">
+                                <ul>
+                                    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><a href="<?php echo e(route('it-city.blog.post.detail', $post)); ?>"><?php echo e($post->title); ?>
+
+                                                <i class="fa fa-angle-left mr-2"></i></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side_bar_blog">
+                            <h4>برچسب ها</h4>
+                            <div class="tags">
+                                <ul>
+                                    <?php $__currentLoopData = explode(',', $service->tags); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><a href=""><?php echo e($tag); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

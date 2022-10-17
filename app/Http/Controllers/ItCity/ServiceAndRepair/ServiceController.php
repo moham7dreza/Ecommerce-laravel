@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\ItCity\ServiceAndRepair;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Post;
 use App\Models\ItCity\Store\Service;
 
 
@@ -23,13 +24,17 @@ class ServiceController extends Controller
     // sub services of special parent service
     public function service(Service $service)
     {
+        $posts = Post::query()->where('status', 1)->take(3)->get();
+        $services = Service::query()->where([['status', 1], ['parent_id', null], ['service_availability', 1]])->get();
         $subServices = $service->children;
-        return view('it-city.service-and-repair.service', compact('service', 'subServices'));
+        return view('it-city.service-and-repair.service', compact('service', 'subServices', 'services', 'posts'));
     }
     // details of one service
     public function serviceDetail(Service $service)
     {
+        $posts = Post::query()->where('status', 1)->take(3)->get();
+        $services = Service::query()->where([['status', 1], ['parent_id', null], ['service_availability', 1]])->get();
         $relatedServices = Service::query()->where([['status', 1], ['service_availability', 1], ['parent_id', null]])->take(2)->get();
-        return view('it-city.service-and-repair.detail', compact('service', 'relatedServices'));
+        return view('it-city.service-and-repair.detail', compact('service', 'relatedServices', 'posts', 'services'));
     }
 }

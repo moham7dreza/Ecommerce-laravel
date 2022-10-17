@@ -21,7 +21,14 @@
 
 @yield('script')
 <script>
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+    }
     function dark() {
+        var color_num = getRandomInt(1,4);
+        var css_link = 'it-next-assets/css/colors' + color_num + '.css';
         var main_css_link = "{{ asset('it-next-assets/css/colors2.css') }}";
         var dark_css_link = "{{ asset('it-next-assets/css/colors1_dark.css') }}";
         if ( $('#main-dark-color').length === 0 ) { // does not yet exist

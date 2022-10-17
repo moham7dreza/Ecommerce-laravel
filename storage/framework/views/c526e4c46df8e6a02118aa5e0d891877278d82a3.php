@@ -5,59 +5,36 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
     <?php echo $__env->make('it-city.layouts.partials.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- section heading systems intro -->
-    <div class="section padding_layout_1">
+    <div class="section padding_layout_1 text_align_center border-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="full">
-                        <div class="main_heading text_align_center">
-                            <h2>سیستم اسمبل هوشمند</h2>
+                        <div class="main_heading">
+                            <h3>دسته بندی سیستم ها</h3>
                             <p class="large">قطعات سیستم تون رو همین حالا با بهترین قیمت خودتون اسمبل کنید.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
+                <?php $__currentLoopData = $systemCategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
+                    <div class="full margin_bottom_30">
+                        <a href="<?php echo e(route('it-city.pc.smart-assemble.system-types', $category)); ?>">
                         <div class="center">
                             <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
                         </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
+                        <h4 class="theme_color"><?php echo e($category->name); ?></h4>
+                        <p><?php echo e($category->brief); ?></p>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="full text_align_center margin_bottom_30">
-                        <div class="center">
-                            <div class="icon"><img src="<?php echo e(asset('it-next-assets/gaming.png')); ?>" alt="#"/></div>
-                        </div>
-                        <h4 class="theme_color">سیستم های گیمینگ</h4>
-                        <p>فریم ریت بالا - اجرای بازی های روز با بالاترین کیفیت</p>
-                    </div>
-                </div>
-
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
@@ -193,128 +170,18 @@
     </div>
     <!-- end section -->
 
-    <!-- section staff -->
-    <div class="section padding_layout_1 service_list border-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="main_heading text_align_center">
-                            <h2>پرسنل اسمبل سیستم</h2>
-                            <p class="large">کارشناسان ما بارها در مطبوعات معرفی شده اند.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-1.jpg')); ?>"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>محمدرضا رضایی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سارا امینی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-3.jpg')); ?>"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سینا حسینی</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="full team_blog_colum">
-                        <div class="it_team_img"><img class="img-responsive"
-                                                      src="<?php echo e(asset('it-next-assets/images/it_service/team-member-2.jpg')); ?>"
-                                                      alt="#"></div>
-                        <div class="team_feature_head">
-                            <h4>سارا</h4>
-                        </div>
-                        <div class="team_feature_social">
-                            <div class="social_icon">
-                                <ul class="list-inline">
-                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
-                                           target="_blank"></a></li>
-                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
-                                           target="_blank"></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end section -->
+    <?php if (isset($component)) { $__componentOriginalfda11a45add480a82c068aa7b131435ab1fe3306 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Personnel::class, ['personnel' => $personnel]); ?>
+<?php $component->withName('personnel'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalfda11a45add480a82c068aa7b131435ab1fe3306)): ?>
+<?php $component = $__componentOriginalfda11a45add480a82c068aa7b131435ab1fe3306; ?>
+<?php unset($__componentOriginalfda11a45add480a82c068aa7b131435ab1fe3306); ?>
+<?php endif; ?>
 
     <!-- section contact us -->
     
@@ -346,11 +213,9 @@
                 <div class="col-md-12">
                     <div class="full">
                         <ul class="brand_list">
+                            <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
-                            <li><img src="<?php echo e(asset('it-next-assets/nvidia-white-logo.png')); ?>" alt="#"/></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 @extends('it-city.layouts.master')
 @section('head-tag')
     <title>
-        محصولات فروش ویژه
+        {{ $systemCategory->name }}
     </title>
 @endsection
 
@@ -14,11 +14,11 @@
                     <div class="full">
                         <div class="title-holder">
                             <div class="title-holder-cell text-right">
-                                <h1 class="page-title"> محصولات فروش ویژه</h1>
+                                <h1 class="page-title">انواع سیستم</h1>
                                 <ol class="breadcrumb rtl">
                                     <li><a href="{{ route('it-city.home') }}">آیتی سیتی</a></li>
-                                    <li><a href="#">استور</a></li>
-                                    <li class="active"> محصولات فروش ویژه</li>
+                                    <li><a href="#">سیستم ها</a></li>
+                                    <li class="active">{{ $systemCategory->name }}</li>
                                 </ol>
                             </div>
                         </div>
@@ -29,33 +29,33 @@
     </div>
     <!-- end inner page banner -->
 
-
     <!-- section -->
     <div class="section padding_layout_1 product_list_main rtl text_align_right">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        @foreach($productsWithActiveAmazingSales as $hardware)
+                        @foreach($systemTypes as $systemType)
                             <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
                                 <div class="product_list">
-                                    <a href="{{ route('it-city.store.hardware', $hardware->product) }}">
+                                    <a href="">
                                         <div class="product_img"><img class="img-responsive"
                                                                       src="{{ asset('it-next-assets/images/it_service/1.jpg') }}"
                                                                       alt=""></div>
                                         <div class="product_detail_btm">
                                             <div class="center text_align_center">
-                                                <h5>{{ $hardware->product->name }}</h5>
+                                                <h5>{{ $systemType->name }}</h5>
                                             </div>
                                             <div class="starratin">
-                                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i
-                                                        class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-                                                                                                      aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i> <i
-                                                        class="fa fa-star-o" aria-hidden="true"></i></div>
+                                                <div class="center">
+                                                    @for($i = 1; $i < 5; $i++)
+                                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                                    @endfor
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                </div>
                                             </div>
                                             <div class="product_price">
-                                                <p><span class="old_price">$15.00</span> – <span class="new_price">{{ priceFormat($hardware->product->price)  }} تومان</span>
+                                                <p><span class="old_price">$15.00</span> – <span class="new_price">{{ priceFormat($systemType->start_price_from) ?? 0  }} تومان</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -109,12 +109,8 @@
                             <h4>برچسب ها</h4>
                             <div class="tags">
                                 <ul>
-                                    @foreach(explode(',',$productsWithActiveAmazingSales[0]->product->tags) as $tag)
-                                        @php
-                                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();
-                                        @endphp
-                                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"
-                                            @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>
+                                    @foreach(explode(',', $systemCategory->tags) as $tag)
+                                        <li><a href="">{{ $tag }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>

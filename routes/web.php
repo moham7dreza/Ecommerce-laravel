@@ -167,11 +167,13 @@ Route::prefix('it-city')->namespace('ItCity')->group(function () {
      *
      *  */
     Route::get('/', [ItCityHomeController::class, 'home'])->name('it-city.home');
+    Route::get('/error/404', [ItCityHomeController::class, 'error404'])->name('it-city.error.404');
 
 
     Route::prefix('pc')->namespace('PC')->group(function () {
         Route::prefix('smart-assemble')->group(function () {
             Route::get('/', [PcSmartAssembleController::class, 'index'])->name('it-city.pc.smart-assemble.index');
+            Route::get('/systems/{systemCategory:slug}', [PcSmartAssembleController::class, 'systemTypes'])->name('it-city.pc.smart-assemble.system-types');
 
         });
     });
@@ -209,13 +211,13 @@ Route::prefix('it-city')->namespace('ItCity')->group(function () {
     });
 
     Route::prefix('store')->namespace('Store')->group(function () {
-        Route::namespace('Hardware')->group(function (){
+        Route::namespace('Hardware')->group(function () {
             Route::get('/hardware/{hardware:slug}', [HardwareController::class, 'hardware'])->name('it-city.store.hardware');
             Route::get('/special-sale', [HardwareController::class, 'specialSale'])->name('it-city.store.special-sale');
             Route::get('/{productCategory}/components', [HardwareController::class, 'categoryComponents'])->name('it-city.store.category.components');
         });
 
-        Route::namespace('SalesSteps')->group(function (){
+        Route::namespace('SalesSteps')->group(function () {
             Route::get('/cart', [StoreCartController::class, 'cart'])->name('it-city.sales-steps.cart');
             Route::get('/checkout', [StoreCartController::class, 'checkout'])->name('it-city.sales-steps.checkout');
         });
