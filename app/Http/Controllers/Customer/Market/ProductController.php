@@ -65,4 +65,10 @@ class ProductController extends Controller
         $products = $productCategory->products()->orderBy('id', 'desc')->get();
         return view('customer.market.product.category-products', compact('productCategory', 'products'));
     }
+
+
+    public function queryProducts($query)
+    {
+        return view('customer.market.product.query-products', compact('query'));
+    }
 }

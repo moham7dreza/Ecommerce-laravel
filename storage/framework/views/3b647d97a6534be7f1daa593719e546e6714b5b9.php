@@ -1,1 +1,0 @@
-<?php /**PATH C:\CODEX\techzilla\resources\views/ultra-profile/home.blade.php ENDPATH**/ ?>

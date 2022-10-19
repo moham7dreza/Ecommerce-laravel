@@ -1,8 +1,10 @@
-<?php $__env->startSection('head-tag'); ?>
-    <title><?php echo e($siteSetting->title); ?></title>
+
+
+
+
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('content'); ?>
+
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
@@ -19,7 +21,7 @@
         </div>
         <?php endif; ?>
         <section class="row">
-            <section class="col-md-8 pe-md-1 ">
+            <section class="col-md-8 pe-md-1">
                 <section id="slideshow" class="owl-carousel owl-theme">
 
                     <?php $__currentLoopData = $slideShowImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slideShowImage): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -51,6 +53,107 @@
 
 
     <!-- start product lazy load -->
+    <section class="mb-4">
+        <section class="container-xxl" >
+            <section class="row">
+                <section class="col">
+                    <section class="content-wrapper bg-white p-3 rounded-2">
+                        <!-- start content header -->
+                        <section class="content-header">
+                            <section class="d-flex justify-content-between align-items-center">
+                                <h2 class="content-header-title">
+                                    <span>محصولات فروش ویژه</span>
+                                </h2>
+                                <section class="content-header-link">
+                                    <a href="#">مشاهده همه</a>
+
+                                </section>
+                            </section>
+                        </section>
+                        <!-- end content header -->
+                        <section class="lazyload-wrapper" >
+                            <section class="lazyload light-owl-nav owl-carousel owl-theme">
+                                <?php $__currentLoopData = $productsWithActiveAmazingSales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $amazingSale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $activeAmazingSaleProduct = $amazingSale->product;
+                                        $productNewPrice = $activeAmazingSaleProduct->price - ($activeAmazingSaleProduct->price * $amazingSale->percentage / 100);
+                                    ?>
+                                    <section class="item">
+                                    <section class="lazyload-item-wrapper">
+                                        <section class="product">
+                                            <?php if(auth()->guard()->guest()): ?>
+                                                <section class="product-add-to-favorite">
+                                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $activeAmazingSaleProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
+                                                        <i class="fa fa-heart"></i>
+                                                    </button>
+                                                </section>
+                                            <?php endif; ?>
+                                            <?php if(auth()->guard()->check()): ?>
+                                                    <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
+                                                <?php if($activeAmazingSaleProduct->user->contains(auth()->user()->id)): ?>
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $activeAmazingSaleProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
+                                                            <i class="fa fa-heart text-danger"></i>
+                                                        </button>
+                                                    </section>
+                                                <?php else: ?>
+                                                    <section class="product-add-to-favorite">
+                                                        <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $activeAmazingSaleProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
+                                                            <i class="fa fa-heart"></i>
+                                                        </button>
+                                                    </section>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+
+                                            <a class="product-link" href="<?php echo e(route('customer.market.product', $activeAmazingSaleProduct)); ?>">
+                                                <section class="product-image">
+                                                    <img class="" src="<?php echo e(asset($activeAmazingSaleProduct->image['indexArray']['medium'])); ?>" alt="<?php echo e($activeAmazingSaleProduct->name); ?>">
+                                                </section>
+                                                <section class="product-colors"></section>
+                                                <section class="product-name"><h3><?php echo e(Str::limit($activeAmazingSaleProduct->name, 30)); ?></h3></section>
+                                                <section class="product-price-wrapper">
+                                                    <section class="product-discount">
+                                                        <span class="product-old-price"><?php echo e(priceFormat($activeAmazingSaleProduct->price)); ?> تومان</span>
+                                                        <span class="product-discount-amount">% <?php echo e(convertEnglishToPersian($amazingSale->percentage)); ?></span>
+                                                    </section>
+                                                    <section class="product-price"><?php echo e(priceFormat($productNewPrice)); ?> تومان</section>
+                                                </section>
+                                                <section class="product-colors">
+                                                    <?php $__currentLoopData = $activeAmazingSaleProduct->colors()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <section class="product-colors-item" style="background-color: <?php echo e($color->color); ?>;"></section>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </section>
+                                            </a>
+                                        </section>
+                                    </section>
+                                </section>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <!-- start ads section -->
+    <section class="">
+        <section class="container-xxl">
+            <!-- four column-->
+            <section class="row py-4">
+                <?php $__currentLoopData = $fourColumnBanners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $colBanner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <section class="col">
+                        <a href="<?php echo e(urldecode($colBanner->url)); ?>">
+                        <img class="d-block rounded-2 w-100" src="<?php echo e(asset($colBanner->image)); ?>" alt="<?php echo e($colBanner->title); ?>">
+                        </a>
+                    </section>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </section>
+        </section>
+    </section>
+    <!-- end ads section -->
+
+    <!-- start product lazy load -->
     <section class="mb-3">
         <section class="container-xxl" >
             <section class="row">
@@ -67,7 +170,7 @@
                                 </section>
                             </section>
                         </section>
-                        <!-- start content header -->
+                        <!-- end content header -->
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
@@ -76,7 +179,7 @@
                                 <section class="item">
                                     <section class="lazyload-item-wrapper">
                                         <section class="product">
-                                            
+
                                             <?php if(auth()->guard()->guest()): ?>
                                             <section class="product-add-to-favorite">
                                                 <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $mostVisitedProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
@@ -85,6 +188,7 @@
                                             </section>
                                             <?php endif; ?>
                                             <?php if(auth()->guard()->check()): ?>
+                                                    <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
                                                 <?php if($mostVisitedProduct->user->contains(auth()->user()->id)): ?>
                                                 <section class="product-add-to-favorite">
                                                     <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $mostVisitedProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
@@ -190,6 +294,7 @@
                                             </section>
                                             <?php endif; ?>
                                             <?php if(auth()->guard()->check()): ?>
+                                                <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
                                                 <?php if($offerProduct->user->contains(auth()->user()->id)): ?>
                                                 <section class="product-add-to-favorite">
                                                     <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $offerProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
@@ -274,7 +379,7 @@
                                 </section>
                             </section>
                         </section>
-                        <!-- start vontent header -->
+                        <!-- end content header -->
                         <section class="lazyload-wrapper" >
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
@@ -292,6 +397,7 @@
                                                     </section>
                                                 <?php endif; ?>
                                                 <?php if(auth()->guard()->check()): ?>
+                                                    <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
                                                     <?php if($offerProduct->user->contains(auth()->user()->id)): ?>
                                                         <section class="product-add-to-favorite">
                                                             <button class="btn btn-light btn-sm text-decoration-none" data-url="<?php echo e(route('customer.market.add-to-favorite', $offerProduct)); ?>" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
@@ -357,6 +463,7 @@
         </section>
     </section>
     <!-- end ads section -->
+
 
     <!-- start brand part-->
     <section class="brand-part mb-4 py-4">
@@ -487,5 +594,4 @@
 </script>
 
 <?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/home.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\CODEX\techzilla\resources\views/customer/home.blade.php ENDPATH**/ ?>

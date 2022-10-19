@@ -37,6 +37,7 @@ class HomeController extends Controller
         $bottomMiddleBanners = Banner::where('position', 3)->where('status', 1)->take(2)->get();
         $bottomBanner = Banner::where('position', 4)->where('status', 1)->first();
         $brandsBanner = Banner::where('position', 5)->where('status', 1)->first();
+        $fourColumnBanners = Banner::where('position', 6)->where('status', 1)->take(4)->get();
         // برندها
         $brands = Brand::all();
         $systemBrands = SystemBrand::all();
@@ -66,7 +67,7 @@ class HomeController extends Controller
         // محصولات فروش ویژه
         $productsWithActiveAmazingSales = AmazingSale::where('start_date', '<', Carbon::now())
             ->where('end_date', '>', Carbon::now())->where('status', 1)->
-            where('percentage', '>=', 10)->take(10)->get();
+            where('percentage', '>=', 1)->take(10)->get();
         // جدید ترین مادربرد پردازنده کارت گرافیک
 
         // پرفروش ترین محصولات
@@ -81,7 +82,8 @@ class HomeController extends Controller
 
         return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner',
             'brands', 'mostVisitedProducts', 'offerProducts', 'systemBrands', 'siteSetting', 'productsWithActiveAmazingSales',
-            'newestProducts', 'systemCategories', 'bottomMiddleBanners', 'brandsBanner', 'sampleOfGamingSystemImages'));
+            'newestProducts', 'systemCategories', 'bottomMiddleBanners', 'brandsBanner', 'sampleOfGamingSystemImages',
+            'fourColumnBanners'));
 
     }
 
