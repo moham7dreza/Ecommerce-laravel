@@ -1,11 +1,9 @@
-@extends('customer.layouts.master-one-col')
-
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>سبد خرید شما</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
     <!-- start cart -->
     <section class="mb-4">
@@ -28,42 +26,42 @@
                         <section class="col-md-9 mb-3">
                             <form action="" id="cart_items" method="post"
                                   class="content-wrapper bg-white p-3 rounded-2">
-                                @csrf
-                                @php
+                                <?php echo csrf_field(); ?>
+                                <?php
                                     $totalProductPrice = 0;
                                     $totalDiscount = 0;
-                                @endphp
+                                ?>
 
-                                @foreach ($cartItems as $cartItem)
-                                    @php
+                                <?php $__currentLoopData = $cartItems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cartItem): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
                                         $totalProductPrice += $cartItem->cartItemProductPrice();
                                         $totalDiscount += $cartItem->cartItemProductDiscount();
-                                    @endphp
+                                    ?>
 
                                     <section class="cart-item d-md-flex py-3">
                                         <section class="cart-img align-self-start flex-shrink-1">
-                                            <img src="{{ asset($cartItem->product->image['indexArray']['medium']) }}"
+                                            <img src="<?php echo e(asset($cartItem->product->image['indexArray']['medium'])); ?>"
                                                  alt="">
                                         </section>
                                         <section class="align-self-start w-100">
-                                            <p class="fw-bold">{{ $cartItem->product->name }}</p>
+                                            <p class="fw-bold"><?php echo e($cartItem->product->name); ?></p>
                                             <p>
-                                                @if(!empty($cartItem->color))
-                                                    <span style="background-color: {{ $cartItem->color->color }};"
+                                                <?php if(!empty($cartItem->color)): ?>
+                                                    <span style="background-color: <?php echo e($cartItem->color->color); ?>;"
                                                           class="cart-product-selected-color me-1"></span>
-                                                    <span> {{ $cartItem->color->color_name }}</span>
-                                                @else
+                                                    <span> <?php echo e($cartItem->color->color_name); ?></span>
+                                                <?php else: ?>
                                                     <span>رنگ منتخب وجود ندارد</span>
-                                                @endif
+                                                <?php endif; ?>
                                             </p>
                                             <p>
-                                                @if(!empty($cartItem->guarantee))
+                                                <?php if(!empty($cartItem->guarantee)): ?>
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                                    <span> {{ $cartItem->guarantee->name }}</span>
-                                                @else
+                                                    <span> <?php echo e($cartItem->guarantee->name); ?></span>
+                                                <?php else: ?>
                                                     <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
                                                     <span> گارانتی ندارد</span>
-                                                @endif
+                                                <?php endif; ?>
                                             </p>
                                             <p>
                                                 <i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
@@ -72,29 +70,30 @@
                                                 <section class="cart-product-number d-inline-block ">
                                                     <button class="cart-number cart-number-down" type="button">-
                                                     </button>
-                                                    <input class="number" name="number[{{ $cartItem->id }}]"
-                                                           data-product-price={{ $cartItem->cartItemProductPrice() }} data-product-discount={{ $cartItem->cartItemProductDiscount() }}  type="number"
-                                                           min="1" max="5" step="1" value="{{ $cartItem->number }}"
+                                                    <input class="number" name="number[<?php echo e($cartItem->id); ?>]"
+                                                           data-product-price=<?php echo e($cartItem->cartItemProductPrice()); ?> data-product-discount=<?php echo e($cartItem->cartItemProductDiscount()); ?>  type="number"
+                                                           min="1" max="5" step="1" value="<?php echo e($cartItem->number); ?>"
                                                            readonly="readonly">
                                                     <button class="cart-number cart-number-up" type="button">+</button>
                                                 </section>
                                                 <a class="text-decoration-none ms-4 cart-delete"
-                                                   href="{{ route('customer.sales-process.remove-from-cart', $cartItem) }}"><i
+                                                   href="<?php echo e(route('customer.sales-process.remove-from-cart', $cartItem)); ?>"><i
                                                         class="fa fa-trash-alt"></i> حذف از سبد</a>
                                             </section>
                                         </section>
                                         <section class="align-self-end flex-shrink-1">
-                                            @if(!empty($cartItem->product->activeAmazingSales()))
+                                            <?php if(!empty($cartItem->product->activeAmazingSales())): ?>
                                                 <section class="cart-item-discount text-danger text-nowrap mb-1">
-                                                    تخفیف {{ priceFormat($cartItem->cartItemProductDiscount()) }}</section>
-                                            @endif
+                                                    تخفیف <?php echo e(priceFormat($cartItem->cartItemProductDiscount())); ?></section>
+                                            <?php endif; ?>
                                             <section
-                                                class="text-nowrap fw-bold">{{ priceFormat($cartItem->cartItemProductPrice()) }}
+                                                class="text-nowrap fw-bold"><?php echo e(priceFormat($cartItem->cartItemProductPrice())); ?>
+
                                                 تومان
                                             </section>
                                         </section>
                                     </section>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                             </form>
@@ -103,21 +102,22 @@
                         <section class="col-md-3">
                             <section class="content-wrapper bg-white p-3 rounded-2 cart-total-price">
                                 <section class="d-flex justify-content-between align-items-center">
-                                    <p class="text-muted">قیمت کالاها ({{ $cartItem->count() }})</p>
-                                    <p class="text-muted" id="total_product_price">{{ priceFormat($totalProductPrice) }}
+                                    <p class="text-muted">قیمت کالاها (<?php echo e($cartItem->count()); ?>)</p>
+                                    <p class="text-muted" id="total_product_price"><?php echo e(priceFormat($totalProductPrice)); ?>
+
                                         تومان</p>
                                 </section>
 
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">تخفیف کالاها</p>
                                     <p class="text-danger fw-bolder"
-                                       id="total_discount">{{ priceFormat($totalDiscount) }} تومان</p>
+                                       id="total_discount"><?php echo e(priceFormat($totalDiscount)); ?> تومان</p>
                                 </section>
                                 <section class="border-bottom mb-3"></section>
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">جمع سبد خرید</p>
                                     <p class="fw-bolder"
-                                       id="total_price">{{ priceFormat($totalProductPrice - $totalDiscount) }} تومان</p>
+                                       id="total_price"><?php echo e(priceFormat($totalProductPrice - $totalDiscount)); ?> تومان</p>
                                 </section>
 
                                 <p class="my-3">
@@ -168,7 +168,7 @@
                             <section class="lazyload light-owl-nav owl-carousel owl-theme">
 
 
-                                @foreach ($relatedProducts as $relatedProduct)
+                                <?php $__currentLoopData = $relatedProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relatedProduct): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                     <section class="item">
                                         <section class="lazyload-item-wrapper">
@@ -178,63 +178,64 @@
                                                                                         data-bs-placement="left"
                                                                                         title="افزودن به سبد خرید"><i
                                                             class="fa fa-cart-plus"></i></a></section>
-                                                @guest
+                                                <?php if(auth()->guard()->guest()): ?>
                                                     <section class="product-add-to-favorite">
                                                         <button class="btn btn-light btn-sm text-decoration-none"
-                                                                data-url="{{ route('customer.market.add-to-favorite', $relatedProduct) }}"
+                                                                data-url="<?php echo e(route('customer.market.add-to-favorite', $relatedProduct)); ?>"
                                                                 data-bs-toggle="tooltip" data-bs-placement="left"
                                                                 title="اضافه از علاقه مندی">
                                                             <i class="fa fa-heart"></i>
                                                         </button>
                                                     </section>
-                                                @endguest
-                                                @auth
-                                                    @if ($relatedProduct->user->contains(auth()->user()->id))
+                                                <?php endif; ?>
+                                                <?php if(auth()->guard()->check()): ?>
+                                                    <?php if($relatedProduct->user->contains(auth()->user()->id)): ?>
                                                         <section class="product-add-to-favorite">
                                                             <button class="btn btn-light btn-sm text-decoration-none"
-                                                                    data-url="{{ route('customer.market.add-to-favorite', $relatedProduct) }}"
+                                                                    data-url="<?php echo e(route('customer.market.add-to-favorite', $relatedProduct)); ?>"
                                                                     data-bs-toggle="tooltip" data-bs-placement="left"
                                                                     title="حذف از علاقه مندی">
                                                                 <i class="fa fa-heart text-danger"></i>
                                                             </button>
                                                         </section>
-                                                    @else
+                                                    <?php else: ?>
                                                         <section class="product-add-to-favorite">
                                                             <button class="btn btn-light btn-sm text-decoration-none"
-                                                                    data-url="{{ route('customer.market.add-to-favorite', $relatedProduct) }}"
+                                                                    data-url="<?php echo e(route('customer.market.add-to-favorite', $relatedProduct)); ?>"
                                                                     data-bs-toggle="tooltip" data-bs-placement="left"
                                                                     title="اضافه به علاقه مندی">
                                                                 <i class="fa fa-heart"></i>
                                                             </button>
                                                         </section>
-                                                    @endif
-                                                @endauth
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
                                                 <a class="product-link" href="#">
                                                     <section class="product-image">
                                                         <img class=""
-                                                             src="{{ asset($relatedProduct->image['indexArray']['medium']) }}"
+                                                             src="<?php echo e(asset($relatedProduct->image['indexArray']['medium'])); ?>"
                                                              alt="">
                                                     </section>
-                                                    <section class="product-name"><h3>{{ $relatedProduct->name }}</h3>
+                                                    <section class="product-name"><h3><?php echo e($relatedProduct->name); ?></h3>
                                                     </section>
                                                     <section class="product-price-wrapper">
                                                         <section
-                                                            class="product-price">{{ priceFormat($relatedProduct->price) }}
+                                                            class="product-price"><?php echo e(priceFormat($relatedProduct->price)); ?>
+
                                                             تومان
                                                         </section>
                                                     </section>
                                                     <section class="product-colors">
-                                                        @foreach ($relatedProduct->colors()->get() as $color)
+                                                        <?php $__currentLoopData = $relatedProduct->colors()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <section class="product-colors-item"
-                                                                     style="background-color: {{ $color->color }};"></section>
-                                                        @endforeach
+                                                                     style="background-color: <?php echo e($color->color); ?>;"></section>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </section>
                                                 </a>
                                             </section>
                                         </section>
                                     </section>
 
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </section>
                         </section>
@@ -244,10 +245,10 @@
         </section>
     </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
     <script>
         $(document).ready(function () {
@@ -316,4 +317,6 @@
         })
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/sales-process/cart.blade.php ENDPATH**/ ?>

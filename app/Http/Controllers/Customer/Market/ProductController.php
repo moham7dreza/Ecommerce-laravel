@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Customer\Market;
 
 use App\Models\Market\AmazingSale;
+use App\Models\Market\Brand;
 use App\Models\Market\ProductCategory;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\Market\Product;
 use App\Models\Content\Comment;
@@ -51,9 +53,11 @@ class ProductController extends Controller
 
     public function bestOffers()
     {
+        // برندها
+        $brands = Brand::all();
         $productsWithActiveAmazingSales = AmazingSale::where('start_date', '<', Carbon::now())->where('end_date', '>', Carbon::now())->where('status', 1)->
-        where('percentage', '>=', 10)->get();
-        return view('customer.market.product.best-offers', compact('productsWithActiveAmazingSales'));
+        where('percentage', '>=', 1)->get();
+        return view('customer.market.product.best-offers', compact('productsWithActiveAmazingSales', 'brands'));
     }
 
     public function categoryProducts(ProductCategory $productCategory)
@@ -62,13 +66,53 @@ class ProductController extends Controller
 //            $categoryChilds = $productCategory->children()->orderBy('id', 'desc')->get();
 //            return view('customer.market.product.category-products', compact('categoryChilds'));
 //        }
+        // برندها
+        $brands = Brand::all();
         $products = $productCategory->products()->orderBy('id', 'desc')->get();
-        return view('customer.market.product.category-products', compact('productCategory', 'products'));
+        return view('customer.market.product.category-products', compact('productCategory', 'products', 'brands'));
     }
 
 
-    public function queryProducts($query)
+    public function queryProducts()
     {
-        return view('customer.market.product.query-products', compact('query'));
+        // برندها
+        $brands = Brand::all();
+        $queryResult = $queryTitle = null;
+        if (isset(request()->inputQuery)) {
+            switch (request()->inputQuery) {
+                case 'productsWithActiveAmazingSales':
+                    $queryTitle = 'محصولات فروش ویژه';
+                    $amazingSales = AmazingSale::query()->where([
+                        ['start_date', '<', Carbon::now()],
+                        ['end_date', '>', Carbon::now()],
+                        ['status', 1],
+                        ['percentage', '>=', 1]
+                    ])->get();
+                    $queryResult = collect();
+                    foreach ($amazingSales as $amazingSale){
+                        $queryResult->push($amazingSale->product);
+                    }
+                    break;
+                case 'mostVisitedProducts':
+                    $queryTitle = 'پربازدبدترین کالاها';
+                    // پربازدید ترین کالاها
+                    $queryResult = Product::query()->latest()->take(10)->get();
+                    break;
+                case 'offerProducts':
+                    $queryTitle = 'محصولات پیشنهادی';
+                    // کالاهای پیشنهادی
+                    $queryResult = Product::query()->latest()->take(10)->get();
+                    break;
+                case 'newestProducts':
+                    $queryTitle = 'جدیدترین محصولات';
+                    $queryResult = Product::query()->latest()->take(10)->get();
+                    break;
+                default:
+
+            }
+        }
+
+        return view('customer.market.product.query-products', compact('queryResult', 'queryTitle',
+        'brands'));
     }
 }

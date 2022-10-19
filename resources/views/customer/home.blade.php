@@ -1,10 +1,10 @@
-{{--@extends('customer.layouts.master-one-col')--}}
+@extends('customer.layouts.master-one-col')
 
-{{--@section('head-tag')--}}
-{{--    <title>{{ $siteSetting->title }}</title>--}}
+@section('head-tag')
+    <title>{{ $siteSetting->title }}</title>
 @endsection
 
-{{--@section('content')--}}
+@section('content')
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
@@ -63,8 +63,7 @@
                                     <span>محصولات فروش ویژه</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
-{{--                                    <a href="{{ route('customer.market.query-products', ['query' => $productsWithActiveAmazingSales]) }}">مشاهده همه</a>--}}
+                                    <a href="{{ route('customer.market.query-products', 'inputQuery=productsWithActiveAmazingSales') }}">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -164,7 +163,7 @@
                                     <span>پربازدیدترین کالاها</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="{{ route('customer.market.query-products', 'inputQuery=mostVisitedProducts') }}">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -270,7 +269,7 @@
                                     <span>پیشنهاد آمازون به شما</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="{{ route('customer.market.query-products', 'inputQuery=offerProducts') }}">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -373,7 +372,7 @@
                                     <span>جدیدترین محصولات</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="{{ route('customer.market.query-products', 'inputQuery=newestProducts') }}">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>

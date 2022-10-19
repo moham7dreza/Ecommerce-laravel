@@ -34,24 +34,54 @@
         <section class="main-product-wrapper row my-4">
 
             @foreach($products as $product)
+                @php
+                    if ($product->activeAmazingSales()){
+                        $productNewPrice = $product->price - ($product->price * $product->activeAmazingSales()->percentage / 100);
+                    }else{
+                        $productNewPrice = $product->price;
+                    }
+                @endphp
                 <section class="col-md-3 p-0">
                     <section class="product">
-                        <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip"
-                                                                data-bs-placement="left" title="افزودن به سبد خرید"><i
-                                    class="fa fa-cart-plus"></i></a></section>
-                        <section class="product-add-to-favorite"><a href="#" data-bs-toggle="tooltip"
-                                                                    data-bs-placement="left"
-                                                                    title="افزودن به علاقه مندی"><i
-                                    class="fa fa-heart"></i></a></section>
+                        @guest
+                            <section class="product-add-to-favorite">
+                                <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $product) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </section>
+                        @endguest
+                        @auth
+                            <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip" data-bs-placement="left" title="افزودن به سبد خرید"><i class="fa fa-cart-plus"></i></a></section>
+                            @if ($product->user->contains(auth()->user()->id))
+                                <section class="product-add-to-favorite">
+                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $product) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
+                                        <i class="fa fa-heart text-danger"></i>
+                                    </button>
+                                </section>
+                            @else
+                                <section class="product-add-to-favorite">
+                                    <button class="btn btn-light btn-sm text-decoration-none" data-url="{{ route('customer.market.add-to-favorite', $product) }}" data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه به علاقه مندی">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </section>
+                            @endif
+                        @endauth
                         <a class="product-link" href="{{ route('customer.market.product', $product) }}">
                             <section class="product-image">
                                 <img class="" src="{{ asset($product->image['indexArray']['medium']) }}"
                                      alt="{{ $product->name }}">
                             </section>
                             <section class="product-colors"></section>
-                            <section class="product-name"><h3>{{ $product->name }}</h3></section>
+                            <section class="product-name"><h3>{{ Str::limit($product->name, 30) }}</h3></section>
                             <section class="product-price-wrapper">
-                                <section class="product-price">{{ priceFormat($product->price) }} تومان</section>
+                                @if($product->activeAmazingSales())
+                                    <section class="product-discount">
+                                        <span class="product-old-price">{{ priceFormat($product->price) }} تومان</span>
+                                        <span
+                                            class="product-discount-amount">% {{ convertEnglishToPersian($product->activeAmazingSales()->percentage) }}</span>
+                                    </section>
+                                @endif
+                                <section class="product-price">{{ priceFormat($productNewPrice) }} تومان</section>
                             </section>
                             <section class="product-colors">
                                 @foreach ($product->colors()->get() as $color)

@@ -69,15 +69,15 @@
         </section>
 
         <section class="sidebar-brand-wrapper">
-            @foreach($brands as $brand)
+            <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <section class="form-check sidebar-brand-item">
                 <input class="form-check-input" type="checkbox" value="1" id="1">
                 <label class="form-check-label d-flex justify-content-between" for="1">
-                    <span>{{ $brand->persian_name }}</span>
-                    <span>{{ $brand->original_name }}</span>
+                    <span><?php echo e($brand->persian_name); ?></span>
+                    <span><?php echo e($brand->original_name); ?></span>
                 </label>
             </section>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </section>
     </section>
@@ -110,3 +110,4 @@
     </section>
 
 </aside>
+<?php /**PATH C:\CODEX\techzilla\resources\views/customer/layouts/sidebar.blade.php ENDPATH**/ ?>

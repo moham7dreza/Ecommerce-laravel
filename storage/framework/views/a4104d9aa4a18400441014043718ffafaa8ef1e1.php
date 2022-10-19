@@ -1,10 +1,8 @@
-
-
-
-
+<?php $__env->startSection('head-tag'); ?>
+    <title><?php echo e($siteSetting->title); ?></title>
 <?php $__env->stopSection(); ?>
 
-
+<?php $__env->startSection('content'); ?>
 
     <!-- start slideshow -->
     <section class="container-xxl my-4">
@@ -65,8 +63,7 @@
                                     <span>محصولات فروش ویژه</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
-
+                                    <a href="<?php echo e(route('customer.market.query-products', 'inputQuery=productsWithActiveAmazingSales')); ?>">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -166,7 +163,7 @@
                                     <span>پربازدیدترین کالاها</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="<?php echo e(route('customer.market.query-products', 'inputQuery=mostVisitedProducts')); ?>">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -272,7 +269,7 @@
                                     <span>پیشنهاد آمازون به شما</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="<?php echo e(route('customer.market.query-products', 'inputQuery=offerProducts')); ?>">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -375,7 +372,7 @@
                                     <span>جدیدترین محصولات</span>
                                 </h2>
                                 <section class="content-header-link">
-                                    <a href="#">مشاهده همه</a>
+                                    <a href="<?php echo e(route('customer.market.query-products', 'inputQuery=newestProducts')); ?>">مشاهده همه</a>
                                 </section>
                             </section>
                         </section>
@@ -594,4 +591,5 @@
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php /**PATH C:\CODEX\techzilla\resources\views/customer/home.blade.php ENDPATH**/ ?>
+
+<?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/home.blade.php ENDPATH**/ ?>

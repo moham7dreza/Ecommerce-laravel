@@ -117,7 +117,7 @@ Route::namespace('Customer')->group(function () {
         Route::get('/category/{productCategory:slug}/products', [MarketProductController::class, 'categoryProducts'])->name('customer.market.category.products');
         // Products selected for special sale.
         Route::get('/products/special-sale', [MarketProductController::class, 'bestOffers'])->name('customer.market.products.offers');
-//        Route::get('/query/products', [MarketProductController::class, 'queryProducts'])->name('customer.market.query-products');
+        Route::get('/products/query', [MarketProductController::class, 'queryProducts'])->name('customer.market.query-products');
     });
 
     /******************************************************************************************************************

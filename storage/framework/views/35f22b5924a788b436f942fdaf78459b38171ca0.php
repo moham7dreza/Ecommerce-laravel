@@ -1,13 +1,12 @@
-@extends('customer.layouts.master-two-col')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        {{ $queryTitle }}
+        فروش ویژه
     </title>
-@endsection
-@php
+<?php $__env->stopSection(); ?>
+<?php
     $user = auth()->user();
-@endphp
-@section('content')
+?>
+<?php $__env->startSection('content'); ?>
     <section class="content-wrapper bg-white p-3 rounded-2 mb-2">
         <section class="filters mb-3">
             <span class="d-inline-block border p-1 rounded bg-light">نتیجه جستجو برای : <span
@@ -33,77 +32,71 @@
 
         <section class="main-product-wrapper row my-4">
 
-            @foreach($queryResult as $product)
-                @php
-                    if ($product->activeAmazingSales()){
-                        $productNewPrice = $product->price - ($product->price * $product->activeAmazingSales()->percentage / 100);
-                    }else{
-                        $productNewPrice = $product->price;
-                    }
-                @endphp
+            <?php $__currentLoopData = $productsWithActiveAmazingSales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $amazingSale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php
+                    $product = $amazingSale->product;
+                    $productNewPrice = $product->price - ($product->price * $amazingSale->percentage / 100);
+                ?>
                 <section class="col-md-3 p-0">
                     <section class="product">
-                        @guest
+                        <?php if(auth()->guard()->guest()): ?>
                             <section class="product-add-to-favorite">
                                 <button class="btn btn-light btn-sm text-decoration-none"
-                                        data-url="{{ route('customer.market.add-to-favorite', $product) }}"
+                                        data-url="<?php echo e(route('customer.market.add-to-favorite', $product)); ?>"
                                         data-bs-toggle="tooltip" data-bs-placement="left" title="اضافه از علاقه مندی">
                                     <i class="fa fa-heart"></i>
                                 </button>
                             </section>
-                        @endguest
-                        @auth
+                        <?php endif; ?>
+                        <?php if(auth()->guard()->check()): ?>
                             <section class="product-add-to-cart"><a href="#" data-bs-toggle="tooltip"
                                                                     data-bs-placement="left" title="افزودن به سبد خرید"><i
                                         class="fa fa-cart-plus"></i></a></section>
-                            @if ($product->user->contains(auth()->user()->id))
+                            <?php if($product->user->contains(auth()->user()->id)): ?>
                                 <section class="product-add-to-favorite">
                                     <button class="btn btn-light btn-sm text-decoration-none"
-                                            data-url="{{ route('customer.market.add-to-favorite', $product) }}"
+                                            data-url="<?php echo e(route('customer.market.add-to-favorite', $product)); ?>"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="حذف از علاقه مندی">
                                         <i class="fa fa-heart text-danger"></i>
                                     </button>
                                 </section>
-                            @else
+                            <?php else: ?>
                                 <section class="product-add-to-favorite">
                                     <button class="btn btn-light btn-sm text-decoration-none"
-                                            data-url="{{ route('customer.market.add-to-favorite', $product) }}"
+                                            data-url="<?php echo e(route('customer.market.add-to-favorite', $product)); ?>"
                                             data-bs-toggle="tooltip" data-bs-placement="left"
                                             title="اضافه به علاقه مندی">
                                         <i class="fa fa-heart"></i>
                                     </button>
                                 </section>
-                            @endif
-                        @endauth
-                        <a class="product-link" href="{{ route('customer.market.product', $product) }}">
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <a class="product-link" href="<?php echo e(route('customer.market.product', $product)); ?>">
                             <section class="product-image">
-                                <img class="" src="{{ asset($product->image['indexArray']['medium']) }}"
-                                     alt="{{ $product->name }}">
+                                <img class="" src="<?php echo e(asset($product->image['indexArray']['medium'])); ?>"
+                                     alt="<?php echo e($product->name); ?>">
                             </section>
                             <section class="product-colors"></section>
-                            <section class="product-name"><h3>{{ Str::limit($product->name, 30) }}</h3></section>
+                            <section class="product-name"><h3><?php echo e(Str::limit($product->name, 30)); ?></h3></section>
                             <section class="product-price-wrapper">
-                                @if($product->activeAmazingSales())
                                 <section class="product-discount">
-                                    <span class="product-old-price">{{ priceFormat($product->price) }} تومان</span>
+                                    <span class="product-old-price"><?php echo e(priceFormat($product->price)); ?> تومان</span>
                                     <span
-                                        class="product-discount-amount">% {{ convertEnglishToPersian($product->activeAmazingSales()->percentage) }}</span>
+                                        class="product-discount-amount">% <?php echo e(convertEnglishToPersian($amazingSale->percentage)); ?></span>
                                 </section>
-                                @endif
-                                <section class="product-price">{{ priceFormat($productNewPrice) }} تومان</section>
+                                <section class="product-price"><?php echo e(priceFormat($productNewPrice)); ?> تومان</section>
                             </section>
                             <section class="product-colors">
-                                @foreach ($product->colors()->get() as $color)
+                                <?php $__currentLoopData = $product->colors()->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $color): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <section class="product-colors-item"
-                                             style="background-color: {{ $color->color }};"></section>
-                                @endforeach
+                                             style="background-color: <?php echo e($color->color); ?>;"></section>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </section>
                         </a>
                     </section>
                 </section>
-            @endforeach
-
-            @if(count($queryResult) > 20)
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <?php if(count($productsWithActiveAmazingSales) > 20): ?>
                 <section class="col-12">
                     <section class="my-4 d-flex justify-content-center">
                         <nav>
@@ -125,8 +118,11 @@
                         </nav>
                     </section>
                 </section>
-            @endif
+            <?php endif; ?>
         </section>
 
+
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('customer.layouts.master-two-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/market/product/best-offers.blade.php ENDPATH**/ ?>
