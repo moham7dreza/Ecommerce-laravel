@@ -12,6 +12,6 @@ class Setting extends Model
     protected $casts = ['logo' => 'array', 'icon' => 'array'];
 
 
-    protected $fillable = ['title', 'description', 'keywords', 'logo', 'icon'];
-
+//    protected $fillable = ['title', 'description', 'keywords', 'logo', 'icon'];
+    protected $guarded = ['id'];
 }

@@ -6,11 +6,11 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <!-- site metas -->
 {{--<title>It.Next - IT Service Responsive Html Theme</title>--}}
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="keywords" content="{{ $settings->keywords }}">
+<meta name="description" content="{{ $settings->description }}">
+<meta name="author" content="{{ $settings->author }}">
 <!-- site icons -->
-<link rel="icon" href="{{ asset('it-next-assets/images/fevicon/fevicon.png') }}" type="image/gif"/>
+<link rel="icon" href="{{ asset($settings->icon) }}" type="image/gif"/>
 <!-- bootstrap css -->
 <link rel="stylesheet" href="{{ asset('it-next-assets/css/bootstrap.min.css') }}"/>
 <!-- Site css -->

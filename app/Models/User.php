@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Content\Post;
 use App\Models\ItCity\Store\Service;
 use App\Models\Market\Order;
 use App\Models\Market\Payment;
@@ -136,5 +137,10 @@ class User extends Authenticatable
     public function services()
     {
         return $this->belongsToMany(Service::class);
+    }
+
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
     }
 }

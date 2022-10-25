@@ -1,10 +1,8 @@
-@extends('admin.layouts.master')
-
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
 <title>تنظیمات</title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -44,19 +42,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($settings as $setting)
+                    <?php $__currentLoopData = $settings; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $setting): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <th>{{ $setting->id }}</th>
-                            <td>{{ $setting->title }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($setting->description, 30) }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($setting->keywords, 20) }}</td>
-                            <td><img src="{{ asset($setting->logo ) }}" alt="" width="100" height="50"></td>
-                            <td><img src="{{ asset($setting->icon ) }}" alt="" width="100" height="50"></td>
+                            <th><?php echo e($setting->id); ?></th>
+                            <td><?php echo e($setting->title); ?></td>
+                            <td><?php echo e(\Illuminate\Support\Str::limit($setting->description, 30)); ?></td>
+                            <td><?php echo e(\Illuminate\Support\Str::limit($setting->keywords, 20)); ?></td>
+                            <td><img src="<?php echo e(asset($setting->logo )); ?>" alt="" width="100" height="50"></td>
+                            <td><img src="<?php echo e(asset($setting->icon )); ?>" alt="" width="100" height="50"></td>
                             <td class="width-22-rem text-left">
-                                <a href="{{ route('admin.setting.edit', $setting->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                <a href="<?php echo e(route('admin.setting.edit', $setting->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
                             </td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </section>
@@ -65,4 +63,6 @@
     </section>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/admin/setting/index.blade.php ENDPATH**/ ?>

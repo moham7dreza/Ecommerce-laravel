@@ -8,10 +8,10 @@
                     <div class="full">
                         <div class="topbar-left">
                             <ul class="list-inline">
-                                <li><span class="topbar-hightlight"> ارومیه فلکه رودکی </span> <span
+                                <li><span class="topbar-hightlight"> {{ json_decode($settings->address, true)['addresses']['central_office'] }} </span> <span
                                         class="topbar-label"><i
                                             class="fa  fa-home"></i></span></li>
-                                <li><span class="topbar-hightlight"><a href="mailto:me.moham6dreza@gmail.com"> me.moham6dreza@gmail.com </a></span>
+                                <li><span class="topbar-hightlight"><a href="mailto:{{ json_decode($settings->email, true)['office_mail'] }}"> {{ json_decode($settings->email, true)['office_mail'] }} </a></span>
                                     <span class="topbar-label"><i class="fa fa-envelope-o"></i></span></li>
                             </ul>
                         </div>
@@ -29,7 +29,7 @@
                                        target="_blank"></a></li>
                                 <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
                                        target="_blank"></a></li>
-                                <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram"
+                                <li><a class="fa fa-instagram" href="{{ json_decode($settings->social_media, true)['instagram'] }}" title="Instagram"
                                        target="_blank"></a></li>
                             </ul>
                         </div>
@@ -51,7 +51,7 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                     <!-- logo start -->
                     <div class="logo"><a href="{{ route('it-city.home') }}"><img
-                                src="{{ asset('it-next-assets/images/logos/it_logo.png') }}" alt="logo"/></a></div>
+                                src="{{ asset($settings->logo) }}" alt="logo"/></a></div>
                     <!-- logo end -->
                 </div>
                 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -62,7 +62,7 @@
                                 <li><a class="active" href="{{ route('it-city.home') }}">خانه</a>
                                     <ul class="text-right">
                                         <li><a href="{{ route('customer.home') }}">فروشگاه</a></li>
-                                        <li><a href="{{ route('digital-world.technology.index') }}">دنیای دیجیتالی</a>
+                                        <li><a href="{{ route('digital-world.home') }}">دنیای دیجیتالی</a>
                                         </li>
                                     </ul>
                                 </li>

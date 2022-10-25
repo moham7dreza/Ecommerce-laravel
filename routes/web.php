@@ -16,6 +16,7 @@ use App\Http\Controllers\ItCity\PC\PcSmartAssembleController;
 use App\Http\Controllers\ItCity\SalesSteps\CartController as StoreCartController;
 use App\Http\Controllers\ItCity\ServiceAndRepair\ServiceController;
 use App\Http\Controllers\ItCity\Store\HardwareController;
+use App\Http\Controllers\DigitalWorld\HomeController as DigiHomeController;
 use App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use App\Http\Livewire\DigitalWorld\Technology\PostDetail;
 use App\Http\Livewire\DigitalWorld\Technology\Posts;
@@ -110,8 +111,8 @@ Route::namespace('Customer')->group(function () {
     Route::namespace('Market')->group(function () {
 
         Route::get('/product/{product:slug}', [MarketProductController::class, 'product'])->name('customer.market.product');
-        Route::post('/add-comment/prodcut/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
-        Route::get('/add-to-favorite/prodcut/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
+        Route::post('/add-comment/product/{product:slug}', [MarketProductController::class, 'addComment'])->name('customer.market.add-comment');
+        Route::get('/add-to-favorite/product/{product:slug}', [MarketProductController::class, 'addToFavorite'])->name('customer.market.add-to-favorite');
 
         // products of special category
         Route::get('/category/{productCategory:slug}/products', [MarketProductController::class, 'categoryProducts'])->name('customer.market.category.products');
@@ -153,6 +154,16 @@ Route::prefix('digital-world')->group(function () {
         // show all posts of one special category
         Route::get('/category/{postCategory}/posts', CategoryPosts::class)->name('digital-world.technology.category.posts');
     });
+    /******************************************************************************************************************
+     * main digital island page
+     *
+     *  */
+    Route::get('/', [DigiHomeController::class, 'home'])->name('digital-world.home');
+    Route::get('/post/{post:slug}', [DigiHomeController::class, 'post'])->name('digital-world.post.detail');
+    Route::get('/category/{postCategory:slug}/posts', [DigiHomeController::class, 'category'])->name('digital-world.category.posts');
+    Route::post('/add-comment/post/{post:slug}', [DigiHomeController::class, 'addComment'])->name('digital-world.post.add-comment');
+    Route::post('/add-to-favorite/{post:slug}', [DigiHomeController::class, 'addToFavorite'])->name('digital-world.post.add-to-favorite');
+    Route::post('/post/{post:slug}/like', [DigiHomeController::class, 'likePost'])->name('digital-world.post.like');
 });
 
 

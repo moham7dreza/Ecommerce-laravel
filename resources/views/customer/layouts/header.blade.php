@@ -214,7 +214,7 @@
 
                     <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a>
                     </section>
-                    <section class="navbar-item"><a href="{{ route('digital-world.technology.index') }}">دنیای
+                    <section class="navbar-item"><a href="{{ route('digital-world.home') }}">دنیای
                             دیجیتالی</a></section>
                     <section class="navbar-item"><a href="{{ route('it-city.home') }}">آیتی سیتی</a></section>
 

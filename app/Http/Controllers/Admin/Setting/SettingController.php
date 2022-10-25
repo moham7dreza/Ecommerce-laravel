@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin\setting;
+namespace App\Http\Controllers\Admin\Setting;
 
 use Illuminate\Http\Request;
 use App\Models\Setting\Setting;
@@ -8,23 +8,24 @@ use Database\Seeders\SettingSeeder;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Image\ImageService;
 use App\Http\Requests\Admin\Setting\SettingRequest;
+use Illuminate\Http\Response;
 
 class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $setting = Setting::first();
-        if($setting === null){
+        $settings = Setting::all();
+        if ($settings === null) {
             $default = new SettingSeeder();
             $default->run();
-            $setting = Setting::first();
+            $settings = Setting::first();
         }
-        return view('admin.setting.index', compact('setting'));
+        return view('admin.setting.index', compact('settings'));
     }
 
     /**
@@ -40,7 +41,7 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +52,7 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +63,7 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Setting $setting)
@@ -73,59 +74,64 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param SettingRequest $request
+     * @param Setting $setting
+     * @param ImageService $imageService
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(SettingRequest $request, Setting $setting, ImageService $imageService)
+    public function update(SettingRequest $request, Setting $setting, ImageService $imageService): \Illuminate\Http\RedirectResponse
     {
-        $inputs = $request->all();
-
-        if($request->hasFile('logo'))
-        {
-            if(!empty($setting->logo))
-            {
+        if ($request->hasFile('logo')) {
+            if (!empty($setting->logo)) {
                 $imageService->deleteImage($setting->logo);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
-            $imageService->setImageName('logo');
+            $imageService->setImageName($setting->title. ' لوگو');
             $result = $imageService->save($request->file('logo'));
-            if($result === false)
-            {
+            if ($result === false) {
                 return redirect()->route('admin.content.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['logo'] = $result;
         }
-        if($request->hasFile('icon'))
-        {
-            if(!empty($setting->icon))
-            {
+        if ($request->hasFile('icon')) {
+            if (!empty($setting->icon)) {
                 $imageService->deleteImage($setting->icon);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
-            $imageService->setImageName('icon');
+            $imageService->setImageName($setting->title. ' آیکون');
             $result = $imageService->save($request->file('icon'));
-            if($result === false)
-            {
+            if ($result === false) {
                 return redirect()->route('admin.content.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['icon'] = $result;
         }
-        $setting->update($inputs);
+        $inputs['address'] = ['addresses' => ['central_office' => $request->address],
+            'postal_code' => $request->postal_code];
+        $inputs['bank_account'] = ['name' => $request->bank_name, 'number' => $request->account_number,
+            'shaba' => $request->shaba_number];
+        $inputs['email'] = ['office_mail' => $request->email];
+        $inputs['mobile'] = ['office_telephone' => $request->office_telephone, 'mobile' => $request->mobile];
+        $inputs['social_media'] = ['instagram' => $request->instagram, 'telegram' => $request->telegram,
+            'youtube' => $request->youtube, 'whatsapp' => $request->whatsapp];
+        $inputs['description'] = $request->description;
+        $inputs['keywords'] = $request->keywords;
+        $inputs['title'] = $request->title;
+        $inputs['postal_code'] = $request->postal_code;
+        $setting_updated = $setting->update($inputs);
         return redirect()->route('admin.setting.index')->with('swal-success', 'تنظیمات سایت  شما با موفقیت ویرایش شد');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

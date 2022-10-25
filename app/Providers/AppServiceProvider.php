@@ -49,5 +49,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with('menus', Menu::where('status', 1)->get());
             $view->with('logo', Setting::where('id', 1)->pluck('logo')->first());
         });
+
+        view()->composer('customer.layouts.head-tag', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+
+        view()->composer('customer.layouts.footer', function ($view) {
+            $view->with('setting', Setting::first());
+        });
+
+        view()->composer('it-city.layouts.header', function ($view) {
+            $view->with('settings', Setting::find(2));
+        });
+        view()->composer('it-city.layouts.head-tag', function ($view) {
+            $view->with('settings', Setting::find(2));
+        });
     }
 }

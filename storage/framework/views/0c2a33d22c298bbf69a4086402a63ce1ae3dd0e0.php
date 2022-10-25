@@ -63,9 +63,9 @@
                     <section>
                         <section class="text-dark fw-bold">با ما همراه باشید</section>
                         <section class="my-3">
-                            <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-telegram"></i></a>
-                            <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-whatsapp"></i></a>
+                            <a href="<?php echo e(json_decode($setting->social_media, true)['instagram']); ?>" class="text-muted text-decoration-none me-5"><i class="fab fa-instagram"></i></a>
+                            <a href="<?php echo e(json_decode($setting->social_media, true)['telegram']); ?>" class="text-muted text-decoration-none me-5"><i class="fab fa-telegram"></i></a>
+                            <a href="<?php echo e(json_decode($setting->social_media, true)['whatsapp']); ?>" class="text-muted text-decoration-none me-5"><i class="fab fa-whatsapp"></i></a>
                             <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="text-muted text-decoration-none me-5"><i class="fab fa-linkedin"></i></a>
                         </section>

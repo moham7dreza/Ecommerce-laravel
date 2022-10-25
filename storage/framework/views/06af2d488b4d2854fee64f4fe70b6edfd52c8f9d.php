@@ -1,6 +1,17 @@
 <!-- Required meta tags -->
-<meta charset="utf-8">
+<!-- Mobile Specific Meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Favicon-->
+<link rel="shortcut icon" href="<?php echo e(asset($setting->icon)); ?>">
+<!-- Author Meta -->
+<meta name="author" content="colorlib">
+<!-- Meta Description -->
+<meta name="description" content="<?php echo e($setting->description); ?>">
+<!-- Meta Keyword -->
+<meta name="keywords" content="<?php echo e($setting->keywords); ?>">
+<!-- meta character set -->
+<meta charset="UTF-8">
+
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?php echo e(asset('customer-assets/css/bootstrap/bootstrap-reboot.rtl.min.css')); ?>">
