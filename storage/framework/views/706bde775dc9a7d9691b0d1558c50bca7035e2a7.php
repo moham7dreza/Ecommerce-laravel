@@ -8,10 +8,13 @@
                     <div class="full">
                         <div class="topbar-left">
                             <ul class="list-inline">
-                                <li><span class="topbar-hightlight"> <?php echo e(json_decode($settings->address, true)['addresses']['central_office']); ?> </span> <span
+                                <li><span
+                                        class="topbar-hightlight"> <?php echo e(json_decode($settings->address, true)['addresses']['central_office']); ?> </span>
+                                    <span
                                         class="topbar-label"><i
                                             class="fa  fa-home"></i></span></li>
-                                <li><span class="topbar-hightlight"><a href="mailto:<?php echo e(json_decode($settings->email, true)['office_mail']); ?>"> <?php echo e(json_decode($settings->email, true)['office_mail']); ?> </a></span>
+                                <li><span class="topbar-hightlight"><a
+                                            href="mailto:<?php echo e(json_decode($settings->email, true)['office_mail']); ?>"> <?php echo e(json_decode($settings->email, true)['office_mail']); ?> </a></span>
                                     <span class="topbar-label"><i class="fa fa-envelope-o"></i></span></li>
                             </ul>
                         </div>
@@ -29,7 +32,9 @@
                                        target="_blank"></a></li>
                                 <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
                                        target="_blank"></a></li>
-                                <li><a class="fa fa-instagram" href="<?php echo e(json_decode($settings->social_media, true)['instagram']); ?>" title="Instagram"
+                                <li><a class="fa fa-instagram"
+                                       href="<?php echo e(json_decode($settings->social_media, true)['instagram']); ?>"
+                                       title="Instagram"
                                        target="_blank"></a></li>
                             </ul>
                         </div>
@@ -59,10 +64,25 @@
                     <div class="menu_side">
                         <div id="navbar_menu">
                             <ul class="first-ul">
+                                <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><a href="<?php echo e(urldecode($menu->url)); ?>"><?php echo e($menu->name); ?></a>
+                                        <?php if(count($menu->children) > 0): ?>
+                                            <ul class="text-center">
+                                                <?php $__currentLoopData = $menu->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($subMenu->status == 1): ?>
+                                                        <li>
+                                                            <a href="<?php echo e(urldecode($subMenu->url)); ?>"><?php echo e($subMenu->name); ?></a>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <li><a class="active" href="<?php echo e(route('it-city.home')); ?>">خانه</a>
                                     <ul class="text-right">
                                         <li><a href="<?php echo e(route('customer.home')); ?>">فروشگاه</a></li>
-                                        <li><a href="<?php echo e(route('digital-world.technology.index')); ?>">دنیای دیجیتالی</a>
+                                        <li><a href="<?php echo e(route('digital-world.home')); ?>">دنیای دیجیتالی</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -73,6 +93,7 @@
                                         <li><a href="<?php echo e(route('single-pages.ultra-profile')); ?>">پروفایل</a></li>
                                         <li><a href="<?php echo e(route('single-pages.motion')); ?>">استرو</a></li>
                                         <li><a href="<?php echo e(route('single-pages.app')); ?>">اپ موبایل</a></li>
+                                        <li><a href="<?php echo e(route('single-pages.hydrogen')); ?>">هیدروژن</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">استور</a>
@@ -124,13 +145,13 @@
                                     </ul>
                                 </li>
 
-
-                                    
-                                    
-                                    
-                                    
-                                    
-
+                                
+                                
+                                
+                                
+                                
+                                
+                                
 
                                 
                                 

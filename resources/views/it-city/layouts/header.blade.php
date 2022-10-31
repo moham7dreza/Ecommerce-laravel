@@ -8,10 +8,13 @@
                     <div class="full">
                         <div class="topbar-left">
                             <ul class="list-inline">
-                                <li><span class="topbar-hightlight"> {{ json_decode($settings->address, true)['addresses']['central_office'] }} </span> <span
+                                <li><span
+                                        class="topbar-hightlight"> {{ json_decode($settings->address, true)['addresses']['central_office'] }} </span>
+                                    <span
                                         class="topbar-label"><i
                                             class="fa  fa-home"></i></span></li>
-                                <li><span class="topbar-hightlight"><a href="mailto:{{ json_decode($settings->email, true)['office_mail'] }}"> {{ json_decode($settings->email, true)['office_mail'] }} </a></span>
+                                <li><span class="topbar-hightlight"><a
+                                            href="mailto:{{ json_decode($settings->email, true)['office_mail'] }}"> {{ json_decode($settings->email, true)['office_mail'] }} </a></span>
                                     <span class="topbar-label"><i class="fa fa-envelope-o"></i></span></li>
                             </ul>
                         </div>
@@ -29,7 +32,9 @@
                                        target="_blank"></a></li>
                                 <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn"
                                        target="_blank"></a></li>
-                                <li><a class="fa fa-instagram" href="{{ json_decode($settings->social_media, true)['instagram'] }}" title="Instagram"
+                                <li><a class="fa fa-instagram"
+                                       href="{{ json_decode($settings->social_media, true)['instagram'] }}"
+                                       title="Instagram"
                                        target="_blank"></a></li>
                             </ul>
                         </div>
@@ -59,6 +64,21 @@
                     <div class="menu_side">
                         <div id="navbar_menu">
                             <ul class="first-ul">
+                                @foreach($menus as $menu)
+                                    <li><a href="{{ urldecode($menu->url) }}">{{ $menu->name }}</a>
+                                        @if(count($menu->children) > 0)
+                                            <ul class="text-center">
+                                                @foreach($menu->children as $subMenu)
+                                                    @if($subMenu->status == 1)
+                                                        <li>
+                                                            <a href="{{ urldecode($subMenu->url) }}">{{ $subMenu->name }}</a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
                                 <li><a class="active" href="{{ route('it-city.home') }}">خانه</a>
                                     <ul class="text-right">
                                         <li><a href="{{ route('customer.home') }}">فروشگاه</a></li>
@@ -73,6 +93,7 @@
                                         <li><a href="{{ route('single-pages.ultra-profile') }}">پروفایل</a></li>
                                         <li><a href="{{ route('single-pages.motion') }}">استرو</a></li>
                                         <li><a href="{{ route('single-pages.app') }}">اپ موبایل</a></li>
+                                        <li><a href="{{ route('single-pages.hydrogen') }}">هیدروژن</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">استور</a>
@@ -124,13 +145,13 @@
                                     </ul>
                                 </li>
 
-{{--                                <li><a href="it_blog.html">گالری</a>--}}
-                                    {{--                                    <ul>--}}
-                                    {{--                                        <li><a href="it_blog.html">Blog List</a></li>--}}
-                                    {{--                                        <li><a href="it_blog_grid.html">Blog Grid</a></li>--}}
-                                    {{--                                        <li><a href="it_blog_detail.html">Blog Detail</a></li>--}}
-                                    {{--                                    </ul>--}}
-{{--                                </li>--}}
+                                {{--                                <li><a href="it_blog.html">گالری</a>--}}
+                                {{--                                    <ul>--}}
+                                {{--                                        <li><a href="it_blog.html">Blog List</a></li>--}}
+                                {{--                                        <li><a href="it_blog_grid.html">Blog Grid</a></li>--}}
+                                {{--                                        <li><a href="it_blog_detail.html">Blog Detail</a></li>--}}
+                                {{--                                    </ul>--}}
+                                {{--                                </li>--}}
 
                                 {{--                                <li> <a href="it_shop.html">Shop</a>--}}
                                 {{--                                    <ul>--}}

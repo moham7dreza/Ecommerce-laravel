@@ -53,13 +53,13 @@
                     <section class="col-12 col-md-6">
                         <div class="form-group">
                             <label for="menu_level">سطوح منو</label>
-                            <select name="menu_level" id="level" class="form-control form-control-sm">
-                                @foreach($levels as $level => $value)
-                                    <option value="{{ $level }}" @if(old('menu_level', $menu->level) == $level) selected @endif>{{ $value }}</option>
+                            <select name="level" id="level" class="form-control form-control-sm">
+                                @foreach(\App\Models\Content\Menu::$levels as $level => $value)
+                                    <option value="{{ $level }}" @if(old('level', $menu->level) == $level) selected @endif>{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        @error('menu_level')
+                        @error('level')
                         <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                 <strong>
                                     {{ $message }}
@@ -71,7 +71,7 @@
                         <section class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="">منو والد</label>
-                                <select name="parent_id" id="" class="form-control form-control-sm">
+                                <select name="parent_id" id="main-menus" class="form-control form-control-sm">
                                     <option value="">منوی اصلی</option>
                                     @foreach ($parent_menus as $parent_menu)
                                     <option value="{{ $parent_menu->id }}"  @if(old('parent_id', $menu->parent_id) == $parent_menu->id) selected @endif>{{ $parent_menu->name }}</option>
@@ -89,7 +89,7 @@
 
                         <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">آدرس URL</label>
+                                <label for="url">آدرس URL</label>
                                 <input type="text" name="url" value="{{ old('url', $menu->url) }}" class="form-control form-control-sm">
                             </div>
                             @error('url')
@@ -104,7 +104,7 @@
                         <section class="col-12 col-md-6 my-2">
                             <div class="form-group">
                                 <label for="status">وضعیت</label>
-                                <select name="status" id="" class="form-control form-control-sm" id="status">
+                                <select name="status" class="form-control form-control-sm" id="status">
                                     <option value="0" @if (old('status', $menu->status) == 0) selected @endif>غیرفعال</option>
                                     <option value="1" @if (old('status', $menu->status) == 1) selected @endif>فعال</option>
                                 </select>
@@ -129,4 +129,21 @@
     </section>
 </section>
 
+@endsection
+@section('script')
+    <script>
+        $("#level").change(function () {
+
+            if ($('#level').find(':selected').val() == '2') {
+                $('#main-menus').removeAttr('disabled');
+            } else if ($('#level').find(':selected').val() == '3') {
+                $('#main-menus').removeAttr('disabled');
+                $('#sub-menus').removeAttr('disabled');
+            } else if ($('#level').find(':selected').val() == '1') {
+                $('#main-menus').attr('disabled', 'disabled');
+                $('#sub-menus').attr('disabled', 'disabled');
+            }
+        });
+
+    </script>
 @endsection

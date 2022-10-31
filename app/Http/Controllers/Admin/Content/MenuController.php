@@ -28,10 +28,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $menus = Menu::where('parent_id', null)->get();
-        $levels = Menu::$levels;
-        $locations = Menu::$locations;
-        return view('admin.content.menu.create', compact('menus', 'levels', 'locations'));
+        return view('admin.content.menu.create');
     }
 
     /**
@@ -43,7 +40,7 @@ class MenuController extends Controller
     public function store(MenuRequest $request)
     {
         $inputs = $request->all();
-        if ($request->menu_level == 3)
+        if ($request->level == 3)
         {
             $inputs['parent_id'] = $request->sub_menu_id;
         }
@@ -71,9 +68,7 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         $parent_menus = Menu::where('parent_id', null)->where('status', 1)->where('location', $menu->location)->get()->except($menu->id);
-        $levels = Menu::$levels;
-        $locations = Menu::$locations;
-        return view('admin.content.menu.edit', compact('menu' ,'parent_menus', 'levels', 'locations'));
+        return view('admin.content.menu.edit', compact('menu' ,'parent_menus'));
     }
 
     /**
@@ -135,7 +130,7 @@ class MenuController extends Controller
 
     public function getMenus($location)
     {
-        $menus = Menu::where('status', 1)->where('location', $location)->where('parent_id', null)->get();
+        $menus = Menu::query()->where('status', 1)->where('location', $location)->where('parent_id', null)->get();
 
         if($menus != null)
         {

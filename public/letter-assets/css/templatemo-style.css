@@ -1,17 +1,18 @@
 /*
 
-Letter Template 
+Letter Template
 
 https://templatemo.com/tm-510-letter
 
 */
 
 body {
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	/*font-family: 'Open Sans', Helvetica, Arial, sans-serif;*/
+    font-family: IRANSans, sans-serif;
 	font-size: 24px;
 	font-weight: 300;
 	overflow-x: hidden;
-	
+
 }
 
 a, button {
@@ -34,11 +35,11 @@ a:focus {
 
 h1 {
 	color: #FFFFFF;
-	font-size: 4rem;	
+	font-size: 4rem;
 }
 
 p {
-	color: #FFFFFF;	
+	color: #FFFFFF;
 }
 
 #particles-js {
@@ -77,7 +78,7 @@ p {
     color: white;
 }
 
-.form-control {  
+.form-control {
     color: #FFFFFF;
     border-radius: .5rem;
     background-color: transparent;
@@ -89,11 +90,11 @@ p {
     padding: 0.75rem 1.2rem;
 }
 
-.form-section {  
+.form-section {
     color: #FFFFFF;
     background-color: transparent;
     margin-bottom: 100px;
-    
+
 }
 
 .contact_email {
@@ -175,40 +176,40 @@ p {
 }
 
 
-.cb-slideshow li:nth-child(1) { 
+.cb-slideshow li:nth-child(1) {
     background-image: url(../img/letter_bg_01.jpg)
 }
-.cb-slideshow li:nth-child(2) { 
+.cb-slideshow li:nth-child(2) {
     background-image: url(../img/letter_bg_02.jpg);
     -webkit-animation-delay: 12s;
     -moz-animation-delay: 12s;
     -o-animation-delay: 12s;
     -ms-animation-delay: 12s;
-    animation-delay: 12s; 
+    animation-delay: 12s;
 }
-.cb-slideshow li:nth-child(3) { 
+.cb-slideshow li:nth-child(3) {
     background-image: url(../img/letter_bg_03.jpg);
     -webkit-animation-delay: 24s;
     -moz-animation-delay: 24s;
     -o-animation-delay: 24s;
     -ms-animation-delay: 24s;
-    animation-delay: 24s; 
+    animation-delay: 24s;
 }
-.cb-slideshow li:nth-child(4) { 
+.cb-slideshow li:nth-child(4) {
     background-image: url(../img/letter_bg_01.jpg);
-    animation-delay: 36s; 
+    animation-delay: 36s;
 }
-.cb-slideshow li:nth-child(5) { 
+.cb-slideshow li:nth-child(5) {
     background-image: url(../img/letter_bg_02.jpg);
-    animation-delay: 48s; 
+    animation-delay: 48s;
 }
-.cb-slideshow li:nth-child(6) { 
+.cb-slideshow li:nth-child(6) {
     background-image: url(../img/letter_bg_03.jpg);
-    animation-delay: 60s; 
+    animation-delay: 60s;
 }
 
 
-@keyframes imageAnimation { 
+@keyframes imageAnimation {
 	0% {
 	    opacity: 0;
 	    animation-timing-function: ease-in;
@@ -230,19 +231,19 @@ p {
 }
 
 
-@media screen and (max-width: 1140px) { 
+@media screen and (max-width: 1140px) {
     .cb-slideshow li div h3 { font-size: 140px }
 }
-@media screen and (max-width: 600px) { 
+@media screen and (max-width: 600px) {
     .cb-slideshow li div h3 { font-size: 80px }
 	.tm-content {
 		margin-top: 80px;
 	}
 }
 
-@media screen and (max-width: 576px) { 
+@media screen and (max-width: 576px) {
     .cb-slideshow li div h3 { font-size: 80px }
-	
+
 	.tm-btn-subscribe {
 		margin-top: 20px;
 	}

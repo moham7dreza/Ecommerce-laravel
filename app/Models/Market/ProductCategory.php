@@ -24,7 +24,7 @@ class ProductCategory extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'show_in_menu', 'parent_id'];
+    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'show_in_menu', 'parent_id', 'route_code'];
 
     public function parent()
     {
@@ -46,4 +46,9 @@ class ProductCategory extends Model
         return $this->hasMany(CategoryAttribute::class);
     }
 
+    public static $levels = [
+        1 => 'دسته اصلی',
+        2 => 'زیر دسته اصلی',
+        3 => 'فرزند زیر دسته اصلی',
+    ];
 }

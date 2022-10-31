@@ -14,8 +14,8 @@ class PostCategory extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'name'
             ]
         ];
@@ -23,7 +23,9 @@ class PostCategory extends Model
 
     protected $casts = ['image' => 'array'];
 
-    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags'];
+//    protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags'];
+
+    protected $guarded = ['id'];
 
     public function parent()
     {

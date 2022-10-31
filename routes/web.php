@@ -268,5 +268,6 @@ Route::prefix('single-pages')->namespace('SinglePage')->group(function () {
     Route::get('/ultra-profile', [SinglePageController::class, 'ultraProfile'])->name('single-pages.ultra-profile');
     Route::get('/letter', [SinglePageController::class, 'letter'])->name('single-pages.letter');
     Route::get('/app', [SinglePageController::class, 'app'])->name('single-pages.app');
+    Route::get('/hydrogen', [SinglePageController::class, 'hydrogen'])->name('single-pages.hydrogen');
     Route::get('/astro-motion', [SinglePageController::class, 'astroMotion'])->name('single-pages.motion');
 });

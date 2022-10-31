@@ -169,55 +169,56 @@
                         </section>
                         <section class="sublist-wrapper position-absolute w-100">
                             <section class="position-relative sublist-area">
-                                <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if($menu->parent_id == NULL): ?>
-                                        <section class="sublist-item">
-                                            <section class="sublist-item-toggle"><?php echo e($menu->name); ?></section>
-                                            <section class="sublist-item-sublist">
-                                                <section
-                                                    class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
-                                                    <?php $__currentLoopData = $menu->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subMenu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <section class="sublist-item">
+                                        <section class="sublist-item-toggle"><?php echo e($category->name); ?></section>
+                                        <section class="sublist-item-sublist">
+                                            <section
+                                                class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                                <?php $__currentLoopData = $category->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subCategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($subCategory->status == 1): ?>
                                                         <section class="sublist-column col">
-                                                            <a <?php if($subMenu->category): ?> href="<?php echo e(route('customer.market.category.products', $subMenu->category)); ?>"
-                                                               <?php else: ?> href="<?php echo e($subMenu->url ?? '#'); ?>" <?php endif; ?>
-                                                               class="sub-category"><?php echo e($subMenu->name); ?></a>
-                                                                <?php if($subMenu->children): ?>
-                                                                    <?php $__currentLoopData = $subMenu->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php
-                                                                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'like', '%' . $child->name . '%')->first();
-                                                                        ?>
-                                                                        <a <?php if($category): ?> href="<?php echo e(route('customer.market.category.products', $category)); ?>"
-                                                                           <?php else: ?> href="<?php echo e($child->url ?? '#'); ?>" <?php endif; ?> class="sub-sub-category"><?php echo e($child->name); ?></a>
+                                                            <a href="<?php echo e(route('customer.market.category.products', $subCategory)); ?>"
+                                                               class="sub-category"><?php echo e($subCategory->name); ?></a>
+                                                            <?php if(count($subCategory->children) > 0): ?>
+                                                                <?php $__currentLoopData = $subCategory->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <?php if($child->status == 1): ?>
+                                                                        <a href="<?php echo e(route('customer.market.category.products', $child)); ?>"
+                                                                           class="sub-sub-category"><?php echo e($child->name); ?></a>
+                                                                    <?php endif; ?>
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php endif; ?>
+                                                            <?php endif; ?>
                                                         </section>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </section>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </section>
                                         </section>
-                                    <?php endif; ?>
+                                    </section>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </section>
                         </section>
                     </section>
                     <section class="border-start my-2 mx-1"></section>
-                    
-                    
-                    
-                    
-                    <section class="navbar-item"><a href="#">درباره ما</a></section>
-                    <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
-                    <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
-                    
-                    <section class="navbar-item"><a href="<?php echo e(route('customer.market.products.offers')); ?>">فروش ویژه</a>
-                    </section>
+                    <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <section class="navbar-item"><a href="<?php echo e($menu->url); ?>"><?php echo e($menu->name); ?></a></section>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
 
-                    <section class="navbar-item"><a href="<?php echo e(route('smart.assemble.categories')); ?>">اسمبل هوشمند</a>
-                    </section>
-                    <section class="navbar-item"><a href="<?php echo e(route('digital-world.home')); ?>">دنیای
-                            دیجیتالی</a></section>
-                    <section class="navbar-item"><a href="<?php echo e(route('it-city.home')); ?>">آیتی سیتی</a></section>
-
+                        
+                        
+                        
+                        
+                        
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </section>
 
 

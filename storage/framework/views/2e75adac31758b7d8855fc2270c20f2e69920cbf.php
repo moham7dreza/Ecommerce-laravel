@@ -50,7 +50,7 @@
                             <td><?php echo e($menu->name); ?></td>
                             <td><?php echo e(\App\Models\Content\Menu::$locations[$menu->location]); ?></td>
                             <td><?php echo e(\App\Models\Content\Menu::$levels[$menu->level]); ?></td>
-                            <td><?php echo e($menu->parent_id ? $menu->parent->name : 'منوی اصلی'); ?></td>
+                            <td><?php echo e($menu->parent_id ? $menu->parent->name : '-'); ?></td>
 
                             <td>
                                 <label>

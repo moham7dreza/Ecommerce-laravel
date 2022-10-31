@@ -34,7 +34,6 @@
                     @csrf
                     <section class="row">
 
-
                         <section class="col-12">
                             <div class="form-group">
                                 <label for="">انتخاب محصول</label>

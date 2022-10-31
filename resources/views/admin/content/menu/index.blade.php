@@ -52,7 +52,7 @@
                             <td>{{ $menu->name }}</td>
                             <td>{{ \App\Models\Content\Menu::$locations[$menu->location] }}</td>
                             <td>{{ \App\Models\Content\Menu::$levels[$menu->level] }}</td>
-                            <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
+                            <td>{{ $menu->parent_id ? $menu->parent->name : '-' }}</td>
 {{--                            <td>{{ $menu->url }}</td>--}}
                             <td>
                                 <label>

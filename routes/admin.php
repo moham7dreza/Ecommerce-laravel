@@ -202,6 +202,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
             Route::get('/edit/{productCategory}', [CategoryController::class, 'edit'])->name('admin.market.category.edit');
             Route::put('/update/{productCategory}', [CategoryController::class, 'update'])->name('admin.market.category.update');
             Route::delete('/destroy/{productCategory}', [CategoryController::class, 'destroy'])->name('admin.market.category.destroy');
+            Route::get('/get-sub-categories/{productCategory}', [CategoryController::class, 'getSubCategories'])->name('admin.market.category.get-sub-categories');
         });
 
         //brand

@@ -26,4 +26,9 @@ class HomeController extends Controller
     {
         return view('single-pages.motion');
     }
+
+    public function hydrogen()
+    {
+        return view('single-pages.hydrogen');
+    }
 }

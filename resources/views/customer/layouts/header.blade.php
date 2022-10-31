@@ -169,55 +169,56 @@
                         </section>
                         <section class="sublist-wrapper position-absolute w-100">
                             <section class="position-relative sublist-area">
-                                @foreach($menus as $menu)
-                                    @if($menu->parent_id == NULL)
-                                        <section class="sublist-item">
-                                            <section class="sublist-item-toggle">{{ $menu->name }}</section>
-                                            <section class="sublist-item-sublist">
-                                                <section
-                                                    class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
-                                                    @foreach($menu->children as $subMenu)
+                                @foreach($categories as $category)
+                                    <section class="sublist-item">
+                                        <section class="sublist-item-toggle">{{ $category->name }}</section>
+                                        <section class="sublist-item-sublist">
+                                            <section
+                                                class="sublist-item-sublist-wrapper d-flex justify-content-around align-items-center">
+                                                @foreach($category->children as $subCategory)
+                                                    @if($subCategory->status == 1)
                                                         <section class="sublist-column col">
-                                                            <a @if($subMenu->category) href="{{ route('customer.market.category.products', $subMenu->category) }}"
-                                                               @else href="{{ $subMenu->url ?? '#' }}" @endif
-                                                               class="sub-category">{{ $subMenu->name }}</a>
-                                                                @if($subMenu->children)
-                                                                    @foreach($subMenu->children as $child)
-                                                                        @php
-                                                                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'like', '%' . $child->name . '%')->first();
-                                                                        @endphp
-                                                                        <a @if($category) href="{{ route('customer.market.category.products', $category) }}"
-                                                                           @else href="{{ $child->url ?? '#' }}" @endif class="sub-sub-category">{{ $child->name }}</a>
+                                                            <a href="{{ route('customer.market.category.products', $subCategory) }}"
+                                                               class="sub-category">{{ $subCategory->name }}</a>
+                                                            @if(count($subCategory->children) > 0)
+                                                                @foreach($subCategory->children as $child)
+                                                                    @if($child->status == 1)
+                                                                        <a href="{{ route('customer.market.category.products', $child) }}"
+                                                                           class="sub-sub-category">{{ $child->name }}</a>
+                                                                    @endif
                                                                 @endforeach
-                                                                @endif
+                                                            @endif
                                                         </section>
-                                                    @endforeach
-                                                </section>
+                                                    @endif
+                                                @endforeach
                                             </section>
                                         </section>
-                                    @endif
+                                    </section>
                                 @endforeach
                             </section>
                         </section>
                     </section>
                     <section class="border-start my-2 mx-1"></section>
-                    {{--                    <section class="navbar-item"><a href="#">سوپرمارکت</a></section>--}}
-                    {{--                    <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>--}}
-                    {{--                    <section class="navbar-item"><a href="#">آمازون من</a></section>--}}
-                    {{--                    <section class="navbar-item"><a href="#">آمازون پلاس</a></section>--}}
-                    <section class="navbar-item"><a href="#">درباره ما</a></section>
-                    <section class="navbar-item"><a href="#">فروشنده شوید</a></section>
-                    <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>
-                    {{--                        <section class="navbar-item"><a href="#"></a></section>--}}
-                    <section class="navbar-item"><a href="{{ route('customer.market.products.offers') }}">فروش ویژه</a>
-                    </section>
+                    @foreach($menus as $menu)
+                        <section class="navbar-item"><a href="{{ $menu->url }}">{{ $menu->name }}</a></section>
+                        {{--                    <section class="navbar-item"><a href="#">سوپرمارکت</a></section>--}}
+                        {{--                    <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>--}}
+                        {{--                    <section class="navbar-item"><a href="#">آمازون من</a></section>--}}
+                        {{--                    <section class="navbar-item"><a href="#">آمازون پلاس</a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="#">درباره ما</a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="#">فروشنده شوید</a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="#">فرصت های شغلی</a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="#"></a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="{{ route('customer.market.products.offers') }}">فروش--}}
+                        {{--                                ویژه</a>--}}
+                        {{--                        </section>--}}
 
-                    <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a>
-                    </section>
-                    <section class="navbar-item"><a href="{{ route('digital-world.home') }}">دنیای
-                            دیجیتالی</a></section>
-                    <section class="navbar-item"><a href="{{ route('it-city.home') }}">آیتی سیتی</a></section>
-
+                        {{--                        <section class="navbar-item"><a href="{{ route('smart.assemble.categories') }}">اسمبل هوشمند</a>--}}
+                        {{--                        </section>--}}
+                        {{--                        <section class="navbar-item"><a href="{{ route('digital-world.home') }}">دنیای--}}
+                        {{--                                دیجیتالی</a></section>--}}
+                        {{--                        <section class="navbar-item"><a href="{{ route('it-city.home') }}">آیتی سیتی</a></section>--}}
+                    @endforeach
                 </section>
 
 

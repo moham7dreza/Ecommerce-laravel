@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategory::where('parent_id', null)->get();
+        $categories = ProductCategory::query()->where([['status', 1], ['show_in_menu', 1], ['parent_id', NULL]])->orderBy('created_at')->get();
         return view('admin.market.category.create', compact('categories'));
     }
 
@@ -53,6 +53,11 @@ class CategoryController extends Controller
         }
         $inputs['image'] = $result;
         $inputs['route_code'] = Str::random(6);
+
+        if ($request->level == 3)
+        {
+            $inputs['parent_id'] = $request->sub_cat_id;
+        }
         $productCategory = ProductCategory::create($inputs);
         return redirect()->route('admin.market.category.index')->with('swal-success', 'دسته بندی جدید شما با موفقیت ثبت شد');
     }
@@ -126,5 +131,17 @@ class CategoryController extends Controller
     {
        $result = $productCategory->delete();
        return redirect()->route('admin.market.category.index')->with('swal-success', 'دسته بندی شما با موفقیت حذف شد');
+    }
+
+    public function getSubCategories(ProductCategory $productCategory)
+    {
+        $subCategories = $productCategory->children;
+        if($subCategories != null)
+        {
+            return response()->json(['status' => true, 'subCategories' => $subCategories]);
+        }
+        else{
+            return response()->json(['status' => false, 'subCategories' => null]);
+        }
     }
 }
