@@ -19,25 +19,33 @@
                         <section class="search-textbox">
                             <span><i class="fa fa-search"></i></span>
                             <input id="search" type="text" class="" placeholder="جستجو ..." autocomplete="off">
+{{--                                   onkeyup="liveSearch(this.value)">--}}
                         </section>
-                        <section class="search-result visually-hidden">
-                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل شیا"</span><span
-                                    class="search-result-type">در دسته بندی ها</span></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
-                                        class="fa fa-link"></i> دسته موبایل و وسایل جانبی</a></section>
+                        <section class="search-result visually-hidden" id="search-result">
+                            <section id="product-category-search-result" class="d-none">
+                                <section class="search-result-title">نتایج جستجو برای <span class="search-words"
+                                                                                            id="category-search-key"></span><span
+                                        class="search-result-type">در دسته بندی ها</span></section>
+                                <section class="search-result-item d-none" id="product-category-search-result-item">
+                                    <a class="text-decoration-none" href="#">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                </section>
+                            </section>
 
-                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل شیا"</span><span
-                                    class="search-result-type">در برندها</span></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
-                                        class="fa fa-link"></i> برند شیائومی</a></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
-                                        class="fa fa-link"></i> برند توشیبا</a></section>
-                            <section class="search-result-item"><a class="text-decoration-none" href="#"><i
-                                        class="fa fa-link"></i> برند شیانگ پینگ</a></section>
-
-                            <section class="search-result-title">نتایج جستجو برای <span class="search-words">"موبایل شیا"</span><span
-                                    class="search-result-type">در کالاها</span></section>
-                            <section class="search-result-item"><span class="search-no-result">موردی یافت نشد</span>
+                            <section id="brand-search-result" class="d-none">
+                                <section class="search-result-title">نتایج جستجو برای <span class="search-words"
+                                                                                            id="brand-search-key"></span><span
+                                        class="search-result-type">در برندها</span></section>
+                                <section class="search-result-item d-none"><a class="text-decoration-none" href="#"><i
+                                            class="fa fa-link"></i> برند شیائومی</a></section>
+                            </section>
+                            <section id="product-search-result" class="d-none">
+                                <section class="search-result-title">نتایج جستجو برای <span class="search-words"
+                                                                                            id="product-search-key"></span><span
+                                        class="search-result-type">در کالاها</span></section>
+                                <section class="search-result-item d-none"><span class="search-no-result">موردی یافت نشد</span>
+                                </section>
                             </section>
                         </section>
                     </section>

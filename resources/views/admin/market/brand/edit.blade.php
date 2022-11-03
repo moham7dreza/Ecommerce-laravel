@@ -65,6 +65,26 @@
 
                         <section class="col-12 col-md-6 my-2">
                             <div class="form-group">
+                                <label for="category_id">انتخاب دسته</label>
+                                <select name="category_id" id="" class="form-control form-control-sm">
+                                    <option value="">دسته را انتخاب کنید</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" @if(old('category_id', $brand->category_id) == $category->id) selected @endif>{{ $category->name }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            @error('category_id')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6 my-2">
+                            <div class="form-group">
                                 <label for="tags">تگ ها</label>
                                 <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
                                     value="{{ old('tags', $brand->tags) }}">

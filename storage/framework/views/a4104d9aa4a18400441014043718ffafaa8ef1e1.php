@@ -643,24 +643,24 @@
 
     <?php endif; ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 <?php $__env->stopSection(); ?>
 
@@ -689,6 +689,56 @@
         })
     </script>
 
+    <script>
+        $('#search').on('keyup', function(){
+            var searchKey = $(this).val()
+            var timer = setTimeout(liveSearch(searchKey), 2000);
+        });
+        function liveSearch(str) {
+            // var url = "/search?name=" + str
+            $.ajax({
+                url: '<?php echo e(route('customer.search')); ?>',
+                type: "GET",
+                data: { 'search' : str },
+                success: function (response) {
+                    if (response.status) {
+                        let products = response.results.products;
+                        let categories = response.results.categories;
+                        let brands = response.results.brands;
+                        if (products != null){
+                            $('#product-search-result').removeClass('d-none').append()
+                            $('#product-search-key').innerHTML = response.key
+                            products.map((product) => {
+                                $('#product-search-result').append($('<section/>').addClass('search-result-item').append($('<a/>').addClass('text-decoration-none').text(product.name).append($('<i/>').addClass('fa fa-link'))))
+                            })
+                        }
+                        if (categories != null){
+                            $('#product-category-search-result').removeClass('d-none')
+                            $('#category-search-key').innerHTML = response.key
+                            categories.map((category) => {
+                                $('#product-category-search-result').append($('<section/>').addClass('search-result-item').append($('<a/>').addClass('text-decoration-none').attr('href', '/category/'+category.slug+'/products').text(category.name).append($('<i/>').addClass('fa fa-link'))))
+                            })
+                        }
+                        if (brands != null){
+                            $('#brand-search-result').removeClass('d-none')
+                            $('#brand-search-key').innerHTML = response.key
+                            brands.map((brand) => {
+                                $('#brand-search-result').append($('<section/>').addClass('search-result-item').append($('<a/>').addClass('text-decoration-none').text(brand.name).append($('<i/>').addClass('fa fa-link'))))
+                            })
+                        }
+                        // $('#product-search-result').empty();
+
+                    } else {
+                        console.log(response.key)
+                    }
+                },
+                error: function () {
+
+                }
+            })
+        }
+        // var timer = setTimeout(liveSearch, 2000)
+    </script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('customer.layouts.master-one-col', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/customer/home.blade.php ENDPATH**/ ?>

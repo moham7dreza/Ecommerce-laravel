@@ -37,6 +37,7 @@
                             <th>نام فرم</th>
                             <th>واحد اندازه گیری</th>
                             <th>دسته والد</th>
+                            <th>فرم والد</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                         </tr>
                     </thead>
@@ -48,6 +49,7 @@
                             <td><?php echo e($category_attribute->name); ?></td>
                             <td><?php echo e($category_attribute->unit); ?></td>
                             <td><?php echo e($category_attribute->category->name); ?></td>
+                            <td><?php echo e($category_attribute->parent_id ? $category_attribute->parent->name : 'فرم اصلی'); ?></td>
                             <td class="width-22-rem text-left">
                                 <a href="<?php echo e(route('admin.market.value.index', $category_attribute->id)); ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> ویژگی ها</a>
                                 <a href="<?php echo e(route('admin.market.property.edit', $category_attribute->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>

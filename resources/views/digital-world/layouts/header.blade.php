@@ -1,476 +1,414 @@
-<div class="collapse top-search" id="collapseExample">
-    <div class="card card-block">
-        <div class="newsletter-widget text-center">
-            <form class="form-inline">
-                <input type="text" class="form-control" placeholder="What you are looking for?">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-            </form>
-        </div><!-- end newsletter -->
-    </div>
-</div><!-- end top-search -->
-
-<div class="topbar-section">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
-                <div class="topsocial">
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Flickr"><i class="fa fa-flickr"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
-                </div><!-- end social -->
-            </div><!-- end col -->
-
-            <div class="col-lg-4 hidden-md-down">
-                <div class="topmenu text-center">
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="blog-category-01.html"><i class="fa fa-star"></i> Trends</a></li>
-                        <li class="list-inline-item"><a href="blog-category-02.html"><i class="fa fa-bolt"></i> Hot Topics</a></li>
-                        <li class="list-inline-item"><a href="page-contact.html"><i class="fa fa-user-circle-o"></i> Write for us</a></li>
-                    </ul><!-- end ul -->
-                </div><!-- end topmenu -->
-            </div><!-- end col -->
-
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                <div class="topsearch text-right">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i> Search</a>
-                </div><!-- end search -->
-            </div><!-- end col -->
-        </div><!-- end row -->
-    </div><!-- end header-logo -->
-</div><!-- end topbar -->
-
-<div class="header-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="logo">
-                    <a href="index.html"><img src="images/logo.png" alt=""></a>
-                </div><!-- end logo -->
-            </div>
-        </div><!-- end row -->
-    </div><!-- end header-logo -->
-</div><!-- end header -->
-
-<header class="header">
-    <div class="container">
-        <nav class="navbar navbar-inverse navbar-toggleable-md">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                        <ul class="dropdown-menu megamenu" aria-labelledby="dropdown01">
-                            <li>
-                                <div class="mega-menu-content clearfix">
-                                    <div class="tab">
-                                        <button class="tablinks active" onclick="openCategory(event, 'cat01')">Beauty</button>
-                                        <button class="tablinks" onclick="openCategory(event, 'cat02')">Fashion</button>
-                                        <button class="tablinks" onclick="openCategory(event, 'cat03')">Travel</button>
-                                        <button class="tablinks" onclick="openCategory(event, 'cat04')">Architecture</button>
-                                        <button class="tablinks" onclick="openCategory(event, 'cat05')">Recipes</button>
+<header class="main-header header-style-2 mb-40">
+    <div class="header-bottom header-sticky background-white text-center">
+        <div class="scroll-progress gradient-bg-1"></div>
+        <div class="mobile_menu d-lg-none d-block"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-3">
+                    <div class="header-logo d-none d-lg-block">
+                        <a href="index.html">
+                            <img class="logo-img d-inline" src="news-viral-assets/imgs/logo.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="logo-tablet d-md-inline d-lg-none d-none">
+                        <a href="index.html">
+                            <img class="logo-img d-inline" src="news-viral-assets/imgs/logo.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="logo-mobile d-block d-md-none">
+                        <a href="index.html">
+                            <img class="logo-img d-inline" src="news-viral-assets/imgs/favicon.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-9 main-header-navigation">
+                    <!-- Main-menu -->
+                    <div class="main-nav text-right float-lg-right float-md-left">
+                        <ul class="mobi-menu d-none menu-3-columns" id="navigation">
+                            <li class="cat-item cat-item-2"><a href="#">اقتصاد جهانی</a></li>
+                            <li class="cat-item cat-item-3"><a href="#">محیط</a></li>
+                            <li class="cat-item cat-item-4"><a href="#">سلامت کودکان</a></li>
+                            <li class="cat-item cat-item-5"><a href="#">مد</a></li>
+                            <li class="cat-item cat-item-6"><a href="#">توریست</a></li>
+                            <li class="cat-item cat-item-7"><a href="#">درگیری ها</a></li>
+                            <li class="cat-item cat-item-2"><a href="#">رسوایی ها</a></li>
+                            <li class="cat-item cat-item-2"><a href="#">اجرایی</a></li>
+                            <li class="cat-item cat-item-2"><a href="#">سیاست خارجی</a></li>
+                            <li class="cat-item cat-item-2"><a href="#">زندگی سالم</a></li>
+                            <li class="cat-item cat-item-3"><a href="#">تحقیقات پزشکی</a></li>
+                            <li class="cat-item cat-item-4"><a href="#">سلامت کودکان</a></li>
+                            <li class="cat-item cat-item-5"><a href="#">سراسر دنیا</a></li>
+                            <li class="cat-item cat-item-6"><a href="#">انتخاب آگهی</a></li>
+                            <li class="cat-item cat-item-7"><a href="#">سلامت روان</a></li>
+                            <li class="cat-item cat-item-2"><a href="#">روابط رسانه ای</a></li>
+                        </ul>
+                        <nav>
+                            <ul class="main-menu d-none d-lg-inline">
+                                <li class="menu-item-has-children">
+                                    <a href="index.html">
+                                                        <span class="ml-15">
+                                                            <ion-icon name="home-outline"></ion-icon>
+                                                        </span>
+                                        خانه
+                                    </a>
+                                    <ul class="sub-menu text-muted font-small">
+                                        <li><a href="index.html">صفحه اصلی 1</a></li>
+                                        <li><a href="home-2.html">صفحه اصلی 2</a></li>
+                                        <li><a href="home-3.html">صفحه اصلی 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="#">
+                                                        <span class="ml-15">
+                                                            <ion-icon name="desktop-outline"></ion-icon>
+                                                        </span>
+                                        صفحات
+                                    </a>
+                                    <div class="sub-mega-menu sub-menu-list row text-muted font-small">
+                                        <ul class="col-md-2">
+                                            <li><strong>آرشیو</strong></li>
+                                            <li><a href="category.html">دسته بندی لیستی</a></li>
+                                            <li><a href="category-grid.html">دسته بندی شبکه ای</a></li>
+                                            <li><a href="category-big.html">دسته بندی بزرگ</a></li>
+                                            <li><a href="category-metro.html">دسته بندی مترو</a></li>
+                                        </ul>
+                                        <ul class="col-md-2">
+                                            <li><strong>پست ها</strong></li>
+                                            <li><a href="single.html">پست استاندارد</a></li>
+                                            <li><a href="single-video.html">پست ویدئو</a></li>
+                                            <li><a href="single-gallery.html">پست گالری</a></li>
+                                            <li><a href="single-audio.html">پست صوتی</a></li>
+                                            <li><a href="single-image.html">پست عکس</a></li>
+                                            <li><a href="single-full.html">پست تمام صفحه</a></li>
+                                        </ul>
+                                        <ul class="col-md-2">
+                                            <li><strong>صفحات</strong></li>
+                                            <li><a href="typography.html">تایپوگرافی</a></li>
+                                            <li><a href="about.html">درباره ما</a></li>
+                                            <li><a href="contact.html">تماس با ما</a></li>
+                                            <li><a href="search.html">جستجو</a></li>
+                                            <li><a href="author.html">نویسنده</a></li>
+                                            <li><a href="404.html">صفحه 404</a></li>
+                                        </ul>
+                                        <div class="col-md-6 text-left">
+                                            <a href="#"><img class="border-radius-10" src="news-viral-assets/imgs/ads-2.jpg" alt=""></a>
+                                        </div>
                                     </div>
-
-                                    <div class="tab-details clearfix">
-                                        <div id="cat01" class="tabcontent active">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_01.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Spa</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Top 10+ care advice for your toenails</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_02.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Beauty</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">The secret of your beauty is handmade soap</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_03.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Beauty</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Benefits of face mask made from mud</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_04.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Spa</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Relax with the unique warmth of candle flavor</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-                                            </div><!-- end row -->
+                                </li>
+                                <li class="mega-menu-item">
+                                    <a href="category.html"><span class="ml-15">
+                                                            <ion-icon name="megaphone-outline"></ion-icon>
+                                                        </span>مگامنو</a>
+                                    <div class="sub-mega-menu">
+                                        <div class="nav flex-column nav-pills" role="tablist">
+                                            <a class="nav-link active" data-toggle="pill" href="#news-0" role="tab">همه</a>
+                                            <a class="nav-link" data-toggle="pill" href="#news-1" role="tab">سرگرمی</a>
+                                            <a class="nav-link" data-toggle="pill" href="#news-2" role="tab">مد</a>
+                                            <a class="nav-link" data-toggle="pill" href="#news-3" role="tab">زندگی</a>
                                         </div>
-                                        <div id="cat02" class="tabcontent">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_05.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Fashion</span>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="news-0" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-1.jpg" alt="">
                                                             </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">2017 summer stamp will have design models here</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_06.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Collections</span>
+                                                            <span class="top-right-icon background2">
+                                                                                <i class="mdi mdi-audiotrack"></i>
+                                                                            </span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-2.jpg" alt="">
                                                             </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Which color is the most suitable color for you?</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_07.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Fashion</span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-3.jpg" alt="">
                                                             </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Subscribe to these sites to keep an eye on the fashion</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_08.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Trends</span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-8.jpg" alt="">
                                                             </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">The most trends of this year with color combination</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div><!-- end row -->
+                                            </div>
+                                            <div class="tab-pane" id="news-1" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-5.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-6.jpg" alt="">
+                                                            </a>
+                                                            <span class="top-right-icon background3">
+                                                                                <i class="mdi mdi-videocam"></i>
+                                                                            </span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-7.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-8.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="news-2" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-9.jpg" alt="">
+                                                            </a>
+                                                            <span class="top-right-icon background2">
+                                                                                <i class="mdi mdi-audiotrack"></i>
+                                                                            </span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-10.jpg" alt="">
+                                                            </a>
+                                                            <span class="top-right-icon background8">
+                                                                                <i class="mdi mdi-favorite"></i>
+                                                                            </span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-11.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-12.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="news-3" role="tabpanel">
+                                                <div class="row">
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-13.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-14.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم</h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-15.jpg" alt="">
+                                                            </a>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3 post-module-1">
+                                                        <div class="post-thumb d-flex border-radius-5 img-hover-scale mb-15">
+                                                            <a href="single.html">
+                                                                <img src="news-viral-assets/imgs/news-16.jpg" alt="">
+                                                            </a>
+                                                            <span class="top-right-icon background2">
+                                                                                <i class="mdi mdi-audiotrack"></i>
+                                                                            </span>
+                                                        </div>
+                                                        <div class="post-content media-body">
+                                                            <h6 class="post-title mb-10 text-limit-2-row">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم </h6>
+                                                            <div class="entry-meta meta-1 font-x-small color-grey mt-10">
+                                                                <span class="post-on">25 فروردین</span>
+                                                                <span class="hit-count has-dot">126 هزار بازدید</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div id="cat03" class="tabcontent">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_09.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Tourism</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">I visited the architects of Istanbul for you</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_11.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Travel</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Prepared handmade dish dish in the Netherlands</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_12.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">City Tours</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">I recommend you visit the fairy chimneys</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_13.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Tourism</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">One of the most beautiful ports in the world</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-                                            </div><!-- end row -->
-                                        </div>
-                                        <div id="cat04" class="tabcontent">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_14.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Places</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">A collection of the most beautiful shop designs</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_15.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Designs</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">America's and Canada's most beautiful wine houses</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_16.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Minimalism</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">The most professional ways to color your walls</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_17.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Furnishings</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Stylish cabinet designs and furnitures</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-                                            </div><!-- end row -->
-                                        </div>
-                                        <div id="cat05" class="tabcontent">
-                                            <div class="row">
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_18.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Vegetables</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Grilled vegetable with fish prepared with fish</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_19.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Restaurants</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">The world's finest and clean meat restaurants</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_20.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Meat foods</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Fried veal and vegetable dish</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-
-                                                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                    <div class="blog-box">
-                                                        <div class="post-media">
-                                                            <a href="single.html" title="">
-                                                                <img src="upload/menu_21.jpg" alt="" class="img-fluid">
-                                                                <div class="hovereffect">
-                                                                </div><!-- end hover -->
-                                                                <span class="menucat">Pastas</span>
-                                                            </a>
-                                                        </div><!-- end media -->
-                                                        <div class="blog-meta">
-                                                            <h4><a href="single.html" title="">Tasty pasta sauces and recipes</a></h4>
-                                                        </div><!-- end meta -->
-                                                    </div><!-- end blog-box -->
-                                                </div>
-                                            </div><!-- end row -->
-                                        </div>
-                                    </div><!-- end tab-details -->
-                                </div><!-- end mega-menu-content -->
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown has-submenu">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Features</a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdown02">
-                            <li><a class="dropdown-item" href="single.html">Single Blog <span class="hidden-md-down hidden-sm-down hidden-xs-down"><i class="fa fa-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="single.html">Single Default</a></li>
-                                    <li><a class="dropdown-item" href="single-fullwidth.html">Single Fullwidth</a></li>
-                                    <li><a class="dropdown-item" href="single-slider.html">Single Gallery</a></li>
-                                    <li><a class="dropdown-item" href="single-video.html">Single Video</a></li>
-                                    <li><a class="dropdown-item" href="single-audio.html">Single Audio</a></li>
-                                    <li><a class="dropdown-item" href="single-no-media.html">Single No Media</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="single.html">Blog Category <span class="hidden-md-down hidden-sm-down hidden-xs-down"><i class="fa fa-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="blog-category-01.html">Blog Category A</a></li>
-                                    <li><a class="dropdown-item" href="blog-category-02.html">Blog Category B</a></li>
-                                    <li><a class="dropdown-item" href="blog-category-03.html">Blog Category C</a></li>
-                                    <li><a class="dropdown-item" href="blog-category-04.html">Blog Category D</a></li>
-                                    <li><a class="dropdown-item" href="blog-category-05.html">Blog Category E</a></li>
-                                    <li><a class="dropdown-item" href="blog-category-06.html">Blog Category F</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="blog-author.html">Blog Author</a></li>
-                            <li><a class="dropdown-item" href="page-contact.html">Contact Page</a></li>
-                            <li><a class="dropdown-item" href="page.html">Default Page</a></li>
-                            <li><a class="dropdown-item" href="page-fullwidth.html">Fullwidth Page</a></li>
-                            <li><a class="dropdown-item" href="page-404.html">Not Found Page</a></li>
-                            <li><a class="dropdown-item" href="page-sitemap.html">Sitemap & Archives</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-pink-hover" href="blog-category-01.html">Fashion</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-red-hover" href="blog-category-02.html">Food</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-aqua-hover" href="blog-category-03.html">Lifestyle</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-green-hover" href="blog-category-04.html">Travel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-yellow-hover" href="blog-category-05.html"><i class="fa fa-play-circle-o"></i> Vlogs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link color-grey-hover" href="blog-category-06.html">Health</a>
-                    </li>
-                </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="category-metro.html">
+                                                        <span class="ml-15">
+                                                            <ion-icon name="film-outline"></ion-icon>
+                                                        </span>
+                                        ویدیو
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">
+                                                        <span class="ml-15">
+                                                            <ion-icon name="mail-unread-outline"></ion-icon>
+                                                        </span>
+                                        تماس با ما
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="d-inline mr-50 tools-icon">
+                                <a class="red-tooltip text-danger" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="موضوعات جدید">
+                                    <ion-icon name="flame-outline"></ion-icon>
+                                </a>
+                                <a class="red-tooltip text-primary" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="پربازدید">
+                                    <ion-icon name="flash-outline"></ion-icon>
+                                </a>
+                                <a class="red-tooltip text-success" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="اطلاعیه">
+                                    <ion-icon name="notifications-outline"></ion-icon>
+                                    <span class="notification bg-success">5</span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                    <!-- Search -->
+                    <form action="#" method="get" class="search-form d-lg-inline float-left position-relative ml-30 d-none">
+                        <input type="text" class="search_field" placeholder="جستجو ..." value="" name="s">
+                        <span class="search-icon"><i class="ti-search mr-5"></i></span>
+                    </form>
+                    <!-- Off canvas -->
+                    <div class="off-canvas-toggle-cover">
+                        <div class="off-canvas-toggle hidden d-inline-block mr-15" id="off-canvas-toggle">
+                            <ion-icon name="grid-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
-    </div><!-- end container -->
-</header><!-- end header -->
+        </div>
+    </div>
+</header>

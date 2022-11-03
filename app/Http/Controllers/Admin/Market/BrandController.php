@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Market;
 
 use App\Models\Market\Brand;
+use App\Models\Market\ProductCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Image\ImageService;
@@ -28,7 +29,8 @@ class BrandController extends Controller
      */
     public function create()
     {
-        return view('admin.market.brand.create');
+        $categories = ProductCategory::query()->where([['status', 1], ['show_in_menu', 1]])->orderBy('created_at')->get();
+        return view('admin.market.brand.create', compact('categories'));
     }
 
     /**
@@ -73,7 +75,8 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('admin.market.brand.edit', compact('brand'));
+        $categories = ProductCategory::query()->where([['status', 1], ['show_in_menu', 1]])->orderBy('created_at')->get();
+        return view('admin.market.brand.edit', compact('brand', 'categories'));
 
     }
 

@@ -15,8 +15,8 @@ class ProductCategory extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'name'
             ]
         ];
@@ -43,7 +43,12 @@ class ProductCategory extends Model
 
     public function attributes()
     {
-        return $this->hasMany(CategoryAttribute::class);
+        return $this->hasMany(CategoryAttribute::class, 'category_id');
+    }
+
+    public function brands()
+    {
+        return $this->hasMany(Brand::class, 'category_id');
     }
 
     public static $levels = [

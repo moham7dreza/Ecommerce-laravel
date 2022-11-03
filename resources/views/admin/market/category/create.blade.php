@@ -256,7 +256,7 @@
 
                         if (response.status) {
                             let subCategories = response.subCategories;
-                            console.log(subCategories);
+
                             $('#sub-categories').empty();
                             subCategories.map((subCategory) => {
                                 $('#sub-categories').append($('<option/>').val(subCategory.id).text(subCategory

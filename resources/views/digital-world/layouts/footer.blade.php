@@ -1,141 +1,124 @@
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div class="widget">
-                    <h2 class="widget-title">Recent Posts</h2>
-                    <div class="blog-list-widget">
-                        <div class="list-group">
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 justify-content-between">
-                                    <img src="upload/blog_square_01.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                    <small>12 Jan, 2016</small>
-                                </div>
-                            </a>
-
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 justify-content-between">
-                                    <img src="upload/blog_square_02.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">Let's make an introduction for creative life</h5>
-                                    <small>11 Jan, 2016</small>
-                                </div>
-                            </a>
-
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 last-item justify-content-between">
-                                    <img src="upload/blog_square_03.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
-                                    <small>07 Jan, 2016</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end blog-list -->
-                </div><!-- end widget -->
-            </div><!-- end col -->
-
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div class="widget">
-                    <h2 class="widget-title">Popular Posts</h2>
-                    <div class="blog-list-widget">
-                        <div class="list-group">
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 justify-content-between">
-                                    <img src="upload/blog_square_04.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">Banana-chip chocolate cake recipe with customs</h5>
-                                    <span class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                </div>
-                            </a>
-
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 justify-content-between">
-                                    <img src="upload/blog_square_07.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">10 practical ways to choose organic vegetables</h5>
-                                    <span class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                </div>
-                            </a>
-
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                <div class="w-100 last-item justify-content-between">
-                                    <img src="upload/blog_square_06.jpg" alt="" class="img-fluid float-left">
-                                    <h5 class="mb-1">We are making homemade ravioli, nice and good</h5>
-                                    <span class="rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end blog-list -->
-                </div><!-- end widget -->
-            </div><!-- end col -->
-
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div class="widget">
-                    <h2 class="widget-title">Popular Categories</h2>
-                    <div class="link-widget">
-                        <ul>
-                            <li><a href="#">Fahsion <span>(21)</span></a></li>
-                            <li><a href="#">Lifestyle <span>(15)</span></a></li>
-                            <li><a href="#">Art & Design <span>(31)</span></a></li>
-                            <li><a href="#">Health Beauty <span>(22)</span></a></li>
-                            <li><a href="#">Clothing <span>(66)</span></a></li>
-                            <li><a href="#">Entertaintment <span>(11)</span></a></li>
-                            <li><a href="#">Food & Drink <span>(87)</span></a></li>
-                        </ul>
-                    </div><!-- end link-widget -->
-                </div><!-- end widget -->
-            </div><!-- end col -->
-        </div><!-- end row -->
-
-        <hr class="invis1">
-
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2">
-                <div class="widget">
-                    <div class="footer-text text-center">
-                        <a href="index.html"><img src="images/flogo.png" alt="" class="img-fluid"></a>
-                        <p>Cloapedia is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
-                        <div class="social">
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                        </div>
-
-                        <hr class="invis">
-
-                        <div class="newsletter-widget text-center">
-                            <form class="form-inline">
-                                <input type="text" class="form-control" placeholder="Enter your email address">
-                                <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-envelope-open-o"></i></button>
-                            </form>
-                        </div><!-- end newsletter -->
-                    </div><!-- end footer-text -->
-                </div><!-- end widget -->
-            </div><!-- end col -->
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <br>
-                <div class="copyright">&copy; Cloapedia. Design: <a href="http://html.design">HTML Design</a>.</div>
+<footer>
+    <div class="footer-area pt-50 bg-white">
+        <div class="container">
+            <div class="row pb-30">
+                <div class="col">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">اقتصاد جهانی</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">محیط زیست</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">اجرایی</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">مد</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">توریست</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">درگیری</a></li>
+                        <li class="cat-item cat-item-2"><a href="category.html">رسوایی</a></li>
+                        <li class="cat-item cat-item-2"><a href="category.html">اجرایی</a></li>
+                        <li class="cat-item cat-item-2"><a href="category.html">سیاست خارجی</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">زندگی سالم</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">تحقیقات پزشکی</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">سلامت کودکان</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">سراسر جهان</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">انتخاب آگهی</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">سلامت روان</a></li>
+                        <li class="cat-item cat-item-8"><a href="category.html">رسانه</a></li>
+                        <li class="cat-item cat-item-9"><a href="category.html">روابط</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">املاک</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">تجاری</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">پیدا کردن خانه</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">وام مسکن</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">املاک من</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">پایان عالی</a></li>
+                        <li class="cat-item cat-item-8"><a href="category.html">خانه خود</a></li>
+                        <li class="cat-item cat-item-9"><a href="category.html">جهان</a></li>
+                        <li class="cat-item cat-item-10"><a href="category.html">مجله</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">ایران</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">سیاست</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">تهران</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">کسب و کار</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">مظرات</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">فناوری</a></li>
+                        <li class="cat-item cat-item-8"><a href="category.html">علم</a></li>
+                        <li class="cat-item cat-item-9"><a href="category.html">سلامت</a></li>
+                        <li class="cat-item cat-item-10"><a href="category.html">ورزش</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">هنرها</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">کتابها</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">سبک</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">غذا</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">سفر</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">مجله</a></li>
+                        <li class="cat-item cat-item-8"><a href="category.html">املاک</a></li>
+                        <li class="cat-item cat-item-9"><a href="category.html">سوگواران</a></li>
+                        <li class="cat-item cat-item-10"><a href="category.html">ویدئو</a></li>
+                    </ul>
+                </div>
+                <div class="col d-none d-lg-block">
+                    <ul class="float-right ml-30 font-medium">
+                        <li class="cat-item cat-item-2"><a href="category.html">بیسبال</a></li>
+                        <li class="cat-item cat-item-3"><a href="category.html">بسکتبال</a></li>
+                        <li class="cat-item cat-item-4"><a href="category.html">فوتبال: مدرسه ای</a></li>
+                        <li class="cat-item cat-item-5"><a href="category.html">فوتبال</a></li>
+                        <li class="cat-item cat-item-6"><a href="category.html">گلف</a></li>
+                        <li class="cat-item cat-item-7"><a href="category.html">هاکی</a></li>
+                        <li class="cat-item cat-item-8"><a href="category.html">فوتبال</a></li>
+                        <li class="cat-item cat-item-9"><a href="category.html">تنیس</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div><!-- end container -->
-</footer><!-- end footer -->
+    </div>
+    <!-- footer-bottom aera -->
+    <div class="footer-bottom-area bg-white text-muted">
+        <div class="container">
+            <div class="footer-border pt-20 pb-20">
+                <div class="row d-flex mb-15">
+                    <div class="col-12">
+                        <ul class="list-inline font-small">
+                            <li class="list-inline-item"><a href="category.html">جهان</a></li>
+                            <li class="list-inline-item"><a href="category.html">ایران</a></li>
+                            <li class="list-inline-item"><a href="category.html">سیاست</a></li>
+                            <li class="list-inline-item"><a href="category.html">تهران</a></li>
+                            <li class="list-inline-item"><a href="category.html">کسب و کار</a></li>
+                            <li class="list-inline-item"><a href="category.html">نظرات</a></li>
+                            <li class="list-inline-item"><a href="category.html">فناوری</a></li>
+                            <li class="list-inline-item"><a href="category.html">علم</a></li>
+                            <li class="list-inline-item"><a href="category.html">سلامت</a></li>
+                            <li class="list-inline-item"><a href="category.html">ورزش</a></li>
+                            <li class="list-inline-item"><a href="category.html">هنرها</a></li>
+                            <li class="list-inline-item"><a href="category.html">کتاب</a></li>
+                            <li class="list-inline-item"><a href="category.html">سبک</a></li>
+                            <li class="list-inline-item"><a href="category.html">غذا</a></li>
+                            <li class="list-inline-item"><a href="category.html">سفر</a></li>
+                            <li class="list-inline-item"><a href="category.html">مجله</a></li>
+                            <li class="list-inline-item"><a href="category.html">مجله</a></li>
+                            <li class="list-inline-item"><a href="category.html">املاک</a></li>
+                            <li class="list-inline-item"><a href="category.html">ویدئو</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-center justify-content-between">
+                    <div class="col-12">
+                        <div class="footer-copy-right">
+                            <p class="font-small text-muted">© 1400 ، نیوز وایرال | کلیه حقوق محفوظ است | راستچین شده توسط <a href="#" target="_blank">لوکس تم</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>

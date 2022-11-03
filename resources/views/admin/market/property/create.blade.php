@@ -62,9 +62,29 @@
                         @enderror
                         </section>
 
-                        <section class="col-12">
+                        <section class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="">انتخاب دسته</label>
+                                <label for="parent_id">فرم والد</label>
+                                <select name="parent_id" class="form-control form-control-sm">
+                                    <option value="">فرم اصلی</option>
+                                    @foreach ($category_attributes as $attribute)
+                                        <option value="{{ $attribute->id }}"
+                                                @if(old('parent_id') == $attribute->id) selected @endif>{{ $attribute->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('parent_id')
+                            <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                                            <strong>
+                                                                {{ $message }}
+                                                            </strong>
+                                                        </span>
+                            @enderror
+                        </section>
+
+                        <section class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="category_id">انتخاب دسته</label>
                                 <select name="category_id" id="" class="form-control form-control-sm">
                                     <option value="">دسته را انتخاب کنید</option>
                                     @foreach ($productCategories as $productCategory)

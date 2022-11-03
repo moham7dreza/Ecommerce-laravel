@@ -28,8 +28,9 @@ class PropertyController extends Controller
      */
     public function create()
     {
+        $category_attributes = CategoryAttribute::query()->whereNull('parent_id')->get();
         $productCategories = ProductCategory::all();
-        return view('admin.market.property.create', compact('productCategories'));
+        return view('admin.market.property.create', compact('productCategories', 'category_attributes'));
     }
 
     /**
@@ -64,8 +65,9 @@ class PropertyController extends Controller
      */
     public function edit(CategoryAttribute $categoryAttribute)
     {
+        $category_attributes = CategoryAttribute::query()->whereNull('parent_id')->get();
         $productCategories = ProductCategory::all();
-        return view('admin.market.property.edit', compact('categoryAttribute', 'productCategories'));
+        return view('admin.market.property.edit', compact('categoryAttribute', 'productCategories', 'category_attributes'));
     }
 
     /**

@@ -6,7 +6,8 @@
                 <span class="sidebar-nav-item-title">کالای دیجیتال <i class="fa fa-angle-left"></i></span>
                 <section class="sidebar-nav-sub-wrapper">
                     <section class="sidebar-nav-sub-item">
-                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i
+                                class="fa fa-angle-left"></i></span>
                         <section class="sidebar-nav-sub-sub-wrapper">
                             <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
                             <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
@@ -20,7 +21,8 @@
                         </section>
                     </section>
                     <section class="sidebar-nav-sub-item">
-                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i class="fa fa-angle-left"></i></span>
+                        <span class="sidebar-nav-sub-item-title"><a href="#">لوازم جانبی موبایل</a><i
+                                class="fa fa-angle-left"></i></span>
                         <section class="sidebar-nav-sub-sub-wrapper">
                             <section class="sidebar-nav-sub-sub-item"><a href="#">هندزفری</a></section>
                             <section class="sidebar-nav-sub-sub-item"><a href="#">هدست</a></section>
@@ -55,7 +57,7 @@
             <input class="sidebar-input-text" type="text" placeholder="جستجو بر اساس نام، برند ...">
         </section>
     </section>
-
+    @if(!empty($productCategory))
     <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
         <section class="content-header mb-3">
             <section class="d-flex justify-content-between align-items-center">
@@ -69,20 +71,73 @@
         </section>
 
         <section class="sidebar-brand-wrapper">
-            @foreach($brands as $brand)
-            <section class="form-check sidebar-brand-item">
-                <input class="form-check-input" type="checkbox" value="1" id="1">
-                <label class="form-check-label d-flex justify-content-between" for="1">
-                    <span>{{ $brand->persian_name }}</span>
-                    <span>{{ $brand->original_name }}</span>
-                </label>
-            </section>
+            @foreach($productCategory->brands as $brand)
+                <section class="form-check sidebar-brand-item">
+                    <input class="form-check-input" type="checkbox" value="1" id="1">
+                    <label class="form-check-label d-flex justify-content-between" for="1">
+                        <span>{{ $brand->persian_name }}</span>
+                        <span>{{ $brand->original_name }}</span>
+                    </label>
+                </section>
             @endforeach
 
         </section>
     </section>
 
 
+        @foreach($productCategory->attributes as $attribute)
+            <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
+                <section class="content-header mb-3">
+                    <section class="d-flex justify-content-between align-items-center">
+                        <h2 class="content-header-title content-header-title-small">
+                            {{ $attribute->name }}
+                        </h2>
+                        <section class="content-header-link">
+                            <!--<a href="#">مشاهده همه</a>-->
+                        </section>
+                    </section>
+                </section>
+
+                <section class="sidebar-brand-wrapper">
+                    @foreach($attribute->values as $value)
+                        <section class="form-check sidebar-brand-item">
+                            <input class="form-check-input" type="checkbox" value="1" id="1">
+                            <label class="form-check-label" for="1">
+                                <span>{{ json_decode($value->value, true)['value'] . ' ' . $attribute->unit }}</span>
+                            </label>
+                        </section>
+                    @endforeach
+
+                </section>
+            </section>
+        @endforeach
+    @else
+        <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
+            <section class="content-header mb-3">
+                <section class="d-flex justify-content-between align-items-center">
+                    <h2 class="content-header-title content-header-title-small">
+                        برند
+                    </h2>
+                    <section class="content-header-link">
+                        <!--<a href="#">مشاهده همه</a>-->
+                    </section>
+                </section>
+            </section>
+
+            <section class="sidebar-brand-wrapper">
+                @foreach($brands as $brand)
+                    <section class="form-check sidebar-brand-item">
+                        <input class="form-check-input" type="checkbox" value="1" id="1">
+                        <label class="form-check-label d-flex justify-content-between" for="1">
+                            <span>{{ $brand->persian_name }}</span>
+                            <span>{{ $brand->original_name }}</span>
+                        </label>
+                    </section>
+                @endforeach
+
+            </section>
+        </section>
+    @endif
 
     <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
         <section class="content-header mb-3">
@@ -100,7 +155,6 @@
             <section class="p-1"><input type="text" placeholder="قیمت تا ..."></section>
         </section>
     </section>
-
 
 
     <section class="content-wrapper bg-white p-3 rounded-2 mb-3">

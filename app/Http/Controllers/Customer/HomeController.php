@@ -9,6 +9,7 @@ use App\Models\Content\Post;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\Brand;
 use App\Models\Market\Order;
+use App\Models\Market\ProductCategory;
 use App\Models\Province;
 use App\Models\Setting\Setting;
 use App\Models\SmartAssemble\System;
@@ -90,5 +91,33 @@ class HomeController extends Controller
     public function posts()
     {
 
+    }
+
+    public function liveSearch(Request $request)
+    {
+        if ($request->ajax()) {
+            $name = $request->search;
+            if (isset($name) && strlen($name) > 0) {
+                $results = collect();
+                $productResults = Product::query()->where('name', 'like', '%' . $name . '%')->get();
+                if (count($productResults) > 0) {
+                    $results->put('products', $productResults);
+                }
+                $productCategoryResults = ProductCategory::query()->where('name', 'like', '%' . $name . '%')->get();
+                if (count($productCategoryResults) > 0) {
+                    $results->put('categories', $productCategoryResults);
+                }
+                $brandResults = Brand::query()->where('persian_name', 'like', '%' . $name . '%')->get();
+                if (count($brandResults) > 0) {
+                    $results->put('brands', $brandResults);
+                }
+                $results = $results->unique();
+                if (count($results) > 0) {
+                    return response()->json(['status' => true, 'results' => $results, 'key' => $name]);
+                } else {
+                    return response()->json(['status' => false, 'results' => null, 'key' => $name]);
+                }
+            }
+        }
     }
 }

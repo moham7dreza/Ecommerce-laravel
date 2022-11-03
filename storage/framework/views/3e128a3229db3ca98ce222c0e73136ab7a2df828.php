@@ -31,7 +31,7 @@
                 <form action="<?php echo e(route('admin.market.value.store', $categoryAttribute->id)); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <section class="row">
-                        
+
                         <section class="col-12">
                             <div class="form-group">
                                 <label for="">انتخاب محصول</label>

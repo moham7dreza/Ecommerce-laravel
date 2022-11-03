@@ -1,27 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
     @include('digital-world.layouts.head-tag')
     @yield('head-tag')
 </head>
 <body>
-<!-- LOADER -->
-<div id="preloader">
-    <img class="preloader" src="images/loader.gif" alt="">
-</div><!-- end loader -->
-<!-- END LOADER -->
+<!-- Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="text-center">
+                <img class="jump mb-50" src="{{ asset('news-viral-assets/imgs/loading.svg') }}" alt="loading">
+                <h6>در حال بارگذاری</h6>
+                <div class="loader">
+                    <div class="bar bar1"></div>
+                    <div class="bar bar2"></div>
+                    <div class="bar bar3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div id="wrapper">
+<div class="main-wrap">
+    <!--Offcanvas sidebar-->
+    @include('digital-world.layouts.sidebar')
+
+    <!-- Main Header -->
     @include('digital-world.layouts.header')
 
+    <!-- Main Wrap Start -->
     @yield('content')
 
+    <!-- Footer Start-->
     @include('digital-world.layouts.footer')
-
-    <div class="dmtop">Scroll to Top</div>
-
 </div>
+<div class="dark-mark"></div>
 @include('digital-world.layouts.script')
-
 @yield('script')
 </body>
+</html>

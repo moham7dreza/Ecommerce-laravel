@@ -23,6 +23,6 @@ class Brand extends Model
     protected $casts = ['logo' => 'array'];
 
 
-    protected $fillable = ['persian_name', 'original_name', 'slug', 'logo', 'status', 'tags'];
+    protected $fillable = ['persian_name', 'original_name', 'slug', 'logo', 'status', 'tags', 'category_id'];
 
 }

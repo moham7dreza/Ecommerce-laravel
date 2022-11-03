@@ -69,6 +69,7 @@ Route::namespace('Customer')->group(function () {
      *
      *  */
     Route::get('/', [HomeController::class, 'home'])->name('customer.home');
+    Route::get('/search', [HomeController::class, 'liveSearch'])->name('customer.search');
 
 
     /******************************************************************************************************************
