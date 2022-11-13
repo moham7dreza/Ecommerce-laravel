@@ -3,16 +3,20 @@
 namespace App\Providers;
 
 use App\Models\Content\Menu;
+use App\Models\Content\Post;
 use App\Models\Content\PostCategory;
 use App\Models\Market\CartItem;
 use App\Models\Market\ProductCategory;
 use App\Models\Notification;
 use App\Models\Content\Comment;
 use App\Models\Setting\Setting;
-use App\Models\SmartAssemble\SystemMenu;
+use App\Policies\Admin\Content\PostCategoryPolicy;
+use App\Policies\Admin\Content\PostPolicy;
+use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\PermissionsSeeder;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        DatabaseSeeder::$seeders[] = PermissionsSeeder::class;
     }
 
     /**
@@ -34,18 +38,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        Paginator::useBootstrap();
 
+        $this->app->booted(static function () {
+            config()->set('panel.menus.panel', [
+                'url'   => route('panel.home'),
+                'title' => 'پنل کاربری',
+                'icon'  => 'view-dashboard',
+            ]);
+        });
         // *************************************************************************************************************
         // admin
-        view()->composer('admin.layouts.header', function ($view) {
-            $view->with('unseenComments', Comment::query()->where('seen', 0)->get());
-            $view->with('notifications', Notification::query()->where('read_at', null)->get());
-        });
-
-        // *************************************************************************************************************
-        // new admin panel
-        view()->composer('panel.layouts.header', function ($view) {
+        view()->composer(['admin.layouts.header', 'panel.layouts.header'], function ($view) {
             $view->with('unseenComments', Comment::query()->where('seen', 0)->get());
             $view->with('notifications', Notification::query()->where('read_at', null)->get());
         });
@@ -63,13 +67,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('logo', Setting::query()->where('id', 1)->pluck('logo')->first());
         });
 
-        view()->composer('customer.layouts.head-tag', function ($view) {
+        view()->composer(['customer.layouts.head-tag', 'customer.layouts.footer'], function ($view) {
             $view->with('setting', Setting::query()->first());
         });
 
-        view()->composer('customer.layouts.footer', function ($view) {
-            $view->with('setting', Setting::query()->first());
-        });
 
         // *************************************************************************************************************
         // it-city section

@@ -1,7 +1,7 @@
 <aside id="sidebar" class="sidebar">
     <section class="sidebar-container">
         <section class="sidebar-wrapper">
-            <a href="<?php echo e(route('admin.home')); ?>" class="sidebar-link">
+
                 <i class="fas fa-home"></i>
                 <span>خانه</span>
             </a>
@@ -31,7 +31,7 @@
             </a>
             
 
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('اسمبل هوشمند')): ?>
+
                 <section class="sidebar-part-title">پی سی پیک</section>
 
                 <section class="sidebar-group-link">
@@ -55,9 +55,9 @@
 
                     </section>
                 </section>
-            <?php endif; ?>
 
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش فروش')): ?>
+
+
                 <section class="sidebar-part-title">بخش فروش</section>
 
                 <section class="sidebar-group-link">
@@ -124,17 +124,21 @@
                     <span>روش های ارسال</span>
                 </a>
 
-            <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش محتوا')): ?>
+
+
                 <section class="sidebar-part-title">بخش محتوی</section>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-post-categories')): ?>
                 <a href="<?php echo e(route('admin.content.category.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>دسته بندی</span>
                 </a>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-posts')): ?>
                 <a href="<?php echo e(route('admin.content.post.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>پست ها</span>
                 </a>
+                <?php endif; ?>
                 <a href="<?php echo e(route('admin.content.comment.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>نظرات</span>
@@ -156,8 +160,8 @@
                     <span>بنر ها</span>
                 </a>
 
-            <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش کاربران')): ?>
+
+
                 <section class="sidebar-part-title">بخش کاربران</section>
                 <a href="<?php echo e(route('admin.user.admin-user.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -172,8 +176,8 @@
                     <span>سطوح دسترسی</span>
                 </a>
 
-            <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش تیکت ها')): ?>
+
+
                 <section class="sidebar-part-title">تیکت ها</section>
                 <a href="<?php echo e(route('admin.ticket.category.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -205,8 +209,8 @@
                     <span>همه ی تیکت ها</span>
                 </a>
 
-            <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش اطلاع رسانی')): ?>
+
+
                 <section class="sidebar-part-title">اطلاع رسانی</section>
                 <a href="<?php echo e(route('admin.notify.email.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -217,8 +221,8 @@
                     <span>اعلامیه پیامکی</span>
                 </a>
 
-            <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('بخش تنظیمات')): ?>
+
+
                 <section class="sidebar-part-title">تنظیمات</section>
                 <a href="<?php echo e(route('admin.setting.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -226,7 +230,7 @@
                 </a>
 
         </section>
-        <?php endif; ?>
+
     </section>
 </aside>
 <?php /**PATH C:\CODEX\techzilla\resources\views/admin/layouts/sidebar.blade.php ENDPATH**/ ?>

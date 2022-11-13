@@ -1,45 +1,70 @@
 <?php
 
-namespace App\Http\Controllers\admin\content;
+namespace App\Http\Controllers\Admin\Content;
 
+use App\Http\Repositories\Admin\Content\PostCategoryRepo;
+use App\Http\Repositories\Admin\Content\PostRepo;
+use App\Http\Services\Admin\Content\PostService;
 use App\Models\Content\Post;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Content\PostCategory;
 use App\Http\Services\Image\ImageService;
 use App\Http\Requests\Admin\Content\PostRequest;
+use Illuminate\Http\Response;
+use Share\Services\ShareService;
 
 class PostController extends Controller
 {
+    private string $class = Post::class;
+
+    public PostRepo $postRepo;
+    public PostService $postService;
+
+    public function __construct(PostRepo $postRepo, PostService $postService)
+    {
+        $this->postRepo = $postRepo;
+        $this->postService = $postService;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
+     * @throws AuthorizationException
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->simplePaginate(15);
+        $this->authorize('postSectionAccess', $this->class);
+
+        $posts = $this->postRepo->index()->orderBy('created_at', 'desc')->paginate(5);
         return view('admin.content.post.index', compact('posts'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(PostCategoryRepo $postCategoryRepo)
     {
-        $postCategories = PostCategory::all();
+        $postCategories = $postCategoryRepo->index()->where('status', PostCategory::STATUS_ACTIVE)->get();
         return view('admin.content.post.create', compact('postCategories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PostRequest $request
+     * @param ImageService $imageService
+     * @return RedirectResponse
      */
-    public function store(PostRequest $request, ImageService $imageService)
+    public function store(PostRequest $request, ImageService $imageService): RedirectResponse
     {
         $inputs = $request->all();
 
@@ -48,23 +73,19 @@ class PostController extends Controller
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
 
         if ($request->hasFile('image')) {
-            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post');
-            $result = $imageService->createIndexAndSave($request->file('image'));
-            if ($result === false) {
-                return redirect()->route('admin.content.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
-            }
-            $inputs['image'] = $result;
+            $inputs['image'] = ShareService::uploadImage($request->file('image'), 'post',
+                'admin.content.post.index', $imageService);
         }
         $inputs['author_id'] = auth()->user()->id;
-        $post = Post::create($inputs);
-        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  جدید شما با موفقیت ثبت شد');
+        $this->postService->store($inputs);
+        return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت ثبت شد');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -74,60 +95,47 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @param PostCategoryRepo $postCategoryRepo
+     * @return Application|Factory|View
      */
-    public function edit(Post $post)
+    public function edit(Post $post, PostCategoryRepo $postCategoryRepo)
     {
-        $postCategories = PostCategory::all();
-        return view('admin.content.post.edit', compact('post', 'postCategories'));
+        $postCategories = $postCategoryRepo->index()->where('status', PostCategory::STATUS_ACTIVE)->get();
+        return view('admin.content.post.edit', compact(['post', 'postCategories']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param PostRequest $request
+     * @param Post $post
+     * @param ImageService $imageService
+     * @return RedirectResponse
      */
-    public function update(PostRequest $request, Post $post, ImageService $imageService)
+    public function update(PostRequest $request, Post $post, ImageService $imageService): RedirectResponse
     {
         $inputs = $request->all();
         //date fixed
         $realTimestampStart = substr($request->published_at, 0, 10);
         $inputs['published_at'] = date("Y-m-d H:i:s", (int)$realTimestampStart);
 
-        if ($request->hasFile('image')) {
-            if (!empty($post->image)) {
-                $imageService->deleteDirectoryAndFiles($post->image['directory']);
-            }
-            $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'post');
-            $result = $imageService->createIndexAndSave($request->file('image'));
-            if ($result === false) {
-                return redirect()->route('admin.content.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
-            }
-            $inputs['image'] = $result;
-        } else {
-            if (isset($inputs['currentImage']) && !empty($post->image)) {
-                $image = $post->image;
-                $image['currentImage'] = $inputs['currentImage'];
-                $inputs['image'] = $image;
-            }
-        }
-        $post->update($inputs);
-        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  شما با موفقیت ویرایش شد');
+        $inputs = ShareService::updateImage($request, 'post', 'admin.content.post.index',
+            $imageService, $post, $inputs);
+        $this->postService->update($post, $inputs);
+        return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت ویرایش شد');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return RedirectResponse
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
-        $result = $post->delete();
-        return redirect()->route('admin.content.post.index')->with('swal-success', 'پست  شما با موفقیت حذف شد');
+        $this->postService->destroy($post);
+        return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت حذف شد');
     }
 
 

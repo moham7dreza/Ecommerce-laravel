@@ -84,6 +84,7 @@
 
                     </tbody>
                 </table>
+                {{ $posts->links() }}
             </section>
 
         </section>

@@ -84,6 +84,7 @@
 
                     </tbody>
                 </table>
+                {{ $postCategories->links() }}
             </section>
 
         </section>
@@ -103,6 +104,7 @@
                 url : url,
                 type : "GET",
                 success : function(response){
+                    // console.log(response.status)
                     if(response.status){
                         if(response.checked){
                             element.prop('checked', true);

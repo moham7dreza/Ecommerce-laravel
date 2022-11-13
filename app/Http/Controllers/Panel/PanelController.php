@@ -11,4 +11,9 @@ class PanelController extends Controller
     {
         return view('panel.index');
     }
+
+    public function admintoHome()
+    {
+        return view('adminto.index');
+    }
 }

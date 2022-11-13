@@ -1,7 +1,7 @@
 <aside id="sidebar" class="sidebar">
     <section class="sidebar-container">
         <section class="sidebar-wrapper">
-            <a href="{{ route('admin.home') }}" class="sidebar-link">
+{{--            <a href="{{ route('admin.home') }}" class="sidebar-link">--}}
                 <i class="fas fa-home"></i>
                 <span>خانه</span>
             </a>
@@ -31,7 +31,7 @@
             </a>
             {{--            @endcan--}}
 
-            @can('اسمبل هوشمند')
+{{--            @can('اسمبل هوشمند')--}}
                 <section class="sidebar-part-title">پی سی پیک</section>
 
                 <section class="sidebar-group-link">
@@ -55,9 +55,9 @@
 
                     </section>
                 </section>
-            @endcan
+{{--            @endcan--}}
 
-            @can('بخش فروش')
+{{--            @can('بخش فروش')--}}
                 <section class="sidebar-part-title">بخش فروش</section>
 
                 <section class="sidebar-group-link">
@@ -124,17 +124,21 @@
                     <span>روش های ارسال</span>
                 </a>
 
-            @endcan
-            @can('بخش محتوا')
+{{--            @endcan--}}
+{{--            @can('بخش محتوا')--}}
                 <section class="sidebar-part-title">بخش محتوی</section>
+                @can('permission-post-categories')
                 <a href="{{ route('admin.content.category.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>دسته بندی</span>
                 </a>
+                @endcan
+                @can('permission-posts')
                 <a href="{{ route('admin.content.post.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>پست ها</span>
                 </a>
+                @endcan
                 <a href="{{ route('admin.content.comment.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
                     <span>نظرات</span>
@@ -156,8 +160,8 @@
                     <span>بنر ها</span>
                 </a>
 
-            @endcan
-            @can('بخش کاربران')
+{{--            @endcan--}}
+{{--            @can('بخش کاربران')--}}
                 <section class="sidebar-part-title">بخش کاربران</section>
                 <a href="{{ route('admin.user.admin-user.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -172,8 +176,8 @@
                     <span>سطوح دسترسی</span>
                 </a>
 
-            @endcan
-            @can('بخش تیکت ها')
+{{--            @endcan--}}
+{{--            @can('بخش تیکت ها')--}}
                 <section class="sidebar-part-title">تیکت ها</section>
                 <a href="{{ route('admin.ticket.category.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -205,8 +209,8 @@
                     <span>همه ی تیکت ها</span>
                 </a>
 
-            @endcan
-            @can('بخش اطلاع رسانی')
+{{--            @endcan--}}
+{{--            @can('بخش اطلاع رسانی')--}}
                 <section class="sidebar-part-title">اطلاع رسانی</section>
                 <a href="{{ route('admin.notify.email.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -217,8 +221,8 @@
                     <span>اعلامیه پیامکی</span>
                 </a>
 
-            @endcan
-            @can('بخش تنظیمات')
+{{--            @endcan--}}
+{{--            @can('بخش تنظیمات')--}}
                 <section class="sidebar-part-title">تنظیمات</section>
                 <a href="{{ route('admin.setting.index') }}" class="sidebar-link">
                     <i class="fas fa-bars"></i>
@@ -226,6 +230,6 @@
                 </a>
 
         </section>
-        @endcan
+{{--        @endcan--}}
     </section>
 </aside>

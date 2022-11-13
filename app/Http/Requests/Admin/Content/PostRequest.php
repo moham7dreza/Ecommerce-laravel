@@ -11,9 +11,9 @@ class PostRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return true;
+        return auth()->check() === true;
     }
 
     /**
@@ -21,7 +21,7 @@ class PostRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         if($this->isMethod('post')){
             return [
@@ -31,10 +31,12 @@ class PostRequest extends FormRequest
                 'category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:post_categories,id',
                 'image' => 'required|image|mimes:png,jpg,jpeg,gif',
                 'status' => 'required|numeric|in:0,1',
+                'commentable' => 'required|numeric|in:0,1',
                 'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 //                'body' => 'required|max:5000|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
                 'body' => 'required',
                 'published_at' => 'required|numeric',
+                'time_to_read' => 'required|numeric|min:1',
             ];
         }
         else{
@@ -45,10 +47,12 @@ class PostRequest extends FormRequest
                 'category_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:post_categories,id',
                 'image' => 'image|mimes:png,jpg,jpeg,gif',
                 'status' => 'required|numeric|in:0,1',
+                'commentable' => 'required|numeric|in:0,1',
                 'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
                 'body' => 'required',
 //                'body' => 'required|max:600|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
                 'published_at' => 'required|numeric',
+                'time_to_read' => 'required|numeric|min:1',
             ];
         }
     }

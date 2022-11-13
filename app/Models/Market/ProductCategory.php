@@ -26,6 +26,8 @@ class ProductCategory extends Model
 
     protected $fillable = ['name', 'description', 'slug', 'image', 'status', 'tags', 'show_in_menu', 'parent_id', 'route_code'];
 
+
+    //relations
     public function parent()
     {
         return $this->belongsTo($this, 'parent_id')->with('parent');
@@ -51,9 +53,15 @@ class ProductCategory extends Model
         return $this->hasMany(Brand::class, 'category_id');
     }
 
-    public static $levels = [
+    public static array $levels = [
         1 => 'دسته اصلی',
         2 => 'زیر دسته اصلی',
         3 => 'فرزند زیر دسته اصلی',
     ];
+
+    //methods
+    public function path()
+    {
+        return route('customer.market.category.products', $this->slug);
+    }
 }

@@ -10,6 +10,9 @@ use App\Models\Market\Product;
 use App\Models\Ticket\Ticket;
 use App\Models\User\Permission;
 use App\Models\User\Role;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Ticket\TicketAdmin;
@@ -19,14 +22,11 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Share\Traits\HasPermission;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use Notifiable;
-    use TwoFactorAuthenticatable;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission;
 
     /**
      * The attributes that are mass assignable.
@@ -78,69 +78,56 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function getFullNameAttribute()
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-
-
-    public function ticketAdmin()
+    // Relations
+    public function ticketAdmin(): HasOne
     {
         return $this->hasOne(TicketAdmin::class);
     }
 
-    public function tickets()
+    public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function roles()
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }
 
-    public function payments()
+    public function payments(): HasMany
     {
         return $this->hasMany(Payment::class);
     }
 
-    public function addresses()
+    public function addresses(): HasMany
     {
         return $this->hasMany(Address::class);
     }
 
-    public function permissions(){
-        return $this->belongsToMany(Permission::class);
-    }
-
-
-    public function isPermission($permission)
-    {
-        return $this->permissions->contains('name', $permission->name) || $this->isRole($permission->roles);
-    }
-
-    public function isRole($roles)
-    {
-        return !!$roles->intersect($this->roles)->all();
-    }
-
-    public function products()
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }
 
-    public function services()
+    public function services(): BelongsToMany
     {
         return $this->belongsToMany(Service::class);
     }
 
-    public function posts()
+    public function posts(): BelongsToMany
     {
         return $this->belongsToMany(Post::class);
+    }
+
+
+    // Methods
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }

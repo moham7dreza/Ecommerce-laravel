@@ -24,7 +24,7 @@ class Banner extends Model
     ];
 
 
-    public static $positions = [
+    public static array $positions = [
         0   =>  'اسلاید شو (صفحه اصلی)',
         1   =>  'کنار اسلاید شو (صفحه اصلی)',
         2   =>  'دو بنر تبلیغی بین دو اسلایدر  (صفحه اصلی)',

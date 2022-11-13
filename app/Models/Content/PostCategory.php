@@ -12,6 +12,11 @@ class PostCategory extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
+
     public function sluggable(): array
     {
         return [
@@ -27,6 +32,7 @@ class PostCategory extends Model
 
     protected $guarded = ['id'];
 
+    //relations
     public function parent()
     {
         return $this->belongsTo($this, 'parent_id')->with('parent');
@@ -40,5 +46,11 @@ class PostCategory extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    // Methods
+    public function path(): string
+    {
+        return route('digital-world.category.posts', $this->slug);
     }
 }

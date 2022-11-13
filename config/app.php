@@ -166,6 +166,13 @@ return [
          * Package Service Providers...
          */
 
+
+        /*
+         * Module Service Providers...
+         */
+
+        Share\Providers\ShareServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

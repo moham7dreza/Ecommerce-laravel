@@ -597,7 +597,9 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
  *  */
 Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')->group(function () {
 
-    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
+//    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
+    Route::get('/', ['uses' => [PanelController::class, 'index'], 'as' => 'panel.home']);
+    Route::get('/adminto', [PanelController::class, 'admintoHome'])->name('adminto.home');
 
     /*******************************************************************************************************************
      *

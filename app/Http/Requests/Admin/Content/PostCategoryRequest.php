@@ -11,9 +11,9 @@ class PostCategoryRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return true;
+        return auth()->check() === true;
     }
 
     /**
@@ -21,7 +21,7 @@ class PostCategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         if($this->isMethod('post')){
             return [
