@@ -1,9 +1,9 @@
 <div class="left-side-menu">
     <div class="slimscroll-menu">
         <div class="user-box text-center">
-            <img src="/adminto-assets/images/users/user-1.jpg" alt="تصویر کاربر" title="قائم امیدی" class="rounded-circle img-thumbnail avatar-lg">
+            <img src="<?php echo e(auth()->user()->image()); ?>" alt="<?php echo e(auth()->user()->fullName); ?>" title="<?php echo e(auth()->user()->fullName); ?>" class="rounded-circle img-thumbnail avatar-lg">
             <div class="dropdown">
-                <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">قائم امیدی</a>
+                <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown"><?php echo e(auth()->user()->fullName); ?></a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
@@ -32,7 +32,7 @@
 
                 </div>
             </div>
-            <p class="text-muted">مدیر</p>
+            <p class="text-muted"><?php echo e(auth()->user()->roles[0]->name); ?></p>
             <ul class="list-inline">
                 <li class="list-inline-item">
                     <a href="#" class="text-muted">
@@ -57,28 +57,28 @@
                 <li class="menu-title">ناوبری</li>
 
                 <li>
-                    <a href="index-2.html">
+                    <a href="<?php echo e(route('adminto.home')); ?>">
                         <i class="mdi mdi-view-dashboard"></i>
                         <span> پیشخوان </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.category.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> دسته بندی </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.post.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> پست ها </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.comment.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> نظرات </span>
                     </a>
@@ -86,30 +86,37 @@
 
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.menu.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> منو </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.user.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> کاربران </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.role.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> نقش ها </span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="typography.html">
+                    <a href="<?php echo e(route('adminto.banner.index')); ?>">
                         <i class="mdi mdi-format-font"></i>
                         <span> تبلیغات </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo e(route('adminto.setting.index')); ?>">
+                        <i class="mdi mdi-format-font"></i>
+                        <span> تنظیمات </span>
                     </a>
                 </li>
             </ul>

@@ -55,4 +55,12 @@ class PostCategory extends Model
     {
         return route('digital-world.category.posts', $this->slug);
     }
+
+    public function getParent(): string
+    {
+        if (is_null($this->parent_id)) return 'ندارد';
+
+        return $this->parent->name;
+    }
+
 }

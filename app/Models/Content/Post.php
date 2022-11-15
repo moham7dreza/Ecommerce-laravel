@@ -75,4 +75,11 @@ class Post extends Model
     {
         return asset($this->image['indexArray']['medium']);
     }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
 }

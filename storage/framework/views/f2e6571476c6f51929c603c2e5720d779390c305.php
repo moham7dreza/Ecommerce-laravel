@@ -24,7 +24,7 @@
 
                             <a href="" target="_blank" class="dropdown-item notify-item active">
                                 <div class="notify-icon">
-                                    <img src="/admin/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="تصویر" />
+                                    <img src="<?php echo e(auth()->user()->image()); ?>" class="img-fluid rounded-circle" alt="<?php echo e(auth()->user()->fullName); ?>" />
                                 </div>
                                 <p class="notify-details"></p>
                                 <p class="text-muted mb-0 user-msg">
@@ -41,9 +41,9 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="false" aria-expanded="false">
-                <img src="<?php echo e(asset('admin/images/users/user-1.jpg')); ?>" alt="تصویر کاربر" class="rounded-circle">
+                <img src="<?php echo e(auth()->user()->image()); ?>" alt="<?php echo e(auth()->user()->fullName); ?>" class="rounded-circle">
                 <span class="pro-user-name ml-1">
-                    <?php echo e(auth()->user()->name); ?> <i class="mdi mdi-chevron-down"></i>
+                    <?php echo e(auth()->user()->fullName); ?> <i class="mdi mdi-chevron-down"></i>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -69,10 +69,10 @@
     <div class="logo-box">
         <a href="<?php echo e(route('adminto.home')); ?>" class="logo text-center">
             <span class="logo-lg">
-                <img src="<?php echo e(asset('admin/images/logo-dark.png')); ?>" alt="تصویر" height="16">
+                <img src="<?php echo e(asset('adminto-assets/images/logo-dark.png')); ?>" alt="تصویر" height="16">
             </span>
             <span class="logo-sm">
-                <img src="<?php echo e(asset('admin/images/logo-sm.png')); ?>" alt="تصویر" height="24">
+                <img src="<?php echo e(asset('adminto-assets/images/logo-sm.png')); ?>" alt="تصویر" height="24">
             </span>
         </a>
     </div>

@@ -72,6 +72,8 @@
 
                     </tbody>
                 </table>
+                <?php echo e($menus->links()); ?>
+
             </section>
 
         </section>

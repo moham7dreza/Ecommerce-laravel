@@ -146,4 +146,18 @@ class User extends Authenticatable
     {
         return asset($this->profile_photo_path);
     }
+
+    public function textStatusEmailVerifiedAt(): string
+    {
+        if ($this->email_verified_at) return 'تایید شده';
+
+        return 'تایید نشده';
+    }
+
+    public function cssStatusEmailVerifiedAt(): string
+    {
+        if($this->email_verified_at) return 'success';
+
+        return 'danger';
+    }
 }

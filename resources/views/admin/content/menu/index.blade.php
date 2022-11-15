@@ -73,6 +73,7 @@
 
                     </tbody>
                 </table>
+                {{ $menus->links() }}
             </section>
 
         </section>
