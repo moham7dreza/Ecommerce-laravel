@@ -27,8 +27,8 @@ class SettingRequest extends FormRequest
             'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
             'description' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
             'keywords' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-            'logo' => 'image|mimes:png,jpg,jpeg,gif',
-            'icon' => 'image|mimes:png,jpg,jpeg,gif',
+            'logo' => 'image|mimes:png,jpg,jpeg,gif,svg',
+            'icon' => 'image|mimes:png,jpg,jpeg,gif,svg',
         ];
     }
 }

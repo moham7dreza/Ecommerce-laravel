@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryCont
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 
 // new panel namespaces
+use App\Http\Controllers\Dashboard\AdminToController;
 use App\Http\Controllers\Panel\PanelController;
 use App\Http\Controllers\Panel\TelegramBot\SendController as BotSendController;
 use App\Http\Controllers\Panel\Report\ChartController as PanelChartController;
@@ -599,7 +600,7 @@ Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')-
 
 //    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
     Route::get('/', ['uses' => [PanelController::class, 'index'], 'as' => 'panel.home']);
-    Route::get('/adminto', [PanelController::class, 'admintoHome'])->name('adminto.home');
+
 
     /*******************************************************************************************************************
      *
@@ -631,3 +632,11 @@ Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')-
     });
 
 });
+/***********************************************************************************************************************
+ *
+ *  adminto dashboard
+ *  */
+Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashboard')
+    ->group(function () {
+        Route::get('/', [AdminToController::class, 'home'])->name('adminto.home');
+    });

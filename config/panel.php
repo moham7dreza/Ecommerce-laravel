@@ -2,6 +2,13 @@
 
 return [
     'menus' => [
-        'panel' => [],
+        'dashboard' => [],
+        'posts' => [],
+        'categories' => [],
+        'comments' => [],
+        'users' => [],
+        'roles' => [],
+        'banners' => [],
+        'menus' => [],
     ],
 ];

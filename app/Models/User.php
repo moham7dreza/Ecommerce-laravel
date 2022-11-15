@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\ItCity\Store\Service;
 use App\Models\Market\Order;
@@ -124,10 +125,25 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class);
     }
 
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'commentable_id');
+    }
+
 
     // Methods
     public function getFullNameAttribute(): string
     {
         return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function path(): string
+    {
+        return route('digital-world.posts.author', $this->email);
+    }
+
+    public function image(): string
+    {
+        return asset($this->profile_photo_path);
     }
 }

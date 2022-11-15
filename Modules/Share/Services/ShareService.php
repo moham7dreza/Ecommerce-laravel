@@ -16,7 +16,7 @@ class ShareService
         // exit;
         $result = $imageService->createIndexAndSave($file);
         if ($result === false) {
-            return redirect()->route($route)->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            return self::redirect($route,'آپلود تصویر با خطا مواجه شد', 'error');
         }
         return $result;
     }

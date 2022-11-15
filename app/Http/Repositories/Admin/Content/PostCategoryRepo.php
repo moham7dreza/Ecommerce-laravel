@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PostCategoryRepo
 {
-    public function index()
+    public function index(): Builder
     {
         return $this->query()->latest();
     }
@@ -21,6 +21,11 @@ class PostCategoryRepo
     {
         return $this->query()->whereNull('parent_id')
             ->where('status', PostCategory::STATUS_ACTIVE)->get()->except($cat_id);
+    }
+
+    public function getActiveCategories(): Builder
+    {
+        return $this->query()->where('status', PostCategory::STATUS_ACTIVE)->latest();
     }
 
     private function query(): Builder

@@ -14,4 +14,15 @@ class Setting extends Model
 
 //    protected $fillable = ['title', 'description', 'keywords', 'logo', 'icon'];
     protected $guarded = ['id'];
+
+    //Methods
+    public function logo(): string
+    {
+        return asset($this->logo);
+    }
+
+    public function icon(): string
+    {
+        return asset($this->icon);
+    }
 }

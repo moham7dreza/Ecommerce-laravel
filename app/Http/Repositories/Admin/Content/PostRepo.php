@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PostRepo
 {
-    public function index()
+    public function index(): Builder
     {
         return $this->query()->latest();
     }
@@ -30,6 +30,21 @@ class PostRepo
             ['category_id', $category_id],
             ['id', '!=', $id]
         ]);
+    }
+
+    public function getPostsByViews(): Builder
+    {
+        return $this->query()->where('status', Post::STATUS_ACTIVE)->orderBy('view_count');
+    }
+
+    public function getPostsByUserId($id): Builder
+    {
+        return $this->query()->where([['status', Post::STATUS_ACTIVE], ['author_id', $id]]);
+    }
+
+    public function getPostsByCategoryId($id): Builder
+    {
+        return $this->query()->where([['status', Post::STATUS_ACTIVE], ['category_id', $id]]);
     }
 
     public function home(): Builder

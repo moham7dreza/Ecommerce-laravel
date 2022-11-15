@@ -5,6 +5,8 @@ namespace App\Models\Content;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -33,17 +35,17 @@ class PostCategory extends Model
     protected $guarded = ['id'];
 
     //relations
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo($this, 'parent_id')->with('parent');
     }
 
-    public function children()
+    public function children(): HasMany
     {
         return $this->hasMany($this, 'parent_id')->with('children');
     }
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }

@@ -15,8 +15,8 @@ trait HasComments
         return $this->morphMany('App\Models\Content\Comment', 'commentable');
     }
 
-    public function activeComments(): Collection
+    public function activeComments(): MorphMany
     {
-        return $this->comments()->where('approved', 1)->whereNull('parent_id')->get();
+        return $this->comments()->where('approved', 1)->whereNull('parent_id');
     }
 }

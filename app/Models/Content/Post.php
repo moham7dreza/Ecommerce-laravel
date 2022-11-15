@@ -45,14 +45,14 @@ class Post extends Model
     protected $guarded = ['id'];
 
     // Relations
-    public function postCategory(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(PostCategory::class, 'category_id');
     }
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author_id');
     }
 
     public function user(): BelongsToMany
@@ -69,5 +69,10 @@ class Post extends Model
     public function commentsCount(): int
     {
         return $this->activeComments()->count();
+    }
+
+    public function imagePath(): string
+    {
+        return asset($this->image['indexArray']['medium']);
     }
 }

@@ -33,4 +33,16 @@ class Banner extends Model
         5   =>  'بنر تبلیغی برندها در اتمام صفحه  (صفحه اصلی)',
         6   =>  'چهار بنر تبلیغی در میان صفحه  (صفحه اصلی)',
     ];
+
+    public static array $postBannersPositions = [
+        7   =>  'بنر بالا (صفحه اصلی)',
+        8   =>  'بنر پایین (صفحه اصلی)',
+        9   =>  'دو بنر تبلیغی بین دو اسلایدر  (صفحه اصلی)',
+    ];
+
+    // Methods
+    public function imagePath(): string
+    {
+        return asset($this->image);
+    }
 }

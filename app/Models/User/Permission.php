@@ -14,6 +14,9 @@ class Permission extends Model
     use HasFactory, SoftDeletes;
 
     public const PERMISSION_SUPER_ADMIN = ['name' => 'permission-super-admin', 'description' => 'مدیر ارشد سیستم - دسترسی نامحدود'];
+    public const PERMISSION_IT_CITY_PANEL = ['name' => 'permission-it-city-panel', 'description' => 'دسترسی به پنل مدیریت بخش آیتی سیتی'];
+    public const PERMISSION_CUSTOMER_PANEL = ['name' => 'permission-customer-panel', 'description' => 'دسترسی به پنل مدیریت بخش مشتری'];
+    public const PERMISSION_ADMIN_TO_PANEL = ['name' => 'permission-admin-to-panel', 'description' => 'دسترسی به پنل مدیریت بخش دنیای دیجیتالی'];
     public const PERMISSION_POST_CATEGORIES = ['name' => 'permission-post-categories', 'description' => 'دسترسی به بخش دسته بندی پست ها'];
     public const PERMISSION_POSTS = ['name' => 'permission-posts', 'description' => 'دسترسی به بخش پست ها'];
     public const PERMISSION_MARKET = ['name' => 'permission-market', 'description' => 'دسترسی به بخش فروش'];
@@ -35,6 +38,7 @@ class Permission extends Model
     public const PERMISSION_TICKETS = ['name' => 'permission-tickets', 'description' => 'دسترسی به بخش تیکت ها'];
     public const PERMISSION_NOTIFY = ['name' => 'permission-notify', 'description' => 'دسترسی به بخش اطلاع رسانی'];
     public const PERMISSION_SETTING = ['name' => 'permission-setting', 'description' => 'دسترسی به بخش تنطیمات سایت'];
+    public const PERMISSION_POST_AUTHORS = ['name' => 'permission-authors', 'description' => 'دسترسی به بخش نویسندگان پست ها'];
 
     public static array $permissions = [
         self::PERMISSION_SUPER_ADMIN,
@@ -59,6 +63,10 @@ class Permission extends Model
         self::PERMISSION_TICKETS,
         self::PERMISSION_NOTIFY,
         self::PERMISSION_SETTING,
+        self::PERMISSION_IT_CITY_PANEL,
+        self::PERMISSION_CUSTOMER_PANEL,
+        self::PERMISSION_ADMIN_TO_PANEL,
+        self::PERMISSION_POST_AUTHORS,
     ];
 
     //relations

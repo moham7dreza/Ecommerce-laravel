@@ -40,16 +40,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $this->app->booted(static function () {
-            config()->set('panel.menus.panel', [
-                'url'   => route('panel.home'),
-                'title' => 'پنل کاربری',
-                'icon'  => 'view-dashboard',
-            ]);
-        });
+//        $this->app->booted(static function () {
+//            config()->set('panel.menus.dashboard', [
+//                'url'   => route('adminto.home'),
+//                'title' => 'پنل کاربری',
+//                'icon'  => 'view-dashboard',
+//            ]);
+//        });
         // *************************************************************************************************************
         // admin
-        view()->composer(['admin.layouts.header', 'panel.layouts.header'], function ($view) {
+        view()->composer(['admin.layouts.header', 'panel.layouts.header', 'adminto.layouts.navbar'], function ($view) {
             $view->with('unseenComments', Comment::query()->where('seen', 0)->get());
             $view->with('notifications', Notification::query()->where('read_at', null)->get());
         });
@@ -84,13 +84,13 @@ class AppServiceProvider extends ServiceProvider
 
         // *************************************************************************************************************
         // digital-world section
-        view()->composer('digital-world.layouts.header', function ($view) {
+        view()->composer(['digital-world.layouts.header', 'digital-world.layouts.footer'], function ($view) {
             $view->with('menus', Menu::query()->where([['status', 1], ['location', 3], ['parent_id', NULL]])->orderBy('created_at')->get());
-            $view->with('settings', Setting::query()->find(3));
+            $view->with('setting', Setting::query()->find(3));
             $view->with('categories', PostCategory::query()->where([['status', 1], ['parent_id', NULL]])->orderBy('created_at')->get());
         });
         view()->composer('digital-world.layouts.head-tag', function ($view) {
-            $view->with('settings', Setting::query()->find(3));
+            $view->with('setting', Setting::query()->find(3));
         });
     }
 }

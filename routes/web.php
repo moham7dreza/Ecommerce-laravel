@@ -161,8 +161,11 @@ Route::prefix('digital-world')->group(function () {
      *  */
     Route::get('/', [DigiHomeController::class, 'home'])->name('digital-world.home');
     Route::get('/post/{post:slug}', [DigiHomeController::class, 'post'])->name('digital-world.post.detail');
+    Route::get('/posts/all', [DigiHomeController::class, 'posts'])->name('digital-world.posts.all');
+    Route::get('/posts/authors', [DigiHomeController::class, 'authors'])->name('digital-world.posts.authors');
+    Route::get('/posts/author/{user:email}', [DigiHomeController::class, 'author'])->name('digital-world.posts.author');
     Route::get('/category/{postCategory:slug}/posts', [DigiHomeController::class, 'category'])->name('digital-world.category.posts');
-    Route::post('/add-comment/post/{post:slug}', [DigiHomeController::class, 'addComment'])->name('digital-world.post.add-comment');
+    Route::post('/add-comment/post/{post:slug}', [DigiHomeController::class, 'addComment'])->name('digital-world.post.add-comments');
     Route::post('/add-to-favorite/{post:slug}', [DigiHomeController::class, 'addToFavorite'])->name('digital-world.post.add-to-favorite');
     Route::post('/post/{post:slug}/like', [DigiHomeController::class, 'likePost'])->name('digital-world.post.like');
 });
