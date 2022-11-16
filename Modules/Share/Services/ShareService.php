@@ -65,4 +65,26 @@ class ShareService
     {
         return redirect()->route($route)->with('swal-' . $status, $message);
     }
+
+    // users wants to upload new img
+    // first delete previous img then save new image
+    public static function uploadNewImage($image, $imageService, $folder, $file)
+    {
+        if (!empty($image)) {
+            $imageService->deleteDirectoryAndFiles($image['directory']);
+        }
+        $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . $folder);
+        return $imageService->createIndexAndSave($file);
+    }
+
+    // only size of image has changed
+    public static function useCurrentImage($currentImageSize, $image)
+    {
+        if (isset($currentImageSize) && !empty($image)) {
+            $img = $image;
+            $img['currentImage'] = $currentImageSize;
+            return $img;
+        }
+        return $image;
+    }
 }

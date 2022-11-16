@@ -14,6 +14,7 @@
                             ساخت دسته بندی جدید
                         </a>
                     </div>
+                    @include('admin.alerts.alert-section.success')
                     <h4 class="mt-0 header-title">لیست تمامی دسته بندی</h4>
 
                     <br>
@@ -58,7 +59,7 @@
                                                 <form action="{{ route('adminto.category.destroy', $category->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger ml-1">
+                                                    <button type="submit" class="btn btn-danger ml-1 delete">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>
@@ -74,4 +75,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 @endsection

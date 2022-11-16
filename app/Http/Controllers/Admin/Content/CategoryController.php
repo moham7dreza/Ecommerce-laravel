@@ -52,7 +52,7 @@ class CategoryController extends Controller
         // $imageCache = new ImageCacheService();
         // return $imageCache->cache('1.png');
 
-        $categories = $this->categoryRepo->index()->where('status', PostCategory::STATUS_ACTIVE)->get();
+        $categories = $this->categoryRepo->index()->where('status', $this->class::STATUS_ACTIVE)->get();
         return view('admin.content.category.create', compact('categories'));
     }
 

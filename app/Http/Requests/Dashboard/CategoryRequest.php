@@ -26,15 +26,16 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'parent_id' => 'nullable|exists:categories,id',
-            'title' => 'required|string|min:3|max:190|unique:categories,id',
-            'keywords' => 'nullable|string|min:3|max:250',
+            'parent_id' => 'nullable|exists:post_categories,id',
+            'name' => 'required|string|min:3|max:190',
             'description' => 'nullable|string|min:3',
-            'status' => ['required', 'string', Rule::in(PostCategory::$statuses)],
+            'image' => 'nullable',
+            'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'status' => ['required', 'numeric' ,'string', Rule::in(PostCategory::$statuses)],
         ];
 
         if (request()->method === 'PATCH') {
-            $rules['title'] = 'required|string|min:3|max:190|unique:categories,id,' . request()->id;
+            $rules['image'] = 'nullable';
         }
 
         return $rules;

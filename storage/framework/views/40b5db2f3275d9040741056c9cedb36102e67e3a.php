@@ -21,6 +21,14 @@
 <div class="rightbar-overlay"></div>
 <?php echo $__env->make('adminto.layouts.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> 
 <?php echo $__env->yieldContent('script'); ?>
+
+<section class="toast-wrapper flex-row-reverse">
+    <?php echo $__env->make('admin.alerts.toast.success', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('admin.alerts.toast.error', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+</section>
+
+<?php echo $__env->make('admin.alerts.sweetalert.error', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('admin.alerts.sweetalert.success', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </body>
 </html>
 <?php /**PATH C:\CODEX\techzilla\resources\views/adminto/layouts/master.blade.php ENDPATH**/ ?>

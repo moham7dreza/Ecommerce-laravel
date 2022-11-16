@@ -6,15 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Repositories\Dashboard\CategoryRepo;
 use App\Http\Requests\Dashboard\CategoryRequest;
 use App\Http\Services\Dashboard\CategoryService;
+use App\Http\Services\Image\ImageService;
+use App\Models\Content\PostCategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Share\Services\ShareService;
 
 class CategoryController extends Controller
 {
+    private string $class = PostCategory::class;
 
     public CategoryRepo $repo;
     public CategoryService $service;
@@ -53,10 +57,15 @@ class CategoryController extends Controller
      * @param CategoryRequest $request
      * @return RedirectResponse
      */
-    public function store(CategoryRequest $request): RedirectResponse
+    public function store(CategoryRequest $request, ImageService $imageService): RedirectResponse
     {
+        if ($request->hasFile('image')) {
+            $request->image = ShareService::uploadImage($request->file('image'), 'adminto-post-category',
+                'adminto.category.index', $imageService);
+        }
+
         $this->service->store($request);
-        return redirect()->route('adminto.category.index')->with(['swal-success', 'دسته بندی با موفقیت اضافه شد.']);
+        return redirect()->route('adminto.category.index')->with('swal-success', 'دسته بندی با موفقیت اضافه شد.');
     }
 
     /**
@@ -78,23 +87,35 @@ class CategoryController extends Controller
      */
     public function edit(int $id)
     {
-        $category = $this->repo->findById($id);
-        $categories = $this->repo->index()->where('id', '!=', $category->id)->get();
+        $postCategory = $this->repo->findById($id);
+        $categories = $this->repo->index()->where('id', '!=', $postCategory->id)->get();
 
-        return view('adminto.category.edit', compact(['categories', 'category']));
+        return view('adminto.category.edit', compact(['categories', 'postCategory']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param CategoryRequest $request
+     * @param ImageService $imageService
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(CategoryRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
+        $category = $this->repo->findById($id);
+        if ($request->hasFile('image')) {
+            $result = ShareService::uploadNewImage($category->image,$imageService,
+                'adminto-post-category', $request->file('image'));
+            if ($result === false) {
+                return redirect()->route('adminto.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            }
+            $request->image = $result;
+        } else {
+            $request->image = ShareService::useCurrentImage($request->currentImage, $category->image);
+        }
         $this->service->update($request, $id);
-        return redirect()->route('adminto.category.index')->with(['swal-success', 'دسته بندی با موفقیت ویرایش شد.']);
+        return redirect()->route('adminto.category.index')->with('swal-success', 'دسته بندی با موفقیت ویرایش شد.');
     }
 
     /**
@@ -106,7 +127,7 @@ class CategoryController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->repo->delete($id);
-        return redirect()->route('adminto.category.index')->with(['swal-success', 'دسته بندی با موفقیت حذف شد.']);
+        return redirect()->route('adminto.category.index')->with('swal-success', 'دسته بندی با موفقیت حذف شد.');
     }
 
     /**
@@ -118,6 +139,6 @@ class CategoryController extends Controller
         $category = $this->repo->findById($id);
         $this->repo->changeStatus($category);
 
-        return back()->with(['swal-success' => 'وضعیت دسته بندی با موفقیت تغییر کرد']);
+        return back()->with('swal-success', 'وضعیت دسته بندی با موفقیت تغییر کرد');
     }
 }
