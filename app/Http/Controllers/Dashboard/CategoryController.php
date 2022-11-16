@@ -109,6 +109,10 @@ class CategoryController extends Controller
         return redirect()->route('adminto.category.index')->with(['swal-success', 'دسته بندی با موفقیت حذف شد.']);
     }
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function changeStatus($id): RedirectResponse
     {
         $category = $this->repo->findById($id);

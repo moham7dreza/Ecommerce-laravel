@@ -1,13 +1,15 @@
-@extends('Panel::layouts.master')
+@extends('adminto.layouts.master')
 
-@section('title', 'اد کردن مقام به کاربر')
+@section('head-tag')
+    <title>افزودن مقام</title>
+@endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 header-title">اد کردن مقام به کاربر</h4>
+                    <h4 class="m-t-0 header-title">افزودن مقام به کاربر</h4>
                     <div class="row">
                         <div class="col-12">
                             <div class="p-2">
@@ -18,7 +20,7 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <form class="form-horizontal" role="form" method="POST" action="{{ route('users.add.role.store', $user_id) }}">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ route('adminto.user.role-store', $user_id) }}">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="role">مقام</label>

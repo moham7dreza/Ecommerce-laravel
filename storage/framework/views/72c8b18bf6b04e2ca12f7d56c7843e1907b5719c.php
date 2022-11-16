@@ -4,12 +4,12 @@
             <div class="card-box widget-user">
                 <div>
                     <div class="avatar-lg float-left mr-3">
-                        <img src="/admin/images/users/user-3.jpg" class="img-fluid rounded-circle" alt="<?php echo e($author->name); ?>">
+                        <img src="<?php echo e($author->image()); ?>" class="img-fluid rounded-circle" alt="<?php echo e($author->fullName); ?>">
                     </div>
                     <div class="wid-u-info">
-                        <h5 class="mt-0"><?php echo e($author->name); ?></h5>
+                        <h5 class="mt-0"><?php echo e($author->fullName); ?></h5>
                         <p class="text-muted mb-1 font-13 text-truncate"><?php echo e($author->email); ?></p>
-                        <small class="text-warning"><b>نویسنده</b></small>
+                        <small class="text-warning"><b><?php echo e($author->roles[0]->name ?? 'نقش تعریف نشده'); ?></b></small>
                     </div>
                 </div>
             </div>

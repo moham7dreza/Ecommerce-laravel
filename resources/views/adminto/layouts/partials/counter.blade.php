@@ -18,7 +18,7 @@
     </div>
     <div class="col-xl-3 col-md-6">
         <div class="card-box">
-            <h4 class="header-title mt-0 mb-4">تعداد مقالات</h4>
+            <h4 class="header-title mt-0 mb-4">تعداد پست ها</h4>
             <div class="widget-chart-1">
                 <div class="widget-chart-box-1 float-left" dir="ltr">
                     <input data-plugin="knob" data-width="80" data-height="80" data-fgColor="#f05050"
@@ -28,7 +28,7 @@
                 </div>
                 <div class="widget-detail-1 text-right">
                     <h2 class="font-weight-normal pt-2 mb-1"> {{ $dashboardRepo->postsCount() }} </h2>
-                    <p class="text-muted mb-1">مقاله</p>
+                    <p class="text-muted mb-1">پست</p>
                 </div>
             </div>
         </div>

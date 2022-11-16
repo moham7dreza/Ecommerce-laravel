@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Dashboard\PostRepo;
 use App\Http\Services\Dashboard\PostService;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -35,29 +38,29 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('adminto.post.create', compact(['']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        return redirect()->route('adminto.post.index')->with(['swal-success' => 'پست با موفقیت ذخیره شد.']);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -68,33 +71,48 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $post = $this->repo->findById($id);
+        return view('adminto.post.edit', compact(['post']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
-        //
+        $post = $this->repo->findById($id);
+        return redirect()->route('adminto.post.index')->with(['swal-success' => 'پست با موفقیت ویرایش شد.']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        return redirect()->route('adminto.post.index')->with(['swal-success' => 'پست با موفقیت حذف شد.']);
+    }
+
+    /**
+     * @param $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function changeStatus($id): RedirectResponse
+    {
+        $post = $this->repo->findById($id);
+        $this->repo->changeStatus($post);
+
+        return redirect()->route('adminto.post.index')->with(['swal-success' => 'وضعیت پست با موفقیت تغییر کرد.']);
     }
 }

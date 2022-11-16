@@ -65,21 +65,21 @@
 
                 <li>
                     <a href="<?php echo e(route('adminto.category.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-folder-open-outline"></i>
                         <span> دسته بندی </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.post.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-book"></i>
                         <span> پست ها </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.comment.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-comment"></i>
                         <span> نظرات </span>
                     </a>
                 </li>
@@ -87,35 +87,35 @@
 
                 <li>
                     <a href="<?php echo e(route('adminto.menu.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
-                        <span> منو </span>
+                        <i class="mdi mdi-menu"></i>
+                        <span> منو ها </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.user.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-account"></i>
                         <span> کاربران </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.role.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-bug"></i>
                         <span> نقش ها </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.banner.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-file"></i>
                         <span> تبلیغات </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?php echo e(route('adminto.setting.index')); ?>">
-                        <i class="mdi mdi-format-font"></i>
+                        <i class="mdi mdi-settings"></i>
                         <span> تنظیمات </span>
                     </a>
                 </li>

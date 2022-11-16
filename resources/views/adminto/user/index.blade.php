@@ -71,7 +71,7 @@
                                                 <a href="{{ route('adminto.user.edit', $user->id) }}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="{{ route('adminto.user.role-form', $user->id) }}" class="btn btn-success ml-1">
+                                                <a href="{{ route('adminto.user.add-roles', $user->id) }}" class="btn btn-success ml-1">
                                                     <i class="fas fa-plus"></i>
                                                 </a>
                                                 <form action="{{ route('adminto.user.destroy', $user->id) }}" method="POST">

@@ -8,7 +8,7 @@
             <div class="col-lg-12">
                 <div class="card-box">
 
-                    <h4 class="mt-0 header-title">لیست تمامی پست ها</h4>
+                    <h4 class="mt-0 header-title">تنظیمات سایت</h4>
                     <br>
                     <div class="table-responsive">
                         <table class="table table-striped mb-0">

@@ -715,8 +715,8 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::delete('/destroy/{admin}', [PostUserController::class, 'destroy'])->name('adminto.user.destroy');
             Route::get('/status/{user}', [PostUserController::class, 'status'])->name('adminto.user.status');
             Route::get('/activation/{user}', [PostUserController::class, 'activation'])->name('adminto.user.activation');
-            Route::get('/role-form/{userId}', [PostUserController::class, 'roleForm'])->name('adminto.user.role-form');
-            Route::put('/role-update/{userId}', [PostUserController::class, 'roleUpdate'])->name('adminto.user.role-update');
+            Route::get('/add-roles/{userId}', [PostUserController::class, 'addRoles'])->name('adminto.user.add-roles');
+            Route::put('/role-store/{userId}', [PostUserController::class, 'roleStore'])->name('adminto.user.role-store');
             Route::delete('/role-remove/{userId}/role/{roleId}', [PostUserController::class, 'roleRemove'])->name('adminto.user.role-remove');
         });
 
