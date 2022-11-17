@@ -22,12 +22,20 @@ class BannerRepo
         return $this->query()->where('id', $id)->delete();
     }
 
-    public function getAdvByLocation(string $location)
+    public function changeStatus($banner)
     {
-        return $this->query()->where('location', $location);
+        if ($banner->status === Banner::STATUS_ACTIVE) {
+            return $banner->update(['status' => Banner::STATUS_INACTIVE]);
+        }
+        return $banner->update(['status' => Banner::STATUS_ACTIVE]);
     }
 
-    private function query()
+    public function getBannerByPosition(int $position): Builder
+    {
+        return $this->query()->where('position', $position);
+    }
+
+    private function query(): Builder
     {
         return Banner::query();
     }

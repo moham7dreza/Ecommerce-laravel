@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class PostRepo
 {
+    public string $class = Post::class;
+
     public function index(): Builder
     {
         return $this->query()->latest();
@@ -25,6 +27,14 @@ class PostRepo
     public function findBySlug($slug)
     {
         return $this->query()->whereSlug($slug)->first();
+    }
+
+    public function changeStatus($post)
+    {
+        if ($post->status === $this->class::STATUS_ACTIVE) {
+            return $post->update(['status' => $this->class::STATUS_INACTIVE]);
+        }
+        return $post->update(['status' => $this->class::STATUS_ACTIVE]);
     }
 
     // Home Query

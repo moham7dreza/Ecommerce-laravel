@@ -11,9 +11,9 @@ class SettingRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check() === true;
     }
 
     /**
@@ -24,7 +24,11 @@ class SettingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'description' => 'required|max:120|min:2',
+            'keywords' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'logo' => 'image|mimes:png,jpg,jpeg,gif,svg',
+            'icon' => 'image|mimes:png,jpg,jpeg,gif,svg',
         ];
     }
 }

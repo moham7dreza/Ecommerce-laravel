@@ -22,6 +22,14 @@ class RoleRepo
         return $this->query()->where('id',$id)->delete();
     }
 
+    public function changeStatus($role)
+    {
+        if ($role->status === Role::STATUS_ACTIVE) {
+            return $role->update(['status' => Role::STATUS_INACTIVE]);
+        }
+        return $role->update(['status' => Role::STATUS_ACTIVE]);
+    }
+
     private function query()
     {
         return Role::query();

@@ -26,6 +26,16 @@ class UserService
         ]);
     }
 
+    public function addRole($role, $user)
+    {
+        return $user->roles()->sync($role);
+    }
+
+    public function deleteRole($user, $role)
+    {
+        return $user->removeRole($role);
+    }
+
     private function query(): Builder
     {
         return User::query();

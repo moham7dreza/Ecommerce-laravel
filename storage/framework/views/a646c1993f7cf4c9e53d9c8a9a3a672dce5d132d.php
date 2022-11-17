@@ -41,7 +41,8 @@
                                         <td><?php echo e($post->title); ?></td>
                                         <td>
                                             <span class="badge badge-<?php echo e($post->cssStatus()); ?>">
-                                                <?php echo app('translator')->get($post->status); ?>
+                                                <?php echo e($post->textStatus()); ?>
+
                                             </span>
                                         </td>
 
@@ -75,6 +76,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
+                        <hr>
                         <?php echo e($posts->links()); ?>
 
                     </div>

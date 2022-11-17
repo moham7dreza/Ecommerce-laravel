@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CommentRepo
 {
+    private string $class = Comment::class;
+
     public function index(): Builder
     {
-        return $this->query()->latest();
+        return $this->query()->where('commentable_type', 'App\Models\Content\Post')->latest();
     }
 
     public function delete($id)
@@ -22,19 +24,23 @@ class CommentRepo
         return $this->query()->findOrFail($id);
     }
 
-    public function changeStatus($id, $status)
+    public function changeStatus($comment)
     {
-//        $comment = $this->findById($id);
-//        return $comment->update(['status' => $status]);
-        return $this->findById($id)->update(['status' => $status]);
+        if ($comment->status === $this->class::STATUS_ACTIVE) {
+            return $comment->update(['status' => $this->class::STATUS_INACTIVE]);
+        }
+        return $comment->update(['status' => $this->class::STATUS_ACTIVE]);
     }
 
-    public function getLatestComments()
+    public function getLatestComments(): Builder
     {
-        return $this->query()->where('status', Comment::STATUS_ACTIVE)->latest();
+        return $this->query()->where([
+            ['status', $this->class::STATUS_ACTIVE],
+            ['commentable_type', 'App\Models\Content\Post']
+        ])->latest();
     }
 
-    private function query()
+    private function query(): Builder
     {
         return Comment::query();
     }

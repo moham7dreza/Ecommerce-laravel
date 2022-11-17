@@ -3,12 +3,20 @@
 namespace Share\Services;
 
 use App\Http\Repositories\Admin\Content\PostCategoryRepo;
+use App\Http\Services\Image\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
 class ShareService
 {
-    public static function uploadImage($file, $folder, $route, $imageService)
+    public ImageService $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
+    public static function uploadImage($file, $folder, $redirect_route, $imageService)
     {
         $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . $folder);
         // $result = $imageService->save($request->file('image'));
@@ -16,7 +24,7 @@ class ShareService
         // exit;
         $result = $imageService->createIndexAndSave($file);
         if ($result === false) {
-            return self::redirect($route,'آپلود تصویر با خطا مواجه شد', 'error');
+            return self::redirect($redirect_route,'آپلود تصویر با خطا مواجه شد', 'error');
         }
         return $result;
     }
@@ -86,5 +94,31 @@ class ShareService
             return $img;
         }
         return $image;
+    }
+
+    public static function saveImageWithName($file, $folder, $name, $image, $imageService)
+    {
+        if (!empty($image)) {
+            $imageService->deleteImage($image);
+        }
+        $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . $folder);
+        $imageService->setImageName($name);
+        return $imageService->save($file);
+    }
+
+    public static function saveImage($file, $folder, $image, $imageService)
+    {
+        if (!empty($image)) {
+           $imageService->deleteImage($image);
+        }
+        $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . $folder);
+        return $imageService->save($file);
+    }
+
+    public static function dateFix($timestamp)
+    {
+        //date fixed
+        $realTimestampStart = substr($timestamp, 0, 10);
+        return date("Y-m-d H:i:s", (int)$realTimestampStart);
     }
 }

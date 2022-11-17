@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Dashboard\MenuRepo;
+use App\Http\Requests\Dashboard\MenuRequest;
 use App\Http\Services\Dashboard\MenuService;
+use App\Models\Content\Menu;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,6 +17,8 @@ use Illuminate\Http\Response;
 
 class MenuController extends Controller
 {
+    private string $class = Menu::class;
+
     public MenuRepo $repo;
     public MenuService $service;
 
@@ -42,18 +46,22 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('adminto.menu.create', compact(['']));
+        $menus = $this->repo->index()->whereNull('parent_id')->get();
+        return view('adminto.menu.create', compact(['menus']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param MenuRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(MenuRequest $request): RedirectResponse
     {
-        return redirect()->route('adminto.menu.index')->with(['swal-success' => 'منو با موفقیت حذف شد.']);
+        $request->location = $this->class::LOCATION_DIGITAL_WORLD;
+        $request->level = $this->service->setLevel($request->parent_id);
+        $this->service->store($request);
+        return redirect()->route('adminto.menu.index')->with('swal-success', 'منو با موفقیت ذخیره شد.');
     }
 
     /**
@@ -75,7 +83,9 @@ class MenuController extends Controller
      */
     public function edit(int $id)
     {
-        return view('adminto.menu.edit', compact(['']));
+        $menu = $this->repo->findById($id);
+        $menus = $this->repo->index()->whereNull('parent_id')->get()->except($id);
+        return view('adminto.menu.edit', compact(['menus', 'menu']));
     }
 
     /**
@@ -85,9 +95,11 @@ class MenuController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(MenuRequest $request, $id): RedirectResponse
+    public function update(MenuRequest $request, int $id): RedirectResponse
     {
-        return redirect()->route('adminto.menu.index')->with(['swal-success' => 'منو با موفقیت حذف شد.']);
+        $request->level = $this->service->setLevel($request->parent_id);
+        $this->service->update($request, $id);
+        return redirect()->route('adminto.menu.index')->with('swal-success', 'منو با موفقیت ویرایش شد.');
     }
 
     /**
@@ -98,13 +110,13 @@ class MenuController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        return redirect()->route('adminto.menu.index')->with(['swal-success' => 'منو با موفقیت حذف شد.']);
+        $this->repo->delete($id);
+        return redirect()->route('adminto.menu.index')->with('swal-success', 'منو با موفقیت حذف شد.');
     }
 
     /**
      * @param $id
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function changeStatus($id): RedirectResponse
     {
@@ -112,6 +124,6 @@ class MenuController extends Controller
         $menu = $this->repo->findById($id);
         $this->repo->changeStatus($menu);
 
-        return redirect()->route('adminto.menu.index')->with(['swal-success' => 'وضعیت منو با موفقیت تغییر کرد.']);
+        return redirect()->route('adminto.menu.index')->with('swal-success', 'وضعیت منو با موفقیت تغییر کرد.');
     }
 }

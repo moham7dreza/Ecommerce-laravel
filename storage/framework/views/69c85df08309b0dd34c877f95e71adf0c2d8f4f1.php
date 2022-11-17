@@ -49,7 +49,7 @@
                         <tr>
                             <th><?php echo e($key += 1); ?></th>
                             <td><?php echo e($post->title); ?></td>
-                            <td><?php echo e($post->postCategory->name); ?></td>
+                            <td><?php echo e($post->category->name); ?></td>
                             <td>
                                 <img src="<?php echo e(asset($post->image['indexArray'][$post->image['currentImage']] )); ?>" alt="" width="100" height="50">
                             </td>

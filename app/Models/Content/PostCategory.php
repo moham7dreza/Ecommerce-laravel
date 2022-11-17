@@ -58,9 +58,12 @@ class PostCategory extends Model
 
     public function getParent(): string
     {
-        if (is_null($this->parent_id)) return 'ندارد';
+        return is_null($this->parent_id) ? 'دسته اصلی' : $this->parent->name;
+    }
 
-        return $this->parent->name;
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
 
 }

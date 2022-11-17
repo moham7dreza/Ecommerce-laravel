@@ -72,7 +72,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="status">
                                                 <?php $__currentLoopData = \App\Models\Content\PostCategory::$statuses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $status): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($status); ?>" <?php if(old('status', $postCategory->status) == $status): ?> selected <?php endif; ?>><?php echo app('translator')->get($status); ?></option>
+                                                    <option value="<?php echo e($status); ?>" <?php if(old('status', $postCategory->status) == $status): ?> selected <?php endif; ?>>
+                                                        <?php if($status == 1): ?> فعال <?php else: ?> غیر فعال <?php endif; ?>
+                                                    </option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                             <?php $__errorArgs = ['status'];

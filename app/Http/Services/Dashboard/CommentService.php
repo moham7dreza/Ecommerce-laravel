@@ -2,6 +2,9 @@
 
 namespace App\Http\Services\Dashboard;
 
+use App\Models\Content\Comment;
+use App\Models\User\Permission;
+
 class CommentService
 {
     public function store($request)
@@ -15,9 +18,9 @@ class CommentService
         ]);
     }
 
-    private function setStatus()
+    private function setStatus(): int
     {
-        if (auth()->user()->hasPermissionTo(Permission::PERMISSION_SUPER_ADMIN)) {
+        if (auth()->user()->isPermission(Permission::PERMISSION_SUPER_ADMIN)) {
             return Comment::STATUS_ACTIVE;
         }
 

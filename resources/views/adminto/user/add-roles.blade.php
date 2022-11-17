@@ -20,7 +20,7 @@
                                         @endforeach
                                     </ul>
                                 @endif
-                                <form class="form-horizontal" role="form" method="POST" action="{{ route('adminto.user.role-store', $user_id) }}">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ route('adminto.user.role-store', $userId) }}">
                                     @csrf
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="role">مقام</label>

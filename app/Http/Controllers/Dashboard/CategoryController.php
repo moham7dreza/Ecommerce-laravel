@@ -88,7 +88,7 @@ class CategoryController extends Controller
     public function edit(int $id)
     {
         $postCategory = $this->repo->findById($id);
-        $categories = $this->repo->index()->where('id', '!=', $postCategory->id)->get();
+        $categories = $this->repo->index()->whereNull('parent_id')->get()->except($id);
 
         return view('adminto.category.edit', compact(['categories', 'postCategory']));
     }

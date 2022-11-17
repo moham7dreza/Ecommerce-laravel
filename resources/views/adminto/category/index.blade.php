@@ -38,7 +38,7 @@
                                         <td>{{ $category->name }}</td>
                                         <td>
                                             <span class="badge badge-primary">
-                                                @lang($category->status)
+                                                {{ $category->textStatus() }}
                                             </span>
                                         </td>
                                         <td>{{ $category->getParent() }}</td>
@@ -69,6 +69,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $categories->links() }}
                     </div>
                 </div>

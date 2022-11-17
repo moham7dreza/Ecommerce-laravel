@@ -1,84 +1,71 @@
-@extends('Panel::layouts.master')
+@extends('adminto.layouts.master')
 
-@section('title', 'ویرایش دسته بندی ' . $category->title)
+@section('head-tag')
+    <title>ویرایش منو - {{ $menu->name }}</title>
+@endsection
+
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
-                    <h4 class="m-t-0 header-title">ویرایش دسته بندی {{ $category->title }}</h4>
+                    <h4 class="m-t-0 header-title">ویرایش منو - {{ $menu->name }}</h4>
                     <div class="row">
                         <div class="col-12">
                             <div class="p-2">
                                 <form class="form-horizontal" role="form" method="POST"
-                                    action="{{ route('categories.update', $category->id) }}">
+                                    action="{{ route('adminto.menu.update', $menu->id) }}">
                                     @csrf
                                     @method('PATCH')
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="title">عنوان</label>
+                                        <label class="col-sm-2 col-form-label" for="name">عنوان</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('title') is-invalid @enderror"
-                                            value="{{ $category->title }}" id="title" name="title"
-                                            placeholder="عنوان دسته بندی را وارد کنید">
-                                            @error('title')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                   value="{{ old('name', $menu->name) }}" id="name" name="name">
+                                            @error('name')
+                                            <br>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="keywords">کلمات کلیدی (اجباری نیست)</label>
+                                        <label class="col-sm-2 col-form-label" for="keywords">لینک</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('keywords') is-invalid @enderror"
-                                            value="{{ $category->keywords }}" id="keywords" name="keywords"
-                                            placeholder="کلمات کلیدی دسته بندی را وارد کنید">
-                                            @error('keywords')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            <input type="text" class="form-control @error('url') is-invalid @enderror"
+                                                   value="{{ old('url', $menu->url) }}" id="url" name="url">
+                                            @error('url')
+                                            <br>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="status">وضعیت دسته بندی</label>
+                                        <label class="col-sm-2 col-form-label" for="status">وضعیت</label>
                                         <div class="col-sm-10">
                                             <select class="form-control @error('status') is-invalid @enderror" name="status">
-                                                @foreach (Mlk\Category\Models\Category::$statuses as $status)
-                                                    <option @if ($category->status === $status) selected @endif
-                                                        value="{{ $status }}">@lang($status)
-                                                    </option>
+                                                @foreach (\App\Models\Content\Menu::$statuses as $status)
+                                                    <option value="{{ $status }}" @if(old('status', $menu->status) == $status) selected @endif>
+                                                        @if($status == 1) فعال @else غیر فعال @endif</option>
                                                 @endforeach
                                             </select>
                                             @error('status')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            <br>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="parent_id">زیر دسته (اجباری نیست)</label>
+                                        <label class="col-sm-2 col-form-label" for="parent_id">منوی والد</label>
                                         <div class="col-sm-10">
                                             <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
-                                                <option value="" selected>زیر دسته دسته بندی را وارد کنید</option>
-                                                @foreach ($categories as $cat)
-                                                    <option @if ($category->parent_id === $cat->id) selected @endif
-                                                        value="{{ $cat->id }}">{{ $cat->title }}
-                                                    </option>
+                                                <option value="" selected>منوی اصلی</option>
+                                                @foreach ($menus as $menu)
+                                                    <option value="{{ $menu->id }}"
+                                                            @if(old('parent_id', $menu->parent_id) == $menu->id) selected @endif>{{ $menu->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('parent_id')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-sm-2 col-form-label" for="description">توضیحات (اجباری نیست)</label>
-                                        <div class="col-sm-10">
-                                            <textarea rows="3" class="form-control @error('description') is-invalid @enderror"
-                                            id="description" name="description"
-                                            placeholder="توضیحات دسته بندی را وارد کنید">{{ $category->description }}</textarea>
-                                            @error('description')
                                             <br>
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror

@@ -9,7 +9,10 @@ class RoleService
 {
     public function store($request)
     {
-        return Role::query()->create(['name' => $request->name])->syncPermissions($request->permissions);
+        return Role::query()->create([
+            'name' => $request->name,
+            'status' => $request->status,
+        ])->permissions()->sync($request->permissions);
     }
 
     public function update($request, $id)
@@ -17,6 +20,9 @@ class RoleService
         $roleRepo = new RoleRepo;
         $role = $roleRepo->findById($id);
 
-        return $role->syncPermissions($request->permissions)->update(['name' => $request->name]);
+        return $role->permissions->sync($request->permissions)->update([
+            'name' => $request->name,
+            'status' => $request->status,
+            ]);
     }
 }

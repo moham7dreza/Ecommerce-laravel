@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                فارسی شده توسط <a href="mailto:milwad.dev@gmail.com">میلاد خسروی</a>
+                <a href="mailto:{{ auth()->user()->email }}">{{ auth()->user()->fullName }}</a>
             </div>
             <div class="col-md-6">
                 <div class="text-md-right footer-links d-none d-sm-block">

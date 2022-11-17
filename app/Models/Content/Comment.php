@@ -16,8 +16,9 @@ class Comment extends Model
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
+    public const STATUS_NEW = 2;
 
-    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_NEW];
 
     protected $fillable = ['body', 'parent_id', 'author_id', 'commentable_id', 'commentable_type', 'approved', 'status'];
 

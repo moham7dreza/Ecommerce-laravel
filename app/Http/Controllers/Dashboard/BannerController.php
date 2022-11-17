@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Dashboard\BannerRepo;
+use App\Http\Requests\Dashboard\BannerRequest;
 use App\Http\Services\Dashboard\BannerService;
+use App\Http\Services\Image\ImageService;
 use App\Models\Content\Banner;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -12,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Share\Services\ShareService;
 
 class BannerController extends Controller
 {
@@ -33,7 +36,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = $this->repo->index()->paginate(5);
+        $banners = $this->repo->index()->whereIn('position', [7,8,9])->paginate(5);
         return view('adminto.banner.index', compact(['banners']));
     }
 
@@ -50,13 +53,22 @@ class BannerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param BannerRequest $request
+     * @param ImageService $imageService
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(BannerRequest $request, ImageService $imageService): RedirectResponse
     {
-        $this->service->store($request, $imagePath, $imageName);
-        return redirect()->route('adminto.banner.index')->with(['swal-success' => 'بنر تبلیغاتی با موفقیت ذخیره شد.']);
+        if ($request->hasFile('image')) {
+            $result = ShareService::saveImage($request->file('image'),
+                'adminto-banner', $image = null,$imageService);
+            if ($result === false) {
+                return redirect()->route('adminto.banner.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            }
+            $request->image = $result;
+        }
+        $this->service->store($request);
+        return redirect()->route('adminto.banner.index')->with('swal-success', 'بنر تبلیغاتی با موفقیت ذخیره شد.');
     }
 
     /**
@@ -85,15 +97,26 @@ class BannerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
+     * @param BannerRequest $request
+     * @param ImageService $imageService
+     * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(BannerRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
         $banner = $this->repo->findById($id);
-        $this->service->update($request, $id, $imagePath, $imageName);
-        return redirect()->route('adminto.banner.index')->with(['swal-success' => 'بنر تبلیغاتی با موفقیت ویرایش شد.']);
+
+        if ($request->hasFile('image')) {
+            $result = ShareService::saveImage($request->file('image'),
+                'adminto-banner', $banner->image, $imageService);
+            if ($result === false) {
+                return redirect()->route('adminto.banner.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            }
+            $request->image = $result;
+        }
+
+        $this->service->update($request, $id);
+        return redirect()->route('adminto.banner.index')->with('swal-success', 'بنر تبلیغاتی با موفقیت ویرایش شد.');
     }
 
     /**
@@ -105,6 +128,18 @@ class BannerController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->repo->delete($id);
-        return redirect()->route('adminto.banner.index')->with(['swal-success' => 'بنر تبلیغاتی با موفقیت حذف شد.']);
+        return redirect()->route('adminto.banner.index')->with('swal-success', 'بنر تبلیغاتی با موفقیت حذف شد.');
+    }
+
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function changeStatus($id): RedirectResponse
+    {
+        $banner = $this->repo->findById($id);
+        $this->repo->changeStatus($banner);
+
+        return back()->with('swal-success', 'وضعیت بنر با موفقیت تغییر کرد');
     }
 }

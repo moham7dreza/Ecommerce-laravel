@@ -37,7 +37,7 @@
                                         <td>{{ $menu->name }}</td>
                                         <td>
                                             <span class="badge badge-primary">
-                                                @lang($menu->status)
+                                                {{ $menu->textStatus() }}
                                             </span>
                                         </td>
                                         <td>{{ $menu->getParent() }}</td>
@@ -58,7 +58,7 @@
                                                 <form action="{{ route('adminto.menu.destroy', $menu->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger ml-1">
+                                                    <button type="submit" class="btn btn-danger ml-1 delete">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>
@@ -68,10 +68,15 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $menus->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 @endsection

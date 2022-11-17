@@ -45,7 +45,9 @@
                                         <div class="col-sm-10">
                                             <select class="form-control @error('status') is-invalid @enderror" name="status">
                                                 @foreach (\App\Models\Content\PostCategory::$statuses as $status)
-                                                    <option value="{{ $status }}" @if(old('status', $postCategory->status) == $status) selected @endif>@lang($status)</option>
+                                                    <option value="{{ $status }}" @if(old('status', $postCategory->status) == $status) selected @endif>
+                                                        @if($status == 1) فعال @else غیر فعال @endif
+                                                    </option>
                                                 @endforeach
                                             </select>
                                             @error('status')

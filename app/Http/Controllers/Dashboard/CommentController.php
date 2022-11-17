@@ -32,7 +32,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $comments = $this->repo->index()->paginate(5);
+        $comments = $this->repo->index()->whereNull('parent_id')->paginate(5);
         return view('adminto.comment.index', compact(['comments']));
     }
 
@@ -100,16 +100,17 @@ class CommentController extends Controller
     public function destroy(int $id): RedirectResponse
     {
         $this->repo->delete($id);
-        return redirect()->route('adminto.comment.index')->with(['swal-success' => 'نظر با موفقیت حذف شد.']);
+        return redirect()->route('adminto.comment.index')->with('swal-success', 'نظر با موفقیت حذف شد.');
     }
 
 
-    public function active($id)
+    public function changeStatus($id): RedirectResponse
     {
-        $this->authorize('manage', $this->class);
-        $this->repo->changeStatus($id, Comment::STATUS_ACTIVE);
+//        $this->authorize('manage', $this->class);
+        $comment = $this->repo->findById($id);
+        $this->repo->changeStatus($comment);
 
-        alert()->success('فعال کردن وضعیت کامنت', 'عملیات با موفقیت انجام شد')->persistent('باشه');
-        return to_route('comments.index');
+        return redirect()->route('adminto.comment.index')->with('swal-success', 'وضعیت نظر با موفقیت تغییر کرد.');
+
     }
 }

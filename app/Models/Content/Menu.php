@@ -16,6 +16,14 @@ class Menu extends Model
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
 
+    public const LOCATION_CUSTOMER = 1;
+    public const LOCATION_IT_CITY = 2;
+    public const LOCATION_DIGITAL_WORLD = 3;
+
+    public const LEVEL_MAIN_MENU = 1;
+    public const LEVEL_SUB_MENU = 2;
+    public const LEVEL_SUB_MENU_CHILD = 3;
+
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
     public static array $levels = [
@@ -52,8 +60,16 @@ class Menu extends Model
     // Methods
     public function getParent(): string
     {
-        if (is_null($this->parent_id)) return 'ندارد';
+        return is_null($this->parent_id) ? 'منوی اصلی' : $this->parent->name;
+    }
 
-        return $this->parent->name;
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function setLevel(): int
+    {
+        return is_null($this->parent_id) ? self::LEVEL_MAIN_MENU : self::LEVEL_SUB_MENU;
     }
 }

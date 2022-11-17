@@ -45,10 +45,17 @@
                                                 <a href="{{ route('adminto.role.edit', $role->id) }}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
+                                                <form action="{{ route('adminto.role.change.status', $role->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="btn btn-dark ml-1">
+                                                        <i class="fas fa-spinner"></i>
+                                                    </button>
+                                                </form>
                                                 <form action="{{ route('adminto.role.destroy', $role->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger ml-1">
+                                                    <button type="submit" class="btn btn-danger ml-1 delete">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>
@@ -58,10 +65,15 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $roles->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 @endsection

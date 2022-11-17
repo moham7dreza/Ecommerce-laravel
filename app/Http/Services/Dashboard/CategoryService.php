@@ -3,12 +3,13 @@
 namespace App\Http\Services\Dashboard;
 
 use App\Models\Content\PostCategory;
+use Illuminate\Database\Eloquent\Builder;
 
 class CategoryService
 {
     public function store($request)
     {
-        return PostCategory::query()->create([
+        return $this->query()->create([
             'parent_id' => $request->parent_id,
             'name' => $request->name,
             'description' => $request->description,
@@ -20,7 +21,7 @@ class CategoryService
 
     public function update($request, $id)
     {
-        return PostCategory::query()->where('id', $id)->update([
+        return $this->query()->where('id', $id)->update([
             'parent_id' => $request->parent_id,
             'name' => $request->name,
             'description' => $request->description,
@@ -28,5 +29,10 @@ class CategoryService
             'image' => $request->image,
             'tags' => $request->tags,
         ]);
+    }
+
+    private function query(): Builder
+    {
+        return PostCategory::query();
     }
 }

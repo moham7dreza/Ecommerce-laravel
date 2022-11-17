@@ -10,6 +10,10 @@ class Banner extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
     protected $casts = ['image' => 'array'];
 
@@ -44,5 +48,10 @@ class Banner extends Model
     public function imagePath(): string
     {
         return asset($this->image);
+    }
+
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
 }

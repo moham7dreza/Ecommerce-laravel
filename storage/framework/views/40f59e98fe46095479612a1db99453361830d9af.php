@@ -43,10 +43,17 @@
                                                 <a href="<?php echo e(route('adminto.role.edit', $role->id)); ?>" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
+                                                <form action="<?php echo e(route('adminto.role.change.status', $role->id)); ?>" method="POST">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PATCH'); ?>
+                                                    <button type="submit" class="btn btn-dark ml-1">
+                                                        <i class="fas fa-spinner"></i>
+                                                    </button>
+                                                </form>
                                                 <form action="<?php echo e(route('adminto.role.destroy', $role->id)); ?>" method="POST">
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('DELETE'); ?>
-                                                    <button type="submit" class="btn btn-danger ml-1">
+                                                    <button type="submit" class="btn btn-danger ml-1 delete">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>
@@ -56,6 +63,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
+                        <hr>
                         <?php echo e($roles->links()); ?>
 
                     </div>
@@ -63,6 +71,10 @@
             </div>
         </div>
     </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+    <?php echo $__env->make('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('adminto.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/adminto/role/index.blade.php ENDPATH**/ ?>

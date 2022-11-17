@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Dashboard;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class UserRequest extends FormRequest
 {
@@ -11,9 +12,9 @@ class UserRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check() === true;
     }
 
     /**
@@ -23,8 +24,19 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'first_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',
+            'last_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',
+            'mobile' => ['required', 'digits:11', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'unique:users'],
+            'password' => ['required', 'unique:users', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,gif',
+            'activation' => 'required|numeric|in:0,1',
         ];
+        if (request()->method === 'PATCH') {
+            $rules['password'] = 'nullable';
+        }
+
+        return $rules;
     }
 }

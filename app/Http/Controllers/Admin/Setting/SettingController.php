@@ -89,7 +89,7 @@ class SettingController extends Controller
             $imageService->setImageName($setting->title. ' لوگو');
             $result = $imageService->save($request->file('logo'));
             if ($result === false) {
-                return redirect()->route('admin.content.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+                return redirect()->route('admin.setting.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['logo'] = $result;
         }
@@ -101,7 +101,7 @@ class SettingController extends Controller
             $imageService->setImageName($setting->title. ' آیکون');
             $result = $imageService->save($request->file('icon'));
             if ($result === false) {
-                return redirect()->route('admin.content.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+                return redirect()->route('admin.setting.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['icon'] = $result;
         }

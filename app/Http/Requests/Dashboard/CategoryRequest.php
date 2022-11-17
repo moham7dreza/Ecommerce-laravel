@@ -31,7 +31,7 @@ class CategoryRequest extends FormRequest
             'description' => 'nullable|string|min:3',
             'image' => 'nullable',
             'tags' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-            'status' => ['required', 'numeric' ,'string', Rule::in(PostCategory::$statuses)],
+            'status' => ['required', 'numeric', Rule::in(PostCategory::$statuses)],
         ];
 
         if (request()->method === 'PATCH') {

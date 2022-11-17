@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Dashboard;
 
+use App\Models\Content\Banner;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BannerRequest extends FormRequest
 {
@@ -11,9 +13,9 @@ class BannerRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check() === true;
     }
 
     /**
@@ -21,10 +23,28 @@ class BannerRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
+    {
+        $rules = [
+            'image' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'url' => 'nullable|string|min:3|max:190',
+            'title' => 'required|string|min:3|max:190',
+            'position' => ['required', 'numeric',
+//                Rule::in(Banner::$postBannersPositions)
+            ],
+        ];
+
+        if (request()->method === 'PATCH') {
+            $rules['image'] = 'nullable|mimes:jpg,jpeg,png|max:2048';
+        }
+
+        return $rules;
+    }
+
+    public function attributes(): array
     {
         return [
-            //
+            'position' => 'مکان تبلیغ'
         ];
     }
 }

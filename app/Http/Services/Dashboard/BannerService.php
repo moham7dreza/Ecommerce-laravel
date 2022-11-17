@@ -2,28 +2,30 @@
 
 namespace App\Http\Services\Dashboard;
 
+use App\Models\Content\Banner;
+use Illuminate\Database\Eloquent\Builder;
+
 class BannerService
 {
-    public function store($request, $imagePath, $imageName)
+    public function store($request)
     {
-        return Advertising::query()->create([
-            'user_id' => auth()->id(),
-            'imagePath' => $imagePath,
-            'imageName' => $imageName,
-            'link' => $request->link,
+        return $this->query()->create([
+            'url' => $request->url,
             'title' => $request->title,
-            'location' => $request->location,
+            'position' => $request->position,
+            'status' => $request->status,
+            'image' => $request->image,
         ]);
     }
 
-    public function update($request, $id, $imagePath, $imageName)
+    public function update($request, $id)
     {
-        return Advertising::query()->where('id', $id)->update([
-            'imagePath' => $imagePath,
-            'imageName' => $imageName,
-            'link' => $request->link,
+        return $this->query()->where('id', $id)->update([
+            'url' => $request->url,
             'title' => $request->title,
-            'location' => $request->location,
+            'position' => $request->position,
+            'status' => $request->status,
+            'image' => $request->image,
         ]);
     }
 
@@ -34,5 +36,10 @@ class BannerService
         }
 
         return null;
+    }
+
+    private function query(): Builder
+    {
+        return Banner::query();
     }
 }

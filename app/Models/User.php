@@ -79,6 +79,11 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
+
     // Relations
     public function ticketAdmin(): HasOne
     {
@@ -159,5 +164,14 @@ class User extends Authenticatable
         if($this->email_verified_at) return 'success';
 
         return 'danger';
+    }
+
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+    public function textActivationStatus(): string
+    {
+        return $this->activation === 1 ? 'فعال' : 'غیر فعال';
     }
 }

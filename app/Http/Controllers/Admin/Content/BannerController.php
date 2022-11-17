@@ -17,7 +17,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::orderBy('created_at', 'desc')->simplePaginate(15);
+        $banners = Banner::query()->whereNotIn('position', [7,8,9])->latest()->paginate(5);
         $positions = Banner::$positions;
         return view('admin.content.banner.index', compact('banners', 'positions'));
     }

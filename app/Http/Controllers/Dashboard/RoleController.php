@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\Dashboard\PermissionRepo;
 use App\Http\Repositories\Dashboard\RoleRepo;
+use App\Http\Requests\Dashboard\RoleRequest;
 use App\Http\Services\Dashboard\RoleService;
+use App\Models\User\Role;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -15,6 +18,8 @@ use Illuminate\Http\Response;
 
 class RoleController extends Controller
 {
+    private string $class = Role::class;
+
     public RoleRepo $repo;
     public RoleService $service;
 
@@ -40,20 +45,22 @@ class RoleController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(PermissionRepo $permissionRepo)
     {
-        return view('adminto.role.create', compact(['']));
+        $permissions = $permissionRepo->all();
+        return view('adminto.role.create', compact(['permissions']));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param RoleRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(RoleRequest $request): RedirectResponse
     {
-        return redirect()->route('adminto.role.index')->with(['swal-success' => 'نقش با موفقیت ذخیره شد.']);
+        $this->service->store($request);
+        return redirect()->route('adminto.role.index')->with('swal-success', 'نقش با موفقیت ذخیره شد.');
     }
 
     /**
@@ -73,22 +80,25 @@ class RoleController extends Controller
      * @param  int  $id
      * @return Application|Factory|View
      */
-    public function edit(int $id)
+    public function edit(PermissionRepo $permissionRepo, int $id)
     {
         $role = $this->repo->findById($id);
-        return view('adminto.role.edit', compact(['role']));
+        $permissions = $permissionRepo->all();
+
+        return view('adminto.role.edit', compact(['role', 'permissions']));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  int  $id
+     * @param RoleRequest $request
+     * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(RoleRequest $request, int $id): RedirectResponse
     {
-        return redirect()->route('adminto.role.index')->with(['swal-success' => 'نقش با موفقیت ویرایش شد.']);
+        $this->service->update($request, $id);
+        return redirect()->route('adminto.role.index')->with('swal-success', 'نقش با موفقیت ویرایش شد.');
     }
 
     /**
@@ -99,13 +109,13 @@ class RoleController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        return redirect()->route('adminto.role.index')->with(['swal-success' => 'نقش با موفقیت حذف شد.']);
+        $this->repo->delete($id);
+        return redirect()->route('adminto.role.index')->with('swal-success', 'نقش با موفقیت حذف شد.');
     }
 
     /**
      * @param $id
      * @return RedirectResponse
-     * @throws AuthorizationException
      */
     public function changeStatus($id): RedirectResponse
     {
@@ -113,6 +123,6 @@ class RoleController extends Controller
         $role = $this->repo->findById($id);
         $this->repo->changeStatus($role);
 
-        return redirect()->route('adminto.role.index')->with(['swal-success' => 'وضعیت نقش با موفقیت تغییر کرد.']);
+        return redirect()->route('adminto.role.index')->with('swal-success', 'وضعیت نقش با موفقیت تغییر کرد.');
     }
 }

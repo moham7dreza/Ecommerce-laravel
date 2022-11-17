@@ -36,7 +36,8 @@
                                         <td><?php echo e($category->name); ?></td>
                                         <td>
                                             <span class="badge badge-primary">
-                                                <?php echo app('translator')->get($category->status); ?>
+                                                <?php echo e($category->textStatus()); ?>
+
                                             </span>
                                         </td>
                                         <td><?php echo e($category->getParent()); ?></td>
@@ -67,6 +68,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
+                        <hr>
                         <?php echo e($categories->links()); ?>
 
                     </div>

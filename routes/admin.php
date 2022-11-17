@@ -679,9 +679,9 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::get('/create', [PostBannerController::class, 'create'])->name('adminto.banner.create');
             Route::post('/store', [PostBannerController::class, 'store'])->name('adminto.banner.store');
             Route::get('/edit/{id}', [PostBannerController::class, 'edit'])->name('adminto.banner.edit');
-            Route::put('/update/{id}', [PostBannerController::class, 'update'])->name('adminto.banner.update');
+            Route::patch('/update/{id}', [PostBannerController::class, 'update'])->name('adminto.banner.update');
             Route::delete('/destroy/{id}', [PostBannerController::class, 'destroy'])->name('adminto.banner.destroy');
-            Route::get('/status/{id}', [PostBannerController::class, 'status'])->name('adminto.banner.change.status');
+            Route::patch('/status/{id}', [PostBannerController::class, 'changeStatus'])->name('adminto.banner.change.status');
         });
 
         //comment
@@ -689,8 +689,8 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::get('/', [PostCommentController::class, 'index'])->name('adminto.comment.index');
             Route::get('/show/{id}', [PostCommentController::class, 'show'])->name('adminto.comment.show');
             Route::delete('/destroy/{id}', [PostCommentController::class, 'destroy'])->name('adminto.comment.destroy');
-            Route::get('/approved/{id}', [PostCommentController::class, 'approved'])->name('adminto.comment.approved');
-            Route::get('/status/{id}', [PostCommentController::class, 'changeStatus'])->name('adminto.comment.change.status');
+            Route::patch('/approved/{id}', [PostCommentController::class, 'approved'])->name('adminto.comment.approved');
+            Route::patch('/status/{id}', [PostCommentController::class, 'changeStatus'])->name('adminto.comment.change.status');
             Route::post('/answer/{id}', [PostCommentController::class, 'answer'])->name('adminto.comment.answer');
         });
 
@@ -699,10 +699,10 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::get('/', [PostMenuController::class, 'index'])->name('adminto.menu.index');
             Route::get('/create', [PostMenuController::class, 'create'])->name('adminto.menu.create');
             Route::post('/store', [PostMenuController::class, 'store'])->name('adminto.menu.store');
-            Route::get('/edit/{menu}', [PostMenuController::class, 'edit'])->name('adminto.menu.edit');
-            Route::put('/update/{menu}', [PostMenuController::class, 'update'])->name('adminto.menu.update');
-            Route::delete('/destroy/{menu}', [PostMenuController::class, 'destroy'])->name('adminto.menu.destroy');
-            Route::get('/status/{menu}', [PostMenuController::class, 'status'])->name('adminto.menu.change.status');
+            Route::get('/edit/{id}', [PostMenuController::class, 'edit'])->name('adminto.menu.edit');
+            Route::patch('/update/{id}', [PostMenuController::class, 'update'])->name('adminto.menu.update');
+            Route::delete('/destroy/{id}', [PostMenuController::class, 'destroy'])->name('adminto.menu.destroy');
+            Route::patch('/status/{id}', [PostMenuController::class, 'changeStatus'])->name('adminto.menu.change.status');
         });
 
         //user
@@ -710,13 +710,13 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::get('/', [PostUserController::class, 'index'])->name('adminto.user.index');
             Route::get('/create', [PostUserController::class, 'create'])->name('adminto.user.create');
             Route::post('/store', [PostUserController::class, 'store'])->name('adminto.user.store');
-            Route::get('/edit/{admin}', [PostUserController::class, 'edit'])->name('adminto.user.edit');
-            Route::put('/update/{admin}', [PostUserController::class, 'update'])->name('adminto.user.update');
-            Route::delete('/destroy/{admin}', [PostUserController::class, 'destroy'])->name('adminto.user.destroy');
-            Route::get('/status/{user}', [PostUserController::class, 'status'])->name('adminto.user.status');
-            Route::get('/activation/{user}', [PostUserController::class, 'activation'])->name('adminto.user.activation');
+            Route::get('/edit/{id}', [PostUserController::class, 'edit'])->name('adminto.user.edit');
+            Route::patch('/update/{id}', [PostUserController::class, 'update'])->name('adminto.user.update');
+            Route::delete('/destroy/{id}', [PostUserController::class, 'destroy'])->name('adminto.user.destroy');
+            Route::patch('/status/{id}', [PostUserController::class, 'status'])->name('adminto.user.status');
+            Route::patch('/activation/{id}', [PostUserController::class, 'activation'])->name('adminto.user.activation');
             Route::get('/add-roles/{userId}', [PostUserController::class, 'addRoles'])->name('adminto.user.add-roles');
-            Route::put('/role-store/{userId}', [PostUserController::class, 'roleStore'])->name('adminto.user.role-store');
+            Route::post('/role-store/{userId}', [PostUserController::class, 'roleStore'])->name('adminto.user.role-store');
             Route::delete('/role-remove/{userId}/role/{roleId}', [PostUserController::class, 'roleRemove'])->name('adminto.user.role-remove');
         });
 
@@ -726,8 +726,9 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
             Route::get('/create', [PostRoleController::class, 'create'])->name('adminto.role.create');
             Route::post('/store', [PostRoleController::class, 'store'])->name('adminto.role.store');
             Route::get('/edit/{id}', [PostRoleController::class, 'edit'])->name('adminto.role.edit');
-            Route::put('/update/{id}', [PostRoleController::class, 'update'])->name('adminto.role.update');
+            Route::patch('/update/{id}', [PostRoleController::class, 'update'])->name('adminto.role.update');
             Route::delete('/destroy/{id}', [PostRoleController::class, 'destroy'])->name('adminto.role.destroy');
+            Route::patch('/status/{id}', [PostRoleController::class, 'changeStatus'])->name('adminto.role.change.status');
             Route::get('/permission-form/{id}', [PostRoleController::class, 'permissionForm'])->name('adminto.role.permission-form');
             Route::put('/permission-update/{id}', [PostRoleController::class, 'permissionUpdate'])->name('adminto.role.permission-update');
         });
@@ -735,9 +736,8 @@ Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashbo
         //setting
         Route::prefix('setting')->namespace('Setting')->group(function () {
             Route::get('/', [PostSettingController::class, 'index'])->name('adminto.setting.index');
-            Route::get('/edit/{setting}', [PostSettingController::class, 'edit'])->name('adminto.setting.edit');
-            Route::put('/update/{setting}', [PostSettingController::class, 'update'])->name('adminto.setting.update');
-            Route::delete('/destroy/{setting}', [PostSettingController::class, 'destroy'])->name('adminto.setting.destroy');
+            Route::get('/edit/{id}', [PostSettingController::class, 'edit'])->name('adminto.setting.edit');
+            Route::patch('/update/{id}', [PostSettingController::class, 'update'])->name('adminto.setting.update');
         });
 
         // read all admin notifications

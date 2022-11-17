@@ -43,7 +43,7 @@
                                         <td>{{ $post->title }}</td>
                                         <td>
                                             <span class="badge badge-{{ $post->cssStatus() }}">
-                                                @lang($post->status)
+                                                {{ $post->textStatus() }}
                                             </span>
                                         </td>
 
@@ -77,6 +77,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $posts->links() }}
                     </div>
                 </div>

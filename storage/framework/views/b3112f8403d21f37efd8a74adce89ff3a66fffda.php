@@ -41,7 +41,7 @@
                                             <img src="<?php echo e($setting->icon()); ?>" width="80">
                                         </td>
 
-                                        <td><?php echo e(jdate($setting->updated_at)->format('Y-m-d')); ?></td>
+                                        <td><?php echo e(jalaliDate($setting->updated_at)); ?></td>
                                         <td>
                                             <div class="row">
                                                 <a href="<?php echo e(route('adminto.setting.edit', $setting->id)); ?>" class="btn btn-warning">

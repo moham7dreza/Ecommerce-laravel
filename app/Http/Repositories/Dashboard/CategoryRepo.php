@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class CategoryRepo
 {
+    public string $class = PostCategory::class;
+
     public function index(): Builder
     {
         return $this->query()->latest();
@@ -31,7 +33,7 @@ class CategoryRepo
     }
 
     // Home Query
-    public function getActiveCategories()
+    public function getActiveCategories(): Builder
     {
         return $this->query()->where('status', PostCategory::STATUS_ACTIVE)->latest();
     }

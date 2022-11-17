@@ -29,6 +29,12 @@ class Post extends Model
 
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_PENDING, self::STATUS_INACTIVE];
 
+    public const TYPE_VIP = '1';
+    public const TYPE_NORMAL = '0';
+    public const TYPE_SELECTED = '2';
+    public const TYPE_BREAKING_NEWS = '3';
+
+    public static array $types = [self::TYPE_VIP, self::TYPE_NORMAL, self::TYPE_SELECTED, self::TYPE_BREAKING_NEWS];
 
     public function sluggable(): array
     {
@@ -82,4 +88,10 @@ class Post extends Model
         else if ($this->status === self::STATUS_INACTIVE) return 'danger';
         else return 'warning';
     }
+
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
 }

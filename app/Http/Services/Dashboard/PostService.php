@@ -2,42 +2,41 @@
 
 namespace App\Http\Services\Dashboard;
 
+use App\Models\Content\Post;
+use Illuminate\Database\Eloquent\Builder;
+
 class PostService
 {
-    public function store($request, $user_id, $imageName, $imagePath)
+    public function store($request)
     {
-        return Article::query()->create([
-            'user_id' => $user_id,
+        return $this->query()->create([
+            'author_id' => auth()->id(),
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'slug' => $this->makeSlug($request->title),
             'time_to_read' => $request->time_to_read,
-            'imageName' => $imageName,
-            'imagePath' => $imagePath,
-            'score' => $request->score,
+            'image' => $request->image,
             'status' => $request->status,
-            'type' => $request->type,
             'body' => $request->body,
-            'keywords' => $request->keywords,
-            'description' => $request->description,
+            'summary' => $request->summary,
+            'tags' => $request->tags,
+            'published_at' => $request->published_at,
+            'commentable' => $request->commentable,
         ]);
     }
 
-    public function update($request, $id, $imageName, $imagePath)
+    public function update($request, $id)
     {
-        return Article::query()->whereId($id)->update([
+        return $this->query()->where('id', $id)->update([
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'slug' => $this->makeSlug($request->title),
             'time_to_read' => $request->time_to_read,
-            'imageName' => $imageName,
-            'imagePath' => $imagePath,
-            'score' => $request->score,
+            'image' => $request->image,
             'status' => $request->status,
-            'type' => $request->type,
             'body' => $request->body,
-            'keywords' => $request->keywords,
-            'description' => $request->description,
+            'summary' => $request->summary,
+            'tags' => $request->tags,
+            'published_at' => $request->published_at,
+            'commentable' => $request->commentable,
         ]);
     }
 
@@ -53,18 +52,14 @@ class PostService
         return null;
     }
 
-    public function changeStatus($article)
-    {
-        if ($article->status === Article::STATUS_ACTIVE) {
-            return $article->update(['status' => Article::STATUS_INACTIVE]);
-        }
-
-        return $article->update(['status' => Article::STATUS_ACTIVE]);
-    }
-
     private function makeSlug($title)
     {
         $url = str_replace('_', '', $title);
         return preg_replace('/\s+/', '-', $url);
+    }
+
+    private function query(): Builder
+    {
+        return Post::query();
     }
 }

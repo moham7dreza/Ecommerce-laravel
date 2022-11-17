@@ -51,6 +51,13 @@
                                                 <a href="<?php echo e(route('adminto.banner.edit', $banner->id)); ?>" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
+                                                <form action="<?php echo e(route('adminto.banner.change.status', $banner->id)); ?>" method="POST">
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('PATCH'); ?>
+                                                    <button type="submit" class="btn btn-dark ml-1">
+                                                        <i class="fas fa-spinner"></i>
+                                                    </button>
+                                                </form>
                                                 <form action="<?php echo e(route('adminto.banner.destroy', $banner->id)); ?>" method="POST">
                                                     <?php echo csrf_field(); ?>
                                                     <?php echo method_field('DELETE'); ?>
@@ -64,6 +71,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
+                        <hr>
                         <?php echo e($banners->links()); ?>
 
                     </div>

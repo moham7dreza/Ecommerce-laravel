@@ -38,7 +38,8 @@
                                         <td>{{ $comment->commentable->title }}</td>
                                         <td>{{ $comment->answers->count() }}</td>
                                         <td>{{ $comment->user->fullName }}</td>
-                                        <td>{{ jdate($comment->created_at)->format('Y-m-d') }}</td>
+{{--                                        <td>{{ jdate($comment->created_at)->format('Y-m-d') }}</td>--}}
+                                        <td>{{ jalaliDate($comment->created_at) }}</td>
                                         <td>
                                             <div class="row">
                                                 <form action="{{ route('adminto.comment.change.status', $comment->id) }}" method="POST">
@@ -52,7 +53,7 @@
                                                 <form action="{{ route('adminto.comment.destroy', $comment->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger ml-1">
+                                                    <button type="submit" class="btn btn-danger ml-1 delete">
                                                         <i class="fas fa-times"></i>
                                                     </button>
                                                 </form>
@@ -62,10 +63,15 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $comments->links() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.alerts.sweetalert.delete-confirm', ['className' => 'delete'])
 @endsection

@@ -53,6 +53,13 @@
                                                 <a href="{{ route('adminto.banner.edit', $banner->id) }}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
+                                                <form action="{{ route('adminto.banner.change.status', $banner->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="btn btn-dark ml-1">
+                                                        <i class="fas fa-spinner"></i>
+                                                    </button>
+                                                </form>
                                                 <form action="{{ route('adminto.banner.destroy', $banner->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -66,6 +73,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <hr>
                         {{ $banners->links() }}
                     </div>
                 </div>

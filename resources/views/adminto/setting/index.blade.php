@@ -43,7 +43,7 @@
                                             <img src="{{ $setting->icon() }}" width="80">
                                         </td>
 
-                                        <td>{{ jdate($setting->updated_at)->format('Y-m-d') }}</td>
+                                        <td>{{ jalaliDate($setting->updated_at) }}</td>
                                         <td>
                                             <div class="row">
                                                 <a href="{{ route('adminto.setting.edit', $setting->id) }}" class="btn btn-warning">
