@@ -32,4 +32,6 @@
     }(document, 'script', 'weatherwidget-io-js');
 </script>
 <script src="<?php echo e(asset('panel-assets/js/main.js')); ?>"></script>
+<script src="<?php echo e(asset('admin-assets/select2/js/select2.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin-assets/sweetalert/sweetalert2.min.js')); ?>"></script>
 <?php /**PATH C:\CODEX\techzilla\resources\views/panel/layouts/script.blade.php ENDPATH**/ ?>

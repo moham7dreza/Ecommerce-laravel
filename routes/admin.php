@@ -48,9 +48,20 @@ use App\Http\Controllers\Admin\Content\CategoryController as ContentCategoryCont
 use App\Http\Controllers\Admin\Content\CommentController as ContentCommentController;
 
 // new panel namespaces
+use App\Http\Controllers\Panel\HardwareController;
 use App\Http\Controllers\Panel\PanelController;
+use App\Http\Controllers\Panel\ServiceController;
+use App\Http\Controllers\Panel\BrandController as PanelBrandController;
 use App\Http\Controllers\Panel\TelegramBot\SendController as BotSendController;
 use App\Http\Controllers\Panel\Report\ChartController as PanelChartController;
+use App\Http\Controllers\Panel\CategoryController as PanelCategoryController;
+use App\Http\Controllers\Panel\PostController as PanelPostController;
+use App\Http\Controllers\Panel\MenuController as PanelMenuController;
+use App\Http\Controllers\Panel\BannerController as PanelBannerController;
+use App\Http\Controllers\Panel\CommentController as PanelCommentController;
+use App\Http\Controllers\Panel\UserController as PanelUserController;
+use App\Http\Controllers\Panel\RoleController as PanelRoleController;
+use App\Http\Controllers\Panel\SettingController as PanelSettingController;
 
 //adminto panel
 use App\Http\Controllers\Dashboard\AdminToController;
@@ -608,9 +619,131 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
  *  */
 Route::prefix('panel')->middleware(['auth', 'admin.check'])->namespace('Panel')->group(function () {
 
-//    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
-    Route::get('/', ['uses' => [PanelController::class, 'index'], 'as' => 'panel.home']);
+    Route::get('/', [PanelController::class, 'index'])->name('panel.home');
+//    Route::get('/', ['uses' => [PanelController::class, 'index'], 'as' => 'panel.home']);
 
+    //category
+    Route::prefix('category')->group(function () {
+        Route::get('/', [PanelCategoryController::class, 'index'])->name('panel.category.index');
+        Route::get('/create', [PanelCategoryController::class, 'create'])->name('panel.category.create');
+        Route::post('/store', [PanelCategoryController::class, 'store'])->name('panel.category.store');
+        Route::get('/edit/{id}', [PanelCategoryController::class, 'edit'])->name('panel.category.edit');
+        Route::patch('/update/{id}', [PanelCategoryController::class, 'update'])->name('panel.category.update');
+        Route::delete('/destroy/{id}', [PanelCategoryController::class, 'destroy'])->name('panel.category.destroy');
+        Route::patch('/status/{id}', [PanelCategoryController::class, 'changeStatus'])->name('panel.category.change.status');
+    });
+
+    //post
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PanelPostController::class, 'index'])->name('panel.post.index');
+        Route::get('/create', [PanelPostController::class, 'create'])->name('panel.post.create');
+        Route::post('/store', [PanelPostController::class, 'store'])->name('panel.post.store');
+        Route::get('/edit/{id}', [PanelPostController::class, 'edit'])->name('panel.post.edit');
+        Route::patch('/update/{id}', [PanelPostController::class, 'update'])->name('panel.post.update');
+        Route::delete('/destroy/{id}', [PanelPostController::class, 'destroy'])->name('panel.post.destroy');
+        Route::patch('/status/{id}', [PanelPostController::class, 'changeStatus'])->name('panel.post.change.status');
+        Route::patch('/commentable/{id}', [PanelPostController::class, 'commentable'])->name('panel.post.commentable');
+    });
+
+    //banner
+    Route::prefix('banner')->group(function () {
+        Route::get('/', [PanelBannerController::class, 'index'])->name('panel.banner.index');
+        Route::get('/create', [PanelBannerController::class, 'create'])->name('panel.banner.create');
+        Route::post('/store', [PanelBannerController::class, 'store'])->name('panel.banner.store');
+        Route::get('/edit/{id}', [PanelBannerController::class, 'edit'])->name('panel.banner.edit');
+        Route::patch('/update/{id}', [PanelBannerController::class, 'update'])->name('panel.banner.update');
+        Route::delete('/destroy/{id}', [PanelBannerController::class, 'destroy'])->name('panel.banner.destroy');
+        Route::patch('/status/{id}', [PanelBannerController::class, 'changeStatus'])->name('panel.banner.change.status');
+    });
+
+    //comment
+    Route::prefix('comment')->group(function () {
+        Route::get('/', [PanelCommentController::class, 'index'])->name('panel.comment.index');
+        Route::get('/show/{id}', [PanelCommentController::class, 'show'])->name('panel.comment.show');
+        Route::delete('/destroy/{id}', [PanelCommentController::class, 'destroy'])->name('panel.comment.destroy');
+        Route::patch('/approved/{id}', [PanelCommentController::class, 'approved'])->name('panel.comment.approved');
+        Route::patch('/status/{id}', [PanelCommentController::class, 'changeStatus'])->name('panel.comment.change.status');
+        Route::post('/answer/{id}', [PanelCommentController::class, 'answer'])->name('panel.comment.answer');
+    });
+
+    //menu
+    Route::prefix('menu')->group(function () {
+        Route::get('/', [PanelMenuController::class, 'index'])->name('panel.menu.index');
+        Route::get('/create', [PanelMenuController::class, 'create'])->name('panel.menu.create');
+        Route::post('/store', [PanelMenuController::class, 'store'])->name('panel.menu.store');
+        Route::get('/edit/{id}', [PanelMenuController::class, 'edit'])->name('panel.menu.edit');
+        Route::patch('/update/{id}', [PanelMenuController::class, 'update'])->name('panel.menu.update');
+        Route::delete('/destroy/{id}', [PanelMenuController::class, 'destroy'])->name('panel.menu.destroy');
+        Route::patch('/status/{id}', [PanelMenuController::class, 'changeStatus'])->name('panel.menu.change.status');
+    });
+
+    //user
+    Route::prefix('user')->group(function () {
+        Route::get('/', [PanelUserController::class, 'index'])->name('panel.user.index');
+        Route::get('/create', [PanelUserController::class, 'create'])->name('panel.user.create');
+        Route::post('/store', [PanelUserController::class, 'store'])->name('panel.user.store');
+        Route::get('/edit/{id}', [PanelUserController::class, 'edit'])->name('panel.user.edit');
+        Route::patch('/update/{id}', [PanelUserController::class, 'update'])->name('panel.user.update');
+        Route::delete('/destroy/{id}', [PanelUserController::class, 'destroy'])->name('panel.user.destroy');
+        Route::patch('/status/{id}', [PanelUserController::class, 'status'])->name('panel.user.status');
+        Route::patch('/activation/{id}', [PanelUserController::class, 'activation'])->name('panel.user.activation');
+        Route::get('/add-roles/{userId}', [PanelUserController::class, 'addRoles'])->name('panel.user.add-roles');
+        Route::post('/role-store/{userId}', [PanelUserController::class, 'roleStore'])->name('panel.user.role-store');
+        Route::delete('/role-remove/{userId}/role/{roleId}', [PanelUserController::class, 'roleRemove'])->name('panel.user.role-remove');
+    });
+
+    //role
+    Route::prefix('role')->group(function () {
+        Route::get('/', [PanelRoleController::class, 'index'])->name('panel.role.index');
+        Route::get('/create', [PanelRoleController::class, 'create'])->name('panel.role.create');
+        Route::post('/store', [PanelRoleController::class, 'store'])->name('panel.role.store');
+        Route::get('/edit/{id}', [PanelRoleController::class, 'edit'])->name('panel.role.edit');
+        Route::patch('/update/{id}', [PanelRoleController::class, 'update'])->name('panel.role.update');
+        Route::delete('/destroy/{id}', [PanelRoleController::class, 'destroy'])->name('panel.role.destroy');
+        Route::patch('/status/{id}', [PanelRoleController::class, 'changeStatus'])->name('panel.role.change.status');
+        Route::get('/permission-form/{id}', [PanelRoleController::class, 'permissionForm'])->name('panel.role.permission-form');
+        Route::put('/permission-update/{id}', [PanelRoleController::class, 'permissionUpdate'])->name('panel.role.permission-update');
+    });
+
+    //setting
+    Route::prefix('setting')->namespace('Setting')->group(function () {
+        Route::get('/', [PanelSettingController::class, 'index'])->name('panel.setting.index');
+        Route::get('/edit/{id}', [PanelSettingController::class, 'edit'])->name('panel.setting.edit');
+        Route::patch('/update/{id}', [PanelSettingController::class, 'update'])->name('panel.setting.update');
+    });
+
+    //service
+    Route::prefix('service')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('panel.service.index');
+        Route::get('/create', [ServiceController::class, 'create'])->name('panel.service.create');
+        Route::post('/store', [ServiceController::class, 'store'])->name('panel.service.store');
+        Route::get('/edit/{id}', [ServiceController::class, 'edit'])->name('panel.service.edit');
+        Route::patch('/update/{id}', [ServiceController::class, 'update'])->name('panel.service.update');
+        Route::delete('/destroy/{id}', [ServiceController::class, 'destroy'])->name('panel.service.destroy');
+        Route::patch('/status/{id}', [ServiceController::class, 'changeStatus'])->name('panel.service.change.status');
+    });
+
+    //hardware
+    Route::prefix('hardware')->group(function () {
+        Route::get('/', [HardwareController::class, 'index'])->name('panel.hardware.index');
+        Route::get('/create', [HardwareController::class, 'create'])->name('panel.hardware.create');
+        Route::post('/store', [HardwareController::class, 'store'])->name('panel.hardware.store');
+        Route::get('/edit/{id}', [HardwareController::class, 'edit'])->name('panel.hardware.edit');
+        Route::patch('/update/{id}', [HardwareController::class, 'update'])->name('panel.hardware.update');
+        Route::delete('/destroy/{id}', [HardwareController::class, 'destroy'])->name('panel.hardware.destroy');
+        Route::patch('/status/{id}', [HardwareController::class, 'changeStatus'])->name('panel.hardware.change.status');
+    });
+
+    //brand
+    Route::prefix('brand')->group(function () {
+        Route::get('/', [PanelBrandController::class, 'index'])->name('panel.brand.index');
+        Route::get('/create', [PanelBrandController::class, 'create'])->name('panel.brand.create');
+        Route::post('/store', [PanelBrandController::class, 'store'])->name('panel.brand.store');
+        Route::get('/edit/{id}', [PanelBrandController::class, 'edit'])->name('panel.brand.edit');
+        Route::patch('/update/{id}', [PanelBrandController::class, 'update'])->name('panel.brand.update');
+        Route::delete('/destroy/{id}', [PanelBrandController::class, 'destroy'])->name('panel.brand.destroy');
+        Route::patch('/status/{id}', [PanelBrandController::class, 'changeStatus'])->name('panel.brand.change.status');
+    });
 
     /*******************************************************************************************************************
      *

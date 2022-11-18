@@ -69,7 +69,7 @@
             <?php
                 $user = auth()->user();
             ?>
-            <li class="nav-item"><img src="<?php echo e(asset($user->profile_photo_path)); ?>" alt="..."
+            <li class="nav-item"><img src="" alt="..."
                                       class="rounded-circle screen-user-profile"></li>
             <li class="nav-item">
                 <div class="dropdown">

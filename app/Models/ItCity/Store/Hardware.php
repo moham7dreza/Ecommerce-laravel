@@ -8,11 +8,20 @@ use App\Models\Market\ProductCategory;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
+use Share\Traits\HasComments;
 
 class Hardware extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable, HasComments;
+
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
     public function sluggable(): array
     {
@@ -29,29 +38,72 @@ class Hardware extends Model
 
     protected $guarded = ['id'];
 
-    public function category()
+    // Relations
+    public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class, 'brand_id');
     }
 
-    public function comments()
-    {
-        return $this->morphMany('App\Models\Content\Comment', 'commentable');
-    }
-
-    public function activeComments()
-    {
-        return $this->comments()->where('approved', 1)->whereNull('parent_id')->get();
-    }
-
-
-    public function guarantees()
+    public function guarantees(): HasMany
     {
         return $this->hasMany(Guarantee::class);
+    }
+
+    // Methods
+    public function path(): string
+    {
+        return route('it-city.store.hardware', $this->slug);
+    }
+
+    public function commentsCount(): int
+    {
+        return $this->activeComments()->count();
+    }
+
+    public function imagePath(): string
+    {
+        return asset($this->image['indexArray']['medium']);
+    }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function limitedName(): string
+    {
+        return Str::limit($this->name, 50);
+    }
+
+    public function getFaPrice(): string
+    {
+        return priceFormat($this->price) . ' تومان ';
+    }
+
+    public function textCategoryName(): string
+    {
+        return $this->category->name ?? 'دسته ندارد';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

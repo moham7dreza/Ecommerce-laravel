@@ -23,4 +23,6 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="<?php echo e(asset('panel-assets/css/main.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('admin-assets/select2/css/select2.min.css')); ?>">
+<link rel="stylesheet" href="<?php echo e(asset('admin-assets/sweetalert/sweetalert2.css')); ?>">
 <?php /**PATH C:\CODEX\techzilla\resources\views/panel/layouts/head-tag.blade.php ENDPATH**/ ?>
