@@ -42,6 +42,7 @@ class Menu extends Model
 
     protected $guarded = ['id'];
 
+    // relations
     public function parent(): BelongsTo
     {
         return $this->belongsTo($this, 'parent_id')->with('parent');
@@ -58,7 +59,7 @@ class Menu extends Model
     }
 
     // Methods
-    public function getParent(): string
+    public function textParentName(): string
     {
         return is_null($this->parent_id) ? 'منوی اصلی' : $this->parent->name;
     }
@@ -68,8 +69,30 @@ class Menu extends Model
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
 
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
     public function setLevel(): int
     {
         return is_null($this->parent_id) ? self::LEVEL_MAIN_MENU : self::LEVEL_SUB_MENU;
+    }
+
+    public function textCategoryName(): string
+    {
+        return $this->category->name ?? 'دسته ندارد';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

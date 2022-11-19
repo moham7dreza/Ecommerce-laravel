@@ -79,4 +79,38 @@ class Permission extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    // methods
+
+    public function rolesCount() : int
+    {
+        return $this->roles->count() ?? 0;
+    }
+
+    public function usersCount() : int
+    {
+        return $this->users->count() ?? 0;
+    }
+
+    public function textName()
+    {
+        foreach (self::$permissions as $permission)
+        {
+            if ($this->name == $permission['name'])
+            {
+                return $permission['description'];
+            }
+        }
+        return 'سطح دسترسی یافت نشد.';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
+    }
 }

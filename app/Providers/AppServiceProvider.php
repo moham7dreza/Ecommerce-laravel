@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
 //            ]);
 //        });
         // *************************************************************************************************************
-        // admin
+        // admin panels
         view()->composer(['admin.layouts.header', 'panel.layouts.header', 'adminto.layouts.navbar'], function ($view) {
             $view->with('unseenComments', Comment::query()->where('seen', 0)->get());
             $view->with('notifications', Notification::query()->where('read_at', null)->get());

@@ -4,6 +4,7 @@ namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Setting extends Model
 {
@@ -24,5 +25,25 @@ class Setting extends Model
     public function icon(): string
     {
         return asset($this->icon);
+    }
+
+    public function limitedDescription(): string
+    {
+        return Str::limit($this->description, 50);
+    }
+
+    public function limitedKeywords(): string
+    {
+        return Str::limit($this->keywords, 50);
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

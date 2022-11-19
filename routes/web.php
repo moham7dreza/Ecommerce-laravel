@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Assemble\SmartAssembleController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
+// customer
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
 use App\Http\Controllers\Customer\SalesProcess\AddressController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaymentController;
 use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
 use App\Http\Controllers\Customer\UserProfile\ProfileController;
+// it city
 use App\Http\Controllers\ItCity\BlogController;
 use App\Http\Controllers\ItCity\HomeController as ItCityHomeController;
 use App\Http\Controllers\ItCity\PageController as ItCityPageController;
@@ -16,11 +18,14 @@ use App\Http\Controllers\ItCity\PC\PcSmartAssembleController;
 use App\Http\Controllers\ItCity\SalesSteps\CartController as StoreCartController;
 use App\Http\Controllers\ItCity\ServiceAndRepair\ServiceController;
 use App\Http\Controllers\ItCity\Store\HardwareController;
+// digital world
 use App\Http\Controllers\DigitalWorld\HomeController as DigiHomeController;
 use App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use App\Http\Livewire\DigitalWorld\Technology\PostDetail;
 use App\Http\Livewire\DigitalWorld\Technology\Posts;
+
 use App\Http\Controllers\SinglePage\HomeController as SinglePageController;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,7 +39,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-require 'admin.php';
+require 'admin/admin.php';
+require 'admin/panel.php';
+require 'admin/dashboard.php';
 
 /***********************************************************************************************************************
  * dashboard

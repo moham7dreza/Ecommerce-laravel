@@ -29,6 +29,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission;
 
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
+
+    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -79,11 +84,6 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public const STATUS_ACTIVE = 1;
-    public const STATUS_INACTIVE = 0;
-
-    public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
-
     // Relations
     public function ticketAdmin(): HasOne
     {
@@ -103,6 +103,11 @@ class User extends Authenticatable
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function permissions(): BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
     }
 
     public function payments(): HasMany
@@ -152,6 +157,21 @@ class User extends Authenticatable
         return asset($this->profile_photo_path);
     }
 
+    public function commentsCount() : int
+    {
+        return $this->comments->count() ?? 0;
+    }
+
+    public function rolesCount() : int
+    {
+        return $this->roles->count() ?? 0;
+    }
+
+    public function permissionsCount() : int
+    {
+        return $this->permissions->count() ?? 0;
+    }
+
     public function textStatusEmailVerifiedAt(): string
     {
         if ($this->email_verified_at) return 'تایید شده';
@@ -170,8 +190,26 @@ class User extends Authenticatable
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
     public function textActivationStatus(): string
     {
         return $this->activation === 1 ? 'فعال' : 'غیر فعال';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

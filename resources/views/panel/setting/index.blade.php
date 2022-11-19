@@ -15,7 +15,7 @@
                             <div class="page-header-title text-left-rtl">
                                 <div class="d-inline">
                                     <h3 class="lite-text">داشبورد</h3>
-                                    <span class="lite-text">دسته بندی قطعات سخت افزاری</span>
+                                    <span class="lite-text">تنظیمات سایت آیتی سیتی</span>
                                 </div>
                             </div>
                         </div>
@@ -54,19 +54,19 @@
                                     <tr class="text-center">
                                         <th scope="row">
 {{--                                            {{ $loop->iteration }}--}}
-                                            3
+                                            {{ $setting->id }}
                                         </th>
                                         <td>{{ $setting->title }}</td>
-                                        <td>{{ $setting->description }}</td>
-                                        <td>{{ $setting->keywords }}</td>
+                                        <td>{{ $setting->limitedDescription() }}</td>
+                                        <td>{{ $setting->limitedKeywords() }}</td>
                                         <td>
-                                            <img src="{{ $setting->logo() }}" width="80">
+                                            <img src="{{ $setting->logo() }}" width="80" alt="">
                                         </td>
                                         <td>
-                                            <img src="{{ $setting->icon() }}" width="80">
+                                            <img src="{{ $setting->icon() }}" width="80" alt="">
                                         </td>
 
-                                        <td>{{ jalaliDate($setting->updated_at) }}</td>
+                                        <td>{{ $setting->getFaUpdatedDate()}}</td>
                                         <td>
                                             <div class="row">
                                                 <a href="{{ route('panel.setting.edit', $setting->id) }}" class="btn btn-warning">

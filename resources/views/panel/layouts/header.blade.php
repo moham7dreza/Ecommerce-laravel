@@ -15,22 +15,16 @@
                     </button>
                     <div aria-labelledby="dropdownMenu2"
                          class="dropdown-menu dropdown-menu-right dropdown-menu dropdown-menu-right-lg">
-                        <span class="dropdown-item dropdown-header">15 اطلاعیه</span>
+                        <span class="dropdown-item dropdown-header">{{ $unseenComments->count() }} نظر</span>
+                        @foreach ($unseenComments as $unseenComment)
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="far fa-envelope c-main mr-2"></i> 4 پیام جدید
-                            <span class="float-right-rtl text-muted text-sm">3 دقیقه پیش</span>
+                            <img src="{{ $unseenComment->authorImage() }}" alt="" width="50" height="50">
+                            <i class="fa fa-times"><p class="notification-time ml-2">{{ $unseenComment->textAuthorName() }}</p></i>
+                            <p class="mt-2">{{ $unseenComment->limitedBody() }}</p>
+{{--                            <span class="float-right-rtl text-muted text-sm">3 دقیقه پیش</span>--}}
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="far fa-user c-main mr-2"></i> 8 درخواست دوستی
-                            <span class="float-right-rtl text-muted text-sm">12 ساعت پیش</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="far fa-file c-main mr-2"></i> 3 گزارش جدید
-                            <span class="float-right-rtl text-muted text-sm">2 روز پیش</span>
-                        </a>
+                        @endforeach
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">دیدن همه</a>
                     </div>
@@ -45,22 +39,17 @@
                     </button>
                     <div aria-labelledby="dropdownMenu2"
                          class="dropdown-menu dropdown-menu-right dropdown-menu dropdown-menu-right-lg">
-                        <span class="dropdown-item dropdown-header persianumber">15 اطلاعیه</span>
+                        <span class="dropdown-item dropdown-header persianumber">{{ $notifications->count() }} اطلاعیه</span>
+
+                        @foreach ($notifications as $notification)
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
-                            <i class="far fa-envelope c-main mr-2"></i> 4 پیام جدید
-                            <span class="float-right-rtl text-muted text-sm">3 دقیقه پیش</span>
+                            <i class="fa fa-times"><p class="notification-time ml-2">{{ $notification['data']['message'] }}</p></i>
+                            <span class="float-right-rtl text-muted text-sm">
+{{--                                {{ $notification['data']['created_at']->diffForHumans() }}--}}
+                            </span>
                         </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="far fa-user c-main mr-2"></i> 8 درخواست دوستی
-                            <span class="float-right-rtl text-muted text-sm">12 ساعت پیش</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="far fa-file c-main mr-2"></i> 3 گزارش جدید
-                            <span class="float-right-rtl text-muted text-sm">2 روز پیش</span>
-                        </a>
+                        @endforeach
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">دیدن همه</a>
                     </div>

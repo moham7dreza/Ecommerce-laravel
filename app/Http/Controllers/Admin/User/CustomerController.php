@@ -57,7 +57,8 @@ class CustomerController extends Controller
         $inputs['user_type'] = 0;
         $user = User::create($inputs);
         $details = [
-            'message' => 'یک کاربر جدید در سایت ثبت نام کرد'
+            'message' => 'یک کاربر جدید در سایت ثبت نام کرد',
+            'created_at' => now()
         ];
         $adminUser = User::find(1);
         $adminUser->notify(new NewUserRegistered($details));

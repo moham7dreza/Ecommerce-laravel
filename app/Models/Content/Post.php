@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Share\Traits\HasComments;
 
 class Post extends Model
@@ -92,6 +93,31 @@ class Post extends Model
     public function textStatus(): string
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function limitedTitle(): string
+    {
+        return Str::limit($this->title, 50);
+    }
+
+    public function textCategoryName(): string
+    {
+        return $this->category->name ?? 'دسته ندارد';
+    }
+
+    public function textAuthorName(): string
+    {
+        return $this->author->fullName ?? 'نویسنده ندارد.';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 
 }

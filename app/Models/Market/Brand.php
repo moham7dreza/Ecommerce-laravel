@@ -40,9 +40,9 @@ class Brand extends Model
 
     // Methods
 
-    public function imagePath(): string
+    public function logo(): string
     {
-        return asset($this->image['indexArray']['medium']);
+        return asset($this->logo['indexArray']['medium']);
     }
 
     public function cssStatus(): string
@@ -60,5 +60,15 @@ class Brand extends Model
     public function textCategoryName(): string
     {
         return $this->category->name ?? 'دسته ندارد';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

@@ -5,11 +5,14 @@
             </object>
         </a>
     </header>
+
+    
     <p class="side-comment fnt-mxs">زیر مجموعه های تک زیلا</p>
     <li class="side a-collapse short m-2 pr-1 pl-1">
         <a href="<?php echo e(route('customer.home')); ?>" class="side-item selected c-dark"><i class="fas fa-language mr-1"></i>فروشگاه
             <span
-                class="badge badge-pill badge-success">تک زیلا</span></a>
+                class="badge badge-pill badge-success">تک زیلا</span>
+        </a>
     </li>
     <li class="side a-collapse short m-2 pr-1 pl-1">
         <a href="<?php echo e(route('it-city.home')); ?>" class="side-item selected c-dark "><i class="fas fa-language  mr-1"></i>آیتی
@@ -24,42 +27,189 @@
                 class="badge badge-pill badge-success">تکنولوژی</span></a>
     </li>
 
+    
     <p class="side-comment fnt-mxs">ناوبری</p>
     <li class="side a-collapse short ">
         <a href="<?php echo e(route('panel.home')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>پیشخوان</a>
     </li>
+
+    
+    <p class="side-comment fnt-mxs">بخش فروش</p>
+    <ul class="side a-collapse short">
+        <a class="ul-text fnt-mxs"><i class="fas fa-cog mr-1"></i>ویترین
+            <!-- <span	class="badge badge-success">4</span> -->
+            <i class="fas fas fa-chevron-down arrow"></i></a>
+        <div class="side-item-container hide animated">
+            <li class="side a-collapse short ">
+                <a href="<?php echo e(route('panel.market.category.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>دسته بندی</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>فرم و ویژگی ها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>برندها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>سخت افزار</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>انباری</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.comment.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+            </li>
+        </div>
+    </ul>
+    <ul class="side a-collapse short">
+        <a class="ul-text fnt-mxs"><i class="fas fa-cog mr-1"></i>سفارشات
+            <!-- <span	class="badge badge-success">4</span> -->
+            <i class="fas fas fa-chevron-down arrow"></i></a>
+        <div class="side-item-container hide animated">
+            <li class="side a-collapse short ">
+                <a href="<?php echo e(route('panel.market.category.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>دسته بندی</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>فرم و ویژگی ها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>برندها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>سخت افزار</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>انباری</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.comment.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+            </li>
+        </div>
+    </ul>
+    <ul class="side a-collapse short">
+        <a class="ul-text fnt-mxs"><i class="fas fa-cog mr-1"></i>پرداخت ها
+            <!-- <span	class="badge badge-success">4</span> -->
+            <i class="fas fas fa-chevron-down arrow"></i></a>
+        <div class="side-item-container hide animated">
+            <li class="side a-collapse short ">
+                <a href="<?php echo e(route('panel.market.category.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>دسته بندی</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>فرم و ویژگی ها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>برندها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>سخت افزار</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>انباری</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.comment.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+            </li>
+        </div>
+    </ul>
+    <ul class="side a-collapse short">
+        <a class="ul-text fnt-mxs"><i class="fas fa-cog mr-1"></i>تخفیفات
+            <!-- <span	class="badge badge-success">4</span> -->
+            <i class="fas fas fa-chevron-down arrow"></i></a>
+        <div class="side-item-container hide animated">
+            <li class="side a-collapse short ">
+                <a href="<?php echo e(route('panel.market.category.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>دسته بندی</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>فرم و ویژگی ها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.brand.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>برندها</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>سخت افزار</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.hardware.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>انباری</a>
+            </li>
+            <li class="side a-collapse short">
+                <a href="<?php echo e(route('panel.market.comment.index')); ?>" class="side-item "><i
+                        class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+            </li>
+        </div>
+    </ul>
+    <li class="side a-collapse short">
+        <a href="<?php echo e(route('panel.market.comment.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>روش
+            های ارسال</a>
+    </li>
+
+    
+    <p class="side-comment fnt-mxs">بخش محتوی</p>
     <li class="side a-collapse short ">
-        <a href="<?php echo e(route('panel.category.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>دسته
+        <a href="<?php echo e(route('panel.content.category.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>دسته
             بندی</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.menu.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>منوها</a>
+        <a href="<?php echo e(route('panel.content.post.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>پست
+            ها</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.banner.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>بنرها</a>
+        <a href="<?php echo e(route('panel.content.menu.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>منوها</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.setting.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>تنظیمات</a>
+        <a href="<?php echo e(route('panel.content.comment.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.user.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>کاربران</a>
+        <a href="<?php echo e(route('panel.content.banner.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>بنرها</a>
+    </li>
+
+    
+    <p class="side-comment fnt-mxs">بخش کاربران</p>
+    <li class="side a-collapse short">
+        <a href="<?php echo e(route('panel.client.user.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>کاربران</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.comment.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+        <a href="<?php echo e(route('panel.client.role.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>نقش
+            ها</a>
+    </li>
+
+    
+    <p class="side-comment fnt-mxs">بخش خدمات</p>
+    <li class="side a-collapse short ">
+        <a href="<?php echo e(route('panel.office.category.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>دسته
+            بندی</a>
     </li>
     <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.post.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>پست</a>
+        <a href="<?php echo e(route('panel.office.service.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>سرویس
+            ها</a>
     </li>
+    <li class="side a-collapse short">
+        <a href="<?php echo e(route('panel.office.comment.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>نظرات</a>
+    </li>
+
+    
     <p class="side-comment fnt-mxs">پیسی پارت پیک</p>
-    <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.brand.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>برندها</a>
-    </li>
-    <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.hardware.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>سخت افزار</a>
-    </li>
-    <li class="side a-collapse short">
-        <a href="<?php echo e(route('panel.service.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>سرویس</a>
-    </li>
     <ul class="side a-collapse short">
         <a class="ul-text fnt-mxs"><i class="fas fa-cog mr-1"></i> سیستم
             <!-- <span	class="badge badge-success">4</span> -->
@@ -78,10 +228,6 @@
                     های پیشنهادی</a></li>
         </div>
     </ul>
-    <li class="side a-collapse short">
-
-    </li>
-
 
     <p class="side-comment fnt-mxs">ربات تلگرام</p>
     <li class="side a-collapse short">
@@ -94,5 +240,11 @@
             فروش</a>
     </li>
 
+    
+    <p class="side-comment fnt-mxs">بخش تنظیمات</p>
+    <li class="side a-collapse short">
+        <a href="<?php echo e(route('panel.setting.index')); ?>" class="side-item "><i
+                class="fas fa-fan fa-spin mr-1"></i>تنظیمات</a>
+    </li>
 </div>
 <?php /**PATH C:\CODEX\techzilla\resources\views/panel/layouts/sidebar.blade.php ENDPATH**/ ?>

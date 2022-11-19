@@ -65,5 +65,31 @@ class PostCategory extends Model
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
+    public function imagePath(): string
+    {
+        return asset($this->image['indexArray']['medium']);
+    }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
+    public function postsCount(): int
+    {
+        return $this->posts->count() ?? 0;
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
+    }
 
 }

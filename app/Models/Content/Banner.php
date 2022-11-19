@@ -50,8 +50,30 @@ class Banner extends Model
         return asset($this->image);
     }
 
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
     public function textStatus(): string
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function textPosition()
+    {
+        return self::$positions[$this->position] ?? self::$postBannersPositions[$this->position] ?? 'مکان بنر مشخص نیست.';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

@@ -66,6 +66,11 @@ class ProductCategory extends Model
     }
 
     //methods
+    public function imagePath(): string
+    {
+        return asset($this->image['indexArray']['medium']);
+    }
+
     public function customerPath(): string
     {
         return route('customer.market.category.products', $this->slug);
@@ -76,7 +81,7 @@ class ProductCategory extends Model
         return route('it-city.store.hardware', $this->slug);
     }
 
-    public function getParent(): string
+    public function textParentName(): string
     {
         return is_null($this->parent_id) ? 'دسته اصلی' : $this->parent->name;
     }
@@ -84,5 +89,22 @@ class ProductCategory extends Model
     public function textStatus(): string
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Role extends Model
 {
@@ -31,8 +32,45 @@ class Role extends Model
     }
     // methods
 
+    public function usersCount() : int
+    {
+        return $this->users->count() ?? 0;
+    }
+
+    public function permissionsCount() : int
+    {
+        return $this->permissions->count() ?? 0;
+    }
+
     public function hasPermissionTo($permission)
     {
         return $this->permissions->contains('name', $permission->name);
+    }
+
+    public function textStatus(): string
+    {
+        return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
+    }
+
+    public function cssStatus(): string
+    {
+        if ($this->status === self::STATUS_ACTIVE) return 'success';
+        else if ($this->status === self::STATUS_INACTIVE) return 'danger';
+        else return 'warning';
+    }
+
+    public function limitedDescription(): string
+    {
+        return Str::limit($this->description, 50);
+    }
+
+    public function getFaCreatedDate(): string
+    {
+        return jalaliDate($this->created_at);
+    }
+
+    public function getFaUpdatedDate(): string
+    {
+        return jalaliDate($this->updated_at);
     }
 }
