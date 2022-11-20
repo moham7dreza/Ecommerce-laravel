@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
+use Share\Traits\HasFaDate;
 
 class Role extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -62,15 +63,5 @@ class Role extends Model
     public function limitedDescription(): string
     {
         return Str::limit($this->description, 50);
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

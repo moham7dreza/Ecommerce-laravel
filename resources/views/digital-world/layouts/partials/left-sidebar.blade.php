@@ -24,7 +24,7 @@
                             </div>
                             <div class="post-content media-body">
                                 <h6 class="post-title mb-10 text-limit-2-row">
-                                    <a href="{{ $post->path() }}">{{ $post->title }}</a>
+                                    <a href="{{ $post->path() }}">{{ $post->limitedTitle() }}</a>
                                 </h6>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
             </div>
             @foreach ($homeRepo->getAuthorUsers() as $user)
                 <a class="red-tooltip active" href="{{ $user->path() }}" data-toggle="tooltip" data-placement="top"
-                   data-original-title="{{ $user->fullName }} - {{ $user->posts->count() }} مقاله">
+                   data-original-title="{{ $user->fullName }} - {{ $user->getPostsCount() }} پست">
                     <img src="{{ $user->image() }}" alt="{{ $user->fullName }}">
                 </a>
             @endforeach
@@ -82,11 +82,11 @@
                             </div>
                             <div class="post-content media-body">
                                 <h6 class="post-title mb-10 text-limit-2-row">
-                                    <a href="{{ $post->path() }}">{{ $post->title }}</a>
+                                    <a href="{{ $post->path() }}">{{ $post->limitedTitle() }}</a>
                                 </h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
-                                    <span class="post-by">توسط <a href="author.html">{{ $post->author->fullName }}</a></span>
-                                    <span class="post-on">4{{ $post->created_at->diffForHumans() }}</span>
+                                    <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
+                                    <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                                 </div>
                             </div>
                         </div>
@@ -95,34 +95,5 @@
             </ul>
         </div>
     </div>
-    <div class="sidebar-widget p-20 border-radius-15 bg-white widget-latest-comments wow fadeIn animated">
-        <div class="widget-header mb-30">
-            <h5 class="widget-title">آخرین <span>نظرات</span></h5>
-        </div>
-        <div class="post-block-list post-module-6">
-            @foreach ($latestComments as $comment)
-                <div class="last-comment mb-20 d-flex wow fadeIn animated">
-                    <span class="item-count vertical-align">
-                        <a class="red-tooltip author-avatar" href="#" data-toggle="tooltip" data-placement="top"
-                           data-original-title="{{ $comment->user->fullName }} - ({{ $comment->user->comments->count() }} مقاله)">
-                            <img src="{{ $comment->user->image() }}" alt="{{ $comment->user->fullName }}">
-                        </a>
-                    </span>
-                    <div class="alith_post_title_small">
-                        <p class="font-medium mb-10">
-                            <a href="{{ $comment->commentable->path() }}">
-                                {{ Illuminate\Support\Str::limit($comment->commentable->title) }}
-                            </a>
-                        </p>
-                        <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
-                            <span class="post-by">توسط
-                                <a href="{{ $comment->user->path() }}">{{ $comment->user->fullName }}</a>
-                            </span>
-                            <span class="post-on">{{ $comment->created_at->diffForHumans() }}</span>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
+    @include('digital-world.layouts.partials.comments')
 </div>

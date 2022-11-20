@@ -1,7 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
     <title>
-        دنیای دیجیتالی
+        لیست نویسندگان
     </title>
 @endsection
 
@@ -16,7 +16,7 @@
                     </div>
                     @foreach ($authors as $author)
                         <a class="red-tooltip active" href="{{ $author->path() }}" data-toggle="tooltip" data-placement="top"
-                           data-original-title="{{ $author->fullName }} - {{ $author->posts->count() }} مقاله">
+                           data-original-title="{{ $author->fullName }} - {{ $author->getPostsCount() }} پست">
                             <img src="{{ $author->image() }}" alt="{{ $author->fullName }}">
                         </a>
                     @endforeach

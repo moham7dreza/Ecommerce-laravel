@@ -23,11 +23,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Share\Traits\HasFaDate;
 use Share\Traits\HasPermission;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -203,13 +204,9 @@ class User extends Authenticatable
         return $this->activation === 1 ? 'فعال' : 'غیر فعال';
     }
 
-    public function getFaCreatedDate(): string
+    public function getPostsCount(): string
     {
-        return jalaliDate($this->created_at);
+        return convertEnglishToPersian($this->posts->count()) ?? 0;
     }
 
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
-    }
 }

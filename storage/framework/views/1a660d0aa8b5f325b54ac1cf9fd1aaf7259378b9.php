@@ -1,30 +1,31 @@
-@extends('digital-world.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        {{ $post->title }}
-    </title>
-@endsection
+        <?php echo e($post->title); ?>
 
-@section('content')
+    </title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <main class="position-relative" style="transform: none;">
         <div class="container" style="transform: none;">
             <div class="entry-header entry-header-1 mb-30 mt-50">
                 <div class="entry-meta meta-0 font-small mb-30">
                     <a href="">
-                        <span class="post-cat bg-success color-white">{{ $post->textCategoryName() }}</span>
+                        <span class="post-cat bg-success color-white"><?php echo e($post->textCategoryName()); ?></span>
                     </a>
                 </div>
                 <h1 class="post-title mb-30">
-                    {{ $post->title }}
+                    <?php echo e($post->title); ?>
+
                 </h1>
                 <div class="entry-meta meta-1 font-x-small color-grey text-uppercase">
-                    <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}"> {{ $post->textAuthorName() }}</a></span>
-                    <span class="post-on">تاریخ انتشار : {{ $post->getFaCreatedDate() }}</span>
-                    <span class="time-reading">زمان خواندن {{ $post->time_to_read }} دقیقه</span>
+                    <span class="post-by">توسط <a href="<?php echo e($post->getAuthorPath()); ?>"> <?php echo e($post->textAuthorName()); ?></a></span>
+                    <span class="post-on">تاریخ انتشار : <?php echo e($post->getFaCreatedDate()); ?></span>
+                    <span class="time-reading">زمان خواندن <?php echo e($post->time_to_read); ?> دقیقه</span>
                     <p class="font-x-small mt-10">
-                        <span class="hit-count"><i class="ti-comment ml-5"></i>نظرات {{ $post->commentsCount() }}</span>
-                        <span class="hit-count"><i class="ti-heart ml-5"></i>لایک {{ $post->like_count }}</span>
-                        <span class="hit-count"><i class="ti-star ml-5"></i>امتیاز {{ $post->rating }}/10</span>
+                        <span class="hit-count"><i class="ti-comment ml-5"></i>نظرات <?php echo e($post->commentsCount()); ?></span>
+                        <span class="hit-count"><i class="ti-heart ml-5"></i>لایک <?php echo e($post->like_count); ?></span>
+                        <span class="hit-count"><i class="ti-star ml-5"></i>امتیاز <?php echo e($post->rating); ?>/10</span>
                     </p>
                 </div>
             </div>
@@ -48,22 +49,23 @@
                     </div>
                     <div class="bt-1 border-color-1 mb-30"></div>
                     <figure class="single-thumnail mb-30">
-                        <img src="{{ $post->imagePath() }}" alt="{{ $post->title }}">
+                        <img src="<?php echo e($post->imagePath()); ?>" alt="<?php echo e($post->title); ?>">
                     </figure>
                     <div class="entry-main-content">
                         <h2>توضیحات</h2>
                         <hr class="wp-block-separator is-style-wide">
                         <p>
-                            {!! $post->body !!}
+                            <?php echo $post->body; ?>
+
                         </p>
-                        @if (!is_null($banner))
+                        <?php if(!is_null($banner)): ?>
                             <p class="text-center mt-30">
-                                <a href="{{ $banner->link }}" title="{{ $banner->title }}">
-                                    <img class="d-inline border-radius-10" src="{{ $banner->imagePath() }}"
-                                         alt="{{ $banner->title }}">
+                                <a href="<?php echo e($banner->link); ?>" title="<?php echo e($banner->title); ?>">
+                                    <img class="d-inline border-radius-10" src="<?php echo e($banner->imagePath()); ?>"
+                                         alt="<?php echo e($banner->title); ?>">
                                 </a>
                             </p>
-                        @endif
+                        <?php endif; ?>
                     </div>
                     <div class="entry-bottom mt-50 mb-30">
                         <div class="overflow-hidden mt-30">
@@ -72,7 +74,7 @@
                                 <a href="category.html" rel="tag">فناوری</a>
                                 <a href="category.html" rel="tag">جهان</a>
                                 <a href="category.html" rel="tag">جهانی</a>
-                            </div> {{-- TODO --}}
+                            </div> 
                             <div class="single-social-share float-left">
                                 <ul class="d-inline-block list-inline">
                                     <li class="list-inline-item"><span class="font-small text-muted"><i
@@ -92,21 +94,21 @@
                                     <li class="list-inline-item"><a class="social-icon linkedin-icon text-xs-center"
                                                                     target="_blank" href="#"><i class="ti-linkedin"></i></a>
                                     </li>
-                                </ul>{{-- TODO --}}
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="author-bio border-radius-10 bg-white p-30 mb-40">
                         <div class="author-image mb-30">
-                            <a href="{{ $post->getAuthorPath() }}">
-                                <img src="{{ $post->authorImage() }}" alt="{{ $post->textAuthorName() }}" class="avatar">
+                            <a href="<?php echo e($post->getAuthorPath()); ?>">
+                                <img src="<?php echo e($post->authorImage()); ?>" alt="<?php echo e($post->textAuthorName()); ?>" class="avatar">
                             </a>
                         </div>
                         <div class="author-info">
                             <h3>
                                 <span class="vcard author">
                                     <span class="fn">
-                                        <a href="{{ $post->getAuthorPath() }}" rel="author">{{ $post->textAuthorName() }}</a>
+                                        <a href="<?php echo e($post->getAuthorPath()); ?>" rel="author"><?php echo e($post->textAuthorName()); ?></a>
                                     </span>
                                 </span>
                             </h3>
@@ -138,15 +140,17 @@
                         </div>
                     </div>
                     <!--related posts-->
-                    @include('digital-world.post.partials.related-posts')
+                    <?php echo $__env->make('digital-world.post.partials.related-posts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <!--Comments-->
-                    @include('digital-world.post.partials.comments', ['post' => $post])
+                    <?php echo $__env->make('digital-world.post.partials.comments', ['post' => $post], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                     <!--comment form-->
-                    @include('digital-world.post.partials.create-comments')
+                    <?php echo $__env->make('digital-world.post.partials.create-comments', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </div>
                 <!-- Sidebar -->
-                @include('digital-world.post.partials.sidebar')
+                <?php echo $__env->make('digital-world.post.partials.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
             </div>
         </div>
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('digital-world.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/digital-world/post/details.blade.php ENDPATH**/ ?>

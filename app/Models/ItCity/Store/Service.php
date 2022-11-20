@@ -15,10 +15,11 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Share\Traits\HasComments;
+use Share\Traits\HasFaDate;
 
 class Service extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable, HasComments;
+    use HasFactory, SoftDeletes, Sluggable, HasComments, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -131,15 +132,5 @@ class Service extends Model
     public function limitedDescription(): string
     {
         return Str::limit($this->description, 50) ?? 'توضیحات ندارد';
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at) ?? 'تاریخی ثبت نشده است';
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at)?? 'تاریخی ثبت نشده است';
     }
 }

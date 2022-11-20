@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Share\Traits\HasFaDate;
 
 class Permission extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasFaDate;
 
     public const PERMISSION_SUPER_ADMIN = ['name' => 'permission-super-admin', 'description' => 'مدیر ارشد سیستم - دسترسی نامحدود'];
     public const PERMISSION_IT_CITY_PANEL = ['name' => 'permission-it-city-panel', 'description' => 'دسترسی به پنل مدیریت بخش آیتی سیتی'];
@@ -102,15 +103,5 @@ class Permission extends Model
             }
         }
         return 'سطح دسترسی یافت نشد.';
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

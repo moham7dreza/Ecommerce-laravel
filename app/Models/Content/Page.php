@@ -7,10 +7,11 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Share\Traits\HasFaDate;
 
 class Page extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -39,15 +40,5 @@ class Page extends Model
     public function textStatus(): string
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

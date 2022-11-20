@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Share\Traits\HasFaDate;
 
 
 class ProductCategory extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -96,15 +97,5 @@ class ProductCategory extends Model
         if ($this->status === self::STATUS_ACTIVE) return 'success';
         else if ($this->status === self::STATUS_INACTIVE) return 'danger';
         else return 'warning';
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

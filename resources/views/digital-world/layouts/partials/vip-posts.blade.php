@@ -12,8 +12,8 @@
                     <a href="{{ $post->path() }}">{{ $post->title }}</a>
                 </h6>
                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase pr-5 pb-15">
-                    <span class="post-by">توسط <a href="author.html">{{ $post->author->fullName }}</a></span>
-                    <span class="post-on">{{ $post->created_at->diffForHumans() }}</span>
+                    <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
+                    <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                 </div>
             </div>
         </div>

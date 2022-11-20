@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Share\Traits\HasFaDate;
 
 class Faq extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -45,15 +46,5 @@ class Faq extends Model
     public function limitedShow($obj): string
     {
         return Str::limit($obj, 50);
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

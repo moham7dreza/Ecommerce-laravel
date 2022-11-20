@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
+use Share\Traits\HasFaDate;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -89,7 +90,7 @@ class Comment extends Model
 
     public function limitedBody(): string
     {
-        return Str::limit($this->body, 50);
+        return Str::limit($this->body);
     }
 
     public function textAuthorName(): string
@@ -100,6 +101,21 @@ class Comment extends Model
     public function authorImage(): string
     {
         return $this->user->image() ?? 'عکس ندارد.';
+    }
+
+    public function getAuthorPath(): string
+    {
+        return $this->user->path();
+    }
+
+    public function getAuthorPostsCount(): string
+    {
+        return convertEnglishToPersian($this->user->posts->count()) ?? 0;
+    }
+
+    public function getAuthorCommentsCount(): int
+    {
+        return $this->user->comments->count() ?? 0;
     }
 
     public function textParentName(): string
@@ -117,13 +133,9 @@ class Comment extends Model
         return Str::limit($this->commentable->title, 50) ?? Str::limit($this->commentable->name, 50) ?? 'عنوانی ندارد';
     }
 
-    public function getFaCreatedDate(): string
+    public function getCommentablePath(): string
     {
-        return jalaliDate($this->created_at);
+        return $this->commentable->path();
     }
 
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
-    }
 }

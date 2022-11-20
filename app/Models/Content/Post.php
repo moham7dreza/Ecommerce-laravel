@@ -13,10 +13,11 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Share\Traits\HasComments;
+use Share\Traits\HasFaDate;
 
 class Post extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable, HasComments;
+    use HasFactory, SoftDeletes, Sluggable, HasComments, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_PENDING = 2;
@@ -100,9 +101,24 @@ class Post extends Model
         return Str::limit($this->title, 50);
     }
 
+    public function limitedSummary(): string
+    {
+        return Str::limit($this->summary, 150);
+    }
+
+    public function limitedBody(): string
+    {
+        return Str::limit($this->body, 150);
+    }
+
     public function textCategoryName(): string
     {
         return $this->category->name ?? 'دسته ندارد';
+    }
+
+    public function getCategoryPath(): string
+    {
+        return $this->category->path();
     }
 
     public function textAuthorName(): string
@@ -110,14 +126,13 @@ class Post extends Model
         return $this->author->fullName ?? 'نویسنده ندارد.';
     }
 
-    public function getFaCreatedDate(): string
+    public function getAuthorPath(): string
     {
-        return jalaliDate($this->created_at);
+        return $this->author->path();
     }
 
-    public function getFaUpdatedDate(): string
+    public function authorImage(): string
     {
-        return jalaliDate($this->updated_at);
+        return $this->author->image() ?? 'عکس ندارد.';
     }
-
 }

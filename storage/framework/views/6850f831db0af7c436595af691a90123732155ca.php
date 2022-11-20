@@ -1,18 +1,17 @@
-@extends('digital-world.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
         لیست پست ها
     </title>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <main class="position-relative">
         <div class="archive-header text-center mb-50">
             <div class="container">
                 <h2><span class="text-danger">پست ها</span></h2>
                 <div class="breadcrumb">
                     <span class="no-arrow">شما الان اینجا هستید::</span>
-                    <a href="{{ route('digital-world.home') }}" rel="nofollow">صفحه اصلی</a>
+                    <a href="<?php echo e(route('digital-world.home')); ?>" rel="nofollow">صفحه اصلی</a>
                     <span></span>
                     پست ها
                 </div>
@@ -26,49 +25,54 @@
                             <div class="latest-post mb-50">
                                 <div class="loop-grid">
                                     <div class="row">
-                                        @foreach ($posts as $post)
+                                        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <article class="col-lg-6 col-md-12 wow fadeIn animated">
                                                 <div class="background-white border-radius-10 p-10 mb-30">
                                                     <div class="post-thumb d-flex mb-15 border-radius-15 img-hover-scale">
-                                                        <a href="{{ $post->path() }}">
+                                                        <a href="<?php echo e($post->path()); ?>">
                                                             <img class="border-radius-15 style-article-img" alt="image article"
-                                                                 src="{{ $post->imagePath() }}">
+                                                                 src="<?php echo e($post->imagePath()); ?>">
                                                         </a>
                                                     </div>
                                                     <div class="pl-10 pr-10">
                                                         <div class="entry-meta mb-15 mt-10">
-                                                            <a class="entry-meta meta-2" href="{{ $post->getCategoryPath() }}">
+                                                            <a class="entry-meta meta-2" href="<?php echo e($post->getCategoryPath()); ?>">
                                                                 <span class="post-in text-primary font-x-small">
-                                                                    {{ $post->textCategoryName() }}
+                                                                    <?php echo e($post->textCategoryName()); ?>
+
                                                                 </span>
                                                             </a>
                                                         </div>
                                                         <h5 class="post-title mb-15">
-                                                            <a href="{{ $post->path() }}">
-                                                                {{ $post->limitedTitle() }}
+                                                            <a href="<?php echo e($post->path()); ?>">
+                                                                <?php echo e($post->limitedTitle()); ?>
+
                                                             </a>
                                                         </h5>
                                                         <p class="post-exerpt font-medium text-muted mb-30">
-                                                                {!! $post->limitedSummary() !!}
+                                                                <?php echo $post->limitedSummary(); ?>
+
                                                         </p>
                                                         <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
                                                             <span class="post-by">توسط
-                                                                <a href="{{ $post->getAuthorPath() }}">
-                                                                    {{ $post->textAuthorName() }}
+                                                                <a href="<?php echo e($post->getAuthorPath()); ?>">
+                                                                    <?php echo e($post->textAuthorName()); ?>
+
                                                                 </a>
                                                             </span>
-                                                            <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
+                                                            <span class="post-on"><?php echo e($post->getDiffCreatedDate()); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </article>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
                                 </div>
                             </div>
                             <div class="pagination-area mb-30">
-                                {{ $posts->links() }}
+                                <?php echo e($posts->links()); ?>
+
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 sidebar-right">
@@ -78,30 +82,31 @@
                                 </div>
                                 <div class="post-aside-style-2">
                                     <ul class="list-post">
-                                        @foreach ($viewsPosts as $post)
+                                        <?php $__currentLoopData = $viewsPosts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <li class="mb-30 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
                                                 <div class="d-flex">
                                                     <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">
-                                                        <a class="color-white" href="{{ $post->path() }}">
-                                                            <img src="{{ $post->imagePath() }}" alt="{{ $post->title }}">
+                                                        <a class="color-white" href="<?php echo e($post->path()); ?>">
+                                                            <img src="<?php echo e($post->imagePath()); ?>" alt="<?php echo e($post->title); ?>">
                                                         </a>
                                                     </div>
                                                     <div class="post-content media-body">
                                                         <h6 class="post-title mb-10 text-limit-2-row">
-                                                            <a href="{{ $post->path() }}">
-                                                                {{ $post->limitedTitle() }}
+                                                            <a href="<?php echo e($post->path()); ?>">
+                                                                <?php echo e($post->limitedTitle()); ?>
+
                                                             </a>
                                                         </h6>
                                                         <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                                             <span class="post-by">توسط
-                                                                <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a>
+                                                                <a href="<?php echo e($post->getAuthorPath()); ?>"><?php echo e($post->textAuthorName()); ?></a>
                                                             </span>
-                                                            <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
+                                                            <span class="post-on"><?php echo e($post->getDiffCreatedDate()); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </div>
                             </div>
@@ -123,11 +128,13 @@
                                     </form>
                                 </div>
                             </div>
-                            @include('digital-world.layouts.partials.comments')
+                            <?php echo $__env->make('digital-world.layouts.partials.comments', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('digital-world.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/digital-world/post/home.blade.php ENDPATH**/ ?>

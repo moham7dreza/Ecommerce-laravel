@@ -13,10 +13,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Share\Traits\HasComments;
+use Share\Traits\HasFaDate;
 
 class Hardware extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable, HasComments;
+    use HasFactory, SoftDeletes, Sluggable, HasComments, HasFaDate;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -95,15 +96,5 @@ class Hardware extends Model
     public function textCategoryName(): string
     {
         return $this->category->name ?? 'دسته ندارد';
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }

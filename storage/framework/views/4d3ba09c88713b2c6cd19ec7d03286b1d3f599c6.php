@@ -1,20 +1,21 @@
-@extends('digital-world.layouts.master')
-@section('head-tag')
+<?php $__env->startSection('head-tag'); ?>
     <title>
-        لیست پست های دسته بندی - {{ $postCategory->name }}
-    </title>
-@endsection
+        لیست پست های دسته بندی - <?php echo e($postCategory->name); ?>
 
-@section('content')
+    </title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <main class="position-relative">
         <div class="archive-header text-center mb-50">
             <div class="container">
-                <h2><span class="text-danger">دسته بندی {{ $postCategory->name }}</span></h2>
+                <h2><span class="text-danger">دسته بندی <?php echo e($postCategory->name); ?></span></h2>
                 <div class="breadcrumb">
                     <span class="no-arrow">شما الان اینجا هستید::</span>
-                    <a href="{{ route('digital-world.home') }}" rel="nofollow">خانه</a>
+                    <a href="<?php echo e(route('digital-world.home')); ?>" rel="nofollow">خانه</a>
                     <span></span>
-                    {{ $postCategory->name }}
+                    <?php echo e($postCategory->name); ?>
+
                 </div>
             </div>
         </div>
@@ -26,11 +27,11 @@
                             <h5 class="widget-title"><strong>دسته بندی ها</strong></h5>
                         </div>
                         <ul class="font-small text-muted">
-                            @foreach ($categories as $category)
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li class="cat-item cat-item-2">
-                                    <a href="{{ $category->path() }}">{{ $category->name }}</a>
+                                    <a href="<?php echo e($category->path()); ?>"><?php echo e($category->name); ?></a>
                                 </li>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </ul>
                     </div>
                 </div>
@@ -40,46 +41,50 @@
                             <div class="latest-post mb-50">
                                 <div class="loop-grid">
                                     <div class="row">
-                                        @foreach ($posts as $post)
+                                        <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <article class="col-lg-4 col-md-12 wow fadeIn animated">
                                                 <div class="background-white border-radius-10 p-10 mb-30">
                                                     <div class="post-thumb d-flex mb-15 border-radius-15 img-hover-scale">
-                                                        <a href="{{ $post->path() }}">
-                                                            <img class="border-radius-15 style-article-img" src="{{ $post->imagePath() }}"
-                                                                 alt="{{ $post->title }}">
+                                                        <a href="<?php echo e($post->path()); ?>">
+                                                            <img class="border-radius-15 style-article-img" src="<?php echo e($post->imagePath()); ?>"
+                                                                 alt="<?php echo e($post->title); ?>">
                                                         </a>
                                                     </div>
                                                     <div class="pl-10 pr-10">
                                                         <div class="entry-meta mb-15 mt-10">
-                                                            <a class="entry-meta meta-2" href="{{ $post->getCategoryPath() }}">
+                                                            <a class="entry-meta meta-2" href="<?php echo e($post->getCategoryPath()); ?>">
                                                                 <span class="post-in text-primary font-x-small">
-                                                                    {{ $post->textCategoryName() }}
+                                                                    <?php echo e($post->textCategoryName()); ?>
+
                                                                 </span>
                                                             </a>
                                                         </div>
                                                         <h5 class="post-title mb-15">
-                                                            <a href="{{ $post->path() }}">
-                                                                {{ $post->limitedTitle() }}
+                                                            <a href="<?php echo e($post->path()); ?>">
+                                                                <?php echo e($post->limitedTitle()); ?>
+
                                                             </a>
                                                         </h5>
                                                         <p class="post-exerpt font-medium text-muted mb-30">
-                                                            {!! $post->limitedSummary() !!}
+                                                            <?php echo $post->limitedSummary(); ?>
+
                                                         </p>
                                                         <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
                                                             <span class="post-by">توسط
-                                                                <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a>
+                                                                <a href="<?php echo e($post->getAuthorPath()); ?>"><?php echo e($post->textAuthorName()); ?></a>
                                                             </span>
-                                                            <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
+                                                            <span class="post-on"><?php echo e($post->getDiffCreatedDate()); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </article>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="pagination-area mb-30">
-                                {{ $posts->links() }}
+                                <?php echo e($posts->links()); ?>
+
                             </div>
                         </div>
                     </div>
@@ -87,4 +92,6 @@
             </div>
         </div>
     </main>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('digital-world.layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\CODEX\techzilla\resources\views/digital-world/category.blade.php ENDPATH**/ ?>

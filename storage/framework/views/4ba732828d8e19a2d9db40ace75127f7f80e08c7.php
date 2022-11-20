@@ -14,22 +14,22 @@
         </div>
         <div class="post-aside-style-1 border-radius-10 p-20 bg-white">
             <ul class="list-post">
-                @foreach ($homeRepo->getVipPostsOrderByView() as $post)
+                <?php $__currentLoopData = $homeRepo->getVipPostsOrderByView(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="mb-20">
                         <div class="d-flex">
                             <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">
-                                <a class="color-white" href="{{ $post->path() }}">
-                                    <img src="{{ $post->imagePath() }}" alt="{{ $post->title }}">
+                                <a class="color-white" href="<?php echo e($post->path()); ?>">
+                                    <img src="<?php echo e($post->imagePath()); ?>" alt="<?php echo e($post->title); ?>">
                                 </a>
                             </div>
                             <div class="post-content media-body">
                                 <h6 class="post-title mb-10 text-limit-2-row">
-                                    <a href="{{ $post->path() }}">{{ $post->limitedTitle() }}</a>
+                                    <a href="<?php echo e($post->path()); ?>"><?php echo e($post->limitedTitle()); ?></a>
                                 </h6>
                             </div>
                         </div>
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         </div>
     </div>
@@ -38,12 +38,12 @@
             <div class="widget-header widget-header-style-1 position-relative mb-15">
                 <h5 class="widget-title pl-5">نویسندگان <span>برتر</span></h5>
             </div>
-            @foreach ($homeRepo->getAuthorUsers() as $user)
-                <a class="red-tooltip active" href="{{ $user->path() }}" data-toggle="tooltip" data-placement="top"
-                   data-original-title="{{ $user->fullName }} - {{ $user->getPostsCount() }} پست">
-                    <img src="{{ $user->image() }}" alt="{{ $user->fullName }}">
+            <?php $__currentLoopData = $homeRepo->getAuthorUsers(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a class="red-tooltip active" href="<?php echo e($user->path()); ?>" data-toggle="tooltip" data-placement="top"
+                   data-original-title="<?php echo e($user->fullName); ?> - <?php echo e($user->getPostsCount()); ?> پست">
+                    <img src="<?php echo e($user->image()); ?>" alt="<?php echo e($user->fullName); ?>">
                 </a>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
     <!--Newsletter-->
@@ -72,28 +72,29 @@
         </div>
         <div class="post-aside-style-2">
             <ul class="list-post">
-                @foreach ($homeRepo->getPostsOrderByView() as $post)
+                <?php $__currentLoopData = $homeRepo->getPostsOrderByView(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="mb-30 wow fadeIn animated">
                         <div class="d-flex">
                             <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">
-                                <a class="color-white" href="{{ $post->path() }}">
-                                    <img src="{{ $post->imagePath() }}" alt="{{ $post->title }}">
+                                <a class="color-white" href="<?php echo e($post->path()); ?>">
+                                    <img src="<?php echo e($post->imagePath()); ?>" alt="<?php echo e($post->title); ?>">
                                 </a>
                             </div>
                             <div class="post-content media-body">
                                 <h6 class="post-title mb-10 text-limit-2-row">
-                                    <a href="{{ $post->path() }}">{{ $post->title }}</a>
+                                    <a href="<?php echo e($post->path()); ?>"><?php echo e($post->title); ?></a>
                                 </h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
-                                    <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
-                                    <span class="post-on">4{{ $post->getDiffCreatedDate() }}</span>
+                                    <span class="post-by">توسط <a href="<?php echo e($post->getAuthorPath()); ?>"><?php echo e($post->textAuthorName()); ?></a></span>
+                                    <span class="post-on">4<?php echo e($post->getDiffCreatedDate()); ?></span>
                                 </div>
                             </div>
                         </div>
                     </li>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         </div>
     </div>
-    @include('digital-world.layouts.partials.comments')
+    <?php echo $__env->make('digital-world.layouts.partials.comments', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </div>
+<?php /**PATH C:\CODEX\techzilla\resources\views/digital-world/post/partials/sidebar.blade.php ENDPATH**/ ?>

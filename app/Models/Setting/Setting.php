@@ -5,10 +5,11 @@ namespace App\Models\Setting;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Share\Traits\HasFaDate;
 
 class Setting extends Model
 {
-    use HasFactory;
+    use HasFactory, HasFaDate;
 
     protected $casts = ['logo' => 'array', 'icon' => 'array'];
 
@@ -35,15 +36,5 @@ class Setting extends Model
     public function limitedKeywords(): string
     {
         return Str::limit($this->keywords, 50);
-    }
-
-    public function getFaCreatedDate(): string
-    {
-        return jalaliDate($this->created_at);
-    }
-
-    public function getFaUpdatedDate(): string
-    {
-        return jalaliDate($this->updated_at);
     }
 }
