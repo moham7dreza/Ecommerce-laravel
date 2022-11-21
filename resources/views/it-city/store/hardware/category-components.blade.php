@@ -59,59 +59,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="side_bar">
-                        <div class="side_bar_blog">
-                            <h5>جست و جو</h5>
-                            <div class="side_bar_search">
-                                <div class="input-group stylish-input-group">
-                                    <input class="form-control" placeholder="Search" type="text">
-                                    <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span></div>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h5>سرویس</h5>
-                            <p>سرویس</p>
-                            <a class="btn sqaure_bt" href="it_service.html">مشاهده</a></div>
-                        <div class="side_bar_blog">
-                            <h4>سرویس های اصلی مجموعه</h4>
-                            <div class="categary">
-                                <ul>
-                                    @foreach($services as $service)
-                                        <li>
-                                            <a href="{{ route('it-city.service.service', $service) }}">{{ $service->name }}
-                                                <i class="fa fa-angle-left mr-2"></i></a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h4>آخرین پست ها</h4>
-                            <div class="categary">
-                                <ul>
-                                    @foreach($posts as $post)
-                                        <li><a href="{{ route('it-city.blog.post.detail', $post) }}">{{ $post->title }}
-                                                <i class="fa fa-angle-left mr-2"></i></a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h4>برچسب ها</h4>
-                            <div class="tags">
-                                <ul>
-                                    @foreach(explode(',',$productCategory->tags) as $tag)
-
-                                        <li><a href="{{ route('it-city.store.category.components', $productCategory) }}">{{ $tag }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('it-city.layouts.partials.sidebar')
             </div>
         </div>
     </div>

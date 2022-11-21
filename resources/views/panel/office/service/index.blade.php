@@ -62,7 +62,7 @@
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <img src="" width="80" class="img-thumbnail" alt="">
+                                            <img src="{{ $service->imagePath() }}" width="80" class="img-thumbnail" alt="">
                                         </td>
                                         <td>{{ $service->name }}</td>
                                         <td>{{ $service->limitedDescription() }}</td>

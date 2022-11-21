@@ -21,7 +21,7 @@ class CommentRepo
 
     public function serviceComments(): Builder
     {
-        return $this->query()->where('commentable_type', 'App\Models\ItCity\Store\Service')->latest();
+        return $this->query()->where('commentable_type', 'App\Models\ItCity\Office\Service')->latest();
     }
 
     public function delete($id)

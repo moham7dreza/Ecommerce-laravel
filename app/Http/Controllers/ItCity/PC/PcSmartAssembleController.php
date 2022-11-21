@@ -4,11 +4,10 @@ namespace App\Http\Controllers\ItCity\PC;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content\Post;
-use App\Models\ItCity\Store\Service;
+use App\Models\ItCity\Office\Service;
 use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemType;
-use Illuminate\Http\Request;
 
 class PcSmartAssembleController extends Controller
 {

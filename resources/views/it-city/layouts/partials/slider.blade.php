@@ -22,7 +22,7 @@
                                 data-no-retina>
                             <!-- LAYERS -->
                             <!-- LAYER NR. BG -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper rs-parallaxlevel-0"
                                  id="slide-270-layer-1012"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -38,7 +38,7 @@
                                  data-responsive="off"
                                  style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 1 -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-912"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']"
@@ -54,7 +54,7 @@
                                  data-responsive_offset="on"
                                  style="z-index: 5;background-color:rgba(29, 29, 29, 0.85);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 2 -->
-                            <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-112"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -76,7 +76,7 @@
                                  style="z-index: 6; white-space: nowrap;">ROG Strix
                             </div>
                             <!-- LAYER NR. 3 -->
-                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-SubTitle tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-412"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']"
@@ -108,7 +108,7 @@
                                  data-no-retina>
                             <!-- LAYERS -->
                             <!-- LAYER NR. BG -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper rs-parallaxlevel-0"
                                  id="slide-270-layer-101"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -124,7 +124,7 @@
                                  data-responsive="off"
                                  style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 1 -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-91"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']"
@@ -140,7 +140,7 @@
                                  data-responsive_offset="on"
                                  style="z-index: 5;background-color:rgba(29, 29, 29, 0.85);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 2 -->
-                            <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-11"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -162,7 +162,7 @@
                                  style="z-index: 6; white-space: nowrap;">TUF Gaming
                             </div>
                             <!-- LAYER NR. 3 -->
-                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-SubTitle tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-41"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']"
@@ -194,7 +194,7 @@
                                  data-no-retina>
                             <!-- LAYERS -->
                             <!-- LAYER NR. BG -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper rs-parallaxlevel-0"
                                  id="slide-270-layer-10"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -210,7 +210,7 @@
                                  data-responsive="off"
                                  style="z-index: 5;background-color:rgba(0, 0, 0, 0.25);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 1 -->
-                            <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-9"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']"
@@ -226,7 +226,7 @@
                                  data-responsive_offset="on"
                                  style="z-index: 5;background-color:rgba(29, 29, 29, 0.85);border-color:rgba(0, 0, 0, 0.50);"></div>
                             <!-- LAYER NR. 2 -->
-                            <div class="tp-caption NotGeneric-Title   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-1"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
@@ -248,7 +248,7 @@
                                  style="z-index: 6; white-space: nowrap;">NVIDIA Geforce Alliance
                             </div>
                             <!-- LAYER NR. 3 -->
-                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0"
+                            <div class="tp-caption NotGeneric-SubTitle tp-resizeme rs-parallaxlevel-0"
                                  id="slide-18-layer-4"
                                  data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
                                  data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']"

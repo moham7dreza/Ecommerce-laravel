@@ -13,7 +13,7 @@
         <div class="side_bar_blog">
             <h5>سرویس</h5>
             <p>سرویس</p>
-            <a class="btn sqaure_bt" href="it_service.html">مشاهده</a></div>
+            <a class="btn sqaure_bt" href="{{ route('it-city.service.index') }}">مشاهده</a></div>
         <div class="side_bar_blog">
             <h4>سرویس های اصلی مجموعه</h4>
             <div class="categary">
@@ -42,13 +42,13 @@
             <h4>برچسب ها</h4>
             <div class="tags">
                 <ul>
-                    @foreach(explode(',', $service->tags) as $tag)
-                        @php
-                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();
-                        @endphp
-                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"
-                               @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>
-                    @endforeach
+{{--                    @foreach(explode(',', $service->tags) as $tag)--}}
+{{--                        @php--}}
+{{--                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();--}}
+{{--                        @endphp--}}
+{{--                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"--}}
+{{--                               @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>--}}
+{{--                    @endforeach--}}
                 </ul>
             </div>
         </div>

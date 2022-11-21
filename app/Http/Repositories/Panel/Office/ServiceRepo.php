@@ -2,7 +2,7 @@
 
 namespace App\Http\Repositories\Panel\Office;
 
-use App\Models\ItCity\Store\Service;
+use App\Models\ItCity\Office\Service;
 use Illuminate\Database\Eloquent\Builder;
 
 class ServiceRepo

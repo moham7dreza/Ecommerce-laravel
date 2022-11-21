@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Panel\Office;
 
 use App\Http\Controllers\Controller;
+use App\Http\Repositories\Panel\Market\CategoryRepo;
 use App\Http\Repositories\Panel\Office\ServiceRepo;
+
 use App\Http\Requests\Panel\Office\ServiceRequest;
 use App\Http\Services\Image\ImageService;
 use App\Http\Services\Panel\Office\serviceService;
-use App\Models\ItCity\Store\Service;
+use App\Models\ItCity\Office\Service;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -44,10 +47,11 @@ class ServiceController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create()
+    public function create(CategoryRepo $categoryRepo)
     {
-        $services = $this->repo->index()->get();
-        return view('panel.office.service.create', compact(['services']));
+        $services = $this->repo->index()->whereNull(['parent_id'])->get();
+        $categories = $categoryRepo->index()->get();
+        return view('panel.office.service.create', compact(['services', 'categories']));
     }
 
     /**
@@ -60,12 +64,17 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $request->image = ShareService::uploadImage($request->file('image'), 'panel-service',
-                'panel.office.service.index', $imageService);
+            $result = ShareService::uploadNewImage(null,$imageService,
+                'panel-service', $request->file('image'));
+            if ($result === false) {
+                return redirect()->route('panel.office.service.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
+            }
+            $request->image = $result;
         }
-
+        if (isset($request->available_date))
+            $request->available_date = ShareService::dateFix($request->available_date);
         $this->service->store($request);
-        return redirect()->route('panel.office.service.index')->with('swal-success', 'سرویس با موفقیت اضافه شد.');
+        return redirect()->route('panel.office.service.index')->with('swal-success', 'سرویس با موفقیت ذخیره شد.');
     }
 
     /**

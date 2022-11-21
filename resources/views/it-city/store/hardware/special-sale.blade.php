@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        @foreach($productsWithActiveAmazingSales as $hardware)
+                        @forelse($productsWithActiveAmazingSales as $hardware)
                             <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
                                 <div class="product_list">
                                     <a href="{{ route('it-city.store.hardware', $hardware->product) }}">
@@ -62,65 +62,15 @@
                                     </a>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div>
+                                <p>محصولی برای فروش ویژه وجود ندارد</p>
+                            </div>
+                        @endforelse
                     </div>
+                    {{ $productsWithActiveAmazingSales->links() }}
                 </div>
-                <div class="col-md-3">
-                    <div class="side_bar">
-                        <div class="side_bar_blog">
-                            <h5>جست و جو</h5>
-                            <div class="side_bar_search">
-                                <div class="input-group stylish-input-group">
-                                    <input class="form-control" placeholder="Search" type="text">
-                                    <span class="input-group-addon">
-                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span></div>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h5>سرویس</h5>
-                            <p>سرویس</p>
-                            <a class="btn sqaure_bt" href="it_service.html">مشاهده</a></div>
-                        <div class="side_bar_blog">
-                            <h4>سرویس های اصلی مجموعه</h4>
-                            <div class="categary">
-                                <ul>
-                                    @foreach($services as $service)
-                                        <li>
-                                            <a href="{{ route('it-city.service.service', $service) }}">{{ $service->name }}
-                                                <i class="fa fa-angle-left mr-2"></i></a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h4>آخرین پست ها</h4>
-                            <div class="categary">
-                                <ul>
-                                    @foreach($posts as $post)
-                                        <li><a href="{{ route('it-city.blog.post.detail', $post) }}">{{ $post->title }}
-                                                <i class="fa fa-angle-left mr-2"></i></a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="side_bar_blog">
-                            <h4>برچسب ها</h4>
-                            <div class="tags">
-                                <ul>
-                                    @foreach(explode(',',$productsWithActiveAmazingSales[0]->product->tags) as $tag)
-                                        @php
-                                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();
-                                        @endphp
-                                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"
-                                            @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('it-city.layouts.partials.sidebar')
             </div>
         </div>
     </div>

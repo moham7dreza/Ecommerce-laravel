@@ -4,25 +4,21 @@ namespace App\Models;
 
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
-use App\Models\ItCity\Store\Service;
+use App\Models\ItCity\Office\Service;
 use App\Models\Market\Order;
 use App\Models\Market\Payment;
 use App\Models\Market\Product;
 use App\Models\Ticket\Ticket;
-use App\Models\User\Permission;
-use App\Models\User\Role;
+use App\Models\Ticket\TicketAdmin;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Facades\DB;
-use Laravel\Sanctum\HasApiTokens;
-use App\Models\Ticket\TicketAdmin;
-use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
 use Share\Traits\HasFaDate;
 use Share\Traits\HasPermission;
 
@@ -99,16 +95,6 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
-    }
-
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function permissions(): BelongsToMany
-    {
-        return $this->belongsToMany(Permission::class);
     }
 
     public function payments(): HasMany
