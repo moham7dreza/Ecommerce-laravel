@@ -1,7 +1,7 @@
 @extends('panel.layouts.master')
 
 @section('head-tag')
-    <title>لیست سرویس ها</title>
+    <title>لیست دسته بندی خدمات</title>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
                             <div class="page-header-title text-left-rtl">
                                 <div class="d-inline">
                                     <h3 class="lite-text">داشبورد</h3>
-                                    <span class="lite-text">سرویس ها</span>
+                                    <span class="lite-text">دسته بندی خدمات</span>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +34,11 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                            <a href="{{ route('panel.office.service.create') }}" class="btn main f-main btn-block fnt-xs" aria-expanded="false">
-                                ایجاد سرویس جدید
+                            <a href="{{ route('panel.office.category.create') }}" class="btn main f-main btn-block fnt-xs" aria-expanded="false">
+                                ساخت دسته بندی جدید
                             </a>
                         </div>
-                        <h5 class="mt-0 header-title">لیست تمامی سرویس ها</h5>
+                        <h5 class="mt-0 header-title">لیست تمامی دسته بندی</h5>
 
                         <hr>
                         <div class="table-responsive">
@@ -47,51 +47,43 @@
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عکس</th>
-                                    <th>عنوان سرویس</th>
-                                    <th>توضیحات</th>
+                                    <th>عنوان دسته بندی</th>
                                     <th>وضعیت</th>
-                                    <th>در دسترس بودن</th>
-                                    <th>دسته والد</th>
-                                    <th>قیمت</th>
+                                    <th> دسته والد</th>
+
                                     <th>تاریخ ساخت</th>
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($services as $service)
+                                @foreach($categories as $category)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <img src="{{ $service->imagePath() }}" width="80" class="img-thumbnail" alt="">
+                                            <img src="{{ $category->imagePath() }}" width="80">
                                         </td>
-                                        <td>{{ $service->name }}</td>
-                                        <td>{{ $service->limitedDescription() }}</td>
+                                        <td>{{ $category->name }}</td>
                                         <td>
-                                            <span class="badge badge-{{ $service->cssStatus() }}">
-                                                {{ $service->textStatus() }}
+                                            <span class="badge badge-{{ $category->cssStatus() }}">
+                                                {{ $category->textStatus() }}
                                             </span>
                                         </td>
-                                        <td>
-                                            <span class="badge badge-{{ $service->cssServiceAvailability() }}">
-                                                {{ $service->textServiceAvailability() }}
-                                            </span>
-                                        </td>
-                                        <td>{{ $service->textCategoryName() }}</td>
-                                        <td>{{ $service->getFaPrice() }}</td>
-                                        <td>{{ $service->getFaCreatedDate()}}</td>
+                                        <td>{{ $category->textParentName() }}</td>
+
+                                        <td>{{ $category->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.office.service.edit', $service->id) }}" class="btn outlined c-main o-main fnt-xxs ml-1">
+                                                <a href="{{ route('panel.office.category.edit', $category->id) }}" class="btn outlined c-main o-main fnt-xxs ml-1">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.office.service.change.status', $service->id) }}" method="POST">
+                                                <form action="{{ route('panel.office.category.change.status', $category->id) }}" method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.office.service.destroy', $service->id) }}" method="POST">
+                                                <form action="{{ route('panel.office.category.destroy', $category->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">
@@ -105,7 +97,7 @@
                                 </tbody>
                             </table>
                             <hr>
-                            {{ $services->links() }}
+                            {{ $categories->links() }}
                         </div>
                     </div>
                 </div>

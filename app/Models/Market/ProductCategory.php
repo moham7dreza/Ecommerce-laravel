@@ -98,4 +98,9 @@ class ProductCategory extends Model
         else if ($this->status === self::STATUS_INACTIVE) return 'danger';
         else return 'warning';
     }
+
+    public function productsCount() : int
+    {
+        return $this->products->count() ?? 0;
+    }
 }

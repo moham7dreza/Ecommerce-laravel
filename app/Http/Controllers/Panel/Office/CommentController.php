@@ -3,18 +3,35 @@
 namespace App\Http\Controllers\Panel\Office;
 
 use App\Http\Controllers\Controller;
+use App\Models\Content\Comment;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Share\Repositories\CommentRepo;
+use Share\Services\CommentService;
 
 class CommentController extends Controller
 {
+    private string $class = Comment::class;
+
+    public CommentRepo $repo;
+    public CommentService $service;
+
+    public function __construct(CommentRepo $commentRepo, CommentService $commentService)
+    {
+        $this->repo = $commentRepo;
+        $this->service = $commentService;
+    }
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): View|Factory|Application
     {
-        //
+         $comments = $this->repo->serviceComments()->whereNull('parent_id')->paginate(5);
+        return view('panel.office.comment.index', compact(['comments']));
     }
 
     /**

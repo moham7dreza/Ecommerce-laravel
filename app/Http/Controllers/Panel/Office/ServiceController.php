@@ -36,7 +36,7 @@ class ServiceController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
         $services = $this->repo->index()->paginate(5);
         return view('panel.office.service.index', compact(['services']));
@@ -47,7 +47,7 @@ class ServiceController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function create(CategoryRepo $categoryRepo)
+    public function create(CategoryRepo $categoryRepo): View|Factory|Application
     {
         $services = $this->repo->index()->whereNull(['parent_id'])->get();
         $categories = $categoryRepo->index()->get();

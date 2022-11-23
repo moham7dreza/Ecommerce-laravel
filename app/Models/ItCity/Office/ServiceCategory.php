@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Models\ItCity\Store;
+namespace App\Models\ItCity\Office;
 
-use App\Models\Content\Post;
 use App\Models\Market\Brand;
-use App\Models\Market\CategoryAttribute;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Share\Enums\Status;
 use Share\Traits\HasFaDate;
 
-class HardwareCategory extends Model
+class ServiceCategory extends Model
 {
     use HasFactory, SoftDeletes, Sluggable, HasFaDate;
 
@@ -49,20 +47,11 @@ class HardwareCategory extends Model
         return $this->hasMany($this, 'parent_id')->with('children');
     }
 
-    public function hardware(): HasMany
+    public function services(): HasMany
     {
-        return $this->hasMany(Hardware::class);
+        return $this->hasMany(Service::class);
     }
 
-    public function attributes(): HasMany
-    {
-        return $this->hasMany(CategoryAttribute::class, 'category_id');
-    }
-
-    public function brands(): HasMany
-    {
-        return $this->hasMany(Brand::class, 'category_id');
-    }
 
     // Methods
     public function path(): string
@@ -70,7 +59,7 @@ class HardwareCategory extends Model
         return route('it-city.store.category.components', $this->slug);
     }
 
-    public function getParent(): string
+    public function textParentName(): string
     {
         return is_null($this->parent_id) ? 'دسته اصلی' : $this->parent->name;
     }
@@ -91,8 +80,8 @@ class HardwareCategory extends Model
         else return 'warning';
     }
 
-    public function hardwareCount(): int
+    public function servicesCount(): int
     {
-        return $this->hardware->count() ?? 0;
+        return $this->services->count() ?? 0;
     }
 }

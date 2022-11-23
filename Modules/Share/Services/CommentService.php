@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\Panel\Market;
+namespace Share\Services;
 
 use App\Models\Content\Comment;
 use App\Models\User\Permission;

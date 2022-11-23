@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Repositories\Panel\Market;
+namespace Share\Repositories;
 
 use App\Models\Content\Comment;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,19 +9,23 @@ class CommentRepo
 {
     private string $class = Comment::class;
 
+    private string $productModelPath = 'App\Models\Market\Product';
+    private string $serviceModelPath = 'App\Models\ItCity\Office\Service';
+    private string $postModelPath = 'App\Models\Content\Post';
+
     public function productComments(): Builder
     {
-        return $this->query()->where('commentable_type', 'App\Models\Market\Product')->latest();
+        return $this->query()->where('commentable_type', $this->productModelPath)->latest();
     }
 
     public function postsComments(): Builder
     {
-        return $this->query()->where('commentable_type', 'App\Models\Content\Post')->latest();
+        return $this->query()->where('commentable_type', $this->postModelPath)->latest();
     }
 
     public function serviceComments(): Builder
     {
-        return $this->query()->where('commentable_type', 'App\Models\ItCity\Office\Service')->latest();
+        return $this->query()->where('commentable_type', $this->serviceModelPath)->latest();
     }
 
     public function delete($id)
@@ -54,7 +58,23 @@ class CommentRepo
     {
         return $this->query()->where([
             ['status', $this->class::STATUS_ACTIVE],
-            ['commentable_type', 'App\Models\Content\Post']
+            ['commentable_type', $this->postModelPath]
+        ])->latest();
+    }
+
+    public function getLatestProductComments(): Builder
+    {
+        return $this->query()->where([
+            ['status', $this->class::STATUS_ACTIVE],
+            ['commentable_type', $this->productModelPath]
+        ])->latest();
+    }
+
+    public function getLatestServiceComments(): Builder
+    {
+        return $this->query()->where([
+            ['status', $this->class::STATUS_ACTIVE],
+            ['commentable_type', $this->serviceModelPath]
         ])->latest();
     }
 

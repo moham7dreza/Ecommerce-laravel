@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Repositories\Panel\Market;
+namespace App\Http\Repositories\Panel\Office;
 
 use App\Models\ItCity\Office\ServiceCategory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Share\Enums\Status;
 
 class CategoryRepo
 {
@@ -14,7 +17,7 @@ class CategoryRepo
         return $this->query()->latest();
     }
 
-    public function findById($id)
+    public function findById($id): Model|Collection|Builder|array|null
     {
         return $this->query()->findOrFail($id);
     }
@@ -26,22 +29,22 @@ class CategoryRepo
 
     public function changeStatus($category)
     {
-        if ($category->status === $this->class::STATUS_ACTIVE) {
-            return $category->update(['status' => $this->class::STATUS_INACTIVE]);
+        if ($category->status === Status::STATUS_ACTIVE) {
+            return $category->update(['status' => Status::STATUS_INACTIVE]);
         }
-        return $category->update(['status' => $this->class::STATUS_ACTIVE]);
+        return $category->update(['status' => Status::STATUS_ACTIVE]);
     }
 
     // Home Query
     public function getActiveCategories(): Builder
     {
-        return $this->query()->where('status', $this->class::STATUS_ACTIVE)->latest();
+        return $this->query()->where('status', Status::STATUS_ACTIVE)->latest();
     }
 
     public function findBySlug($slug)
     {
         return $this->query()->where([
-            ['status', $this->class::STATUS_ACTIVE],
+            ['status', Status::STATUS_ACTIVE],
             ['slug', $slug]
         ])->first();
     }

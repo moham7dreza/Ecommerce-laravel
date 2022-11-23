@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Panel\Market;
 
 use App\Http\Controllers\Controller;
-use App\Http\Repositories\Panel\Market\CommentRepo;
-use App\Http\Services\Panel\Market\CommentService;
 use App\Models\Content\Comment;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Share\Repositories\CommentRepo;
+use Share\Services\CommentService;
 
 class CommentController extends Controller
 {

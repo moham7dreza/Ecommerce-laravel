@@ -55,7 +55,12 @@ class Service extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ProductCategory::class, 'category_id');
+        return $this->belongsTo(ServiceCategory::class, 'category_id');
+    }
+
+    public function relatedCategory(): BelongsTo
+    {
+        return $this->belongsTo(ProductCategory::class, 'service_category_id');
     }
 
     public function brand(): BelongsTo
