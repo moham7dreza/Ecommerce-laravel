@@ -21,7 +21,9 @@
         "livewire/livewire": "^2.5",
         "morilog/jalali": "^3.2",
         "opcodesio/log-viewer": "^1.7",
-        "saeedpooyanfar/zarinpal": "^5.0"
+        "realrashid/sweet-alert": "^5.1",
+        "saeedpooyanfar/zarinpal": "^5.0",
+        "spatie/laravel-activitylog": "^4.7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

@@ -12,6 +12,9 @@ use App\Models\ItCity\Store\Hardware;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\ProductCategory;
 use Carbon\Carbon;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class HardwareController extends Controller
 {
@@ -48,5 +51,10 @@ class HardwareController extends Controller
         $services = $services = $serviceRepo->parentServices()->get();
         $products = $this->repo->relatedHardware($productCategory->id)->paginate(9);
         return view('it-city.store.hardware.category-components', compact('products', 'productCategory', 'posts', 'services'));
+    }
+
+    public function navigation(): Factory|View|Application
+    {
+        return view('it-city.store.navigation');
     }
 }

@@ -62,6 +62,7 @@ class AdminUserController extends Controller
             $role = Role::find($role_id);
             $user->permissions()->sync($role->permissions);
         }
+        User::activityLog($user , 'users' , 'created');
         return redirect()->route('admin.user.admin-user.index')->with('swal-success', 'ادمین جدید با موفقیت ثبت شد');
     }
 

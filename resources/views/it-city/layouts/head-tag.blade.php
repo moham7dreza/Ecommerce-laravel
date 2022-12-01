@@ -9,6 +9,10 @@
 <meta name="keywords" content="{{ $settings->keywords }}">
 <meta name="description" content="{{ $settings->description }}">
 <meta name="author" content="{{ $settings->author }}">
+
+{{--<link href="{{ asset('css/app.css') }}" rel="stylesheet" />--}}
+{{--<link href="{{ asset('dist/output.css') }}" rel="stylesheet" />--}}
+
 <!-- site icons -->
 <link rel="icon" href="{{ asset($settings->icon) }}" type="image/gif"/>
 <!-- bootstrap css -->
@@ -31,3 +35,4 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+

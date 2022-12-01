@@ -7,6 +7,7 @@ use App\Models\Content\PostCategory;
 use App\Models\User;
 use App\Models\User\Permission;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class HomeRepo
 {
@@ -15,27 +16,27 @@ class HomeRepo
         return Post::query()->where('status', Post::STATUS_ACTIVE)->latest();
     }
 
-    public function getActiveCategories()
+    public function getActiveCategories(): Collection|array
     {
         return PostCategory::query()->where('status', Post::STATUS_ACTIVE)->latest()->get();
     }
 
-    public function getVipPostsOrderByView()
+    public function getVipPostsOrderByView(): Collection|array
     {
         return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->limit(5)->get();
     }
 
-    public function getAuthorUsers()
+    public function getAuthorUsers(): Collection|array
     {
         return User::query()->limit(20)->get();
     }
 
-    public function getPostsOrderByView()
+    public function getPostsOrderByView(): Collection|array
     {
         return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->limit(3)->get();
     }
 
-    public function getNewPosts()
+    public function getNewPosts(): Collection|array
     {
         return Post::query()->where('status',Post::STATUS_ACTIVE)->latest()->limit(8)->get();
     }

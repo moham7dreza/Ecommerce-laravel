@@ -11,6 +11,9 @@ use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Content\PostCategory;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,19 +28,19 @@ class HomeController extends Controller
         $this->postRepo = $postRepo;
     }
 
-    public function home(HomeRepo $homeRepo)
+    public function home(HomeRepo $homeRepo): Factory|View|Application
     {
         $topBanner = Banner::query()->where([
             ['position', 7], ['status', 1]
         ])->first();
         $bottomBanner = Banner::query()->where([
             ['position', 8], ['status', 1]
-        ])->first();;
+        ])->first();
         $latestComments = Comment::query()->where('commentable_type', 'App\Models\Content\Post')->limit(3)->get();
         return view('digital-world.home', compact(['homeRepo', 'topBanner', 'bottomBanner', 'latestComments']));
     }
 
-    public function post(Post $post, HomeRepo $homeRepo)
+    public function post(Post $post, HomeRepo $homeRepo): Factory|View|Application
     {
         $banner = Banner::query()->where([
             ['position', 9], ['status', 1]
@@ -47,7 +50,7 @@ class HomeController extends Controller
         return view('digital-world.post.details', compact(['post', 'relatedPosts', 'homeRepo', 'latestComments', 'banner']));
     }
 
-    public function posts(HomeRepo $homeRepo)
+    public function posts(HomeRepo $homeRepo): Factory|View|Application
     {
         $posts = $this->postRepo->home()->paginate(6);
         $viewsPosts = $this->postRepo->getPostsByViews()->latest()->limit(5)->get();
@@ -55,20 +58,20 @@ class HomeController extends Controller
         return view('digital-world.post.home', compact(['posts', 'latestComments', 'viewsPosts', 'homeRepo']));
     }
 
-    public function category(PostCategory $postCategory, PostCategoryRepo $postCategoryRepo)
+    public function category(PostCategory $postCategory, PostCategoryRepo $postCategoryRepo): Factory|View|Application
     {
         $categories = $postCategoryRepo->getActiveCategories()->get();
         $posts = $this->postRepo->getPostsByCategoryId($postCategory->id)->paginate(10);
         return view('digital-world.category', compact(['postCategory', 'posts', 'categories']));
     }
 
-    public function authors(HomeRepo $homeRepo)
+    public function authors(HomeRepo $homeRepo): Factory|View|Application
     {
         $authors = $homeRepo->authors()->paginate(50);
         return view('digital-world.user.authors', compact(['authors']));
     }
 
-    public function author(User $user)
+    public function author(User $user): Factory|View|Application
     {
         $posts = $this->postRepo->getPostsByUserID($user->id)->latest()->paginate(10);
         return view('digital-world.user.author', compact(['user', 'posts']));
@@ -86,10 +89,8 @@ class HomeController extends Controller
             $inputs['commentable_id'] = $post->id;
             $inputs['commentable_type'] = Post::class;
             Comment::create($inputs);
-            return back();
-        } else {
-            return back();
         }
+        return back();
     }
 
     public function addToFavorite(Post $post): JsonResponse

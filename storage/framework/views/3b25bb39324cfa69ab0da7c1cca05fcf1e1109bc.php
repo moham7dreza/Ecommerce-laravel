@@ -9,6 +9,10 @@
 <meta name="keywords" content="<?php echo e($settings->keywords); ?>">
 <meta name="description" content="<?php echo e($settings->description); ?>">
 <meta name="author" content="<?php echo e($settings->author); ?>">
+
+
+
+
 <!-- site icons -->
 <link rel="icon" href="<?php echo e(asset($settings->icon)); ?>" type="image/gif"/>
 <!-- bootstrap css -->
@@ -31,4 +35,5 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 <?php /**PATH C:\CODEX\techzilla\resources\views/it-city/layouts/head-tag.blade.php ENDPATH**/ ?>

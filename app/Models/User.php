@@ -20,16 +20,20 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Share\Traits\HasFaDate;
+use Share\Traits\hasLog;
 use Share\Traits\HasPermission;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission, HasFaDate;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission, HasFaDate, hasLog;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
 
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
+
+    protected static bool $logFillable = true;
+    protected  static array $logAttributes = ['first_name', 'last_name', 'email'];
 
     /**
      * The attributes that are mass assignable.

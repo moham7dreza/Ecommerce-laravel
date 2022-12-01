@@ -2,6 +2,15 @@
 
 // digital world
 use App\Http\Controllers\DigitalWorld\HomeController as DigiHomeController;
+
+// implement with livewire
+use App\Http\Livewire\DigitalWorld\Home as DigitalWorldHomeController;
+use App\Http\Livewire\DigitalWorld\Post\Home as DigitalWorldPostController;
+use App\Http\Livewire\DigitalWorld\Post\Detail as DigitalWorldPostDetailController;
+use App\Http\Livewire\DigitalWorld\Category\Home as DigitalWorldCategoryController;
+use App\Http\Livewire\DigitalWorld\Author\Home as DigitalWorldAuthorController;
+use App\Http\Livewire\DigitalWorld\Author\Detail as DigitalWorldAuthorDetailController;
+
 use App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use App\Http\Livewire\DigitalWorld\Technology\PostDetail;
 use App\Http\Livewire\DigitalWorld\Technology\Posts;
@@ -15,6 +24,20 @@ use Illuminate\Support\Facades\Route;
  * */
 
 Route::prefix('digital-world')->group(function () {
+    Route::prefix('livewire')->group(function ($router) {
+        $router->get('home', DigitalWorldHomeController::class)->name('digital-world.livewire.home');
+        Route::prefix('post')->group(function ($router) {
+            $router->get('home', DigitalWorldPostController::class)->name('digital-world.livewire.post.home');
+            $router->get('{post:slug}/detail', DigitalWorldPostDetailController::class)->name('digital-world.livewire.post.detail');
+        });
+        Route::prefix('category')->group(function ($router) {
+            $router->get('{postCategory:slug}/posts', DigitalWorldCategoryController::class)->name('digital-world.livewire.category.posts');
+        });
+        Route::prefix('author')->group(function ($router) {
+            $router->get('home', DigitalWorldAuthorController::class)->name('digital-world.livewire.author.home');
+            $router->get('{user:first_name}/detail', DigitalWorldAuthorDetailController::class)->name('digital-world.livewire.author.detail');
+        });
+    });
     Route::prefix('technology')->group(function () {
         // main page - show all posts
         Route::get('/posts', Posts::class)->name('digital-world.technology.index');

@@ -5,6 +5,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+    <div class="bg-indigo-200">dwdw</div>
 
     <?php echo $__env->make('it-city.layouts.partials.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
@@ -17,10 +18,13 @@
     <?php echo $__env->make('it-city.layouts.partials.post', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <?php if (isset($component)) { $__componentOriginalfda11a45add480a82c068aa7b131435ab1fe3306 = $component; } ?>
-<?php $component = $__env->getContainer()->make(App\View\Components\Personnel::class, ['personnel' => $homeRepo->personnel()]); ?>
+<?php $component = App\View\Components\Personnel::resolve(['personnel' => $homeRepo->personnel()] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
 <?php $component->withName('personnel'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(App\View\Components\Personnel::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
 <?php $component->withAttributes([]); ?>
 <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

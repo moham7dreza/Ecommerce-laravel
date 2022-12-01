@@ -23,6 +23,9 @@ class Comment extends Model
     public const APPROVED = 1;
     public const NOT_APPROVED = 0;
 
+    public const SEEN = 1;
+    public const UNSEEN = 0;
+
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_NEW];
 
     protected $fillable = ['body', 'parent_id', 'author_id', 'commentable_id', 'commentable_type', 'approved', 'status'];

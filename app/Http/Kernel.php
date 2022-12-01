@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminCheck;
+use App\Http\Middleware\Permission\AccessControl;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'profile.completion' => \App\Http\Middleware\ProfileCompletion::class,
         'admin.check' => \App\Http\Middleware\AdminCheck::class,
+        'access.control' => AccessControl::class,
     ];
 }

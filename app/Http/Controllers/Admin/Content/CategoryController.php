@@ -27,6 +27,7 @@ class CategoryController extends Controller
     {
         $this->categoryRepo = $postCategoryRepo;
         $this->categoryService = $postCategoryService;
+//        $this->authorizeResource(PostCategory::class, 'post');
     }
 
     /**
