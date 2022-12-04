@@ -24,6 +24,8 @@ class Detail extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.author.detail');
+        return view('livewire.digital-world.author.detail')
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => $this->author->fullName]);
     }
 }

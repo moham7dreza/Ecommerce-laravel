@@ -17,6 +17,6 @@ class RightSidebar extends Component
     }
     public function render()
     {
-        return view('livewire.digital-world.partials.right-sidebar');
+        return view('livewire.digital-world.partials.right-sidebar')->layout('livewire.digital-world.layouts.master');
     }
 }

@@ -20,7 +20,7 @@ class CreateComment extends Component
     public Post $post;
     public string $body = "";
 
-    private $commentToAnswer;
+    public Comment $commentToAnswer;
     public int $isAnswer = 0;
 
     protected array $rules = [
@@ -31,14 +31,15 @@ class CreateComment extends Component
     public function mount(Post $post)
     {
         $this->post = $post;
+        $this->commentToAnswer = new Comment();
     }
 
     protected $listeners = ['getCommentToAnswer'];
 
     public function getCommentToAnswer(Comment $comment)
     {
-        $this->commentToAnswer = $comment;
         $this->isAnswer = 1;
+        $this->commentToAnswer = $comment;
     }
 
     public function canselAnswer()
@@ -95,6 +96,7 @@ class CreateComment extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.post.partials.create-comment');
+        return view('livewire.digital-world.post.partials.create-comment')
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

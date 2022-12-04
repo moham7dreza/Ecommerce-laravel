@@ -20,6 +20,6 @@ class Comments extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.comments');
+        return view('livewire.digital-world.partials.comments')->layout('livewire.digital-world.layouts.master');
     }
 }

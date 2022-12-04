@@ -25,6 +25,6 @@ class LeftSidebar extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.left-sidebar');
+        return view('livewire.digital-world.partials.left-sidebar')->layout('livewire.digital-world.layouts.master');
     }
 }

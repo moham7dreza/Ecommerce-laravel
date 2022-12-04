@@ -22,6 +22,6 @@ class TopBanner extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.top-banner');
+        return view('livewire.digital-world.partials.top-banner')->layout('livewire.digital-world.layouts.master');
     }
 }

@@ -31,6 +31,7 @@ class Comments extends Component
     public function render(): Factory|View|Application
     {
         $comments = $this->post->activeComments()->latest()->get();
-        return view('livewire.digital-world.post.partials.comments', ['comments' => $comments]);
+        return view('livewire.digital-world.post.partials.comments', ['comments' => $comments])
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

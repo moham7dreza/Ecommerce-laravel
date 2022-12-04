@@ -19,7 +19,8 @@
                                 <p class="date"> {{ $comment->getFaCreatedDate() }}</p>
                             </div>
                             <div class="reply-btn">
-                                <a href="#comment-form" wire:click="$emit('getCommentToAnswer', {{ $comment }})" class="btn-reply text-uppercase">پاسخ</a>
+                                <a href="#comment-form" wire:click="$emit('getCommentToAnswer', {{ $comment->id }})"
+                                   class="btn-reply text-uppercase">پاسخ</a>
                             </div>
                         </div>
                     </div>

@@ -22,6 +22,7 @@ class BottomBanner extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.bottom-banner');
+        return view('livewire.digital-world.partials.bottom-banner')
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

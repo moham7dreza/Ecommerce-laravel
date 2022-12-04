@@ -15,6 +15,7 @@ class Header extends Component
 {
     public Collection $categories;
     public Model $setting;
+    public $char = "";
 
     public function mount()
     {
@@ -24,6 +25,6 @@ class Header extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.layouts.header');
+        return view('livewire.digital-world.layouts.header')->layout('livewire.digital-world.layouts.master');
     }
 }

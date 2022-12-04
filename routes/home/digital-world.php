@@ -6,6 +6,7 @@ use App\Http\Controllers\DigitalWorld\HomeController as DigiHomeController;
 // implement with livewire
 use App\Http\Livewire\DigitalWorld\Home as DigitalWorldHomeController;
 use App\Http\Livewire\DigitalWorld\Post\Home as DigitalWorldPostController;
+use App\Http\Livewire\DigitalWorld\Post\Search as DigitalWorldPostSearchController;
 use App\Http\Livewire\DigitalWorld\Post\Detail as DigitalWorldPostDetailController;
 use App\Http\Livewire\DigitalWorld\Category\Home as DigitalWorldCategoryController;
 use App\Http\Livewire\DigitalWorld\Author\Home as DigitalWorldAuthorController;
@@ -28,6 +29,7 @@ Route::prefix('digital-world')->group(function () {
         $router->get('home', DigitalWorldHomeController::class)->name('digital-world.livewire.home');
         Route::prefix('post')->group(function ($router) {
             $router->get('home', DigitalWorldPostController::class)->name('digital-world.livewire.post.home');
+            $router->get('search/{catId}/{char?}', DigitalWorldPostSearchController::class)->name('digital-world.livewire.post.search');
             $router->get('{post:slug}/detail', DigitalWorldPostDetailController::class)->name('digital-world.livewire.post.detail');
         });
         Route::prefix('category')->group(function ($router) {

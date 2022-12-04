@@ -21,6 +21,8 @@ class Home extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.author.home');
+        return view('livewire.digital-world.author.home')
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => 'نویسندگان']);
     }
 }

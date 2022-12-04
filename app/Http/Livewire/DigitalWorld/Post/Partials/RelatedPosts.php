@@ -22,6 +22,7 @@ class RelatedPosts extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.post.partials.related-posts');
+        return view('livewire.digital-world.post.partials.related-posts')
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

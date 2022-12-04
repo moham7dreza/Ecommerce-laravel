@@ -49,6 +49,11 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="<?php echo e(route('digital-world.livewire.post.search', 0)); ?>">
+                                       جست و جو
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="<?php echo e(route('digital-world.livewire.author.home')); ?>">
                                         نویسنده ها
                                     </a>
@@ -109,8 +114,10 @@
                             </ul>
                         </nav>
                     </div>
-                    <form action="#" method="get" class="search-form d-lg-inline float-left position-relative ml-30 d-none">
-                        <input type="text" class="search_field" placeholder="جستجو ..." value="" name="s">
+                    <form action="<?php echo e(route('digital-world.livewire.post.search', 0, $char)); ?>" method="get"
+                          class="search-form d-lg-inline float-left position-relative ml-30 d-none">
+                        <?php echo csrf_field(); ?>
+                        <input type="text" class="search_field" placeholder="جستجو ..." value="" name="s" wire:model="char">
                         <span class="search-icon"><i class="ti-search mr-5"></i></span>
                     </form>
                     <div class="off-canvas-toggle-cover">

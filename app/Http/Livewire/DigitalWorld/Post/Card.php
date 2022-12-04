@@ -19,6 +19,7 @@ class Card extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.post.card');
+        return view('livewire.digital-world.post.card')
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

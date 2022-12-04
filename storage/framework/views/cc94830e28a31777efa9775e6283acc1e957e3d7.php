@@ -20,7 +20,8 @@
                                 <p class="date"> <?php echo e($comment->getFaCreatedDate()); ?></p>
                             </div>
                             <div class="reply-btn">
-                                <a href="#comment-form" wire:click="$emit('getCommentToAnswer', <?php echo e($comment); ?>)" class="btn-reply text-uppercase">پاسخ</a>
+                                <a href="#comment-form" wire:click="$emit('getCommentToAnswer', <?php echo e($comment->id); ?>)"
+                                   class="btn-reply text-uppercase">پاسخ</a>
                             </div>
                         </div>
                     </div>

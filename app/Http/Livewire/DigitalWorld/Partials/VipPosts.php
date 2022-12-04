@@ -21,6 +21,6 @@ class VipPosts extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.vip-posts');
+        return view('livewire.digital-world.partials.vip-posts')->layout('livewire.digital-world.layouts.master');
     }
 }

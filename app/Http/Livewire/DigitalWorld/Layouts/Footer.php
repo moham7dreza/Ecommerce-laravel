@@ -20,6 +20,6 @@ class Footer extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.layouts.footer');
+        return view('livewire.digital-world.layouts.footer')->layout('livewire.digital-world.layouts.master');
     }
 }

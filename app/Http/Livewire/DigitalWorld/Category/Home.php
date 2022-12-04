@@ -29,6 +29,8 @@ class Home extends Component
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.category.home');
+        return view('livewire.digital-world.category.home')
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => $this->postCategory->name]);
     }
 }
