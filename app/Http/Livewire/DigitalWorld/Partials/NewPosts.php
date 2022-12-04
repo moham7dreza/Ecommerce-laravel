@@ -8,19 +8,22 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class NewPosts extends Component
 {
-    public Collection $newPosts;
+    use WithPagination;
 
-    public function mount()
+    public function paginationView(): string
     {
-        $homeRepo = new HomeRepo();
-        $this->newPosts = $homeRepo->getNewPosts();
+        return 'livewire.digital-world.utils.pagination-links';
     }
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.partials.new-posts');
+        $homeRepo = new HomeRepo();
+        $newPosts = $homeRepo->getNewPosts2()->paginate(4);
+        return view('livewire.digital-world.partials.new-posts', ['newPosts' => $newPosts])
+            ->layout('livewire.digital-world.layouts.master');
     }
 }

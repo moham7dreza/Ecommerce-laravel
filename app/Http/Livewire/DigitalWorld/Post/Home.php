@@ -17,18 +17,24 @@ class Home extends Component
 {
     use WithPagination;
 
-    public $posts;
+    public function paginationView(): string
+    {
+        return 'livewire.digital-world.utils.pagination-links';
+    }
     public Collection $viewsPosts;
 
     public function mount()
     {
         $postRepo = new PostRepo();
-        $this->posts = Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->get();
         $this->viewsPosts = $postRepo->getPostsByViews()->latest()->limit(5)->get();
     }
 
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.post.home');
+        $postRepo = new PostRepo();
+        $posts = $postRepo->home()->paginate(4);
+        return view('livewire.digital-world.post.home', ['posts' => $posts])
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => 'پست ها']);
     }
 }

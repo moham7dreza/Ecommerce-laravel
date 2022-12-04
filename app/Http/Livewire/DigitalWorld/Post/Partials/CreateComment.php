@@ -6,6 +6,7 @@ use App\Http\Repositories\Admin\Content\PostRepo;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\User\Permission;
+use BaconQrCode\Common\Mode;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,6 +20,9 @@ class CreateComment extends Component
     public Post $post;
     public string $body = "";
 
+    private $commentToAnswer;
+    public int $isAnswer = 0;
+
     protected array $rules = [
         'body' => 'required|string|min:3|max:1000',
 //        'comment_text' => 'required | regex:/^[ا-یa-zA-Z0-9 ? : - . ، * ! ]+$/u'
@@ -27,6 +31,38 @@ class CreateComment extends Component
     public function mount(Post $post)
     {
         $this->post = $post;
+    }
+
+    protected $listeners = ['getCommentToAnswer'];
+
+    public function getCommentToAnswer(Comment $comment)
+    {
+        $this->commentToAnswer = $comment;
+        $this->isAnswer = 1;
+    }
+
+    public function canselAnswer()
+    {
+        $this->reset(['commentToAnswer', 'isAnswer']);
+    }
+
+    public function addAnswer()
+    {
+        $this->validate();
+
+        Comment::query()->create([
+            'author_id' => auth()->id(),
+            'parent_id' => $this->commentToAnswer->id,
+            'commentable_id' => $this->post->id,
+            'commentable_type' => get_class($this->post),
+            'body' => str_replace(PHP_EOL, '<br/>', $this->body),
+            'status' => $this->setStatus(),
+            'approved' => $this->setStatus(),
+        ]);
+
+        $this->reset(['body']);
+        $this->emit('showAlert', "پاسخ با موفقیت ثبت شد");
+        $this->canselAnswer();
     }
 
     public function addComment()

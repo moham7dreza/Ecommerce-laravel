@@ -187,6 +187,9 @@
     
     <p class="side-comment fnt-mxs">بخش کاربران</p>
     <li class="side a-collapse short">
+        <a href="<?php echo e(route('panel.client.admin.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>ادمین ها</a>
+    </li>
+    <li class="side a-collapse short">
         <a href="<?php echo e(route('panel.client.user.index')); ?>" class="side-item "><i class="fas fa-fan fa-spin mr-1"></i>کاربران</a>
     </li>
     <li class="side a-collapse short">

@@ -18,4 +18,5 @@
 <script src="<?php echo e(asset('news-viral-assets/js/vendor/jquery.counterup.min.js')); ?>"></script>
 <script src="<?php echo e(asset('news-viral-assets/js/vendor/jquery.theia.sticky.js')); ?>"></script>
 <script src="<?php echo e(asset('news-viral-assets/js/main.js')); ?>"></script>
+
 <?php /**PATH C:\CODEX\techzilla\resources\views/livewire/digital-world/layouts/script.blade.php ENDPATH**/ ?>

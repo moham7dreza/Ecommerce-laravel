@@ -64,6 +64,7 @@
                             </div>
                         </div>
                         <div class="pagination-area mb-30">
+                            <?php echo e($posts->links()); ?>
 
                         </div>
                     </div>

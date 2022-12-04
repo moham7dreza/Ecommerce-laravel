@@ -16,20 +16,15 @@ use Share\Repositories\ShareRepo;
 
 class Home extends Component
 {
-    protected $listeners = ['sweetAlert'];
-
     public function mount()
     {
 
     }
 
-    public function sweetAlert($title)
-    {
-        ShareRepo::successMessage($title);
-    }
-
     public function render(): Factory|View|Application
     {
-        return view('livewire.digital-world.home');
+        return view('livewire.digital-world.home')
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => 'دنیای دیجیتالی']);
     }
 }

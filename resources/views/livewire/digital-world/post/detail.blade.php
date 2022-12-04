@@ -132,7 +132,7 @@
                 <!--related posts-->
                 @livewire('digital-world.post.partials.related-posts', ['post' => $post])
                 <!--Comments-->
-                @livewire('digital-world.post.partials.comments', ['post' => $post, 'comments' => $comments])
+                @livewire('digital-world.post.partials.comments', ['post' => $post])
                 <!--comment form-->
                 @livewire('digital-world.post.partials.create-comment', ['post' => $post])
             </div>

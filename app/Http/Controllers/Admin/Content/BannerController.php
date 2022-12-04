@@ -10,6 +10,11 @@ use App\Http\Requests\Admin\Content\BannerRequest;
 
 class BannerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:role-admin')->only(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *

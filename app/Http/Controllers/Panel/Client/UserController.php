@@ -172,4 +172,9 @@ class UserController extends Controller
 
         return redirect()->route('panel.client.user.index')->with('swal-success', 'نقش با موفقیت از کاربر گرفته شد.');
     }
+
+    public function admin()
+    {
+        return view('panel.admin.index');
+    }
 }

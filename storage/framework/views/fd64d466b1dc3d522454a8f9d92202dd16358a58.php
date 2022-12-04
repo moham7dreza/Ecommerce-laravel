@@ -150,14 +150,14 @@ echo $html;
                 <!--Comments-->
                 <?php
 if (! isset($_instance)) {
-    $html = \Livewire\Livewire::mount('digital-world.post.partials.comments', ['post' => $post, 'comments' => $comments])->html();
+    $html = \Livewire\Livewire::mount('digital-world.post.partials.comments', ['post' => $post])->html();
 } elseif ($_instance->childHasBeenRendered('l4233580977-1')) {
     $componentId = $_instance->getRenderedChildComponentId('l4233580977-1');
     $componentTag = $_instance->getRenderedChildComponentTagName('l4233580977-1');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
     $_instance->preserveRenderedChild('l4233580977-1');
 } else {
-    $response = \Livewire\Livewire::mount('digital-world.post.partials.comments', ['post' => $post, 'comments' => $comments]);
+    $response = \Livewire\Livewire::mount('digital-world.post.partials.comments', ['post' => $post]);
     $html = $response->html();
     $_instance->logRenderedChild('l4233580977-1', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }

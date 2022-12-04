@@ -33,7 +33,8 @@ echo $html;
         </div>
     </div>
     <div class="pagination-area mb-30">
-        
+                <?php echo e($newPosts->links()); ?>
+
     </div>
     <?php
 if (! isset($_instance)) {

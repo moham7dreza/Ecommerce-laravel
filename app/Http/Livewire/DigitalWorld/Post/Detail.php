@@ -17,7 +17,7 @@ class Detail extends Component
     public Post $post;
     public Model $banner;
 
-    protected $listeners = ['sweetAlert'];
+    protected $listeners = ['sweetAlert' => '$refresh'];
 
     public function mount(Post $post)
     {
@@ -34,7 +34,8 @@ class Detail extends Component
 
     public function render(): Factory|View|Application
     {
-        $comments = $this->post->activeComments()->latest()->get();
-        return view('livewire.digital-world.post.detail', ['comments' => $comments]);
+        return view('livewire.digital-world.post.detail')
+            ->layout('livewire.digital-world.layouts.master')
+            ->layoutData(['title' => $this->post->slug]);
     }
 }

@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="pagination-area mb-30">
-{{--                            {{ $posts->links() }}--}}
+                            {{ $posts->links() }}
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 sidebar-right">

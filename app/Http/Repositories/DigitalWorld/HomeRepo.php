@@ -41,6 +41,11 @@ class HomeRepo
         return Post::query()->where('status',Post::STATUS_ACTIVE)->latest()->limit(8)->get();
     }
 
+    public function getNewPosts2()
+    {
+        return Post::query()->where('status',Post::STATUS_ACTIVE)->latest();
+    }
+
     public function authors(): Builder
     {
         return User::query()->latest();

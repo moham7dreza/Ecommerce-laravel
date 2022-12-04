@@ -178,7 +178,8 @@ Route::prefix('panel')->middleware(['auth', 'admin.check', 'access.control:role-
 
     //client
     Route::prefix('client')->group(function () {
-
+        // test livewire table route
+        Route::get('/admin', [PanelClientUserController::class, 'admin'])->name('panel.client.admin.index');
         //user
         Route::prefix('user')->group(function () {
             Route::get('/', [PanelClientUserController::class, 'index'])->name('panel.client.user.index');

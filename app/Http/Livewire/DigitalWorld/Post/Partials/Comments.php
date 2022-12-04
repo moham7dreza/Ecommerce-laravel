@@ -14,22 +14,23 @@ use Livewire\Component;
 class Comments extends Component
 {
     public Post $post;
-    public Collection $comments;
 
-    public function mount(Post $post, Collection $comments)
+    protected $listeners = ['sweetAlert' => '$refresh'];
+
+    public function mount(Post $post)
     {
         $this->post = $post;
-        $this->comments = $comments;
+    }
+
+    public function deleteComment($id)
+    {
+        Comment::find($id)->delete();
+        $this->emit('showAlert', "نظر با موفقیت حذف شد");
     }
 
     public function render(): Factory|View|Application
     {
-//        $comments = Comment::query()->where([
-//            ['approved', Comment::APPROVED],
-//            ['status', Comment::STATUS_ACTIVE],
-//            ['commentable_id', $this->post->id],
-//            ['commentable_type', get_class($this->post)],
-//        ])->whereNull('parent_id')->latest()->get();
-        return view('livewire.digital-world.post.partials.comments', ['comments' => $this->comments]);
+        $comments = $this->post->activeComments()->latest()->get();
+        return view('livewire.digital-world.post.partials.comments', ['comments' => $comments]);
     }
 }

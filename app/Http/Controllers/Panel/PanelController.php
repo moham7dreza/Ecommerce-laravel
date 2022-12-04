@@ -16,7 +16,7 @@ class PanelController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['access.control'])->only(['index']);
+        $this->middleware(['access.control:role-admin'])->only(['index']);
     }
 
     public function index(PanelRepo $panelRepo): Factory|View|Application

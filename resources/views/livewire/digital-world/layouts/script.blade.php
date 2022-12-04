@@ -18,3 +18,4 @@
 <script src="{{ asset('news-viral-assets/js/vendor/jquery.counterup.min.js') }}"></script>
 <script src="{{ asset('news-viral-assets/js/vendor/jquery.theia.sticky.js') }}"></script>
 <script src="{{ asset('news-viral-assets/js/main.js') }}"></script>
+
