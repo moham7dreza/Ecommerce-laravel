@@ -12,6 +12,17 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-admin-users')->only(['index']);
+        $this->middleware('can:permission-admin-user-create')->only(['create', 'store']);
+        $this->middleware('can:permission-admin-user-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-admin-user-delete')->only(['destroy']);
+        $this->middleware('can:permission-admin-user-status')->only(['status']);
+        $this->middleware('can:permission-admin-user-activation')->only(['activation']);
+        $this->middleware('can:permission-admin-user-roles')->only(['roleForm', 'roleUpdate']);
+    }
+
     /**
      * Display a listing of the resource.
      *

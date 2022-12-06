@@ -11,6 +11,15 @@ use App\Http\Requests\Admin\Market\BrandRequest;
 
 class BrandController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-brands')->only(['index']);
+        $this->middleware('can:permission-product-brand-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-brand-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-product-brand-delete')->only(['destroy']);
+        $this->middleware('can:permission-product-brand-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

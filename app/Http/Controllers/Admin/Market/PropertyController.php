@@ -10,6 +10,15 @@ use App\Models\Market\CategoryAttribute;
 
 class PropertyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-properties')->only(['index']);
+        $this->middleware('can:permission-product-property-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-property-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-product-property-delete')->only(['destroy']);
+        $this->middleware('can:permission-product-property-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

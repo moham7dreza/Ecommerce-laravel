@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Content\FaqRequest;
 
 class FAQController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-faqs')->only(['index']);
+        $this->middleware('can:permission-faq-create')->only(['create', 'store']);
+        $this->middleware('can:permission-faq-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-faq-delete')->only(['destroy']);
+        $this->middleware('can:permission-faq-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

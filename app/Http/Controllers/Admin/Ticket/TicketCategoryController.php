@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Ticket\TicketCategoryRequest;
 
 class TicketCategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-ticket-categories')->only(['index']);
+        $this->middleware('can:permission-ticket-category-create')->only(['create', 'store']);
+        $this->middleware('can:permission-ticket-category-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-ticket-category-delete')->only(['destroy']);
+        $this->middleware('can:permission-ticket-category-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

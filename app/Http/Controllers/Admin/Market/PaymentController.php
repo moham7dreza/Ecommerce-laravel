@@ -8,6 +8,17 @@ use App\Http\Controllers\Controller;
 
 class PaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-all-payments')->only(['index']);
+        $this->middleware('can:permission-product-online-payments')->only(['online']);
+        $this->middleware('can:permission-product-offline-payments')->only(['offline']);
+        $this->middleware('can:permission-product-cash-payments')->only(['cash']);
+        $this->middleware('can:permission-product-payment-cancel')->only(['canceled']);
+        $this->middleware('can:permission-product-payment-return')->only(['returned']);
+        $this->middleware('can:permission-product-payment-show')->only(['show']);
+    }
+
     public function index()
     {
         $payments = Payment::all();

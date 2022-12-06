@@ -471,6 +471,8 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
             Route::delete('/destroy/{role}', [RoleController::class, 'destroy'])->name('admin.user.role.destroy');
             Route::get('/permission-form/{role}', [RoleController::class, 'permissionForm'])->name('admin.user.role.permission-form');
             Route::put('/permission-update/{role}', [RoleController::class, 'permissionUpdate'])->name('admin.user.role.permission-update');
+            Route::post('/permissions-import', [RoleController::class, 'permissionsImport'])->name('admin.user.permissions.import');
+            Route::get('/permissions-export', [RoleController::class, 'permissionsExport'])->name('admin.user.permissions.export');
         });
 
         //permission

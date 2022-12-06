@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Notify\EmailRequest;
 
 class EmailController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-email-notify')->only(['index']);
+        $this->middleware('can:permission-email-notify-create')->only(['create', 'store']);
+        $this->middleware('can:permission-email-notify-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-email-notify-delete')->only(['destroy']);
+        $this->middleware('can:permission-email-notify-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -59,10 +59,10 @@
                                 @foreach ($permissions as $key => $permission)
 
 
-                                <section class="col-md-3">
+                                <section class="col-md-6">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" name="permissions[]" value="{{ $permission->id }}" id="{{ $permission->id }}" @if(in_array($permission->id, $rolePermissionsArray)) checked @endif/>
-                                        <label for="{{ $permission->id }}" class="form-check-label mr-3 mt-1">{{ $permission->name }}</label>
+                                        <label for="{{ $permission->id }}" class="form-check-label mr-3 mt-1">{{ $permission->description }}</label>
                                     </div>
                                     <div class="mt-2">
                                         @error('permissions.' . $key)
@@ -78,7 +78,7 @@
                                 @endforeach
 
 
-                                <section class="col-12 col-md-2">
+                                <section class="col-12">
                                     <button class="btn btn-primary btn-sm mt-md-4">ثبت</button>
                                 </section>
 

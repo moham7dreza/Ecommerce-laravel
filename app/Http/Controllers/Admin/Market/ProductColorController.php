@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 
 class ProductColorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-colors')->only(['index']);
+        $this->middleware('can:permission-product-color-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-color-delete')->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

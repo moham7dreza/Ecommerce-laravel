@@ -2,15 +2,32 @@
 
 namespace App\Http\Controllers\admin\user;
 
+use App\Exports\User\PermissionsExport;
+use App\Imports\User\PermissionsImport;
 use App\Models\User\Role;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\User\Permission;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\RoleRequest;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-user-roles')->only(['index']);
+        $this->middleware('can:permission-user-role-create')->only(['create', 'store']);
+        $this->middleware('can:permission-user-role-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-user-role-delete')->only(['destroy']);
+        $this->middleware('can:permission-user-role-status')->only(['status']);
+        $this->middleware('can:permission-user-role-permissions')->only(['permissionForm', 'permissionUpdate']);
+        $this->middleware('can:permission-user-permissions-import')->only(['permissionImport']);
+        $this->middleware('can:permission-user-permissions-export')->only(['permissionExport']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -114,5 +131,16 @@ class RoleController extends Controller
         $role->permissions()->sync($inputs['permissions']);
         $user->permissions()->sync($inputs['permissions']);
         return redirect()->route('admin.user.role.index')->with('swal-success', 'نقش جدید با موفقیت ویرایش شد');
+    }
+
+    public function permissionsImport(Request $request): RedirectResponse
+    {
+        Excel::import(new PermissionsImport(), $request->file('permissions'));
+        return redirect()->route('admin.user.role.index')->with('swal-success', 'سطوح دسترسی با موفقیت بارگذاری شد.');
+    }
+
+    public function permissionsExport(): BinaryFileResponse
+    {
+        return Excel::download(new PermissionsExport() , "export_user_permissions.xlsx");
     }
 }

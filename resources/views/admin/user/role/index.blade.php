@@ -23,12 +23,30 @@
                     نقش ها
                 </h5>
             </section>
-
-            <section class="d-flex justify-content-between align-items-center mt-4 mb-3 border-bottom pb-2">
-                <a href="{{ route('admin.user.role.create') }}" class="btn btn-info btn-sm">ایجاد نقش جدید</a>
-                <div class="max-width-16-rem">
-                    <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
-                </div>
+            <section class="d-flex flex-column">
+                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                    <a href="{{ route('admin.user.role.create') }}" class="btn btn-info btn-sm">ایجاد نقش جدید</a>
+                    <div class="max-width-16-rem">
+                        <input type="text" class="form-control form-control-sm form-text" placeholder="جستجو">
+                    </div>
+                </section>
+                <section class="d-flex justify-content-between align-items-center mt-2 mb-3 border-bottom pb-2">
+                    <div class="mt-5">
+                        <form class="d-flex justify-content-between align-items-center"
+                              action="{{ route('admin.user.permissions.import') }}"
+                              enctype="multipart/form-data" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="">سطوح دسترسی</label>
+                                <input type="file" name="permissions" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm mr-3">بارگذاری</button>
+                        </form>
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ route('admin.user.permissions.export') }}" class="btn btn-primary btn-sm">خروجی فایل اکسل</a>
+                    </div>
+                </section>
             </section>
 
             <section class="table-responsive">

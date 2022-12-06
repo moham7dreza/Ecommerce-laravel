@@ -10,6 +10,13 @@ use App\Http\Services\Image\ImageService;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-gallery')->only(['index']);
+        $this->middleware('can:permission-product-gallery-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-gallery-delete')->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

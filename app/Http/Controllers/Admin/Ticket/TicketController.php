@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Ticket\TicketRequest;
 
 class TicketController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-all-tickets')->only(['index']);
+        $this->middleware('can:permission-new-tickets')->only(['newTickets']);
+        $this->middleware('can:permission-close-tickets')->only(['closeTickets']);
+        $this->middleware('can:permission-open-tickets')->only(['openTickets']);
+        $this->middleware('can:permission-all-ticket-show')->only(['show']);
+        $this->middleware('can:permission-all-ticket-change')->only(['change']);
+    }
 
     public function newTickets()
     {

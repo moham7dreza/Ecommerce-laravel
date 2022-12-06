@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Market\DeliveryRequest;
 
 class DeliveryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-delivery-methods')->only(['index']);
+        $this->middleware('can:permission-delivery-method-create')->only(['create', 'store']);
+        $this->middleware('can:permission-delivery-method-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-delivery-method-delete')->only(['destroy']);
+        $this->middleware('can:permission-delivery-method-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

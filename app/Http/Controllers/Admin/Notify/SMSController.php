@@ -9,6 +9,15 @@ use App\Http\Requests\Admin\Notify\SMSRequest;
 
 class SMSController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-sms-notify')->only(['index']);
+        $this->middleware('can:permission-sms-notify-create')->only(['create', 'store']);
+        $this->middleware('can:permission-sms-notify-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-sms-notify-delete')->only(['destroy']);
+        $this->middleware('can:permission-sms-notify-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

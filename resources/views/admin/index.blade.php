@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <section class="row">
         <section class="col-lg-3 col-md-6 col-12">
             <a href="#" class="text-decoration-none d-block mb-4">
@@ -170,6 +169,61 @@
 
     </section>
 
+    <section class="row">
+        <section class="col-12">
+            <section class="main-body-container">
+                <section class="main-body-container-header">
+                    <h5>
+                        بخش لاگ
+                    </h5>
+                    <p>
+                        در این بخش اطلاعاتی در مورد عملیات CRUD به شما داده می شود
+                    </p>
+                </section>
+                <section class="body-content">
+                    <section class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>عنوان</th>
+                                <th>توضیحات</th>
+                                <th>نام انجام دهنده</th>
+                                <th>اطلاعات کلی</th>
+                                <th>تاریخ ثبت</th>
+                                <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($logs as $log)
+                                <tr>
+                                    <th>{{ $log->id }}</th>
+                                    <td>{{ $log->log_name }}</td>
+                                    <td>{{ $log->description() }}</td>
+                                    <td>{{ $log->causerName() }}</td>
+                                    <td dir="rtl">
+                                        @if(empty($log->properties()))
+                                            <span class="text-danger">ویژگی ندارد</span>
+                                        @else
+                                            @foreach($log->properties() as $key => $value)
+                                                {{ $key . ' => ' . $value }} <br>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>{{ $log->getFaUpdatedDate() }}</td>
+                                    <td class="width-22-rem text-left">
+                                        <a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {{ $logs->links() }}
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">

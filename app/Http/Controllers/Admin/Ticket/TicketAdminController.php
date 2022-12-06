@@ -9,6 +9,12 @@ use App\Models\Ticket\TicketAdmin;
 
 class TicketAdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-admin-tickets')->only(['index']);
+        $this->middleware('can:permission-admin-ticket-add')->only(['set']);
+    }
+
     public function index()
     {
         $admins = User::where('user_type', 1)->get();

@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class GuaranteeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-guarantees')->only(['index']);
+        $this->middleware('can:permission-product-guarantee-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-guarantee-delete')->only(['destroy']);
+    }
+
     /**
      * Display a listing of the resource.
      *

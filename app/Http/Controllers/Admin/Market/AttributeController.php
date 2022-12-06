@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-property-attributes')->only(['index']);
+        $this->middleware('can:permission-product-property-attribute-create')->only(['create', 'store']);
+        $this->middleware('can:permission-product-property-attribute-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-product-property-attribute-delete')->only(['destroy']);
+        $this->middleware('can:permission-product-property-attribute-status')->only(['status']);
+    }
 
     /**
      * Display a listing of the resource.

@@ -9,6 +9,14 @@ use App\Http\Requests\Admin\Content\CommentRequest;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-comments')->only(['index']);
+        $this->middleware('can:permission-product-comment-show')->only(['show']);
+        $this->middleware('can:permission-product-comment-status')->only(['status']);
+        $this->middleware('can:permission-product-comment-approve')->only(['approved']);
+    }
+
     /**
      * Display a listing of the resource.
      *

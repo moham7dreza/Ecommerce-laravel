@@ -9,6 +9,15 @@ use App\Models\Ticket\TicketPriority;
 
 class TicketPriorityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-ticket-priorities')->only(['index']);
+        $this->middleware('can:permission-ticket-priority-create')->only(['create', 'store']);
+        $this->middleware('can:permission-ticket-priority-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-ticket-priority-delete')->only(['destroy']);
+        $this->middleware('can:permission-ticket-priority-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

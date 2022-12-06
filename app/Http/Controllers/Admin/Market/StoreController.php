@@ -11,6 +11,13 @@ use App\Http\Requests\Admin\Market\StoreUpdateRequest;
 
 class StoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-product-warehouse')->only(['index']);
+        $this->middleware('can:permission-product-warehouse-add')->only(['addToStore', 'store']);
+        $this->middleware('can:permission-product-warehouse-modify')->only(['edit', 'update']);
+    }
+
     /**
      * Display a listing of the resource.
      *

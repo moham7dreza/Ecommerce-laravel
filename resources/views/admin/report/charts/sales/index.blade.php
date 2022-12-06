@@ -13,6 +13,16 @@
         </ol>
     </nav>
 
+    <div class="mt-5">
+        <h3>Column Chart</h3>
+
+        <div id="chart_column">
+
+        </div>
+
+        {!! $chart->render('ColumnChart' , 'YearCount' , 'chart_column') !!}
+    </div>
+
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">

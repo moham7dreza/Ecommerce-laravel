@@ -11,6 +11,15 @@ use App\Http\Requests\Admin\Notify\EmailFileRequest;
 
 class EmailFileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-email-notify-files')->only(['index']);
+        $this->middleware('can:permission-email-notify-file-create')->only(['create', 'store']);
+        $this->middleware('can:permission-email-notify-file-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-email-notify-file-delete')->only(['destroy']);
+        $this->middleware('can:permission-email-notify-file-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

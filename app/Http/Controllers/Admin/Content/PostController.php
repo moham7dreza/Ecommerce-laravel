@@ -30,6 +30,12 @@ class PostController extends Controller
     {
         $this->postRepo = $postRepo;
         $this->postService = $postService;
+
+        $this->middleware('can:permission-posts')->only(['index']);
+        $this->middleware('can:permission-post-create')->only(['create', 'store']);
+        $this->middleware('can:permission-post-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-post-delete')->only(['destroy']);
+        $this->middleware('can:permission-post-status')->only(['status']);
     }
 
     /**

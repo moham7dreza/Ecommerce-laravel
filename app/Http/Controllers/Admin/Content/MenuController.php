@@ -15,6 +15,15 @@ use Illuminate\Http\Response;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-menus')->only(['index']);
+        $this->middleware('can:permission-menu-create')->only(['create', 'store']);
+        $this->middleware('can:permission-menu-edit')->only(['edit', 'update']);
+        $this->middleware('can:permission-menu-delete')->only(['destroy']);
+        $this->middleware('can:permission-menu-status')->only(['status']);
+    }
+
     /**
      * Display a listing of the resource.
      *

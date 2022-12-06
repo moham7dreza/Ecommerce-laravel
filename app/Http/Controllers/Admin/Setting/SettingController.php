@@ -12,6 +12,11 @@ use Illuminate\Http\Response;
 
 class SettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:permission-setting')->only(['index']);
+        $this->middleware('can:permission-setting-edit')->only(['edit', 'update']);
+    }
     /**
      * Display a listing of the resource.
      *
