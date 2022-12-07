@@ -12,7 +12,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -36,7 +35,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = $this->repo->index()->whereIn('position', [7,8,9])->paginate(5);
+        $banners = $this->repo->index()->whereIn('position', [7, 8, 9])->paginate(5);
         return view('adminto.banner.index', compact(['banners']));
     }
 
@@ -61,7 +60,7 @@ class BannerController extends Controller
     {
         if ($request->hasFile('image')) {
             $result = ShareService::saveImage($request->file('image'),
-                'adminto-banner', $image = null,$imageService);
+                'adminto-banner', $image = null, $imageService);
             if ($result === false) {
                 return redirect()->route('adminto.banner.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
@@ -74,7 +73,7 @@ class BannerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -85,7 +84,7 @@ class BannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(int $id)
@@ -122,7 +121,7 @@ class BannerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

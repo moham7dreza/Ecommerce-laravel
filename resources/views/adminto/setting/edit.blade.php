@@ -13,8 +13,9 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="p-2">
-                                <form class="form-horizontal" role="form" method="POST" action="{{ route('adminto.setting.update', $setting->id) }}"
-                                    enctype="multipart/form-data">
+                                <form class="form-horizontal" role="form" method="POST"
+                                      action="{{ route('adminto.setting.update', $setting->id) }}"
+                                      enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
                                     <input type="hidden" name="id" value="{{ $setting->id }}">
@@ -32,18 +33,21 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="keywords">کلمات کلیدی</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control @error('keywords') is-invalid @enderror"
-                                            value="{{ old('keywords', $setting->keywords) }}" id="keywords" name="keywords">
+                                            <input type="text"
+                                                   class="form-control @error('keywords') is-invalid @enderror"
+                                                   value="{{ old('keywords', $setting->keywords) }}" id="keywords"
+                                                   name="keywords">
                                             @error('keywords')
-                                                <br>
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            <br>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="description">توضیحات</label>
                                         <div class="col-sm-10">
-                                            <textarea rows="3" class="form-control @error('description') is-invalid @enderror"
+                                            <textarea rows="3"
+                                                      class="form-control @error('description') is-invalid @enderror"
                                                       id="description" name="description"
                                             >{{ old('description', $setting->description) }}</textarea>
                                             @error('description')

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\admin\user;
 
 use App\Exports\User\PermissionsExport;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\RoleRequest;
 use App\Imports\User\PermissionsImport;
+use App\Models\User\Permission;
 use App\Models\User\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\User\Permission;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User\RoleRequest;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -141,6 +141,6 @@ class RoleController extends Controller
 
     public function permissionsExport(): BinaryFileResponse
     {
-        return Excel::download(new PermissionsExport() , "export_user_permissions.xlsx");
+        return Excel::download(new PermissionsExport(), "export_user_permissions.xlsx");
     }
 }

@@ -56,7 +56,8 @@
                                     <p>{{ $post->summary ?? '-' }}</p>
                                     <div class="bottom_info">
                                         <div class="pull-left"><a class="btn sqaure_bt"
-                                                                  href="{{ route('it-city.blog.post.detail', $post) }}"><i class="fa fa-angle-right"></i>
+                                                                  href="{{ route('it-city.blog.post.detail', $post) }}"><i
+                                                    class="fa fa-angle-right"></i>
                                                 ادامه مطلب </a></div>
                                         <div class="pull-right">
 

@@ -81,7 +81,7 @@
 
                                 <section class="remove_product_from_favorite">
                                     <a href="{{ route('customer.profile.favorites.delete', $product) }}"
-                                        class="text-decoration-none cart-delete"><i
+                                       class="text-decoration-none cart-delete"><i
                                             class="fa fa-trash-alt"></i> حذف
                                         از لیست علاقه ها
                                     </a>

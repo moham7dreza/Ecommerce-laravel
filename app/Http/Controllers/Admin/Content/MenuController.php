@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Content;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Content\MenuRequest;
 use App\Models\Content\Menu;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Content\MenuRequest;
 use Illuminate\Http\Response;
 
 class MenuController extends Controller
@@ -55,8 +54,7 @@ class MenuController extends Controller
     public function store(MenuRequest $request): RedirectResponse
     {
         $inputs = $request->all();
-        if ($request->level == 3)
-        {
+        if ($request->level == 3) {
             $inputs['parent_id'] = $request->sub_menu_id;
         }
         $menu = Menu::query()->create($inputs);
@@ -66,7 +64,7 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -87,7 +85,7 @@ class MenuController extends Controller
             ['status', 1],
             ['location', $menu->location]
         ])->get()->except($menu->id);
-        return view('admin.content.menu.edit', compact('menu' ,'parent_menus'));
+        return view('admin.content.menu.edit', compact('menu', 'parent_menus'));
     }
 
     /**
@@ -122,15 +120,13 @@ class MenuController extends Controller
 
         $menu->status = $menu->status == 0 ? 1 : 0;
         $result = $menu->save();
-        if($result){
-                if($menu->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($menu->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 
@@ -139,11 +135,9 @@ class MenuController extends Controller
     public function getSubMenus(Menu $menu): JsonResponse
     {
         $subMenus = $menu->children;
-        if($subMenus != null)
-        {
+        if ($subMenus != null) {
             return response()->json(['status' => true, 'subMenus' => $subMenus]);
-        }
-        else{
+        } else {
             return response()->json(['status' => false, 'subMenus' => null]);
         }
     }
@@ -152,11 +146,9 @@ class MenuController extends Controller
     {
         $menus = Menu::query()->where('status', 1)->where('location', $location)->where('parent_id', null)->get();
 
-        if($menus != null)
-        {
+        if ($menus != null) {
             return response()->json(['status' => true, 'menus' => $menus]);
-        }
-        else{
+        } else {
             return response()->json(['status' => false, 'menus' => null]);
         }
     }

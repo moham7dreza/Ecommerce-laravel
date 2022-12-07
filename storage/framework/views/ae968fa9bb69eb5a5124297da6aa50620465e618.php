@@ -6,7 +6,7 @@
             <strong class="ml-auto"><?php echo e(session('toast-error')); ?></strong>
             <button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+            </button>
         </section>
     </section>
 
@@ -15,7 +15,6 @@
             $('.toast').toast('show');
         })
     </script>
-
 
 <?php endif; ?>
 <?php /**PATH C:\CODEX\techzilla\resources\views/admin/alerts/toast/error.blade.php ENDPATH**/ ?>

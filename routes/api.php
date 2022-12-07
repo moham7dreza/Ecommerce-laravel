@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\Market\OrderController;
 use App\Http\Controllers\Api\Market\ProductController;
 use App\Http\Controllers\Api\Market\ReportController;
 use App\Http\Controllers\Api\NotificationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -6,10 +6,12 @@
         @foreach ($latestComments as $comment)
             <div class="last-comment mb-20 d-flex wow fadeIn animated">
                                             <span class="item-count vertical-align">
-                                                <a class="red-tooltip author-avatar" href="{{ $comment->getAuthorPath() }}"
+                                                <a class="red-tooltip author-avatar"
+                                                   href="{{ $comment->getAuthorPath() }}"
                                                    data-toggle="tooltip" data-placement="top"
                                                    data-original-title="{{ $comment->textAuthorName() }} - {{ $comment->getAuthorPostsCount() }} پست">
-                                                    <img src="{{ $comment->authorImage() }}" alt="{{ $comment->textAuthorName() }}">
+                                                    <img src="{{ $comment->authorImage() }}"
+                                                         alt="{{ $comment->textAuthorName() }}">
                                                 </a>
                                             </span>
                 <div class="alith_post_title_small">

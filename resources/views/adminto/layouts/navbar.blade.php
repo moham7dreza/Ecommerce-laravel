@@ -21,10 +21,11 @@
                 <div class="slimscroll noti-scroll">
                     @if (! is_null($notifications))
                         @foreach ($notifications as $notification)
-{{--                            {{ $notification->markAsRead() }}--}}
+                            {{--                            {{ $notification->markAsRead() }}--}}
                             <a href="" target="_blank" class="dropdown-item notify-item active">
                                 <div class="notify-icon">
-                                    <img src="{{ auth()->user()->image() }}" class="img-fluid rounded-circle" alt="{{ auth()->user()->fullName }}" />
+                                    <img src="{{ auth()->user()->image() }}" class="img-fluid rounded-circle"
+                                         alt="{{ auth()->user()->fullName }}"/>
                                 </div>
                                 <p class="notify-details"></p>
                                 <p class="text-muted mb-0 user-msg">

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,8 @@
     <meta name="author" content="">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet">
 
     <title>Chain App Dev - App Landing Page HTML5 Template</title>
 
@@ -26,7 +26,8 @@
     -->
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('app-assets/assets/css/templatemo-chain-app-dev.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('app-assets/assets/css/owl.css') }}">
@@ -66,7 +67,10 @@
                         <li class="scroll-to-section"><a href="#about">About</a></li>
                         <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
                         <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
-                        <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li>
+                        <li>
+                            <div class="gradient-button"><a id="modal_trigger" href="#modal"><i
+                                        class="fa fa-sign-in-alt"></i> Sign In Now</a></div>
+                        </li>
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -115,20 +119,21 @@
         <div class="user_login">
             <form>
                 <label>Email / Username</label>
-                <input type="text" />
-                <br />
+                <input type="text"/>
+                <br/>
 
                 <label>Password</label>
-                <input type="password" />
-                <br />
+                <input type="password"/>
+                <br/>
 
                 <div class="checkbox">
-                    <input id="remember" type="checkbox" />
+                    <input id="remember" type="checkbox"/>
                     <label for="remember">Remember me on this computer</label>
                 </div>
 
                 <div class="action_btns">
-                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a>
+                    </div>
                     <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
                 </div>
             </form>
@@ -140,24 +145,25 @@
         <div class="user_register">
             <form>
                 <label>Full Name</label>
-                <input type="text" />
-                <br />
+                <input type="text"/>
+                <br/>
 
                 <label>Email Address</label>
-                <input type="email" />
-                <br />
+                <input type="email"/>
+                <br/>
 
                 <label>Password</label>
-                <input type="password" />
-                <br />
+                <input type="password"/>
+                <br/>
 
                 <div class="checkbox">
-                    <input id="send_updates" type="checkbox" />
+                    <input id="send_updates" type="checkbox"/>
                     <label for="send_updates">Send me occasional email updates</label>
                 </div>
 
                 <div class="action_btns">
-                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+                    <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a>
+                    </div>
                     <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
                 </div>
             </form>
@@ -171,11 +177,14 @@
             <div class="col-lg-12">
                 <div class="row">
                     <div class="col-lg-6 align-self-center">
-                        <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                        <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
+                             data-wow-delay="1s">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <h2>Get The Latest App From App Stores</h2>
-                                    <p>Chain App Dev is an app landing page HTML5 template based on Bootstrap v5.1.3 CSS layout provided by TemplateMo, a great website to download free CSS templates.</p>
+                                    <p>Chain App Dev is an app landing page HTML5 template based on Bootstrap v5.1.3 CSS
+                                        layout provided by TemplateMo, a great website to download free CSS
+                                        templates.</p>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="white-button first-button scroll-to-section">
@@ -206,7 +215,11 @@
                 <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
                     <h4>Amazing <em>Services &amp; Features</em> for you</h4>
                     <img src="{{ asset('app-assets/assets/images/heading-line-dec.png') }}" alt="">
-                    <p>If you need the greatest collection of HTML templates for your business, please visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS</a> Blog. If you need to have a contact form PHP script, go to <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more information.</p>
+                    <p>If you need the greatest collection of HTML templates for your business, please visit <a
+                            rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS</a> Blog. If you need
+                        to have a contact form PHP script, go to <a href="https://templatemo.com/contact"
+                                                                    target="_parent">our contact page</a> for more
+                        information.</p>
                 </div>
             </div>
         </div>
@@ -227,7 +240,8 @@
                 <div class="service-item second-service">
                     <div class="icon"></div>
                     <h4>Rocket Speed of App</h4>
-                    <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.</p>
+                    <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this
+                        layout.</p>
                     <div class="text-button">
                         <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
                     </div>
@@ -237,7 +251,10 @@
                 <div class="service-item third-service">
                     <div class="icon"></div>
                     <h4>Multi Workflow Idea</h4>
-                    <p>If this template is beneficial for your work, please support us <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p>
+                    <p>If this template is beneficial for your work, please support us <a rel="nofollow"
+                                                                                          href="https://paypal.me/templatemo"
+                                                                                          target="_blank">a little via
+                            PayPal</a>. Thank you.</p>
                     <div class="text-button">
                         <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
                     </div>
@@ -247,7 +264,8 @@
                 <div class="service-item fourth-service">
                     <div class="icon"></div>
                     <h4>24/7 Help &amp; Support</h4>
-                    <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion axe.</p>
+                    <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion
+                        axe.</p>
                     <div class="text-button">
                         <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
                     </div>
@@ -264,7 +282,8 @@
                 <div class="section-heading">
                     <h4>About <em>What We Do</em> &amp; Who We Are</h4>
                     <img src="{{ asset('app-assets/assets/images/heading-line-dec.png') }}" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut
+                        labore et dolore magna.</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -292,7 +311,8 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor idunte ut labore et dolore adipiscing  magna.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor idunte ut
+                            labore et dolore adipiscing magna.</p>
                         <div class="gradient-button">
                             <a href="#">Start 14-Day Free Trial</a>
                         </div>
@@ -316,7 +336,8 @@
                 <div class="section-heading">
                     <h4>Check What <em>The Clients Say</em> About Our App Dev</h4>
                     <img src="{{ asset('app-assets/assets/images/heading-line-dec.png') }}" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut
+                        labore et dolore magna.</p>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -440,12 +461,18 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="client-content">
-                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}" alt="">
-                                                            <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                                                lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
+                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}"
+                                                                 alt="">
+                                                            <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit,
+                                                                sed do eismod tempor idunte ut labore et dolore magna
+                                                                aliqua darwin kengan
+                                                                lorem ipsum dolor sit amet, consectetur picing elit
+                                                                massive big blasta.”</p>
                                                         </div>
                                                         <div class="down-content">
-                                                            <img src="{{ asset('app-assets/assets/images/client-image.jpg') }}" alt="">
+                                                            <img
+                                                                src="{{ asset('app-assets/assets/images/client-image.jpg') }}"
+                                                                alt="">
                                                             <div class="right-content">
                                                                 <h4>David Martino</h4>
                                                                 <span>CEO of David Company</span>
@@ -462,12 +489,18 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="client-content">
-                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}" alt="">
-                                                            <p>“CTO, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                                                lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
+                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}"
+                                                                 alt="">
+                                                            <p>“CTO, Lorem ipsum dolor sit amet, consectetur adpiscing
+                                                                elit, sed do eismod tempor idunte ut labore et dolore
+                                                                magna aliqua darwin kengan
+                                                                lorem ipsum dolor sit amet, consectetur picing elit
+                                                                massive big blasta.”</p>
                                                         </div>
                                                         <div class="down-content">
-                                                            <img src="{{ asset('app-assets/assets/images/client-image.jpg') }}" alt="">
+                                                            <img
+                                                                src="{{ asset('app-assets/assets/images/client-image.jpg') }}"
+                                                                alt="">
                                                             <div class="right-content">
                                                                 <h4>Jake H. Nyo</h4>
                                                                 <span>CTO of Digital Company</span>
@@ -484,12 +517,18 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="client-content">
-                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}" alt="">
-                                                            <p>“May, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                                                lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
+                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}"
+                                                                 alt="">
+                                                            <p>“May, Lorem ipsum dolor sit amet, consectetur adpiscing
+                                                                elit, sed do eismod tempor idunte ut labore et dolore
+                                                                magna aliqua darwin kengan
+                                                                lorem ipsum dolor sit amet, consectetur picing elit
+                                                                massive big blasta.”</p>
                                                         </div>
                                                         <div class="down-content">
-                                                            <img src="{{ asset('app-assets/assets/images/client-image.jpg') }}" alt="">
+                                                            <img
+                                                                src="{{ asset('app-assets/assets/images/client-image.jpg') }}"
+                                                                alt="">
                                                             <div class="right-content">
                                                                 <h4>May C.</h4>
                                                                 <span>Founder of Catherina Co.</span>
@@ -506,12 +545,18 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="client-content">
-                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}" alt="">
-                                                            <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                                                lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
+                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}"
+                                                                 alt="">
+                                                            <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit,
+                                                                sed do eismod tempor idunte ut labore et dolore magna
+                                                                aliqua darwin kengan
+                                                                lorem ipsum dolor sit amet, consectetur picing elit
+                                                                massive big blasta.”</p>
                                                         </div>
                                                         <div class="down-content">
-                                                            <img src="{{ asset('app-assets/assets/images/client-image.jpg') }}" alt="">
+                                                            <img
+                                                                src="{{ asset('app-assets/assets/images/client-image.jpg') }}"
+                                                                alt="">
                                                             <div class="right-content">
                                                                 <h4>Random Staff</h4>
                                                                 <span>Manager, Digital Company</span>
@@ -528,12 +573,18 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="client-content">
-                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}" alt="">
-                                                            <p>“Mark, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                                                lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
+                                                            <img src="{{ asset('app-assets/assets/images/quote.png') }}"
+                                                                 alt="">
+                                                            <p>“Mark, Lorem ipsum dolor sit amet, consectetur adpiscing
+                                                                elit, sed do eismod tempor idunte ut labore et dolore
+                                                                magna aliqua darwin kengan
+                                                                lorem ipsum dolor sit amet, consectetur picing elit
+                                                                massive big blasta.”</p>
                                                         </div>
                                                         <div class="down-content">
-                                                            <img src="{{ asset('app-assets/assets/images/client-image.jpg') }}" alt="">
+                                                            <img
+                                                                src="{{ asset('app-assets/assets/images/client-image.jpg') }}"
+                                                                alt="">
                                                             <div class="right-content">
                                                                 <h4>Mark Am</h4>
                                                                 <span>CTO, Amber Do Company</span>
@@ -561,7 +612,8 @@
                 <div class="section-heading">
                     <h4>We Have The Best Pre-Order <em>Prices</em> You Can Get</h4>
                     <img src="{{ asset('app-assets/assets/images/heading-line-dec.png') }}" alt="">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut
+                        labore et dolore magna.</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -641,12 +693,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-sm-6">
                             <fieldset>
-                                <input type="address" name="address" class="email" placeholder="Email Address..." autocomplete="on" required>
+                                <input type="address" name="address" class="email" placeholder="Email Address..."
+                                       autocomplete="on" required>
                             </fieldset>
                         </div>
                         <div class="col-lg-6 col-sm-6">
                             <fieldset>
-                                <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+                                <button type="submit" class="main-button">Subscribe Now <i
+                                        class="fa fa-angle-right"></i></button>
                             </fieldset>
                         </div>
                     </div>
@@ -702,13 +756,15 @@
                     <div class="logo">
                         <img src="assets/images/white-logo.png" alt="">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore.</p>
                 </div>
             </div>
             <div class="col-lg-12">
                 <div class="copyright-text">
                     <p>Copyright © 2022 Chain App Dev Company. All Rights Reserved.
-                        <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a></p>
+                        <br>Design: <a href="https://templatemo.com/" target="_blank"
+                                       title="css templates">TemplateMo</a></p>
                 </div>
             </div>
         </div>

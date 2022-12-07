@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\User\UpdateUserInfoRequest;
 use App\Models\Market\Product;
 use App\Models\Province;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -29,7 +28,7 @@ class ProfileController extends Controller
 
     public function myOrders()
     {
-        $order_status_value= null;
+        $order_status_value = null;
         if (isset(request()->type)) {
             $orders = auth()->user()->orders()->where('order_status', request()->type)->orderBy('id', 'desc')->get();
             switch (request()->type) {

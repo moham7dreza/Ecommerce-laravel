@@ -2,7 +2,6 @@
 
 namespace App\Models\ItCity\Office;
 
-use App\Models\Market\Brand;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -68,6 +67,7 @@ class ServiceCategory extends Model
     {
         return $this->status === Status::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
+
     public function imagePath(): string
     {
         return asset($this->image['indexArray']['medium']);

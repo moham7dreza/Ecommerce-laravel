@@ -69,7 +69,7 @@
                         <tr class="border-bottom">
                             <th>محبوبیت سیستم</th>
                             <td class="text-left font-weight-bolder">
-                                {{ $system->system_rating ?? '-' }}  از 10
+                                {{ $system->system_rating ?? '-' }} از 10
                             </td>
                         </tr>
                         <tr class="table-primary">
@@ -101,12 +101,12 @@
     <script>
 
         var printBtn = document.getElementById('print');
-        printBtn.addEventListener('click', function(){
+        printBtn.addEventListener('click', function () {
             printContent('printable');
         })
 
 
-        function printContent(el){
+        function printContent(el) {
 
             var restorePage = $('body').html();
             var printContent = $('#' + el).clone();

@@ -325,8 +325,8 @@ class Permission extends Model
 
     // 7- ALL TICKET
     public const PERMISSION_ALL_TICKETS = ['name' => 'permission-all-tickets', 'description' => 'دسترسی به بخش همه تیکت ها'];
-    public const PERMISSION_ALL_TICKET_SHOW = ['name' => 'permission-all-ticket-show', 'description' => 'دسترسی به بخش مشاهده تیکت'];
-    public const PERMISSION_ALL_TICKET_CHANGE = ['name' => 'permission-all-ticket-change', 'description' => 'دسترسی به بخش تغییر وضعیت تیکت'];
+    public const PERMISSION_TICKET_SHOW = ['name' => 'permission-ticket-show', 'description' => 'دسترسی به بخش مشاهده تیکت'];
+    public const PERMISSION_TICKET_CHANGE = ['name' => 'permission-ticket-change', 'description' => 'دسترسی به بخش تغییر وضعیت تیکت'];
 
 
     // NOTIFY Section Permissions
@@ -593,8 +593,8 @@ class Permission extends Model
         , self::PERMISSION_CLOSE_TICKET_SHOW
         , self::PERMISSION_CLOSE_TICKET_CHANGE
         , self::PERMISSION_ALL_TICKETS
-        , self::PERMISSION_ALL_TICKET_SHOW
-        , self::PERMISSION_ALL_TICKET_CHANGE
+        , self::PERMISSION_TICKET_SHOW
+        , self::PERMISSION_TICKET_CHANGE
         , self::PERMISSION_NOTIFY
         , self::PERMISSION_EMAIL_NOTIFY
         , self::PERMISSION_EMAIL_NOTIFY_CREATE

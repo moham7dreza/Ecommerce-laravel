@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User\Permission;
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class PermissionsSeeder extends Seeder
 {

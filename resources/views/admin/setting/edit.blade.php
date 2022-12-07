@@ -128,7 +128,8 @@
                             <section class="col-md-6">
                                 <div class="form-group">
                                     <label for="office_telephone">شماره دفتر</label>
-                                    <input type="text" class="form-control form-control-sm" name="office_telephone" id="office_telephone"
+                                    <input type="text" class="form-control form-control-sm" name="office_telephone"
+                                           id="office_telephone"
                                            value="{{ old('office_telephone', json_decode($setting->mobile, true)['office_telephone']) }}">
                                 </div>
                                 @error('office_telephone')

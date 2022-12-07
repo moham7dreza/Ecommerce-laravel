@@ -6,7 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailViewProvider extends Mailable {
+class MailViewProvider extends Mailable
+{
 
     use Queueable, SerializesModels;
 

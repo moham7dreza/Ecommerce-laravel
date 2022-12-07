@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\SmartAssemble\SystemCategoryRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemMeta;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SystemCategoryController extends Controller
@@ -37,19 +36,17 @@ class SystemCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SystemCategoryRequest $request, ImageService $imageService)
     {
         $inputs = $request->all();
-        if($request->hasFile('image'))
-        {
+        if ($request->hasFile('image')) {
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-category');
             $result = $imageService->createIndexAndSave($request->file('image'));
         }
-        if($result === false)
-        {
+        if ($result === false) {
             return redirect()->route('admin.smart-assemble.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
         }
         $inputs['image'] = $result;
@@ -58,7 +55,7 @@ class SystemCategoryController extends Controller
 
             $systemCategory = SystemCategory::create($inputs);
             $metas = array_combine($request->meta_key, $request->meta_value);
-            foreach ($metas as $key => $value){
+            foreach ($metas as $key => $value) {
                 $meta = SystemMeta::create([
                     'meta_key' => $key,
                     'meta_value' => $value,
@@ -74,7 +71,7 @@ class SystemCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -85,7 +82,7 @@ class SystemCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(SystemCategory $systemCategory)
@@ -93,34 +90,30 @@ class SystemCategoryController extends Controller
         $parent_categories = SystemCategory::where('parent_id', null)->get()->except($systemCategory->id);
         return view('admin.smart-assemble.category.edit', compact('systemCategory', 'parent_categories'));
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(SystemCategoryRequest $request, SystemCategory $systemCategory, ImageService $imageService)
     {
         $inputs = $request->all();
 
-        if($request->hasFile('image'))
-        {
-            if(!empty($systemCategory->image))
-            {
+        if ($request->hasFile('image')) {
+            if (!empty($systemCategory->image)) {
                 $imageService->deleteDirectoryAndFiles($systemCategory->image['directory']);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'system-category');
             $result = $imageService->createIndexAndSave($request->file('image'));
-            if($result === false)
-            {
+            if ($result === false) {
                 return redirect()->route('admin.smart-assemble.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['image'] = $result;
-        }
-        else{
-            if(isset($inputs['currentImage']) && !empty($systemCategory->image))
-            {
+        } else {
+            if (isset($inputs['currentImage']) && !empty($systemCategory->image)) {
                 $image = $systemCategory->image;
                 $image['currentImage'] = $inputs['currentImage'];
                 $inputs['image'] = $image;
@@ -154,7 +147,7 @@ class SystemCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(SystemCategory $systemCategory)
@@ -163,19 +156,18 @@ class SystemCategoryController extends Controller
         return redirect()->route('admin.smart-assemble.category.index')->with('swal-success', 'دسته بندی شما با موفقیت حذف شد');
     }
 
-    public function status(SystemCategory $systemCategory){
+    public function status(SystemCategory $systemCategory)
+    {
 
         $systemCategory->status = $systemCategory->status == 0 ? 1 : 0;
         $result = $systemCategory->save();
-        if($result){
-            if($systemCategory->status == 0){
+        if ($result) {
+            if ($systemCategory->status == 0) {
                 return response()->json(['status' => true, 'checked' => false]);
-            }
-            else{
+            } else {
                 return response()->json(['status' => true, 'checked' => true]);
             }
-        }
-        else{
+        } else {
             return response()->json(['status' => false]);
         }
 

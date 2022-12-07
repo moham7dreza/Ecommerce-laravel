@@ -34,16 +34,17 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                        <a href="{{ route('panel.content.menu.create') }}" class="arrow-none btn btn-primary text-white" aria-expanded="false">
-                            ساخت منوی جدید
-                        </a>
-                    </div>
-                    <h4 class="mt-0 header-title">لیست تمامی منوها</h4>
+                            <a href="{{ route('panel.content.menu.create') }}"
+                               class="arrow-none btn btn-primary text-white" aria-expanded="false">
+                                ساخت منوی جدید
+                            </a>
+                        </div>
+                        <h4 class="mt-0 header-title">لیست تمامی منوها</h4>
 
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عنوان منو</th>
@@ -52,8 +53,8 @@
                                     <th>تاریخ ساخت</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($menus as $menu)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -68,17 +69,21 @@
                                         <td>{{ $menu->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.content.menu.edit', $menu->id) }}" class="btn btn-warning">
+                                                <a href="{{ route('panel.content.menu.edit', $menu->id) }}"
+                                                   class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.content.menu.change.status', $menu->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.content.menu.change.status', $menu->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.content.menu.destroy', $menu->id) }}" method="POST">
+                                                <form action="{{ route('panel.content.menu.destroy', $menu->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">
@@ -89,15 +94,15 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                        <hr>
-                        {{ $menus->links() }}
+                                </tbody>
+                            </table>
+                            <hr>
+                            {{ $menus->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

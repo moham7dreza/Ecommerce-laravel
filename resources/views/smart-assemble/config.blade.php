@@ -22,8 +22,10 @@
                 <!-- start breadcrumb -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a>
+                        </li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                                اسمبل هوشمند</a></li>
                         <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
                         <li class="breadcrumb-item font-size-12">{{ $systemCategory->name}}</li>
                         <li class="breadcrumb-item font-size-12">{{ $systemType->name}}</li>
@@ -37,9 +39,9 @@
                 @foreach($systemConfigs as $systemConfig)
                     <div class="col">
                         <div class="card shadow-sm">
-{{--                                                        @php--}}
-{{--                                                            $system = \App\Models\SmartAssemble\System::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->where('system_gen_id', $systemCpu->id)->where('system_config_id', $systemConfig->id)->first();--}}
-{{--                                                        @endphp--}}
+                            {{--                                                        @php--}}
+                            {{--                                                            $system = \App\Models\SmartAssemble\System::where('system_category_id', $systemCategory->id)->where('system_type_id', $systemType->id)->where('system_gen_id', $systemCpu->id)->where('system_config_id', $systemConfig->id)->first();--}}
+                            {{--                                                        @endphp--}}
                             <a href="{{ route('smart.assemble.build', ['systemCategory' => $systemCategory, 'systemType' => $systemType, 'systemCpu'=> $systemCpu, 'systemConfig'=> $systemConfig]) }}">
                                 <img src="{{ asset($systemConfig->image['indexArray']['medium']) }}"
                                      class="bd-placeholder-img card-img-top" alt="...">
@@ -78,8 +80,10 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#"
+                                                                class="text-decoration-none text-dark">فروشگاه</a></li>
+                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                            اسمبل هوشمند</a></li>
                     <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}
                         -{{ $systemType->name }}-{{ $systemCpu->name }}
                         اسمبل شده

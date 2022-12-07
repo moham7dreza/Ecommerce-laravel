@@ -23,7 +23,8 @@
                                 </a>
                             </div>
                             <div class="post-content media-body">
-                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
+                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن
+                                        ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                     <span class="post-by">توسط <a href="author.html">همتی</a></span>
                                     <span class="post-on">5 ساعت قبل</span>
@@ -39,7 +40,8 @@
                                 </a>
                             </div>
                             <div class="post-content media-body">
-                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
+                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن
+                                        ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                     <span class="post-by">توسط <a href="author.html">روستایی</a></span>
                                     <span class="post-on">3 ساعت قبل</span>
@@ -55,7 +57,8 @@
                                 </a>
                             </div>
                             <div class="post-content media-body">
-                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
+                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن
+                                        ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                     <span class="post-by">توسط <a href="author.html">راستی</a></span>
                                     <span class="post-on">4 ساعت قبل</span>
@@ -71,7 +74,8 @@
                                 </a>
                             </div>
                             <div class="post-content media-body">
-                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
+                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن
+                                        ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                     <span class="post-by">توسط <a href="author.html">کیمیا</a></span>
                                     <span class="post-on">5 ساعت قبل</span>
@@ -87,7 +91,8 @@
                                 </a>
                             </div>
                             <div class="post-content media-body">
-                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
+                                <h6 class="post-title mb-10 text-limit-2-row"><a href="single.html">لورم ایپسوم متن
+                                        ساختگی با تولید سادگی نامفهوم از صنعت چاپ</a></h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                     <span class="post-by">توسط <a href="author.html">رضا</a></span>
                                     <span class="post-on">5 ساعت قبل</span>
@@ -123,7 +128,8 @@
             <div class="widget-header tags-close mb-20">
                 <h5 class="widget-title mt-5">محل تبلیغات شما</h5>
             </div>
-            <a href="news-viral-assets/imgs/news-1.jpg" class="play-video" data-animate="zoomIn" data-duration="1.5s" data-delay="0.1s">
+            <a href="news-viral-assets/imgs/news-1.jpg" class="play-video" data-animate="zoomIn" data-duration="1.5s"
+               data-delay="0.1s">
                 <img class="border-radius-10" src="news-viral-assets/imgs/ads-1.jpg" alt="">
             </a>
         </div>

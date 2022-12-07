@@ -2,7 +2,6 @@
 
 namespace App\Models\SmartAssemble;
 
-use App\Models\Market\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -42,7 +41,7 @@ class System extends Model
 
     public function system_name()
     {
-        return $this->category->name. '-' . $this->system_type->name. '-' . $this->cpu->name. '-' . $this->config->name;
+        return $this->category->name . '-' . $this->system_type->name . '-' . $this->cpu->name . '-' . $this->config->name;
     }
 
     public function images()

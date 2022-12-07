@@ -5,7 +5,6 @@ namespace App\Http\Requests\Panel\Office;
 use App\Models\ItCity\Office\ServiceCategory;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use Share\Enums\Status;
 
 class CategoryRequest extends FormRequest
 {

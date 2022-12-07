@@ -43,7 +43,8 @@
                                 <div class="service_cont">
                                     <h3 class="service_head">{{ $service->name }}</h3>
                                     <p>{!! $service->description !!}</p>
-                                    <div class="bt_cont"><a class="btn sqaure_bt" href="it_service_detail.html">ثبت قرار ملاقات</a></div>
+                                    <div class="bt_cont"><a class="btn sqaure_bt" href="it_service_detail.html">ثبت قرار
+                                            ملاقات</a></div>
                                 </div>
                             </div>
                         </div>

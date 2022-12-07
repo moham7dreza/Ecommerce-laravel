@@ -6,12 +6,11 @@
 
 @section('content')
 
-
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">بخش محتوی</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">دسته بندی</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#">بخش محتوی</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#">دسته بندی</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page"> ایجاد دسته بندی</li>
         </ol>
     </nav>
@@ -32,7 +31,7 @@
 
                 <section>
                     <form action="{{ route('admin.content.category.update', $postCategory->id) }}" method="post"
-                        enctype="multipart/form-data" id="form">
+                          enctype="multipart/form-data" id="form">
                         @csrf
                         {{ method_field('put') }}
                         <section class="row">
@@ -41,10 +40,10 @@
                                 <div class="form-group">
                                     <label for="name">نام دسته</label>
                                     <input type="text" class="form-control form-control-sm" name="name" id="name"
-                                        value="{{ old('name', $postCategory->name) }}">
+                                           value="{{ old('name', $postCategory->name) }}">
                                 </div>
                                 @error('name')
-                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                         <strong>
                                             {{ $message }}
                                         </strong>
@@ -58,7 +57,8 @@
                                         <option value="">منوی اصلی</option>
                                         @foreach ($parent_categories as $parent_category)
 
-                                            <option value="{{ $parent_category->id }}"  @if(old('parent_id', $postCategory->parent_id) == $parent_category->id) selected @endif>{{ $parent_category->name }}</option>
+                                            <option value="{{ $parent_category->id }}"
+                                                    @if(old('parent_id', $postCategory->parent_id) == $parent_category->id) selected @endif>{{ $parent_category->name }}</option>
 
                                         @endforeach
 
@@ -94,13 +94,13 @@
                                 <div class="form-group">
                                     <label for="tags">تگ ها</label>
                                     <input type="hidden" class="form-control form-control-sm" name="tags" id="tags"
-                                        value="{{ old('tags', $postCategory->tags) }}">
+                                           value="{{ old('tags', $postCategory->tags) }}">
                                     <select class="select2 form-control form-control-sm" id="select_tags" multiple>
 
                                     </select>
                                 </div>
                                 @error('tags')
-                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                         <strong>
                                             {{ $message }}
                                         </strong>
@@ -112,12 +112,16 @@
                                 <div class="form-group">
                                     <label for="status">وضعیت</label>
                                     <select name="status" id="" class="form-control form-control-sm" id="status">
-                                        <option value="0" @if (old('status', $postCategory->status) == 0) selected @endif>غیرفعال</option>
-                                        <option value="1" @if (old('status', $postCategory->status) == 1) selected @endif>فعال</option>
+                                        <option value="0"
+                                                @if (old('status', $postCategory->status) == 0) selected @endif>غیرفعال
+                                        </option>
+                                        <option value="1"
+                                                @if (old('status', $postCategory->status) == 1) selected @endif>فعال
+                                        </option>
                                     </select>
                                 </div>
                                 @error('status')
-                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                         <strong>
                                             {{ $message }}
                                         </strong>
@@ -131,7 +135,7 @@
                                     <input type="file" class="form-control form-control-sm" name="image" id="image">
                                 </div>
                                 @error('image')
-                                    <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
+                                <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
                                         <strong>
                                             {{ $message }}
                                         </strong>
@@ -139,37 +143,39 @@
                                 @enderror
                             </section>
 
-                                <section class="row">
-                                    @php
-                                        $number = 1;
-                                        @endphp
-                                    @foreach ($postCategory->image['indexArray'] as $key => $value )
+                            <section class="row">
+                                @php
+                                    $number = 1;
+                                @endphp
+                                @foreach ($postCategory->image['indexArray'] as $key => $value )
                                     <section class="col-md-{{ 6 / $number }}">
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" name="currentImage" value="{{ $key }}" id="{{ $number }}" @if($postCategory->image['currentImage'] == $key) checked @endif>
+                                            <input type="radio" class="form-check-input" name="currentImage"
+                                                   value="{{ $key }}" id="{{ $number }}"
+                                                   @if($postCategory->image['currentImage'] == $key) checked @endif>
                                             <label for="{{ $number }}" class="form-check-label mx-2">
                                                 <img src="{{ asset($value) }}" class="w-100" alt="">
                                             </label>
                                         </div>
                                     </section>
                                     @php
-                                    $number++;
-                                @endphp
-                                    @endforeach
-
-                                </section>
+                                        $number++;
+                                    @endphp
+                                @endforeach
 
                             </section>
 
-                            <section class="col-12 my-3">
-                                <button class="btn btn-primary btn-sm">ثبت</button>
-                            </section>
                         </section>
-                    </form>
-                </section>
 
+                        <section class="col-12 my-3">
+                            <button class="btn btn-primary btn-sm">ثبت</button>
+                        </section>
+                </section>
+                </form>
             </section>
+
         </section>
+    </section>
     </section>
 
 @endsection
@@ -181,7 +187,7 @@
         CKEDITOR.replace('description');
     </script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var tags_input = $('#tags');
             var select_tags = $('#select_tags');
             var default_tags = tags_input.val();
@@ -199,7 +205,7 @@
             select_tags.children('option').attr('selected', true).trigger('change');
 
 
-            $('#form').submit(function(event) {
+            $('#form').submit(function (event) {
                 if (select_tags.val() !== null && select_tags.val().length > 0) {
                     var selectedSource = select_tags.val().join(',');
                     tags_input.val(selectedSource)

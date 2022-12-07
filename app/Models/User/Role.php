@@ -3,10 +3,10 @@
 namespace App\Models\User;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Share\Traits\HasFaDate;
 
@@ -31,14 +31,15 @@ class Role extends Model
     {
         return $this->belongsToMany(Permission::class);
     }
+
     // methods
 
-    public function usersCount() : int
+    public function usersCount(): int
     {
         return $this->users->count() ?? 0;
     }
 
-    public function permissionsCount() : int
+    public function permissionsCount(): int
     {
         return $this->permissions->count() ?? 0;
     }

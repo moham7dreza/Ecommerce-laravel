@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\admin\notify;
 
-use App\Models\Notify\SMS;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Notify\SMSRequest;
+use App\Models\Notify\SMS;
 
 class SMSController extends Controller
 {
@@ -43,7 +42,7 @@ class SMSController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SMSRequest $request)
@@ -60,7 +59,7 @@ class SMSController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,7 +70,7 @@ class SMSController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(SMS $sms)
@@ -82,8 +81,8 @@ class SMSController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(SMSRequest $request, SMS $sms)
@@ -99,7 +98,7 @@ class SMSController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(SMS $sms)
@@ -109,19 +108,18 @@ class SMSController extends Controller
     }
 
 
-    public function status(SMS $sms){
+    public function status(SMS $sms)
+    {
 
         $sms->status = $sms->status == 0 ? 1 : 0;
         $result = $sms->save();
-        if($result){
-                if($sms->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($sms->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

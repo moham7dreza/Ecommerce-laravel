@@ -31,8 +31,8 @@
                                     </span>
                             </td>
 
-                            <td>{{ $post->time_to_read }} دقیقه </td>
-                            <td>{{ $post->rating }} امتیاز </td>
+                            <td>{{ $post->time_to_read }} دقیقه</td>
+                            <td>{{ $post->rating }} امتیاز</td>
                             <td>{{ $post->category->name }}</td>
                             <td>{{ $post->author->fullName }}</td>
                         </tr>

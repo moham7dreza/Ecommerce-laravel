@@ -6,7 +6,9 @@
                     <div class="col">
                         <ul class="float-right ml-30 font-medium">
                             @foreach ($category as $cat)
-                                <li class="cat-item cat-item-2"><a href="{{ route('digital-world.livewire.category.posts', $cat) }}">{{ $cat->name }}</a></li>
+                                <li class="cat-item cat-item-2"><a
+                                        href="{{ route('digital-world.livewire.category.posts', $cat) }}">{{ $cat->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>

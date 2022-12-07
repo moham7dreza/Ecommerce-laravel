@@ -64,7 +64,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -75,7 +75,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(PermissionRepo $permissionRepo, int $id)
@@ -102,7 +102,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

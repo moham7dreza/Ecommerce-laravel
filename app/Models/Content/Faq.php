@@ -21,8 +21,8 @@ class Faq extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'question'
             ]
         ];

@@ -18,7 +18,7 @@ class FileService extends FileToolsService
     }
 
 
-  public function moveToStorage($file)
+    public function moveToStorage($file)
     {
         //set File
         $this->setFile($file);
@@ -32,8 +32,7 @@ class FileService extends FileToolsService
 
     public function deleteFile($filePath)
     {
-        if(file_exists($filePath))
-        {
+        if (file_exists($filePath)) {
             unlink($filePath);
         }
     }
@@ -41,19 +40,15 @@ class FileService extends FileToolsService
 
     public function deleteDirectoryAndFiles($directory)
     {
-        if(!is_dir($directory))
-        {
+        if (!is_dir($directory)) {
             return false;
         }
 
         $files = glob($directory . DIRECTORY_SEPARATOR . '*', GLOB_MARK);
-        foreach($files as $file)
-        {
-            if(is_dir($file))
-            {
+        foreach ($files as $file) {
+            if (is_dir($file)) {
                 $this->deleteDirectoryAndFiles($file);
-            }
-            else{
+            } else {
                 unlink($file);
             }
         }

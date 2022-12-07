@@ -2,21 +2,20 @@
 
 namespace App\Http\Livewire\Admin\User;
 
+use App\Exports\UsersExport;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
-use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
-use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
-use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
-use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\ButtonGroupColumn;
+use Rappasoft\LaravelLivewireTables\Views\Columns\LinkColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\MultiSelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 
 class AdminUserAdvancedTable extends DataTableComponent
 {

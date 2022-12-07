@@ -1,13 +1,13 @@
 <?php if(session('swal-error')): ?>
 
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
             Swal.fire({
                 title: 'خطا!',
-                 text: '<?php echo e(session('swal-error')); ?>',
-                 icon: 'error',
-                 confirmButtonText: 'باشه',
-      });
+                text: '<?php echo e(session('swal-error')); ?>',
+                icon: 'error',
+                confirmButtonText: 'باشه',
+            });
         });
     </script>
 

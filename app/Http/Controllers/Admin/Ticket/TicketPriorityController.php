@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin\Ticket;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\TicketPriorityRequest;
 use App\Models\Ticket\TicketPriority;
@@ -43,7 +42,7 @@ class TicketPriorityController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(TicketPriorityRequest $request)
@@ -56,7 +55,7 @@ class TicketPriorityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class TicketPriorityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(TicketPriority $ticketPriority)
@@ -79,8 +78,8 @@ class TicketPriorityController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(TicketPriorityRequest $request, TicketPriority $ticketPriority)
@@ -93,7 +92,7 @@ class TicketPriorityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(TicketPriority $ticketPriority)
@@ -103,20 +102,18 @@ class TicketPriorityController extends Controller
     }
 
 
-
-    public function status(TicketPriority $ticketPriority){
+    public function status(TicketPriority $ticketPriority)
+    {
 
         $ticketPriority->status = $ticketPriority->status == 0 ? 1 : 0;
         $result = $ticketPriority->save();
-        if($result){
-                if($ticketPriority->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($ticketPriority->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

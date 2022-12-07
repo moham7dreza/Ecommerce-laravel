@@ -16,7 +16,8 @@
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle  waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <i class="fe-bell noti-icon"></i>
                 <span class="badge badge-danger rounded-circle noti-icon-badge">9</span>
             </a>
@@ -38,7 +39,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item active">
                         <div class="notify-icon">
-                            <img src="/adminto-assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="تصویر" /> </div>
+                            <img src="/adminto-assets/images/users/user-1.jpg" class="img-fluid rounded-circle"
+                                 alt="تصویر"/></div>
                         <p class="notify-details">علی کردی</p>
                         <p class="text-muted mb-0 user-msg">
                             <small>سلام چطوری؟ در مورد جلسه بعدی...</small>
@@ -58,7 +60,8 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon">
-                            <img src="/adminto-assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="تصویر" /> </div>
+                            <img src="/adminto-assets/images/users/user-4.jpg" class="img-fluid rounded-circle"
+                                 alt="تصویر"/></div>
                         <p class="notify-details">سجاد صابری</p>
                         <p class="text-muted mb-0 user-msg">
                             <small>ادمین تو واقعا عالیه</small>
@@ -107,7 +110,8 @@
         </li>
 
         <li class="dropdown notification-list">
-            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
+               aria-haspopup="false" aria-expanded="false">
                 <img src="/adminto-assets/images/users/user-1.jpg" alt="تصویر کاربر" class="rounded-circle">
                 <span class="pro-user-name ml-1">
                                         قائم <i class="mdi mdi-chevron-down"></i>

@@ -71,7 +71,7 @@ class basicbot
     public function apiProductRequest()
     {
         $handle = curl_init('127.0.0.1:8001/api/admin/market/product/all');
-        curl_setopt($handle, CURLOPT_HTTPHEADER, array( 'Accept: application/json', 'Content-Type: application/json'));
+        curl_setopt($handle, CURLOPT_HTTPHEADER, array('Accept: application/json', 'Content-Type: application/json'));
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);

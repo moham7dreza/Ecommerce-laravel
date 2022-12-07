@@ -9,7 +9,6 @@ use App\Http\Requests\Dashboard\UserRequest;
 use App\Http\Services\Dashboard\UserService;
 use App\Http\Services\Image\ImageService;
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -63,8 +62,8 @@ class UserController extends Controller
     public function store(UserRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('profile_photo_path')) {
-            $result = ShareService::saveImage($request->file('profile_photo_path'),'adminto-user',
-                null,$imageService);
+            $result = ShareService::saveImage($request->file('profile_photo_path'), 'adminto-user',
+                null, $imageService);
             if ($result === false) {
                 return redirect()->route('adminto.user.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
@@ -79,7 +78,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -90,7 +89,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(int $id)
@@ -106,12 +105,12 @@ class UserController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(UserRequest $request,ImageService $imageService, int $id): RedirectResponse
+    public function update(UserRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
         $user = $this->repo->findById($id);
         if ($request->hasFile('profile_photo_path')) {
-            $result = ShareService::saveImage($request->file('profile_photo_path'),'adminto-user',
-                $user->profile_photo_path,$imageService);
+            $result = ShareService::saveImage($request->file('profile_photo_path'), 'adminto-user',
+                $user->profile_photo_path, $imageService);
             if ($result === false) {
                 return redirect()->route('adminto.user.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
@@ -124,7 +123,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

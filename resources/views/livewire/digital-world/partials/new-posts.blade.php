@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="pagination-area mb-30">
-                {{ $newPosts->links() }}
+        {{ $newPosts->links() }}
     </div>
     @livewire('digital-world.partials.bottom-banner')
 </div>

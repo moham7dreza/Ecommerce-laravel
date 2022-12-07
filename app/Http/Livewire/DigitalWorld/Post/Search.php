@@ -5,7 +5,6 @@ namespace App\Http\Livewire\DigitalWorld\Post;
 use App\Http\Repositories\Admin\Content\PostCategoryRepo;
 use App\Http\Repositories\Admin\Content\PostRepo;
 use App\Models\Content\Post;
-use App\Models\Content\PostCategory;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -24,7 +23,7 @@ class Search extends Component
         return 'livewire.digital-world.utils.pagination-links';
     }
 
-    public function mount($catId , $char = "")
+    public function mount($catId, $char = "")
     {
         $categoryRepo = new PostCategoryRepo();
         $this->categories = $categoryRepo->getActiveCategories()->get();
@@ -36,21 +35,21 @@ class Search extends Component
 
     public function render()
     {
-        if($this->categoryId == 0) {
-            $result = Post::query()->where('title' , 'like' , '%'.$this->char.'%')
-                ->orWhere('summary' , 'like' , '%'.$this->char.'%')
-                ->orWhere('body' , 'like' , '%'.$this->char.'%')
+        if ($this->categoryId == 0) {
+            $result = Post::query()->where('title', 'like', '%' . $this->char . '%')
+                ->orWhere('summary', 'like', '%' . $this->char . '%')
+                ->orWhere('body', 'like', '%' . $this->char . '%')
                 ->paginate(4);
-        } else{
+        } else {
             $result = Post::query()->where([
-                ['category_id' , $this->categoryId],
-                ['title' , 'like' , '%'.$this->char.'%'],
+                ['category_id', $this->categoryId],
+                ['title', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['category_id' , $this->categoryId],
-                ['body' , 'like' , '%'.$this->char.'%'],
+                ['category_id', $this->categoryId],
+                ['body', 'like', '%' . $this->char . '%'],
             ])->orWhere([
-                ['category_id' , $this->categoryId],
-                ['summary' , 'like' , '%'.$this->char.'%'],
+                ['category_id', $this->categoryId],
+                ['summary', 'like', '%' . $this->char . '%'],
             ])->paginate(4);
         }
 

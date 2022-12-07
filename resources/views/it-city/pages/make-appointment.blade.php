@@ -49,7 +49,8 @@
                                                 <input class="field_custom" placeholder="نام*" type="text" required>
                                             </div>
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="نام خانوادگی" type="text" required>
+                                                <input class="field_custom" placeholder="نام خانوادگی" type="text"
+                                                       required>
                                             </div>
                                             <div class="field col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <input class="field_custom" placeholder="ایمیل" type="email" required>
@@ -58,10 +59,12 @@
                                                 <input class="field_custom" placeholder="موبایل" type="text" required>
                                             </div>
                                             <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <input class="field_custom" placeholder="عنوان ملاقات" type="text" required>
+                                                <input class="field_custom" placeholder="عنوان ملاقات" type="text"
+                                                       required>
                                             </div>
                                             <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <textarea class="field_custom" placeholder="توضیحات" required></textarea>
+                                                <textarea class="field_custom" placeholder="توضیحات"
+                                                          required></textarea>
                                             </div>
                                             <div class="center">
                                                 <button class="btn main_bt">ثبت</button>

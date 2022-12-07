@@ -5,225 +5,227 @@
 @endsection
 
 @section('content')
-    <section class="row">
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-custom-yellow text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </section>
-                        </section>
-                    </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-custom-green text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
+    @can('permission-super-admin')
+        <section class="row">
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-custom-yellow text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->customersCount() }}</h5>
+                                    <p>تعداد مشتریان سیستم</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
                             </section>
                         </section>
-                    </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-custom-pink text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
                         </section>
                     </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-custom-yellow text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-custom-green text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->postsCount() }}</h5>
+                                    <p>تعداد پست ها</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
                             </section>
                         </section>
-                    </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-danger text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
                         </section>
                     </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-success text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-custom-pink text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->commentsCount() }}</h5>
+                                    <p>تعداد نظرات</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
                             </section>
                         </section>
-                    </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-warning text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
                         </section>
                     </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
-                    </section>
-                </section>
-            </a>
-        </section>
-        <section class="col-lg-3 col-md-6 col-12">
-            <a href="#" class="text-decoration-none d-block mb-4">
-                <section class="card bg-primary text-white">
-                    <section class="card-body">
-                        <section class="d-flex justify-content-between">
-                            <section class="info-box-body">
-                                <h5>30,200 تومان</h5>
-                                <p>سود خالص</p>
-                            </section>
-                            <section class="info-box-icon">
-                                <i class="fas fa-chart-line"></i>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-custom-yellow text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->ordersCount() }}</h5>
+                                    <p>تعداد سفارشات</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
                             </section>
                         </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
+                        </section>
                     </section>
-                    <section class="card-footer info-box-footer">
-                        <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : 21:42 بعد از ظهر
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-danger text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->paymentsCount() }}</h5>
+                                    <p>تعداد پرداخت ها</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
+                        </section>
                     </section>
-                </section>
-            </a>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-success text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->activeAmazingSalesCount() }}</h5>
+                                    <p>تعداد تخفیفات شگفت انگیز فعال</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
+                        </section>
+                    </section>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-warning text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->adminUsersCount() }}</h5>
+                                    <p>تعداد ادمین های سیستم</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
+                        </section>
+                    </section>
+                </a>
+            </section>
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-primary text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5>{{ $homeRepo->newTicketsCount() }}</h5>
+                                    <p>تعداد تیکت های جدید</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : {{ jalaliDate(now()) }}
+                        </section>
+                    </section>
+                </a>
+            </section>
+
         </section>
 
-    </section>
-
-    <section class="row">
-        <section class="col-12">
-            <section class="main-body-container">
-                <section class="main-body-container-header">
-                    <h5>
-                        بخش لاگ
-                    </h5>
-                    <p>
-                        در این بخش اطلاعاتی در مورد عملیات CRUD به شما داده می شود
-                    </p>
-                </section>
-                <section class="body-content">
-                    <section class="table-responsive">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>عنوان</th>
-                                <th>توضیحات</th>
-                                <th>نام انجام دهنده</th>
-                                <th>اطلاعات کلی</th>
-                                <th>تاریخ ثبت</th>
-                                <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($logs as $log)
+        <section class="row">
+            <section class="col-12">
+                <section class="main-body-container">
+                    <section class="main-body-container-header">
+                        <h5>
+                            بخش لاگ
+                        </h5>
+                        <p>
+                            در این بخش اطلاعاتی در مورد عملیات CRUD به شما داده می شود
+                        </p>
+                    </section>
+                    <section class="body-content">
+                        <section class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
                                 <tr>
-                                    <th>{{ $log->id }}</th>
-                                    <td>{{ $log->log_name }}</td>
-                                    <td>{{ $log->description() }}</td>
-                                    <td>{{ $log->causerName() }}</td>
-                                    <td dir="rtl">
-                                        @if(empty($log->properties()))
-                                            <span class="text-danger">ویژگی ندارد</span>
-                                        @else
-                                            @foreach($log->properties() as $key => $value)
-                                                {{ $key . ' => ' . $value }} <br>
-                                            @endforeach
-                                        @endif
-                                    </td>
-                                    <td>{{ $log->getFaUpdatedDate() }}</td>
-                                    <td class="width-22-rem text-left">
-                                        <a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
-                                    </td>
+                                    <th>#</th>
+                                    <th>عنوان</th>
+                                    <th>توضیحات</th>
+                                    <th>نام انجام دهنده</th>
+                                    <th>اطلاعات کلی</th>
+                                    <th>تاریخ ثبت</th>
+                                    <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        {{ $logs->links() }}
+                                </thead>
+                                <tbody>
+                                @foreach($logs as $log)
+                                    <tr>
+                                        <th>{{ $log->id }}</th>
+                                        <td>{{ $log->log_name }}</td>
+                                        <td>{{ $log->description() }}</td>
+                                        <td>{{ $log->causerName() }}</td>
+                                        <td dir="rtl">
+                                            @if(empty($log->properties()))
+                                                <span class="text-danger">ویژگی ندارد</span>
+                                            @else
+                                                @foreach($log->properties() as $key => $value)
+                                                    {{ $key . ' => ' . $value }} <br>
+                                                @endforeach
+                                            @endif
+                                        </td>
+                                        <td>{{ $log->getFaUpdatedDate() }}</td>
+                                        <td class="width-22-rem text-left">
+                                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            {{ $logs->links() }}
+                        </section>
                     </section>
                 </section>
             </section>
         </section>
-    </section>
+    @endcan
     <section class="row">
         <section class="col-12">
             <section class="main-body-container">

@@ -1,13 +1,13 @@
 <?php if(session('swal-success')): ?>
 
     <script>
-        $(document).ready(function (){
+        $(document).ready(function () {
             Swal.fire({
                 title: 'عملیات با موفقیت انجام شد',
-                 text: '<?php echo e(session('swal-success')); ?>',
-                 icon: 'success',
-                 confirmButtonText: 'باشه',
-      });
+                text: '<?php echo e(session('swal-success')); ?>',
+                icon: 'success',
+                confirmButtonText: 'باشه',
+            });
         });
     </script>
 

@@ -7,12 +7,10 @@ use App\Http\Repositories\Dashboard\MenuRepo;
 use App\Http\Requests\Dashboard\MenuRequest;
 use App\Http\Services\Dashboard\MenuService;
 use App\Models\Content\Menu;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class MenuController extends Controller
@@ -67,7 +65,7 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -78,7 +76,7 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(int $id)
@@ -105,7 +103,7 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

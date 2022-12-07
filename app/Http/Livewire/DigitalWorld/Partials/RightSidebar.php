@@ -15,6 +15,7 @@ class RightSidebar extends Component
         $homeRepo = new HomeRepo();
         $this->activeCategories = $homeRepo->getActiveCategories();
     }
+
     public function render()
     {
         return view('livewire.digital-world.partials.right-sidebar')->layout('livewire.digital-world.layouts.master');

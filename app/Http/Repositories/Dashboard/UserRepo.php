@@ -3,7 +3,6 @@
 namespace App\Http\Repositories\Dashboard;
 
 use App\Models\User;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 
 class UserRepo

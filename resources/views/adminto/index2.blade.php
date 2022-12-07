@@ -10,7 +10,8 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -47,7 +48,8 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -66,7 +68,8 @@
 
                     <div class="widget-box-2">
                         <div class="widget-detail-2 text-right">
-                            <span class="badge badge-success badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
+                            <span class="badge badge-success badge-pill float-left mt-3">32% <i
+                                    class="mdi mdi-trending-up"></i> </span>
                             <h2 class="font-weight-normal mb-1"> 8451 </h2>
                             <p class="text-muted mb-3">درآمد امروز</p>
                         </div>
@@ -85,7 +88,8 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -121,7 +125,8 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -140,7 +145,8 @@
 
                     <div class="widget-box-2">
                         <div class="widget-detail-2 text-right">
-                            <span class="badge badge-pink badge-pill float-left mt-3">32% <i class="mdi mdi-trending-up"></i> </span>
+                            <span class="badge badge-pink badge-pill float-left mt-3">32% <i
+                                    class="mdi mdi-trending-up"></i> </span>
                             <h2 class="font-weight-normal mb-1"> 158 </h2>
                             <p class="text-muted mb-3">درآمد امروز</p>
                         </div>
@@ -163,7 +169,8 @@
             <div class="col-xl-4">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -197,7 +204,8 @@
             <div class="col-xl-4">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -219,7 +227,8 @@
             <div class="col-xl-4">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -247,7 +256,8 @@
                 <div class="card-box widget-user">
                     <div>
                         <div class="avatar-lg float-left mr-3">
-                            <img src="/adminto-assets/images/users/user-3.jpg" class="img-fluid rounded-circle" alt="کاربر">
+                            <img src="/adminto-assets/images/users/user-3.jpg" class="img-fluid rounded-circle"
+                                 alt="کاربر">
                         </div>
                         <div class="wid-u-info">
                             <h5 class="mt-0">قائم امیدی</h5>
@@ -262,7 +272,8 @@
                 <div class="card-box widget-user">
                     <div>
                         <div class="avatar-lg float-left mr-3">
-                            <img src="/adminto-assets/images/users/user-2.jpg" class="img-fluid rounded-circle" alt="کاربر">
+                            <img src="/adminto-assets/images/users/user-2.jpg" class="img-fluid rounded-circle"
+                                 alt="کاربر">
                         </div>
                         <div class="wid-u-info">
                             <h5 class="mt-0"> علی شعبانی</h5>
@@ -277,7 +288,8 @@
                 <div class="card-box widget-user">
                     <div>
                         <div class="avatar-lg float-left mr-3">
-                            <img src="/adminto-assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="کاربر">
+                            <img src="/adminto-assets/images/users/user-1.jpg" class="img-fluid rounded-circle"
+                                 alt="کاربر">
                         </div>
                         <div class="wid-u-info">
                             <h5 class="mt-0">وحید</h5>
@@ -292,7 +304,8 @@
                 <div class="card-box widget-user">
                     <div>
                         <div class="avatar-lg float-left mr-3">
-                            <img src="/adminto-assets/images/users/user-10.jpg" class="img-fluid rounded-circle" alt="کاربر">
+                            <img src="/adminto-assets/images/users/user-10.jpg" class="img-fluid rounded-circle"
+                                 alt="کاربر">
                         </div>
                         <div class="wid-u-info">
                             <h5 class="mt-0">نسیم</h5>
@@ -311,7 +324,8 @@
             <div class="col-xl-4">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -332,7 +346,8 @@
 
                         <div class="inbox-item">
                             <a href="#">
-                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-1.jpg" class="rounded-circle" alt="تصویر"></div>
+                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-1.jpg"
+                                                                 class="rounded-circle" alt="تصویر"></div>
                                 <h5 class="inbox-item-author mt-0 mb-1">قائم امیدی</h5>
                                 <p class="inbox-item-text">سلام! من آنلاینم...</p>
                                 <p class="inbox-item-date">13:40 بعدازظهر</p>
@@ -341,7 +356,8 @@
 
                         <div class="inbox-item">
                             <a href="#">
-                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-2.jpg" class="rounded-circle" alt="تصویر"></div>
+                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-2.jpg"
+                                                                 class="rounded-circle" alt="تصویر"></div>
                                 <h5 class="inbox-item-author mt-0 mb-1">نسیم</h5>
                                 <p class="inbox-item-text">پروژه تموم شد. لطفا چک کن...</p>
                                 <p class="inbox-item-date">13:34 بعدازظهر</p>
@@ -350,7 +366,8 @@
 
                         <div class="inbox-item">
                             <a href="#">
-                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-3.jpg" class="rounded-circle" alt="تصویر"></div>
+                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-3.jpg"
+                                                                 class="rounded-circle" alt="تصویر"></div>
                                 <h5 class="inbox-item-author mt-0 mb-1">وحید</h5>
                                 <p class="inbox-item-text">این قالب عالیه!</p>
                                 <p class="inbox-item-date">13:17 بعدازظهر</p>
@@ -359,7 +376,8 @@
 
                         <div class="inbox-item">
                             <a href="#">
-                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-4.jpg" class="rounded-circle" alt="تصویر"></div>
+                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-4.jpg"
+                                                                 class="rounded-circle" alt="تصویر"></div>
                                 <h5 class="inbox-item-author mt-0 mb-1">سجاد</h5>
                                 <p class="inbox-item-text">از صحبت باهات خوشحال شدم</p>
                                 <p class="inbox-item-date">12:20 بعدازظهر</p>
@@ -368,7 +386,8 @@
 
                         <div class="inbox-item">
                             <a href="#">
-                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-5.jpg" class="rounded-circle" alt="تصویر"></div>
+                                <div class="inbox-item-img"><img src="/adminto-assets/images/users/user-5.jpg"
+                                                                 class="rounded-circle" alt="تصویر"></div>
                                 <h5 class="inbox-item-author mt-0 mb-1">شایان</h5>
                                 <p class="inbox-item-text">سلام! من آنلاینم...</p>
                                 <p class="inbox-item-date">10:15 صبح</p>
@@ -381,7 +400,8 @@
             <div class="col-xl-8">
                 <div class="card-box">
                     <div class="dropdown float-right">
-                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown"
+                           aria-expanded="false">
                             <i class="mdi mdi-dots-vertical"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">

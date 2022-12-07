@@ -42,7 +42,7 @@
                 <figure class="highcharts-figure">
                     <div id="weekly-sales-chart"></div>
                     <p class="highcharts-description">
-{{--                        نمودار فروش هفتگی--}}
+                        {{--                        نمودار فروش هفتگی--}}
                     </p>
                 </figure>
             </section>

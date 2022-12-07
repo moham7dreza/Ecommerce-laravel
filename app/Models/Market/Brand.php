@@ -2,11 +2,11 @@
 
 namespace App\Models\Market;
 
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Brand extends Model
 {
@@ -19,8 +19,8 @@ class Brand extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'original_name'
             ]
         ];

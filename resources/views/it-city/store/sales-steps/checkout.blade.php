@@ -35,34 +35,39 @@
                 <div class="col-sm-12">
                     <div class="full">
                         <div class="tab-info login-section">
-                            <p>Returning customer? <a href="#login" class="" data-toggle="collapse">Click here to login</a></p>
+                            <p>Returning customer? <a href="#login" class="" data-toggle="collapse">Click here to
+                                    login</a></p>
                         </div>
                         <div id="login" class="collapse">
                             <div class="login-form-checkout">
-                                <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
+                                <p>If you have shopped with us before, please enter your details in the boxes below. If
+                                    you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
                                 <form action="#">
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label for="username">Username or email <span class="required">*</span></label>
-                                                <input class="input-text" name="username" id="username" required="" type="text">
+                                                <input class="input-text" name="username" id="username" required=""
+                                                       type="text">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label for="password">Password <span class="required">*</span></label>
-                                                <input class="input-text" name="password" id="password" required="" type="password">
+                                                <input class="input-text" name="password" id="password" required=""
+                                                       type="password">
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-xs-12 btn-login">
                                                 <button class="bt_main">Login</button>
                                                 <span class="remeber">
                     <input type="checkbox">
-                    Remember me</span> </div>
+                    Remember me</span></div>
                                         </div>
                                     </fieldset>
                                 </form>
                             </div>
                         </div>
                         <div class="tab-info coupon-section">
-                            <p>Have a coupon? <a href="#cupon" class="" data-toggle="collapse">Click here to enter your code</a></p>
+                            <p>Have a coupon? <a href="#cupon" class="" data-toggle="collapse">Click here to enter your
+                                    code</a></p>
                         </div>
                         <div id="cupon" class="collapse">
                             <div class="coupen-form">
@@ -70,7 +75,8 @@
                                     <fieldset>
                                         <div class="row">
                                             <div class="col-md-8 col-sm-8 col-xs-12">
-                                                <input class="input-text" name="coupon" placeholder="Coupon code" id="coupon" required="" type="text">
+                                                <input class="input-text" name="coupon" placeholder="Coupon code"
+                                                       id="coupon" required="" type="text">
                                             </div>
                                             <div class="col-md-4 col-sm-4 col-xs-12">
                                                 <button class="bt_main">Login</button>
@@ -402,7 +408,7 @@
                                     <div class="col-md-6">
                                         <div class="form-field">
                                             <input name="ck" type="checkbox">
-                                            <span class="crte-ac">Create an account?</span> </div>
+                                            <span class="crte-ac">Create an account?</span></div>
                                     </div>
                                 </div>
                             </fieldset>
@@ -441,7 +447,8 @@
                                 <div class="panel-heading display-table">
                                     <div class="display-tr">
                                         <h3 class="panel-title display-td">Payment Details</h3>
-                                        <div class="display-td"> <img class="img-responsive pull-right" src="images/it_service/accepted.png" alt="#"> </div>
+                                        <div class="display-td"><img class="img-responsive pull-right"
+                                                                     src="images/it_service/accepted.png" alt="#"></div>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -451,16 +458,20 @@
                                                 <div class="form-field">
                                                     <label>Card Number</label>
                                                     <div class="form-field cardNumber">
-                                                        <input name="cardNumber" placeholder="Valid Card Number" required="" type="tel">
-                                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span> </div>
+                                                        <input name="cardNumber" placeholder="Valid Card Number"
+                                                               required="" type="tel">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-credit-card"></i></span></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12 col-md-7">
                                                 <div class="form-field">
-                                                    <label><span class="hidden-xs">Expiration</span><span class="visible-xs-inline">EXP</span> Date</label>
-                                                    <input name="cardExpiry" placeholder="MM / YY" required="" type="tel">
+                                                    <label><span class="hidden-xs">Expiration</span><span
+                                                            class="visible-xs-inline">EXP</span> Date</label>
+                                                    <input name="cardExpiry" placeholder="MM / YY" required=""
+                                                           type="tel">
                                                 </div>
                                             </div>
                                             <div class="col-xs-12 col-md-5 pull-right">

@@ -33,11 +33,11 @@
             <div class="col-lg-12">
                 <div class="card shade h-100">
                     <div class="card-body">
-                    <h4 class="mt-0 header-title">لیست تمامی نظرات</h4>
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                        <h4 class="mt-0 header-title">لیست تمامی نظرات</h4>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>نظر</th>
@@ -49,8 +49,8 @@
                                     <th>تاریخ ساخت</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($comments as $comment)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -68,27 +68,34 @@
                                         <td>{{ $comment->getCommentableName() }}</td>
                                         <td>{{ $comment->answersCount() }}</td>
                                         <td>{{ $comment->textAuthorName() }}</td>
-{{--                                        <td>{{ jdate($comment->created_at)->format('Y-m-d') }}</td>--}}
+                                        {{--                                        <td>{{ jdate($comment->created_at)->format('Y-m-d') }}</td>--}}
                                         <td>{{ $comment->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <form action="{{ route('panel.market.comment.change.status', $comment->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.market.comment.change.status', $comment->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <button type="submit" class="btn btn-{{ $comment->btnCssStatus() }} ml-1">
+                                                    <button type="submit"
+                                                            class="btn btn-{{ $comment->btnCssStatus() }} ml-1">
                                                         <i class="fas fa-minus-circle"></i>
                                                     </button>
                                                 </form>
 
-                                                <form action="{{ route('panel.market.comment.change.approve', $comment->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.market.comment.change.approve', $comment->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
-                                                    <button type="submit" class="btn btn-{{ $comment->btnCssApprove() }} ml-1">
+                                                    <button type="submit"
+                                                            class="btn btn-{{ $comment->btnCssApprove() }} ml-1">
                                                         <i class="fas fa-plus"></i>
                                                     </button>
                                                 </form>
 
-                                                <form action="{{ route('panel.market.comment.destroy', $comment->id) }}" method="POST">
+                                                <form action="{{ route('panel.market.comment.destroy', $comment->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-dark ml-1 delete">
@@ -99,15 +106,15 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                        <hr>
-                        {{ $comments->links() }}
+                                </tbody>
+                            </table>
+                            <hr>
+                            {{ $comments->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

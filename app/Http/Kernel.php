@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AdminCheck;
 use App\Http\Middleware\Permission\AccessControl;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 

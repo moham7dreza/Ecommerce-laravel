@@ -20,8 +20,8 @@ class Page extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'title'
             ]
         ];

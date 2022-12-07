@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Admin\User;
 
-use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class CustomerRequest extends FormRequest
 {
@@ -24,19 +24,18 @@ class CustomerRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->isMethod('post')){
+        if ($this->isMethod('post')) {
 
             return [
                 'first_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',
                 'last_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',
-                'mobile' => ['required','digits:11', 'unique:users'],
-                'email' => ['required','string','email','unique:users'],
-                'password' => ['required','unique:users', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
+                'mobile' => ['required', 'digits:11', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'unique:users'],
+                'password' => ['required', 'unique:users', Password::min(8)->letters()->mixedCase()->numbers()->symbols()->uncompromised(), 'confirmed'],
                 'image' => 'nullable|image|mimes:png,jpg,jpeg,gif',
                 'activation' => 'required|numeric|in:0,1',
             ];
-        }
-        else{
+        } else {
             return [
                 'first_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',
                 'last_name' => 'required|max:120|min:1|regex:/^[ا-یa-zA-Zء-ي ]+$/u',

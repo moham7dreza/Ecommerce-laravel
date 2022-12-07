@@ -72,12 +72,13 @@
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="">دسته والد</label>
-                                    <select name="parent_id" id="main-categories" class="form-control form-control-sm" disabled>
+                                    <select name="parent_id" id="main-categories" class="form-control form-control-sm"
+                                            disabled>
                                         <option value="">دسته اصلی</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}"
                                                     @if(old('parent_id') == $category->id) selected @endif
-                                            data-url="{{ route('admin.market.category.get-sub-categories', $category) }}">{{ $category->name }}</option>
+                                                    data-url="{{ route('admin.market.category.get-sub-categories', $category) }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

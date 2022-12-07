@@ -6,7 +6,7 @@
             <strong class="ml-auto">{{ session('toast-error') }}</strong>
             <button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+            </button>
         </section>
     </section>
 
@@ -15,6 +15,5 @@
             $('.toast').toast('show');
         })
     </script>
-
 
 @endif

@@ -38,14 +38,17 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="p-2">
-                                    <form class="form-horizontal" role="form" method="POST" action="{{ route('panel.office.service.store') }}"
+                                    <form class="form-horizontal" role="form" method="POST"
+                                          action="{{ route('panel.office.service.store') }}"
                                           enctype="multipart/form-data" id="form">
                                         @csrf
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="name">عنوان</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                       value="{{ old('name') }}" id="name" name="name" placeholder="عنوان سرویس را وارد کنید">
+                                                <input type="text"
+                                                       class="form-control @error('name') is-invalid @enderror"
+                                                       value="{{ old('name') }}" id="name" name="name"
+                                                       placeholder="عنوان سرویس را وارد کنید">
                                                 @error('name')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -55,7 +58,8 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="parent_id">سرویس والد</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
+                                                <select class="form-control @error('parent_id') is-invalid @enderror"
+                                                        name="parent_id">
                                                     <option value="">سرویس اصلی</option>
                                                     @foreach ($services as $service)
                                                         <option value="{{ $service->id }}"
@@ -71,7 +75,8 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="price">هزینه</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                                <input type="text"
+                                                       class="form-control @error('price') is-invalid @enderror"
                                                        value="{{ old('price') }}" id="price" name="price"
                                                        placeholder="هزینه ارائه سرویس را وارد کنید">
                                                 @error('price')
@@ -83,10 +88,16 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="status">وضعیت</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control @error('status') is-invalid @enderror" name="status">
+                                                <select class="form-control @error('status') is-invalid @enderror"
+                                                        name="status">
                                                     @foreach (\App\Models\ItCity\Office\Service::$statuses as $status)
-                                                        <option value="{{ $status }}" @if(old('status') == $status) selected @endif>
-                                                            @if($status == 1) فعال @else غیر فعال @endif</option>
+                                                        <option value="{{ $status }}"
+                                                                @if(old('status') == $status) selected @endif>
+                                                            @if($status == 1)
+                                                                فعال
+                                                            @else
+                                                                غیر فعال
+                                                            @endif</option>
                                                     @endforeach
                                                 </select>
                                                 @error('status')
@@ -96,11 +107,20 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label" for="service_availability">قابل ارائه بودن سرویس</label>
+                                            <label class="col-sm-2 col-form-label" for="service_availability">قابل ارائه
+                                                بودن سرویس</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control @error('service_availability') is-invalid @enderror" name="service_availability">
-                                                    <option value="0" @if(old('service_availability') == 0) selected @endif>در دسترس نیست</option>
-                                                    <option value="1" @if(old('service_availability') == 1) selected @endif>قابل دسترس</option>
+                                                <select
+                                                    class="form-control @error('service_availability') is-invalid @enderror"
+                                                    name="service_availability">
+                                                    <option value="0"
+                                                            @if(old('service_availability') == 0) selected @endif>در
+                                                        دسترس نیست
+                                                    </option>
+                                                    <option value="1"
+                                                            @if(old('service_availability') == 1) selected @endif>قابل
+                                                        دسترس
+                                                    </option>
                                                 </select>
                                                 @error('service_availability')
                                                 <br>
@@ -112,9 +132,11 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="category_id">دسته بندی</label>
                                             <div class="col-sm-10">
-                                                <select class="form-control @error('category_id') is-invalid @enderror" name="category_id">
+                                                <select class="form-control @error('category_id') is-invalid @enderror"
+                                                        name="category_id">
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}" @if(old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}"
+                                                                @if(old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('category_id')
@@ -126,8 +148,10 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="tags">تگ ها</label>
                                             <div class="col-sm-10 text-right">
-                                                <input type="hidden" class="form-control form-control-sm"  name="tags" id="tags" value="{{ old('tags') }}">
-                                                <select class="select2 form-control form-control-sm" id="select_tags" multiple></select>
+                                                <input type="hidden" class="form-control form-control-sm" name="tags"
+                                                       id="tags" value="{{ old('tags') }}">
+                                                <select class="select2 form-control form-control-sm" id="select_tags"
+                                                        multiple></select>
                                                 @error('tags')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -135,10 +159,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label" for="warranty_time">مدت زمان گارانتی سرویس</label>
+                                            <label class="col-sm-2 col-form-label" for="warranty_time">مدت زمان گارانتی
+                                                سرویس</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control @error('warranty_time') is-invalid @enderror"
-                                                       value="{{ old('warranty_time') }}" id="warranty_time" name="warranty_time"
+                                                <input type="text"
+                                                       class="form-control @error('warranty_time') is-invalid @enderror"
+                                                       value="{{ old('warranty_time') }}" id="warranty_time"
+                                                       name="warranty_time"
                                                        placeholder="مدت زمان گارانتی را وارد کنید">
                                                 @error('warranty_time')
                                                 <br>
@@ -148,10 +175,13 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label" for="time_to_give_service">مدت زمان ارائه سرویس</label>
+                                            <label class="col-sm-2 col-form-label" for="time_to_give_service">مدت زمان
+                                                ارائه سرویس</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control @error('time_to_give_service') is-invalid @enderror"
-                                                       value="{{ old('time_to_give_service') }}" id="time_to_give_service" name="time_to_give_service"
+                                                <input type="text"
+                                                       class="form-control @error('time_to_give_service') is-invalid @enderror"
+                                                       value="{{ old('time_to_give_service') }}"
+                                                       id="time_to_give_service" name="time_to_give_service"
                                                        placeholder="مدت زمان ارائه سرویس را وارد کنید">
                                                 @error('time_to_give_service')
                                                 <br>
@@ -160,9 +190,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label" for="description">توضیحات اصلی</label>
+                                            <label class="col-sm-2 col-form-label" for="description">توضیحات
+                                                اصلی</label>
                                             <div class="col-sm-10">
-                                            <textarea rows="3" class="form-control @error('description') is-invalid @enderror"
+                                            <textarea rows="3"
+                                                      class="form-control @error('description') is-invalid @enderror"
                                                       id="description" name="description"
                                                       placeholder="توضیحات اصلی سرویس را وارد کنید">{{ old('description') }}</textarea>
                                                 @error('description')
@@ -175,7 +207,8 @@
                                         <div class="form-group row">
                                             <label class="col-sm-2 col-form-label" for="image">عکس</label>
                                             <div class="col-sm-10">
-                                                <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                                <input type="file"
+                                                       class="form-control @error('image') is-invalid @enderror"
                                                        id="image" name="image">
                                                 @error('image')
                                                 <br>
@@ -185,10 +218,15 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label" for="available_date">تاریخ در دسترس بودن سرویس</label>
+                                            <label class="col-sm-2 col-form-label" for="available_date">تاریخ در دسترس
+                                                بودن سرویس</label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control d-none @error('available_date') is-invalid @enderror" id="available_date" name="available_date">
-                                                <input type="text" class="form-control @error('available_date_view') is-invalid @enderror" id="available_date_view">
+                                                <input type="text"
+                                                       class="form-control d-none @error('available_date') is-invalid @enderror"
+                                                       id="available_date" name="available_date">
+                                                <input type="text"
+                                                       class="form-control @error('available_date_view') is-invalid @enderror"
+                                                       id="available_date_view">
                                                 @error('available_date')
                                                 <br>
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -232,21 +270,20 @@
             var default_tags = tags_input.val();
             var default_data = null;
 
-            if(tags_input.val() !== null && tags_input.val().length > 0)
-            {
+            if (tags_input.val() !== null && tags_input.val().length > 0) {
                 default_data = default_tags.split(',');
             }
 
             select_tags.select2({
-                placeholder : 'لطفا تگ های خود را وارد نمایید',
+                placeholder: 'لطفا تگ های خود را وارد نمایید',
                 tags: true,
                 data: default_data
             });
             select_tags.children('option').attr('selected', true).trigger('change');
 
 
-            $('#form').submit(function ( event ){
-                if(select_tags.val() !== null && select_tags.val().length > 0){
+            $('#form').submit(function (event) {
+                if (select_tags.val() !== null && select_tags.val().length > 0) {
                     var selectedSource = select_tags.val().join(',');
                     tags_input.val(selectedSource)
                 }

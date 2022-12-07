@@ -67,7 +67,7 @@
                             <td class="width-8-rem text-left">
                                 <div class="dropdown">
                                     <a href="#" class="btn btn-success btn-sm btn-block dorpdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa fa-tools"></i> عملیات
+                                        <i class="fa fa-tools"></i>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a href="<?php echo e(route('admin.market.order.show', $order->id)); ?>" class="dropdown-item text-right"><i class="fa fa-images"></i> مشاهده فاکتور</a>

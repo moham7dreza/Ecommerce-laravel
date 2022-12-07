@@ -21,8 +21,10 @@
                 <!-- start breadcrumb -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a>
+                        </li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                                اسمبل هوشمند</a></li>
                         <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
                         <li class="breadcrumb-item font-size-12">{{ $systemCategory->name}}</li>
                         <li class="breadcrumb-item font-size-12 active" aria-current="page">{{ $systemType->name}}</li>
@@ -73,7 +75,8 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
-                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}-{{ $systemType->name }}
+                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}
+                        -{{ $systemType->name }}
                         اسمبل شده
                     </li>
                 </ol>

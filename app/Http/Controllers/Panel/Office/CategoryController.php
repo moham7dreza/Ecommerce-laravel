@@ -60,7 +60,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage(null,$imageService,
+            $result = ShareService::uploadNewImage(null, $imageService,
                 'panel-service-category', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.office.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -74,7 +74,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -85,7 +85,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -97,7 +97,7 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,7 +108,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

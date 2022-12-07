@@ -34,7 +34,8 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                            <a href="{{ route('panel.office.category.create') }}" class="btn main f-main btn-block fnt-xs" aria-expanded="false">
+                            <a href="{{ route('panel.office.category.create') }}"
+                               class="btn main f-main btn-block fnt-xs" aria-expanded="false">
                                 ساخت دسته بندی جدید
                             </a>
                         </div>
@@ -73,17 +74,22 @@
                                         <td>{{ $category->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.office.category.edit', $category->id) }}" class="btn outlined c-main o-main fnt-xxs ml-1">
+                                                <a href="{{ route('panel.office.category.edit', $category->id) }}"
+                                                   class="btn outlined c-main o-main fnt-xxs ml-1">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.office.category.change.status', $category->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.office.category.change.status', $category->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.office.category.destroy', $category->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.office.category.destroy', $category->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">

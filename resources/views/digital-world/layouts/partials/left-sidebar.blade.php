@@ -85,7 +85,8 @@
                                     <a href="{{ $post->path() }}">{{ $post->limitedTitle() }}</a>
                                 </h6>
                                 <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
-                                    <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
+                                    <span class="post-by">توسط <a
+                                            href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
                                     <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                                 </div>
                             </div>

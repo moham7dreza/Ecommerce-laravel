@@ -33,11 +33,11 @@
             <div class="col-lg-12">
                 <div class="card shade h-100">
                     <div class="card-body">
-                    <h4 class="mt-0 header-title">تنظیمات سایت</h4>
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                        <h4 class="mt-0 header-title">تنظیمات سایت</h4>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عنوان</th>
@@ -48,41 +48,42 @@
                                     <th>تاریخ ویرایش</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-{{--                                @foreach($setting as $setting)--}}
-                                    <tr class="text-center">
-                                        <th scope="row">
-{{--                                            {{ $loop->iteration }}--}}
-                                            {{ $setting->id }}
-                                        </th>
-                                        <td>{{ $setting->title }}</td>
-                                        <td>{{ $setting->limitedDescription() }}</td>
-                                        <td>{{ $setting->limitedKeywords() }}</td>
-                                        <td>
-                                            <img src="{{ $setting->logo() }}" width="80" alt="">
-                                        </td>
-                                        <td>
-                                            <img src="{{ $setting->icon() }}" width="80" alt="">
-                                        </td>
+                                </thead>
+                                <tbody>
+                                {{--                                @foreach($setting as $setting)--}}
+                                <tr class="text-center">
+                                    <th scope="row">
+                                        {{--                                            {{ $loop->iteration }}--}}
+                                        {{ $setting->id }}
+                                    </th>
+                                    <td>{{ $setting->title }}</td>
+                                    <td>{{ $setting->limitedDescription() }}</td>
+                                    <td>{{ $setting->limitedKeywords() }}</td>
+                                    <td>
+                                        <img src="{{ $setting->logo() }}" width="80" alt="">
+                                    </td>
+                                    <td>
+                                        <img src="{{ $setting->icon() }}" width="80" alt="">
+                                    </td>
 
-                                        <td>{{ $setting->getFaUpdatedDate()}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <a href="{{ route('panel.setting.edit', $setting->id) }}" class="btn btn-warning">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
+                                    <td>{{ $setting->getFaUpdatedDate()}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <a href="{{ route('panel.setting.edit', $setting->id) }}"
+                                               class="btn btn-warning">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
 
-                                            </div>
-                                        </td>
-                                    </tr>
-{{--                                @endforeach--}}
-                            </tbody>
-                        </table>
-{{--                        {{ $setting->links() }}--}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{--                                @endforeach--}}
+                                </tbody>
+                            </table>
+                            {{--                        {{ $setting->links() }}--}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

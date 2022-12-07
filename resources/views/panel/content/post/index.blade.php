@@ -34,15 +34,16 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                        <a href="{{ route('panel.content.post.create') }}" class="arrow-none btn btn-primary text-white" aria-expanded="false">
-                            ساخت پست جدید
-                        </a>
-                    </div>
-                    <h4 class="mt-0 header-title">لیست تمامی پست ها</h4>
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                            <a href="{{ route('panel.content.post.create') }}"
+                               class="arrow-none btn btn-primary text-white" aria-expanded="false">
+                                ساخت پست جدید
+                            </a>
+                        </div>
+                        <h4 class="mt-0 header-title">لیست تمامی پست ها</h4>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عکس پست</th>
@@ -54,8 +55,8 @@
                                     <th>تاریخ ساخت</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($posts as $post)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -68,23 +69,27 @@
                                                 {{ $post->textStatus() }}
                                             </span>
                                         </td>
-                                        <td>{{ $post->rating }} امتیاز </td>
+                                        <td>{{ $post->rating }} امتیاز</td>
                                         <td>{{ $post->textCategoryName() }}</td>
                                         <td>{{ $post->textAuthorName() }}</td>
                                         <td>{{ $post->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.content.post.edit', $post->id) }}" class="btn btn-warning">
+                                                <a href="{{ route('panel.content.post.edit', $post->id) }}"
+                                                   class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.content.post.change.status', $post->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.content.post.change.status', $post->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.content.post.destroy', $post->id) }}" method="POST">
+                                                <form action="{{ route('panel.content.post.destroy', $post->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">
@@ -95,15 +100,15 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                        <hr>
-                        {{ $posts->links() }}
+                                </tbody>
+                            </table>
+                            <hr>
+                            {{ $posts->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

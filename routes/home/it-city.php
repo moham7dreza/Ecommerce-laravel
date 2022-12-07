@@ -3,14 +3,12 @@
 // it city
 use App\Http\Controllers\ItCity\BlogController;
 use App\Http\Controllers\ItCity\HomeController as ItCityHomeController;
+use App\Http\Controllers\ItCity\Office\ServiceController;
 use App\Http\Controllers\ItCity\PageController as ItCityPageController;
 use App\Http\Controllers\ItCity\PC\PcSmartAssembleController;
 use App\Http\Controllers\ItCity\SalesSteps\CartController as StoreCartController;
-use App\Http\Controllers\ItCity\Office\ServiceController;
 use App\Http\Controllers\ItCity\Store\HardwareController;
-
 use App\Http\Controllers\SinglePage\HomeController as SinglePageController;
-
 use Illuminate\Support\Facades\Route;
 
 /***********************************************************************************************************************

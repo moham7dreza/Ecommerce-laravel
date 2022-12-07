@@ -13,7 +13,8 @@
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.actions.min.js') }}"></script>
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-<script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+<script
+    src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
 <script src="{{ asset('it-next-assets/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
@@ -126,5 +127,6 @@
     }
 </script>
 <!-- google map js -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
 <!-- end google map js -->

@@ -3,12 +3,12 @@
 namespace App\Models\Content;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use Share\Traits\HasFaDate;
 
@@ -79,6 +79,7 @@ class Comment extends Model
         else if ($this->approved === self::NOT_APPROVED) return 'danger';
         else return 'warning';
     }
+
     public function btnCssApprove(): string
     {
         if ($this->approved === self::APPROVED) return 'danger';

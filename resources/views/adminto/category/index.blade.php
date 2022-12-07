@@ -10,7 +10,8 @@
             <div class="col-lg-12">
                 <div class="card-box">
                     <div class="float-right">
-                        <a href="{{ route('adminto.category.create') }}" class="arrow-none btn btn-primary text-white" aria-expanded="false">
+                        <a href="{{ route('adminto.category.create') }}" class="arrow-none btn btn-primary text-white"
+                           aria-expanded="false">
                             ساخت دسته بندی جدید
                         </a>
                     </div>
@@ -21,52 +22,55 @@
                     <div class="table-responsive">
                         <table class="table table-striped mb-0">
                             <thead>
-                                <tr class="text-center">
-                                    <th>#</th>
-                                    <th>عنوان دسته بندی</th>
-                                    <th>وضعیت</th>
-                                    <th>زیر دسته</th>
+                            <tr class="text-center">
+                                <th>#</th>
+                                <th>عنوان دسته بندی</th>
+                                <th>وضعیت</th>
+                                <th>زیر دسته</th>
 
-                                    <th>تاریخ ساخت</th>
-                                    <th>عملیات</th>
-                                </tr>
+                                <th>تاریخ ساخت</th>
+                                <th>عملیات</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @foreach($categories as $category)
-                                    <tr class="text-center">
-                                        <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>{{ $category->name }}</td>
-                                        <td>
+                            @foreach($categories as $category)
+                                <tr class="text-center">
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $category->name }}</td>
+                                    <td>
                                             <span class="badge badge-primary">
                                                 {{ $category->textStatus() }}
                                             </span>
-                                        </td>
-                                        <td>{{ $category->getParent() }}</td>
+                                    </td>
+                                    <td>{{ $category->getParent() }}</td>
 
-                                        <td>{{ jdate($category->created_at)->format('Y-m-d') }}</td>
-                                        <td>
-                                            <div class="row">
-                                                <a href="{{ route('adminto.category.edit', $category->id) }}" class="btn btn-warning">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                                <form action="{{ route('adminto.category.change.status', $category->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <button type="submit" class="btn btn-dark ml-1">
-                                                        <i class="fas fa-spinner"></i>
-                                                    </button>
-                                                </form>
-                                                <form action="{{ route('adminto.category.destroy', $category->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger ml-1 delete">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                    <td>{{ jdate($category->created_at)->format('Y-m-d') }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <a href="{{ route('adminto.category.edit', $category->id) }}"
+                                               class="btn btn-warning">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <form action="{{ route('adminto.category.change.status', $category->id) }}"
+                                                  method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-dark ml-1">
+                                                    <i class="fas fa-spinner"></i>
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('adminto.category.destroy', $category->id) }}"
+                                                  method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger ml-1 delete">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <hr>

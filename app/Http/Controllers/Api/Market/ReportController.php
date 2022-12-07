@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Market;
 use App\Http\Controllers\Controller;
 use App\Models\Market\Payment;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {

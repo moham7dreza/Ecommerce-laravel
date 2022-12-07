@@ -18,7 +18,7 @@ class Posts extends Component
     {
         return view('livewire.digital-world.technology.posts', [
             'posts' => $this->posts,
-            ])
+        ])
             ->extends('customer.layouts.master-one-col');
     }
 }

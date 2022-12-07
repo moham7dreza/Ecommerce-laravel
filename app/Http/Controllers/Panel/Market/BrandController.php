@@ -28,6 +28,7 @@ class BrandController extends Controller
         $this->repo = $brandRepo;
         $this->service = $brandService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -71,7 +72,7 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -102,11 +103,11 @@ class BrandController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(BrandRequest $request,ImageService $imageService,int $id): RedirectResponse
+    public function update(BrandRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
         $brand = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($brand->image,$imageService,
+            $result = ShareService::uploadNewImage($brand->image, $imageService,
                 'panel-brand', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.market.brand.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -122,7 +123,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

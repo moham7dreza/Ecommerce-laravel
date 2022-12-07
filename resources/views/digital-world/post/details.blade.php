@@ -99,14 +99,16 @@
                     <div class="author-bio border-radius-10 bg-white p-30 mb-40">
                         <div class="author-image mb-30">
                             <a href="{{ $post->getAuthorPath() }}">
-                                <img src="{{ $post->authorImage() }}" alt="{{ $post->textAuthorName() }}" class="avatar">
+                                <img src="{{ $post->authorImage() }}" alt="{{ $post->textAuthorName() }}"
+                                     class="avatar">
                             </a>
                         </div>
                         <div class="author-info">
                             <h3>
                                 <span class="vcard author">
                                     <span class="fn">
-                                        <a href="{{ $post->getAuthorPath() }}" rel="author">{{ $post->textAuthorName() }}</a>
+                                        <a href="{{ $post->getAuthorPath() }}"
+                                           rel="author">{{ $post->textAuthorName() }}</a>
                                     </span>
                                 </span>
                             </h3>

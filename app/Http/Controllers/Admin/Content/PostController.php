@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Admin\Content;
 
+use App\Http\Controllers\Controller;
 use App\Http\Repositories\Admin\Content\PostCategoryRepo;
 use App\Http\Repositories\Admin\Content\PostRepo;
+use App\Http\Requests\Admin\Content\PostRequest;
 use App\Http\Services\Admin\Content\PostService;
+use App\Http\Services\Image\ImageService;
 use App\Models\Content\Post;
+use App\Models\Content\PostCategory;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Content\PostCategory;
-use App\Http\Services\Image\ImageService;
-use App\Http\Requests\Admin\Content\PostRequest;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -90,7 +89,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -143,7 +142,6 @@ class PostController extends Controller
         $this->postService->destroy($post);
         return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت حذف شد');
     }
-
 
 
     public function status(Post $post)

@@ -2,18 +2,13 @@
 
 namespace App\Http\Livewire\DigitalWorld\Post\Partials;
 
-use App\Http\Repositories\Admin\Content\PostRepo;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\User\Permission;
-use BaconQrCode\Common\Mode;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Share\Repositories\ShareRepo;
-use Share\Services\CommentService;
 
 class CreateComment extends Component
 {

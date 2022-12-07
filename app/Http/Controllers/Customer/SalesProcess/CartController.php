@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Customer\SalesProcess;
 
-use Illuminate\Http\Request;
-use App\Models\Market\Product;
-use App\Models\Market\CartItem;
 use App\Http\Controllers\Controller;
+use App\Models\Market\CartItem;
+use App\Models\Market\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller

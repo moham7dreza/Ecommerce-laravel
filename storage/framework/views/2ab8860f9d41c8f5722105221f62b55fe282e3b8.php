@@ -1,15 +1,15 @@
-    <header class="header-main">
-        <section class="sidebar-header bg-gray">
-            <section class="d-flex justify-content-between flex-md-row-reverse px-2">
-                <span id="sidebar-toggle-show" class="d-inline d-md-none pointer"><i class="fas fa-toggle-off"></i></span>
-                <span id="sidebar-toggle-hide" class="d-none d-md-inline pointer"><i class="fas fa-toggle-on"></i></span>
-                <span><img class="logo" src="<?php echo e(asset('admin-assets/images/logo.png')); ?>"/></span>
-                <span class="d-md-none" id="menu-toggle"><i class="fas fa-ellipsis-h"></i></span>
-            </section>
+<header class="header-main">
+    <section class="sidebar-header bg-gray">
+        <section class="d-flex justify-content-between flex-md-row-reverse px-2">
+            <span id="sidebar-toggle-show" class="d-inline d-md-none pointer"><i class="fas fa-toggle-off"></i></span>
+            <span id="sidebar-toggle-hide" class="d-none d-md-inline pointer"><i class="fas fa-toggle-on"></i></span>
+            <span><img class="logo" src="<?php echo e(asset('admin-assets/images/logo.png')); ?>"/></span>
+            <span class="d-md-none" id="menu-toggle"><i class="fas fa-ellipsis-h"></i></span>
         </section>
-        <section class="body-header" id="body-header">
-            <section class="d-flex justify-content-between">
-                <section>
+    </section>
+    <section class="body-header" id="body-header">
+        <section class="d-flex justify-content-between">
+            <section>
                     <span class="mr-5">
                         <span id="search-area" class="search-area d-none">
                             <i id="search-area-hide" class="fas fa-times pointer"></i>
@@ -19,12 +19,12 @@
                     <i id="search-toggle" class="fas fa-search p-1 d-none d-md-inline pointer"></i>
                     </span>
 
-                    <span id="full-screen" class="pointer p-1 d-none d-md-inline mr-5">
+                <span id="full-screen" class="pointer p-1 d-none d-md-inline mr-5">
                         <i id="screen-compress" class="fas fa-compress d-none"></i>
                         <i id="screen-expand" class="fas fa-expand "></i>
                     </span>
-                </section>
-                <section>
+            </section>
+            <section>
                     <span class="ml-2 ml-md-4 position-relative">
                         <span id="header-notification-toggle" class="pointer">
                             <i class="far fa-bell"></i>
@@ -35,7 +35,7 @@
 
                                 </sup>
 
-                                 <?php endif; ?>
+                            <?php endif; ?>
 
                         </span>
                     <section id="header-notification" class="header-notifictation rounded">
@@ -52,8 +52,7 @@
 
                             <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-
-                            <li class="list-group-item list-group-item-action">
+                                <li class="list-group-item list-group-item-action">
                                 <section class="media">
                                     <section class="media-body pr-1">
                                         <p class="notification-time"><?php echo e($notification['data']['message']); ?></p>
@@ -68,16 +67,16 @@
                         </ul>
                     </section>
                     </span>
-                    <span class="ml-2 ml-md-4 position-relative">
+                <span class="ml-2 ml-md-4 position-relative">
                         <span id="header-comment-toggle" class="pointer">
                             <i class="far fa-comment-alt">
                                 <?php if($unseenComments->count() !== 0): ?>
 
-                                <sup class="badge badge-danger">
+                                    <sup class="badge badge-danger">
                                     <?php echo e($unseenComments->count()); ?>
 
                                  </sup>
-                                 <?php endif; ?>
+                                <?php endif; ?>
                         </i>
                         </span>
 
@@ -92,13 +91,15 @@
 
                                 <?php $__currentLoopData = $unseenComments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unseenComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                <li class="list-group-item list-groupt-item-action">
+                                    <li class="list-group-item list-groupt-item-action">
                                     <section class="media">
-                                        <img src="<?php echo e(asset('admin-assets/images/avatar-2.jpg')); ?>" alt="avatar" class="notification-img">
+                                        <img src="<?php echo e(asset('admin-assets/images/avatar-2.jpg')); ?>" alt="avatar"
+                                             class="notification-img">
                                         <section class="media-body pr-1">
                                             <section class="d-flex justify-content-between">
                                                 <h5 class="comment-user"><?php echo e($unseenComment->user->fullName); ?></h5>
-                                                <span><?php echo e($unseenComment->body); ?><i class="fas fa-circle text-success comment-user-status"></i></span>
+                                                <span><?php echo e($unseenComment->body); ?><i
+                                                        class="fas fa-circle text-success comment-user-status"></i></span>
                                             </section>
                                         </section>
                                     </section>
@@ -115,7 +116,7 @@
                             $user = auth()->user();
                         ?>
                     </span>
-                    <span class="ml-3 ml-md-5 position-relative">
+                <span class="ml-3 ml-md-5 position-relative">
                         <span id="header-profile-toggle" class="pointer">
                             <img class="header-avatar" src="<?php echo e(asset($user->profile_photo_path)); ?>" alt="">
                             <span class="header-username"><?php echo e($user->fullName); ?></span>
@@ -141,8 +142,8 @@
                         </section>
                     </section>
                     </span>
-                </section>
             </section>
         </section>
-    </header>
+    </section>
+</header>
 <?php /**PATH C:\CODEX\techzilla\resources\views/admin/layouts/header.blade.php ENDPATH**/ ?>

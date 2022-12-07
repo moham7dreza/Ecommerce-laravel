@@ -6,7 +6,8 @@
                     <h2 class="widget-title">Recent Posts</h2>
                     <div class="blog-list-widget">
                         <div class="list-group">
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 justify-content-between">
                                     <img src="upload/blog_square_01.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
@@ -14,7 +15,8 @@
                                 </div>
                             </a>
 
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 justify-content-between">
                                     <img src="upload/blog_square_02.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">Let's make an introduction for creative life</h5>
@@ -22,7 +24,8 @@
                                 </div>
                             </a>
 
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 last-item justify-content-between">
                                     <img src="upload/blog_square_03.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
@@ -39,7 +42,8 @@
                     <h2 class="widget-title">Popular Posts</h2>
                     <div class="blog-list-widget">
                         <div class="list-group">
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 justify-content-between">
                                     <img src="upload/blog_square_04.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">Banana-chip chocolate cake recipe with customs</h5>
@@ -53,7 +57,8 @@
                                 </div>
                             </a>
 
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 justify-content-between">
                                     <img src="upload/blog_square_07.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">10 practical ways to choose organic vegetables</h5>
@@ -67,7 +72,8 @@
                                 </div>
                             </a>
 
-                            <a href="single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <a href="single.html"
+                               class="list-group-item list-group-item-action flex-column align-items-start">
                                 <div class="w-100 last-item justify-content-between">
                                     <img src="upload/blog_square_06.jpg" alt="" class="img-fluid float-left">
                                     <h5 class="mb-1">We are making homemade ravioli, nice and good</h5>
@@ -110,13 +116,19 @@
                 <div class="widget">
                     <div class="footer-text text-center">
                         <a href="index.html"><img src="images/flogo.png" alt="" class="img-fluid"></a>
-                        <p>Cloapedia is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                        <p>Cloapedia is a personal blog for handcrafted, cameramade photography content, fashion styles
+                            from independent creatives around the world.</p>
                         <div class="social">
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i
+                                    class="fa fa-google-plus"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i
+                                    class="fa fa-pinterest"></i></a>
                         </div>
 
                         <hr class="invis">
@@ -124,7 +136,8 @@
                         <div class="newsletter-widget text-center">
                             <form class="form-inline">
                                 <input type="text" class="form-control" placeholder="Enter your email address">
-                                <button type="submit" class="btn btn-primary">Subscribe <i class="fa fa-envelope-open-o"></i></button>
+                                <button type="submit" class="btn btn-primary">Subscribe <i
+                                        class="fa fa-envelope-open-o"></i></button>
                             </form>
                         </div><!-- end newsletter -->
                     </div><!-- end footer-text -->

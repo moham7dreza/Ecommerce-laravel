@@ -40,7 +40,7 @@
                             <th>نام منو</th>
                             <th>خلاصه</th>
                             <th>منوی والد</th>
-{{--                            <th>لینک منو</th>--}}
+                            {{--                            <th>لینک منو</th>--}}
                             <th>عکس</th>
                             <th>وضعیت</th>
                             <th class="max-width-16-rem text-center"><i class="fa fa-cogs"></i> تنظیمات</th>
@@ -53,10 +53,12 @@
                                 <td>{{ $menu->name }}</td>
                                 <td>{{ $menu->brief }}</td>
                                 <td>{{ $menu->parent_id ? $menu->parent->name : 'منوی اصلی' }}</td>
-{{--                                <td>{{ $menu->url }}</td>--}}
+                                {{--                                <td>{{ $menu->url }}</td>--}}
                                 <td>
-                                    <img @if(!empty($menu->image)) src="{{ asset($menu->image['indexArray'][$menu->image['currentImage']]) }}" @else src="#" @endif
-                                         alt="" width="100" height="50">
+                                    <img
+                                        @if(!empty($menu->image)) src="{{ asset($menu->image['indexArray'][$menu->image['currentImage']]) }}"
+                                        @else src="#" @endif
+                                        alt="" width="100" height="50">
                                 </td>
                                 <td>
                                     <label>

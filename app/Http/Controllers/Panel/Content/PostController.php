@@ -62,7 +62,7 @@ class PostController extends Controller
     public function store(PostRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage(null,$imageService,
+            $result = ShareService::uploadNewImage(null, $imageService,
                 'panel-post', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.content.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -77,7 +77,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -111,7 +111,7 @@ class PostController extends Controller
     {
         $post = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($post->image,$imageService,
+            $result = ShareService::uploadNewImage($post->image, $imageService,
                 'panel-post', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.content.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -128,7 +128,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

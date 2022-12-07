@@ -38,11 +38,15 @@
                         @foreach($subServices as $service)
                             <div class="col-md-4 service_blog margin_bottom_50 text_align_right">
                                 <div class="full">
-                                    <div class="service_img"> <img class="img-responsive" src="{{ $service->imagePath() }}" alt="{{ $service->name }}" /> </div>
+                                    <div class="service_img"><img class="img-responsive"
+                                                                  src="{{ $service->imagePath() }}"
+                                                                  alt="{{ $service->name }}"/></div>
                                     <div class="service_cont">
                                         <h3 class="service_head">{{ $service->name }}</h3>
                                         <p>{!! \Illuminate\Support\Str::limit($service->description, 50) !!}</p>
-                                        <div class="bt_cont"> <a class="btn sqaure_bt" href="{{ route('it-city.service.detail', $service) }}">جزئیات سرویس</a> </div>
+                                        <div class="bt_cont"><a class="btn sqaure_bt"
+                                                                href="{{ route('it-city.service.detail', $service) }}">جزئیات
+                                                سرویس</a></div>
                                     </div>
                                 </div>
                             </div>

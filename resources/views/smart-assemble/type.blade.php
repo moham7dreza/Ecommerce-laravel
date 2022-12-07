@@ -18,25 +18,29 @@
     <div class="album py-5 bg-light">
         <div class="container">
 
-<div class="row">
-            <!-- start breadcrumb -->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a></li>
-                    <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم اسمبل هوشمند</a></li>
-                    <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
-                    <li class="breadcrumb-item font-size-12 active" aria-current="page">{{ $systemCategory->name}}</li>
-                </ol>
-            </nav>
-            <!-- end breadcrumb -->
-</div>
+            <div class="row">
+                <!-- start breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">فروشگاه</a>
+                        </li>
+                        <li class="breadcrumb-item font-size-12"><a href="#" class="text-decoration-none text-dark">سیستم
+                                اسمبل هوشمند</a></li>
+                        <li class="breadcrumb-item font-size-12"> دسته بندی سیستم ها</li>
+                        <li class="breadcrumb-item font-size-12 active"
+                            aria-current="page">{{ $systemCategory->name}}</li>
+                    </ol>
+                </nav>
+                <!-- end breadcrumb -->
+            </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
                 @foreach($systemTypes as $systemType)
                     <div class="col">
 
                         <div class="card shadow-sm">
-                            <a class="text-dark text-decoration-none" href="{{ route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType]) }}">
+                            <a class="text-dark text-decoration-none"
+                               href="{{ route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType]) }}">
                                 {{--                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"--}}
                                 {{--                                 xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: {{ $systemCategory->name }}"--}}
                                 {{--                                 preserveAspectRatio="xMidYMid slice" focusable="false"><title>{{ $systemCategory->name }}</title>--}}
@@ -47,31 +51,32 @@
                                 <img src="{{ asset($systemType->image['indexArray']['medium']) }}"
                                      class="bd-placeholder-img card-img-top" alt="...">
                             </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $systemType->name }}</h5>
-                                    <p class="card-text">{{ $systemType->brief }}</p>
-                                </div>
-                                    @php
-                                        $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
-                                    @endphp
-                                <ul class="list-group list-group-flush">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $systemType->name }}</h5>
+                                <p class="card-text">{{ $systemType->brief }}</p>
+                            </div>
+                            @php
+                                $metas = \App\Models\SmartAssemble\SystemMeta::where('system_category_id', $systemCategory->id)->get();
+                            @endphp
+                            <ul class="list-group list-group-flush">
                                 @foreach($metas as $meta)
                                     <li class="list-group-item">{{ $meta->meta_value }}</li>
                                 @endforeach
-                                </ul>
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        {{--                                        <div class="btn-group">--}}
-                                        {{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>--}}
-                                        {{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">تعديل--}}
-                                        {{--                                            </button>--}}
-                                        {{--                                        </div>--}}
-                                        <label for="">شروع قیمت</label>
-                                        <small class="text-dark">{{ priceFormat($systemType->start_price_from) }}<span> تومان</span></small>
-                                    </div>
-                                    <a type="button" href="{{ route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType]) }}"
-                                       class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
+                            </ul>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    {{--                                        <div class="btn-group">--}}
+                                    {{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">عرض</button>--}}
+                                    {{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">تعديل--}}
+                                    {{--                                            </button>--}}
+                                    {{--                                        </div>--}}
+                                    <label for="">شروع قیمت</label>
+                                    <small class="text-dark">{{ priceFormat($systemType->start_price_from) }}<span> تومان</span></small>
                                 </div>
+                                <a type="button"
+                                   href="{{ route('smart.assemble.cpus', ['systemCategory' => $systemCategory, 'systemType' => $systemType]) }}"
+                                   class="btn btn-outline-primary card-link mt-3 d-block">مشاهده سیستم ها</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -84,7 +89,9 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item font-size-12"><a href="#">فروشگاه</a></li>
                     <li class="breadcrumb-item font-size-12"><a href="#">سیستم اسمبل هوشمند</a></li>
-                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}} اسمبل شده</li>
+                    <li class="breadcrumb-item font-size-12 active" aria-current="page">نمونه {{ $systemCategory->name}}
+                        اسمبل شده
+                    </li>
                 </ol>
             </nav>
             <div class="card-group">

@@ -16,7 +16,6 @@ use App\Models\SmartAssemble\SystemGen;
 use App\Models\SmartAssemble\SystemItem;
 use App\Models\SmartAssemble\SystemMenu;
 use App\Models\SmartAssemble\SystemType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\Types\Null_;
 

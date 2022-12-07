@@ -2,13 +2,11 @@
 
 return [
 
-    "username"  =>  "",
-    "password"  =>  "",
+    "username" => "",
+    "password" => "",
 
 
     "otp_from" => "",
-
-
 
 
 ];

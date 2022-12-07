@@ -71,7 +71,8 @@
                                             <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
                                                                       href="#collapseOne"><i
                                                         class="fa fa-bar-chart pl-2"
-                                                        aria-hidden="true"></i> اسمبل هوشمند <i class="fa fa-angle-down pl-2"></i></a></p>
+                                                        aria-hidden="true"></i> اسمبل هوشمند <i
+                                                        class="fa fa-angle-down pl-2"></i></a></p>
                                         </div>
                                         <div id="collapseOne" class="panel-collapse collapse in">
                                             <div class="panel-body">
@@ -82,7 +83,8 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
-                                                                      href="#collapseTwo"><i class="fa fa-plane pl-2"></i>
+                                                                      href="#collapseTwo"><i
+                                                        class="fa fa-plane pl-2"></i>
                                                     قطعات سخت افزاری<i
                                                         class="fa fa-angle-down pl-2"></i></a></p>
                                         </div>
@@ -95,8 +97,10 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
-                                                                      href="#collapseThree"><i class="fa fa-star pl-2"></i>
-                                                    سیستم هوشمند انتخاب قطعات سازگار با یکدیگر<i class="fa fa-angle-down pl-2"></i></a></p>
+                                                                      href="#collapseThree"><i
+                                                        class="fa fa-star pl-2"></i>
+                                                    سیستم هوشمند انتخاب قطعات سازگار با یکدیگر<i
+                                                        class="fa fa-angle-down pl-2"></i></a></p>
                                         </div>
                                         <div id="collapseThree" class="panel-collapse collapse">
                                             <div class="panel-body">
@@ -107,8 +111,9 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion"
-                                                                      href="#collapseFour"><i class="fa fa-bar-chart pl-2"
-                                                                                              aria-hidden="true"></i>
+                                                                      href="#collapseFour"><i
+                                                        class="fa fa-bar-chart pl-2"
+                                                        aria-hidden="true"></i>
                                                     انتخاب قطعات با هزینه و کانفیگ دلخواه<i
                                                         class="fa fa-angle-down pl-2"></i></a></p>
                                         </div>
@@ -127,7 +132,8 @@
                     <div class="full" style="margin-top: 35px;">
                         <h3>نمیدونی چه سیستمی مناسب کاربری تو هست؟</h3>
                         <p>همین الان وارد بخش اسمبل هوشمند شو و با چند کلیک ساده سیستم خودتو بساز!</p>
-                        <p><a class="btn main_bt" href="{{ route('it-city.pc.smart-assemble.index') }}">اسمبل هوشمند</a></p>
+                        <p><a class="btn main_bt" href="{{ route('it-city.pc.smart-assemble.index') }}">اسمبل هوشمند</a>
+                        </p>
                     </div>
                 </div>
             </div>

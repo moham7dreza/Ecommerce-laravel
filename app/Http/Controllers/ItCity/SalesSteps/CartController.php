@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\ItCity\SalesSteps;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {

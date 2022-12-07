@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use Illuminate\Http\Request;
-use App\Models\Market\Delivery;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Market\DeliveryRequest;
+use App\Models\Market\Delivery;
 
 class DeliveryController extends Controller
 {
@@ -42,7 +41,7 @@ class DeliveryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(DeliveryRequest $request)
@@ -55,7 +54,7 @@ class DeliveryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +65,7 @@ class DeliveryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Delivery $delivery)
@@ -77,8 +76,8 @@ class DeliveryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(DeliveryRequest $request, Delivery $delivery)
@@ -91,29 +90,28 @@ class DeliveryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Delivery $delivery)
     {
         $result = $delivery->delete();
-       return redirect()->route('admin.market.delivery.index')->with('swal-success', 'روش ارسال شما با موفقیت حذف شد');
+        return redirect()->route('admin.market.delivery.index')->with('swal-success', 'روش ارسال شما با موفقیت حذف شد');
     }
 
 
-    public function status(Delivery $delivery){
+    public function status(Delivery $delivery)
+    {
 
         $delivery->status = $delivery->status == 0 ? 1 : 0;
         $result = $delivery->save();
-        if($result){
-                if($delivery->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($delivery->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

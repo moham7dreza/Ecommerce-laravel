@@ -19,7 +19,7 @@
                         <section class="search-textbox">
                             <span><i class="fa fa-search"></i></span>
                             <input id="search" type="text" class="" placeholder="جستجو ..." autocomplete="off">
-{{--                                   onkeyup="liveSearch(this.value)">--}}
+                            {{--                                   onkeyup="liveSearch(this.value)">--}}
                         </section>
                         <section class="search-result visually-hidden" id="search-result">
                             <section id="product-category-search-result" class="d-none">
@@ -44,7 +44,8 @@
                                 <section class="search-result-title">نتایج جستجو برای <span class="search-words"
                                                                                             id="product-search-key"></span><span
                                         class="search-result-type">در کالاها</span></section>
-                                <section class="search-result-item d-none"><span class="search-no-result">موردی یافت نشد</span>
+                                <section class="search-result-item d-none"><span
+                                        class="search-no-result">موردی یافت نشد</span>
                                 </section>
                             </section>
                         </section>

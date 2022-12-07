@@ -37,14 +37,19 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 pull-right">
                     <div class="full">
                         <div class="blog_section margin_bottom_0">
-                            <div class="blog_feature_img"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-05.jpg') }}" alt="#"> </div>
+                            <div class="blog_feature_img"><img class="img-responsive"
+                                                               src="{{ asset('it-next-assets/images/it_service/post-05.jpg') }}"
+                                                               alt="#"></div>
                             <div class="blog_feature_cantant">
                                 <p class="blog_head">{{ $post->title }}</p>
                                 <div class="post_info">
                                     <ul>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i> {{ $post->postCategory->name ?? '-' }}</li>
-                                        <li><i class="fa fa-comment" aria-hidden="true"></i> {{ $post->comment_count ?? 0 }}</li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> {{ jalaliDate($post->created_at) }}</li>
+                                        <li><i class="fa fa-user"
+                                               aria-hidden="true"></i> {{ $post->postCategory->name ?? '-' }}</li>
+                                        <li><i class="fa fa-comment"
+                                               aria-hidden="true"></i> {{ $post->comment_count ?? 0 }}</li>
+                                        <li><i class="fa fa-calendar"
+                                               aria-hidden="true"></i> {{ jalaliDate($post->created_at) }}</li>
                                     </ul>
                                 </div>
                                 <p>{{ $post->summary ?? '-' }}</p>
@@ -60,63 +65,98 @@
 
                                     <div class="social_icon">
                                         <ul>
-                                            <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            <li class="gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                            <li class="pint"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                            <li class="fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="twi"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li class="gp"><a href="#"><i class="fa fa-google-plus"
+                                                                          aria-hidden="true"></i></a></li>
+                                            <li class="pint"><a href="#"><i class="fa fa-pinterest"
+                                                                            aria-hidden="true"></i></a></li>
                                         </ul>
                                     </div>
-                                    <div class="shr">اشتراک گذاری : </div>
+                                    <div class="shr">اشتراک گذاری :</div>
                                 </div>
                             </div>
                             <div class="comment_section">
                                 <div class="pull-left text_align_left">
                                     <div class="full">
-                                        <div class="preview_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-04.jpg') }}" alt="#"> <span><i class="fa fa-angle-left"></i> Previous</span> </a> </div>
+                                        <div class="preview_commt"><a class="comment_cantrol preview_commat"
+                                                                      href="it_blog_detail.html"> <img
+                                                    class="img-responsive"
+                                                    src="{{ asset('it-next-assets/images/it_service/post-04.jpg') }}"
+                                                    alt="#"> <span><i class="fa fa-angle-left"></i> Previous</span> </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="pull-right text_align_right">
                                     <div class="full">
-                                        <div class="next_commt"> <a class="comment_cantrol preview_commat" href="it_blog_detail.html"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/post-08.jpg') }}" alt="#"> <span>Next <i class="fa fa-angle-right"></i></span> </a> </div>
+                                        <div class="next_commt"><a class="comment_cantrol preview_commat"
+                                                                   href="it_blog_detail.html"> <img
+                                                    class="img-responsive"
+                                                    src="{{ asset('it-next-assets/images/it_service/post-08.jpg') }}"
+                                                    alt="#"> <span>Next <i class="fa fa-angle-right"></i></span> </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="view_commant">
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                        <div class="full"> <img class="img-responsive" style="max-width:100px" src="images/it_service/client1.png" alt="#"> </div>
+                                        <div class="full"><img class="img-responsive" style="max-width:100px"
+                                                               src="images/it_service/client1.png" alt="#"></div>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                         <div class="full theme_bg white_fonts command_cont">
-                                            <p class="comm_head">Christian Perez <span>April 27,2018</span><a class="rply" href="it_blog_detail.html">Reply</a></p>
-                                            <p>magine you are 10 years into the future but this time it’s different. Why? Because starting today you actually
-                                                begin making changes in your life. Specific intentional changes are not easy. They are intentional because these
-                                                changes are changes that you are choosing and they are the changes that will cause you to live the life you want
+                                            <p class="comm_head">Christian Perez <span>April 27,2018</span><a
+                                                    class="rply" href="it_blog_detail.html">Reply</a></p>
+                                            <p>magine you are 10 years into the future but this time it’s different.
+                                                Why? Because starting today you actually
+                                                begin making changes in your life. Specific intentional changes are not
+                                                easy. They are intentional because these
+                                                changes are changes that you are choosing and they are the changes that
+                                                will cause you to live the life you want
                                                 to live and dream. </p>
                                         </div>
                                         <div class="full">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                                    <div class="full"> <img class="img-responsive" style="max-width:100px" src="images/it_service/client2.png" alt="#"> </div>
+                                                    <div class="full"><img class="img-responsive"
+                                                                           style="max-width:100px"
+                                                                           src="images/it_service/client2.png" alt="#">
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                     <div class="full command_cont margin_bottom_0">
-                                                        <p class="comm_head">Christian Perez <span>April 27,2018</span><a class="rply" href="it_blog_detail.html">Reply</a></p>
-                                                        <p>magine you are 10 years into the future but this time it’s different. Why? Because starting today you actually
-                                                            begin making changes in your life. Specific intentional changes are not easy. They are
+                                                        <p class="comm_head">Christian Perez
+                                                            <span>April 27,2018</span><a class="rply"
+                                                                                         href="it_blog_detail.html">Reply</a>
+                                                        </p>
+                                                        <p>magine you are 10 years into the future but this time it’s
+                                                            different. Why? Because starting today you actually
+                                                            begin making changes in your life. Specific intentional
+                                                            changes are not easy. They are
                                                             intentional because these changes are changes. </p>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                                    <div class="full"> <img class="img-responsive" style="max-width:100px" src="images/it_service/client3.png" alt="#"> </div>
+                                                    <div class="full"><img class="img-responsive"
+                                                                           style="max-width:100px"
+                                                                           src="images/it_service/client3.png" alt="#">
+                                                    </div>
                                                 </div>
                                                 <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                                     <div class="full command_cont">
-                                                        <p class="comm_head">Christian Perez <span>April 27,2018</span><a class="rply" href="it_blog_detail.html">Reply</a></p>
-                                                        <p>magine you are 10 years into the future but this time it’s different. Why? Because starting today you actually
-                                                            begin making changes in your life. Specific intentional changes are not easy. They are
+                                                        <p class="comm_head">Christian Perez
+                                                            <span>April 27,2018</span><a class="rply"
+                                                                                         href="it_blog_detail.html">Reply</a>
+                                                        </p>
+                                                        <p>magine you are 10 years into the future but this time it’s
+                                                            different. Why? Because starting today you actually
+                                                            begin making changes in your life. Specific intentional
+                                                            changes are not easy. They are
                                                             intentional because these changes are changes. </p>
                                                     </div>
                                                 </div>
@@ -126,14 +166,20 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                        <div class="full"> <img class="img-responsive" style="max-width:100px" src="images/it_service/client1.png" alt="#"> </div>
+                                        <div class="full"><img class="img-responsive" style="max-width:100px"
+                                                               src="images/it_service/client1.png" alt="#"></div>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
                                         <div class="full theme_bg white_fonts command_cont">
-                                            <p class="comm_head">Christian Perez <span>Sep 27,2017</span><a class="rply" href="it_blog_detail.html">Reply</a></p>
-                                            <p>magine you are 10 years into the future but this time it’s different. Why? Because starting today you actually
-                                                begin making changes in your life. Specific intentional changes are not easy. They are intentional because these
-                                                changes are changes that you are choosing and they are the changes that will cause you to live the life you want
+                                            <p class="comm_head">Christian Perez <span>Sep 27,2017</span><a class="rply"
+                                                                                                            href="it_blog_detail.html">Reply</a>
+                                            </p>
+                                            <p>magine you are 10 years into the future but this time it’s different.
+                                                Why? Because starting today you actually
+                                                begin making changes in your life. Specific intentional changes are not
+                                                easy. They are intentional because these
+                                                changes are changes that you are choosing and they are the changes that
+                                                will cause you to live the life you want
                                                 to live and dream. </p>
                                         </div>
                                     </div>
@@ -151,10 +197,12 @@
                                                 <input class="field_custom" placeholder="Phone" type="text" required>
                                             </div>
                                             <div class="field col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                                <input class="field_custom" placeholder="Password" type="password" required>
+                                                <input class="field_custom" placeholder="Password" type="password"
+                                                       required>
                                             </div>
                                             <div class="field col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <textarea class="field_custom" placeholder="Comment" required></textarea>
+                                                <textarea class="field_custom" placeholder="Comment"
+                                                          required></textarea>
                                             </div>
                                             <div class="center">
                                                 <button class="btn main_bt">SUBMIT NOW</button>
@@ -175,13 +223,14 @@
                                     <input class="form-control" placeholder="Search" type="text">
                                     <span class="input-group-addon">
                 <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                </span> </div>
+                </span></div>
                             </div>
                         </div>
                         <div class="side_bar_blog">
                             <h4>ABOUT AUTHOR</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. sed do eiusmod tempor.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                         <div class="side_bar_blog">
                             <h4>RECENT POST</h4>
@@ -189,15 +238,18 @@
                                 <ul>
                                     <li>
                                         <p class="post_head"><a href="#">How To Look Up</a></p>
-                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
+                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20,
+                                            2017</p>
                                     </li>
                                     <li>
                                         <p class="post_head"><a href="#">Compatible Inkjet Cartridge</a></p>
-                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
+                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20,
+                                            2017</p>
                                     </li>
                                     <li>
                                         <p class="post_head"><a href="#">Treat That Oral Thrush Now</a></p>
-                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20, 2017</p>
+                                        <p class="post_date"><i class="fa fa-calendar" aria-hidden="true"></i> Aug 20,
+                                            2017</p>
                                     </li>
                                 </ul>
                             </div>
@@ -209,7 +261,8 @@
                                     <li><a href="#"><i class="fa fa-caret-right"></i> Change Oil and Filter</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right"></i> Brake Pads Replacement</a></li>
                                     <li><a href="#"><i class="fa fa-caret-right"></i> Timing Belt Replacement</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right"></i> Pre-purchase Car Inspection</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i> Pre-purchase Car Inspection</a>
+                                    </li>
                                     <li><a href="#"><i class="fa fa-caret-right"></i> Starter Replacement</a></li>
                                 </ul>
                             </div>

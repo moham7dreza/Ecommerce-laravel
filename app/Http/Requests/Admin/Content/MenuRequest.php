@@ -23,7 +23,7 @@ class MenuRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->isMethod('post')){
+        if ($this->isMethod('post')) {
             return [
                 'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 //            'url' => 'required|max:500|min:5|regex:/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-z-A-Z-0-9]\.[a-zA-Z]{2,}$/u',
@@ -33,8 +33,7 @@ class MenuRequest extends FormRequest
                 'level' => 'required|numeric',
                 'location' => 'required|numeric',
             ];
-        }
-        else{
+        } else {
             return [
                 'name' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 //            'url' => 'required|max:500|min:5|regex:/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-z-A-Z-0-9]\.[a-zA-Z]{2,}$/u',

@@ -13,10 +13,9 @@
 {{--@endsection--}}
 @section('content')
 
-
     <!-- start cart -->
     <section class="mb-4">
-        <section class="container-xxl" >
+        <section class="container-xxl">
             <section class="row">
                 <section class="col">
 
@@ -24,81 +23,88 @@
                     <section class="row mt-4">
 
                         <section class="col-md-9 mb-3">
-                            <form action="{{ route('smart.assemble.add-system-to-cart', $system) }}" id="add-to-cart" method="post"
+                            <form action="{{ route('smart.assemble.add-system-to-cart', $system) }}" id="add-to-cart"
+                                  method="post"
                                   class="content-wrapper bg-white p-3 rounded-2">
                                 @csrf
 
                                 @foreach($menus as $menu)
                                     @if($menu->parent_id == null)
-                                <!-- start vontent header -->
-                                <section class="content-header pt-3 pb-2">
-                                    <section class="d-flex justify-content-between align-items-center">
-                                        <h2 class="content-header-title">
-                                            <span> {{ $menu->name }}</span>
-                                        </h2>
-                                        <section class="content-header-link">
-                                            <!--<a href="#">مشاهده همه</a>-->
+                                        <!-- start vontent header -->
+                                        <section class="content-header pt-3 pb-2">
+                                            <section class="d-flex justify-content-between align-items-center">
+                                                <h2 class="content-header-title">
+                                                    <span> {{ $menu->name }}</span>
+                                                </h2>
+                                                <section class="content-header-link">
+                                                    <!--<a href="#">مشاهده همه</a>-->
+                                                </section>
+                                            </section>
                                         </section>
-                                    </section>
-                                </section>@else
+                                    @else
                                         <span> {{ $menu->name }}</span>
                                         @php
                                             $system_items = \App\Models\SmartAssemble\SystemItem::where('system_id', $system->id)->where('system_menu_id', $menu->id)->get();
-                                    @endphp
+                                        @endphp
                                         @foreach($system_items as $system_item)
-                                    <section class="cart-item d-md-flex py-3">
-                                        <section class="cart-img align-self-start flex-shrink-1">
-                                            <img src="{{ asset($system_item->product->image['indexArray']['medium']) }}"
-                                                 alt="">
-                                        </section>
-                                        <section class="align-self-start w-100">
-                                            <p class="fw-bold">{{ $system_item->product->name }}</p>
-                                            <p>
-                                                @if(!empty($system_item->color))
-                                                    <span style="background-color: {{ $cartItem->color->color }};"
-                                                          class="cart-product-selected-color me-1"></span>
-                                                    <span> {{ $system_item->color->color_name }}</span>
-                                                @else
-                                                    <span>رنگ منتخب وجود ندارد</span>
-                                                @endif
-                                            </p>
-                                            <p>
-                                                @if(!empty($system_item->product->guarantees[0]))
-                                                    <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                                    <span> {{ $system_item->product->guarantees[0]->name }}</span>
-                                                @else
-                                                    <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
-                                                    <span> گارانتی ندارد</span>
-                                                @endif
-                                            </p>
-                                            <p><i class="fa fa-store-alt cart-product-selected-store me-1"></i> <span>کالا موجود در انبار</span>
-                                            </p>
-                                            <section>
-                                                <section class="cart-product-number d-inline-block ">
-                                                    <button class="cart-number cart-number-down" type="button">-
-                                                    </button>
-                                                    <input class="number" name="number[{{ $system_item->id }}]"
-                                                           type="number"
-                                                           min="1" max="5" step="1" value="0"
-                                                           readonly="readonly">
-                                                    <button class="cart-number cart-number-up" type="button">+</button>
+                                            <section class="cart-item d-md-flex py-3">
+                                                <section class="cart-img align-self-start flex-shrink-1">
+                                                    <img
+                                                        src="{{ asset($system_item->product->image['indexArray']['medium']) }}"
+                                                        alt="">
                                                 </section>
-                                                <a class="text-decoration-none ms-4 cart-delete"
-                                                   href="{{ route('customer.sales-process.remove-from-cart', $system_item) }}"><i
-                                                        class="fa fa-trash-alt"></i> حذف از سبد</a>
+                                                <section class="align-self-start w-100">
+                                                    <p class="fw-bold">{{ $system_item->product->name }}</p>
+                                                    <p>
+                                                        @if(!empty($system_item->color))
+                                                            <span
+                                                                style="background-color: {{ $cartItem->color->color }};"
+                                                                class="cart-product-selected-color me-1"></span>
+                                                            <span> {{ $system_item->color->color_name }}</span>
+                                                        @else
+                                                            <span>رنگ منتخب وجود ندارد</span>
+                                                        @endif
+                                                    </p>
+                                                    <p>
+                                                        @if(!empty($system_item->product->guarantees[0]))
+                                                            <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
+                                                            <span> {{ $system_item->product->guarantees[0]->name }}</span>
+                                                        @else
+                                                            <i class="fa fa-shield-alt cart-product-selected-warranty me-1"></i>
+                                                            <span> گارانتی ندارد</span>
+                                                        @endif
+                                                    </p>
+                                                    <p><i class="fa fa-store-alt cart-product-selected-store me-1"></i>
+                                                        <span>کالا موجود در انبار</span>
+                                                    </p>
+                                                    <section>
+                                                        <section class="cart-product-number d-inline-block ">
+                                                            <button class="cart-number cart-number-down" type="button">-
+                                                            </button>
+                                                            <input class="number" name="number[{{ $system_item->id }}]"
+                                                                   type="number"
+                                                                   min="1" max="5" step="1" value="0"
+                                                                   readonly="readonly">
+                                                            <button class="cart-number cart-number-up" type="button">+
+                                                            </button>
+                                                        </section>
+                                                        <a class="text-decoration-none ms-4 cart-delete"
+                                                           href="{{ route('customer.sales-process.remove-from-cart', $system_item) }}"><i
+                                                                class="fa fa-trash-alt"></i> حذف از سبد</a>
+                                                    </section>
+                                                </section>
+                                                <section class="align-self-end flex-shrink-1">
+                                                    @if(!empty($system_item->product->activeAmazingSales()))
+                                                        <section
+                                                            class="cart-item-discount text-danger text-nowrap mb-1">
+                                                            تخفیف {{ 100 }}</section>
+                                                    @endif
+                                                    <section
+                                                        class="text-nowrap fw-bold">
+                                                        <h6>{{ priceFormat($system_item->product->price) . ' تومان ' }} </h6>
+                                                    </section>
+                                                </section>
                                             </section>
-                                        </section>
-                                        <section class="align-self-end flex-shrink-1">
-                                            @if(!empty($system_item->product->activeAmazingSales()))
-                                                <section class="cart-item-discount text-danger text-nowrap mb-1">
-                                                    تخفیف {{ 100 }}</section>
-                                            @endif
-                                            <section
-                                                class="text-nowrap fw-bold">
-                                                <h6>{{ priceFormat($system_item->product->price) . ' تومان ' }} </h6>
-                                            </section>
-                                        </section>
-                                    </section>
                                         @endforeach
                                     @endif
                                 @endforeach
@@ -110,29 +116,40 @@
                             <section class="content-wrapper bg-white p-3 rounded-2 cart-total-price">
                                 <section class="d-flex align-items-center font-weight-bold">
                                     <p class="text-dark">{{ $system->name }}</p>
-                                    </section>
+                                </section>
                                 <section class="border-bottom border-danger mb-3"></section>
                                 <section class="d-flex justify-content-between align-items-center">
                                     <p class="text-muted">قیمت سیستم</p>
-                                    <p class="text-muted"><span id="product_price" data-product-original-price={{ 0 }}>{{ priceFormat($system->system_price) }}</span> <span class="small">تومان</span></p>
+                                    <p class="text-muted"><span id="product_price"
+                                                                data-product-original-price={{ 0 }}>{{ priceFormat($system->system_price) }}</span>
+                                        <span class="small">تومان</span></p>
                                 </section>
 
-                                    <section class="d-flex justify-content-between align-items-center">
-                                        <p class="text-muted">تخفیف کالا</p>
-                                        <p class="text-danger fw-bolder" id="product-discount-price" data-product-discount-price="{{ 1 }}">{{ 0 }} <span class="small">تومان</span></p>
-                                    </section>
+                                <section class="d-flex justify-content-between align-items-center">
+                                    <p class="text-muted">تخفیف کالا</p>
+                                    <p class="text-danger fw-bolder" id="product-discount-price"
+                                       data-product-discount-price="{{ 1 }}">{{ 0 }} <span class="small">تومان</span>
+                                    </p>
+                                </section>
 
                                 <section class="border-bottom mb-3"></section>
 
                                 <section class="d-flex justify-content-end align-items-center">
-                                    <p class="fw-bolder"><span  id="final-price">{{ priceFormat($system->system_price) }}</span> <span class="small">تومان</span></p>
+                                    <p class="fw-bolder"><span
+                                            id="final-price">{{ priceFormat($system->system_price) }}</span> <span
+                                            class="small">تومان</span></p>
                                 </section>
 
                                 <section class="">
                                     @if($system->system_marketable_number > 0)
-                                        <button id="next-level" class="btn btn-danger d-block w-100" onclick="document.getElementById('add-to-cart').submit();">افزودن به سبد خرید</button>
+                                        <button id="next-level" class="btn btn-danger d-block w-100"
+                                                onclick="document.getElementById('add-to-cart').submit();">افزودن به سبد
+                                            خرید
+                                        </button>
                                     @else
-                                        <button id="next-level" class="btn btn-secondary disabled d-block">سیستم نا موجود میباشد</button>
+                                        <button id="next-level" class="btn btn-secondary disabled d-block">سیستم نا
+                                            موجود میباشد
+                                        </button>
                                     @endif
                                 </section>
                             </section>

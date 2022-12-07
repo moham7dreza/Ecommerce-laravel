@@ -34,16 +34,17 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                        <a href="{{ route('panel.client.user.create') }}" class="arrow-none btn btn-primary text-white" aria-expanded="false">
-                            ساخت کاربر جدید
-                        </a>
-                    </div>
-                    <h4 class="mt-0 header-title">لیست تمامی کاربران</h4>
+                            <a href="{{ route('panel.client.user.create') }}"
+                               class="arrow-none btn btn-primary text-white" aria-expanded="false">
+                                ساخت کاربر جدید
+                            </a>
+                        </div>
+                        <h4 class="mt-0 header-title">لیست تمامی کاربران</h4>
 
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عکس</th>
@@ -55,8 +56,8 @@
                                     <th>تاریخ عضویت</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($users as $user)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -71,12 +72,12 @@
                                                     <li>
                                                         {{ $role->name }}
                                                         <a href="#"
-                                                        onclick="event.preventDefault(); document.getElementById('delete-role-{{ $role->id }}').submit()">
+                                                           onclick="event.preventDefault(); document.getElementById('delete-role-{{ $role->id }}').submit()">
                                                             <i class="fa fa-minus-circle"></i>
                                                         </a>
                                                     </li>
                                                     <form method="POST" id="delete-role-{{ $role->id }}"
-                                                    action="{{ route('panel.client.user.role-remove', ['userId' => $user->id, 'roleId' => $role->id]) }}">
+                                                          action="{{ route('panel.client.user.role-remove', ['userId' => $user->id, 'roleId' => $role->id]) }}">
                                                         @csrf
                                                         @method('DELETE')
                                                     </form>
@@ -102,7 +103,7 @@
                                             </ul>
                                         </td>
                                         <td>
-{{--                                            <span class="badge badge-@if($user->email_verified_at)success @elseif(! $user->email_verified_at)danger @endif">--}}
+                                            {{--                                            <span class="badge badge-@if($user->email_verified_at)success @elseif(! $user->email_verified_at)danger @endif">--}}
                                             <span class="badge badge-{{ $user->cssStatusEmailVerifiedAt() }}">
                                                 {{ $user->textStatusEmailVerifiedAt() }}
                                             </span>
@@ -110,15 +111,18 @@
                                         <td>{{ $user->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-{{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">ویرایش</a>--}}
-{{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-danger ml-1">حذف</a>--}}
-                                                <a href="{{ route('panel.client.user.edit', $user->id) }}" class="btn btn-warning">
+                                                {{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">ویرایش</a>--}}
+                                                {{--                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-danger ml-1">حذف</a>--}}
+                                                <a href="{{ route('panel.client.user.edit', $user->id) }}"
+                                                   class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a href="{{ route('panel.client.user.add-roles', $user->id) }}" class="btn btn-success ml-1">
+                                                <a href="{{ route('panel.client.user.add-roles', $user->id) }}"
+                                                   class="btn btn-success ml-1">
                                                     <i class="fas fa-plus"></i>
                                                 </a>
-                                                <form action="{{ route('panel.client.user.destroy', $user->id) }}" method="POST">
+                                                <form action="{{ route('panel.client.user.destroy', $user->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">
@@ -129,15 +133,15 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                        <hr>
-                        {{ $users->links() }}
+                                </tbody>
+                            </table>
+                            <hr>
+                            {{ $users->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

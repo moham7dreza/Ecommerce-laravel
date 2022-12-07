@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use App\Models\User;
-use App\Models\Market\Copan;
-use Illuminate\Http\Request;
-use App\Models\Market\Product;
-use App\Models\Market\AmazingSale;
 use App\Http\Controllers\Controller;
-use App\Models\Market\CommonDiscount;
 use App\Http\Requests\Admin\Market\AmazingSaleRequest;
 use App\Http\Requests\Admin\Market\CommonDiscountRequest;
 use App\Http\Requests\Admin\Market\CopanRequest;
+use App\Models\Market\AmazingSale;
+use App\Models\Market\CommonDiscount;
+use App\Models\Market\Copan;
+use App\Models\Market\Product;
+use App\Models\User;
 
 class DiscountController extends Controller
 {

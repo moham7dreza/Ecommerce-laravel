@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Assemble;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Assemble\SystemItemsRequest;
-use App\Models\Market\Brand;
 use App\Models\Market\CartItem;
 use App\Models\Market\Product;
-use App\Models\Market\ProductCategory;
 use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemBrand;
 use App\Models\SmartAssemble\SystemCategory;
@@ -16,7 +14,6 @@ use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemItem;
 use App\Models\SmartAssemble\SystemMenu;
 use App\Models\SmartAssemble\SystemType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class SmartAssembleController extends Controller
@@ -55,7 +52,7 @@ class SmartAssembleController extends Controller
     {
         $brands = SystemBrand::all();
         $offeredSystems = System::where('system_rating', 5)->where('status', 1)->take(5)->get();
-        $sampleOfGamingSystemImages = SystemType::where('name','like', '%کولاک مینی%')->first()->images;
+        $sampleOfGamingSystemImages = SystemType::where('name', 'like', '%کولاک مینی%')->first()->images;
         $systemCategories = SystemCategory::all();
         return view('smart-assemble.category', compact('systemCategories', 'offeredSystems', 'brands', 'sampleOfGamingSystemImages'));
     }

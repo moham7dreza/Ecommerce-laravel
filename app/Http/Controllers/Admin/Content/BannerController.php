@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Content;
 
-use Illuminate\Http\Request;
-use App\Models\Content\Banner;
 use App\Http\Controllers\Controller;
-use App\Http\Services\Image\ImageService;
 use App\Http\Requests\Admin\Content\BannerRequest;
+use App\Http\Services\Image\ImageService;
+use App\Models\Content\Banner;
 
 class BannerController extends Controller
 {
@@ -27,7 +26,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::query()->whereNotIn('position', [7,8,9])->latest()->paginate(5);
+        $banners = Banner::query()->whereNotIn('position', [7, 8, 9])->latest()->paginate(5);
         $positions = Banner::$positions;
         return view('admin.content.banner.index', compact('banners', 'positions'));
     }
@@ -46,7 +45,7 @@ class BannerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(BannerRequest $request, ImageService $imageService)
@@ -65,10 +64,11 @@ class BannerController extends Controller
         $banner = Banner::create($inputs);
         return redirect()->route('admin.content.banner.index')->with('swal-success', 'بنر  جدید شما با موفقیت ثبت شد');
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +79,7 @@ class BannerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Banner $banner)
@@ -92,8 +92,8 @@ class BannerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(BannerRequest $request, Banner $banner, ImageService $imageService)
@@ -127,7 +127,7 @@ class BannerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Banner $banner)
@@ -135,7 +135,6 @@ class BannerController extends Controller
         $result = $banner->delete();
         return redirect()->route('admin.content.banner.index')->with('swal-success', 'بنر  شما با موفقیت حذف شد');
     }
-
 
 
     public function status(Banner $banner)

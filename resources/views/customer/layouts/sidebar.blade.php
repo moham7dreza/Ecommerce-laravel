@@ -58,31 +58,31 @@
         </section>
     </section>
     @if(!empty($productCategory))
-    <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
-        <section class="content-header mb-3">
-            <section class="d-flex justify-content-between align-items-center">
-                <h2 class="content-header-title content-header-title-small">
-                    برند
-                </h2>
-                <section class="content-header-link">
-                    <!--<a href="#">مشاهده همه</a>-->
+        <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
+            <section class="content-header mb-3">
+                <section class="d-flex justify-content-between align-items-center">
+                    <h2 class="content-header-title content-header-title-small">
+                        برند
+                    </h2>
+                    <section class="content-header-link">
+                        <!--<a href="#">مشاهده همه</a>-->
+                    </section>
                 </section>
             </section>
-        </section>
 
-        <section class="sidebar-brand-wrapper">
-            @foreach($productCategory->brands as $brand)
-                <section class="form-check sidebar-brand-item">
-                    <input class="form-check-input" type="checkbox" value="1" id="1">
-                    <label class="form-check-label d-flex justify-content-between" for="1">
-                        <span>{{ $brand->persian_name }}</span>
-                        <span>{{ $brand->original_name }}</span>
-                    </label>
-                </section>
-            @endforeach
+            <section class="sidebar-brand-wrapper">
+                @foreach($productCategory->brands as $brand)
+                    <section class="form-check sidebar-brand-item">
+                        <input class="form-check-input" type="checkbox" value="1" id="1">
+                        <label class="form-check-label d-flex justify-content-between" for="1">
+                            <span>{{ $brand->persian_name }}</span>
+                            <span>{{ $brand->original_name }}</span>
+                        </label>
+                    </section>
+                @endforeach
 
+            </section>
         </section>
-    </section>
 
 
         @foreach($productCategory->attributes as $attribute)

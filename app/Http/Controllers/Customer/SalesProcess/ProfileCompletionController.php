@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Customer\SalesProcess;
 
-use Illuminate\Http\Request;
-use App\Models\Market\CartItem;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Customer\SalesProcess\ProfileCompletionRequest;
+use App\Models\Market\CartItem;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileCompletionController extends Controller
 {
     public function profileCompletion()
     {
-       $user = Auth::user();
+        $user = Auth::user();
 
-       $cartItems = CartItem::where('user_id', $user->id)->get();
-       return view('customer.sales-process.profile-completion', compact('user', 'cartItems'));
+        $cartItems = CartItem::where('user_id', $user->id)->get();
+        return view('customer.sales-process.profile-completion', compact('user', 'cartItems'));
 
     }
 
@@ -31,8 +30,7 @@ class ProfileCompletionController extends Controller
             'national_code' => $request->national_code,
         ];
 
-        if(isset($request->mobile) && empty($user->mobile))
-        {
+        if (isset($request->mobile) && empty($user->mobile)) {
             $mobile = convertArabicToEnglish($request->mobile);
             $mobile = convertPersianToEnglish($mobile);
 
@@ -46,28 +44,25 @@ class ProfileCompletionController extends Controller
 
                 $inputs['mobile'] = $mobile;
             }
-            }
-            else{
-                $errorText = 'فرمت شماره موبایل معتبر نیست';
-                return redirect()->back()->withErrors(['mobile', $errorText]);
-            }
+        } else {
+            $errorText = 'فرمت شماره موبایل معتبر نیست';
+            return redirect()->back()->withErrors(['mobile', $errorText]);
+        }
 
-            if(isset($request->email) && empty($user->email))
-            {
-                $email = convertArabicToEnglish($request->email);
-                $email = convertPersianToEnglish($email);
+        if (isset($request->email) && empty($user->email)) {
+            $email = convertArabicToEnglish($request->email);
+            $email = convertPersianToEnglish($email);
 
-                $inputs['email'] = $email;
+            $inputs['email'] = $email;
 
-            }
+        }
 
-            $inputs = array_filter($inputs);
+        $inputs = array_filter($inputs);
 
-            if(!empty($inputs))
-            {
-                $user->update($inputs);
-            }
-            return redirect()->route('customer.sales-process.address-and-delivery');
+        if (!empty($inputs)) {
+            $user->update($inputs);
+        }
+        return redirect()->route('customer.sales-process.address-and-delivery');
 
 
     }

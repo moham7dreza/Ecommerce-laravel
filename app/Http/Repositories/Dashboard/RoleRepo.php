@@ -19,7 +19,7 @@ class RoleRepo
 
     public function delete($id)
     {
-        return $this->query()->where('id',$id)->delete();
+        return $this->query()->where('id', $id)->delete();
     }
 
     public function changeStatus($role)

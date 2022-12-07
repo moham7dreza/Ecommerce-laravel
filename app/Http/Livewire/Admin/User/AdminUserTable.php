@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Admin\User;
 
+use App\Models\User;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\User;
 
 class AdminUserTable extends DataTableComponent
 {

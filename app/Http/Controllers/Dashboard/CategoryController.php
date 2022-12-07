@@ -12,7 +12,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -71,7 +70,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -105,7 +104,7 @@ class CategoryController extends Controller
     {
         $category = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($category->image,$imageService,
+            $result = ShareService::uploadNewImage($category->image, $imageService,
                 'adminto-post-category', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('adminto.category.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -121,7 +120,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

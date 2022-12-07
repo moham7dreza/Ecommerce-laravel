@@ -10,16 +10,16 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 class PermissionsImport implements ToModel, WithChunkReading, WithHeadingRow
 {
     /**
-    * @param array $row
-    *
-    * @return Permission
+     * @param array $row
+     *
+     * @return Permission
      */
     public function model(array $row): Permission
     {
         return new Permission([
-            'name'     => $row['name'],
-            'description'    => $row['description'],
-            'status'    => $row['status'],
+            'name' => $row['name'],
+            'description' => $row['description'],
+            'status' => $row['status'],
         ]);
     }
 

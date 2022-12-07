@@ -2,7 +2,6 @@
 
 namespace Share\Services;
 
-use App\Http\Repositories\Admin\Content\PostCategoryRepo;
 use App\Http\Services\Image\ImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -24,7 +23,7 @@ class ShareService
         // exit;
         $result = $imageService->createIndexAndSave($file);
         if ($result === false) {
-            return self::redirect($redirect_route,'آپلود تصویر با خطا مواجه شد', 'error');
+            return self::redirect($redirect_route, 'آپلود تصویر با خطا مواجه شد', 'error');
         }
         return $result;
     }
@@ -109,7 +108,7 @@ class ShareService
     public static function saveImage($file, $folder, $image, $imageService)
     {
         if (!empty($image)) {
-           $imageService->deleteImage($image);
+            $imageService->deleteImage($image);
         }
         $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . $folder);
         return $imageService->save($file);

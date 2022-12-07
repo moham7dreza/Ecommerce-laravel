@@ -23,7 +23,7 @@ class SystemRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->isMethod('post')){
+        if ($this->isMethod('post')) {
             return [
 //                'description' => 'required|max:500|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
                 'system_user_type' => 'nullable|max:500|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
@@ -37,8 +37,7 @@ class SystemRequest extends FormRequest
                 'system_config_id' => 'required|min:1|max:100000000|regex:/^[0-9]+$/u|exists:system_configs,id',
                 'published_at' => 'required|numeric',
             ];
-        }
-        else{
+        } else {
             return [
 //                'description' => 'required|max:500|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
                 'system_user_type' => 'nullable|max:500|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',

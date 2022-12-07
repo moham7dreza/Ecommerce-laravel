@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Assemble\SmartAssembleController;
 use App\Http\Controllers\Auth\Customer\LoginRegisterController;
-// customer
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\Market\ProductController as MarketProductController;
 use App\Http\Controllers\Customer\SalesProcess\AddressController;
@@ -9,10 +9,10 @@ use App\Http\Controllers\Customer\SalesProcess\CartController;
 use App\Http\Controllers\Customer\SalesProcess\PaymentController as CustomerPaymentController;
 use App\Http\Controllers\Customer\SalesProcess\ProfileCompletionController;
 use App\Http\Controllers\Customer\UserProfile\ProfileController;
-
-use App\Http\Controllers\Assemble\SmartAssembleController;
-
 use Illuminate\Support\Facades\Route;
+
+// customer
+
 /***********************************************************************************************************************
  * login system
  *

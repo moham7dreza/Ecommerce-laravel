@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Market\CategoryValue;
-use App\Models\Market\CategoryAttribute;
 use App\Http\Requests\Admin\Market\CategoryValueRequest;
+use App\Models\Market\CategoryAttribute;
+use App\Models\Market\CategoryValue;
 
 class PropertyValueController extends Controller
 {
@@ -33,10 +32,10 @@ class PropertyValueController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryValueRequest $request ,CategoryAttribute $categoryAttribute)
+    public function store(CategoryValueRequest $request, CategoryAttribute $categoryAttribute)
     {
         $inputs = $request->all();
         $inputs['value'] = json_encode(['value' => $request->value, 'price_increase' => $request->price_increase]);
@@ -48,7 +47,7 @@ class PropertyValueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -59,7 +58,7 @@ class PropertyValueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(CategoryAttribute $categoryAttribute, CategoryValue $value)
@@ -70,11 +69,11 @@ class PropertyValueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryValueRequest $request ,CategoryAttribute $categoryAttribute, CategoryValue $value)
+    public function update(CategoryValueRequest $request, CategoryAttribute $categoryAttribute, CategoryValue $value)
     {
         $inputs = $request->all();
         $inputs['value'] = json_encode(['value' => $request->value, 'price_increase' => $request->price_increase]);
@@ -86,7 +85,7 @@ class PropertyValueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(CategoryAttribute $categoryAttribute, CategoryValue $value)

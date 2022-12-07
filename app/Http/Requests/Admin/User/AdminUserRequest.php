@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Admin\User;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Foundation\Http\FormRequest;
 
 class AdminUserRequest extends FormRequest
 {

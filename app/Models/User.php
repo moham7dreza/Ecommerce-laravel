@@ -33,7 +33,7 @@ class User extends Authenticatable
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
     protected static bool $logFillable = true;
-    protected  static array $logAttributes = ['first_name', 'last_name', 'email'];
+    protected static array $logAttributes = ['first_name', 'last_name', 'email'];
 
     /**
      * The attributes that are mass assignable.
@@ -148,17 +148,17 @@ class User extends Authenticatable
         return asset($this->profile_photo_path);
     }
 
-    public function commentsCount() : int
+    public function commentsCount(): int
     {
         return $this->comments->count() ?? 0;
     }
 
-    public function rolesCount() : int
+    public function rolesCount(): int
     {
         return $this->roles->count() ?? 0;
     }
 
-    public function permissionsCount() : int
+    public function permissionsCount(): int
     {
         return $this->permissions->count() ?? 0;
     }
@@ -172,7 +172,7 @@ class User extends Authenticatable
 
     public function cssStatusEmailVerifiedAt(): string
     {
-        if($this->email_verified_at) return 'success';
+        if ($this->email_verified_at) return 'success';
 
         return 'danger';
     }

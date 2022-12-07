@@ -84,11 +84,11 @@
                             <section class="product-name"><h3>{{ Str::limit($product->name, 30) }}</h3></section>
                             <section class="product-price-wrapper">
                                 @if($product->activeAmazingSales())
-                                <section class="product-discount">
-                                    <span class="product-old-price">{{ priceFormat($product->price) }} تومان</span>
-                                    <span
-                                        class="product-discount-amount">% {{ convertEnglishToPersian($product->activeAmazingSales()->percentage) }}</span>
-                                </section>
+                                    <section class="product-discount">
+                                        <span class="product-old-price">{{ priceFormat($product->price) }} تومان</span>
+                                        <span
+                                            class="product-discount-amount">% {{ convertEnglishToPersian($product->activeAmazingSales()->percentage) }}</span>
+                                    </section>
                                 @endif
                                 <section class="product-price">{{ priceFormat($productNewPrice) }} تومان</section>
                             </section>

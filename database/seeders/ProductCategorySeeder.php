@@ -20,28 +20,28 @@ class ProductCategorySeeder extends Seeder
             'description' => 'ایجاد دسته بندی محصول',
             'status' => 1,
             'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' =>  Carbon::now()->toDateTimeString()
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
         DB::table('permissions')->insert([
             'name' => 'ویرایش دسته بندی محصول',
             'description' => 'ویرایش دسته بندی محصول',
             'status' => 1,
             'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' =>  Carbon::now()->toDateTimeString()
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
         DB::table('permissions')->insert([
             'name' => 'حذف دسته بندی محصول',
             'description' => 'حذف دسته بندی محصول',
             'status' => 1,
             'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' =>  Carbon::now()->toDateTimeString()
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
         DB::table('permissions')->insert([
             'name' => 'نمایش دسته بندی محصول',
             'description' => 'نمایش دسته بندی محصول',
             'status' => 1,
             'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' =>  Carbon::now()->toDateTimeString()
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
     }
 }

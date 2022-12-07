@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Auth\Customer;
 
-use Carbon\Carbon;
-use App\Models\Otp;
-use App\Models\User;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
+use App\Http\Requests\Auth\Customer\LoginRegisterRequest;
+use App\Http\Services\Message\Email\EmailService;
 use App\Http\Services\Message\MessageService;
 use App\Http\Services\Message\SMS\SmsService;
-use App\Http\Services\Message\Email\EmailService;
-use App\Http\Requests\Auth\Customer\LoginRegisterRequest;
+use App\Models\Otp;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 class LoginRegisterController extends Controller
 {

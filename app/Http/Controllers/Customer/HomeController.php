@@ -2,29 +2,21 @@
 
 namespace App\Http\Controllers\Customer;
 
-use App\Http\Requests\Customer\User\UpdateUserInfoRequest;
-use App\Models\Address;
+use App\Http\Controllers\Controller;
+use App\Models\Content\Banner;
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\Brand;
-use App\Models\Market\Order;
+use App\Models\Market\Product;
 use App\Models\Market\ProductCategory;
-use App\Models\Province;
 use App\Models\Setting\Setting;
 use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemBrand;
 use App\Models\SmartAssemble\SystemCategory;
-use App\Models\SmartAssemble\SystemMenu;
 use App\Models\SmartAssemble\SystemType;
-use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\Content\Banner;
-use App\Models\Market\Product;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {

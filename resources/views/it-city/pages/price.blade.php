@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="price_bottom">
-                                    <div class="center"> <a href="#" class="btn dark_gray_bt">Get Started</a> </div>
+                                    <div class="center"><a href="#" class="btn dark_gray_bt">Get Started</a></div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div class="price_bottom">
-                                        <div class="center"> <a href="#" class="btn main_bt">Get Started</a> </div>
+                                        <div class="center"><a href="#" class="btn main_bt">Get Started</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="price_bottom">
-                                    <div class="center"> <a href="#" class="btn dark_gray_bt">Get Started</a> </div>
+                                    <div class="center"><a href="#" class="btn dark_gray_bt">Get Started</a></div>
                                 </div>
                             </div>
                         </div>

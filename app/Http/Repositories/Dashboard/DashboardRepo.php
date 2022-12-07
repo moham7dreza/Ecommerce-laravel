@@ -6,7 +6,6 @@ use App\Models\Content\Comment;
 use App\Models\Content\Post;
 use App\Models\Content\PostCategory;
 use App\Models\User;
-use App\Models\User\Permission;
 
 class DashboardRepo
 {

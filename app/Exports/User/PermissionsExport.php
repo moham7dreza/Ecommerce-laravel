@@ -9,8 +9,8 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class PermissionsExport implements FromCollection
 {
     /**
-    * @return Collection
-    */
+     * @return Collection
+     */
     public function collection(): Collection
     {
         return Permission::all();

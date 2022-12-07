@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Customer\Market;
 
+use App\Http\Controllers\Controller;
+use App\Models\Content\Comment;
 use App\Models\Market\AmazingSale;
 use App\Models\Market\Brand;
+use App\Models\Market\Product;
 use App\Models\Market\ProductCategory;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\Models\Market\Product;
-use App\Models\Content\Comment;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -89,7 +88,7 @@ class ProductController extends Controller
                         ['percentage', '>=', 1]
                     ])->get();
                     $queryResult = collect();
-                    foreach ($amazingSales as $amazingSale){
+                    foreach ($amazingSales as $amazingSale) {
                         $queryResult->push($amazingSale->product);
                     }
                     break;
@@ -113,6 +112,6 @@ class ProductController extends Controller
         }
 
         return view('customer.market.product.query-products', compact('queryResult', 'queryTitle',
-        'brands'));
+            'brands'));
     }
 }

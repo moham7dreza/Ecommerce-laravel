@@ -9,9 +9,10 @@ use Illuminate\View\Component;
 class Personnel extends Component
 {
     public Collection $personnel;
+
     /**
      * Create a new component instance.
-     * @param  Collection  $personnel
+     * @param Collection $personnel
      * @return void
      */
     public function __construct($personnel)

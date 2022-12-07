@@ -34,7 +34,8 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                            <a href="{{ route('panel.market.brand.create') }}" class="btn main f-main btn-block fnt-xs" aria-expanded="false">
+                            <a href="{{ route('panel.market.brand.create') }}" class="btn main f-main btn-block fnt-xs"
+                               aria-expanded="false">
                                 ساخت برند جدید
                             </a>
                         </div>
@@ -74,17 +75,21 @@
                                         <td>{{ $brand->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.market.brand.edit', $brand->id) }}" class="btn outlined c-main o-main fnt-xxs ml-1">
+                                                <a href="{{ route('panel.market.brand.edit', $brand->id) }}"
+                                                   class="btn outlined c-main o-main fnt-xxs ml-1">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.market.brand.change.status', $brand->id) }}" method="POST">
+                                                <form
+                                                    action="{{ route('panel.market.brand.change.status', $brand->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.market.brand.destroy', $brand->id) }}" method="POST">
+                                                <form action="{{ route('panel.market.brand.destroy', $brand->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use Illuminate\Http\Request;
-use App\Models\Market\Product;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Market\StoreRequest;
 use App\Http\Requests\Admin\Market\StoreUpdateRequest;
+use App\Models\Market\Product;
+use Illuminate\Support\Facades\Log;
 
 class StoreController extends Controller
 {
@@ -42,7 +41,7 @@ class StoreController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, Product $product)
@@ -56,7 +55,7 @@ class StoreController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +66,7 @@ class StoreController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -78,8 +77,8 @@ class StoreController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(StoreUpdateRequest $request, Product $product)
@@ -92,7 +91,7 @@ class StoreController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

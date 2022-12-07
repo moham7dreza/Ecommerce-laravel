@@ -2,13 +2,10 @@
 
 namespace App\Http\Services\Payment;
 
-use Request;
-use Zarinpal\Zarinpal;
-use App\Models\Market\Order;
-use Zarinpal\Clients\GuzzleClient;
-use App\Models\Market\OnlinePayment;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Config;
+use Zarinpal\Clients\GuzzleClient;
+use Zarinpal\Zarinpal;
 
 class PaymentService
 {

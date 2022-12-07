@@ -23,6 +23,6 @@ class RoleService
         return $role->permissions->sync($request->permissions)->update([
             'name' => $request->name,
             'status' => $request->status,
-            ]);
+        ]);
     }
 }

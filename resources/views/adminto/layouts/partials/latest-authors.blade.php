@@ -4,7 +4,8 @@
             <div class="card-box widget-user">
                 <div>
                     <div class="avatar-lg float-left mr-3">
-                        <img src="{{ $author->image() }}" class="img-fluid rounded-circle" alt="{{ $author->fullName }}">
+                        <img src="{{ $author->image() }}" class="img-fluid rounded-circle"
+                             alt="{{ $author->fullName }}">
                     </div>
                     <div class="wid-u-info">
                         <h5 class="mt-0">{{ $author->fullName }}</h5>

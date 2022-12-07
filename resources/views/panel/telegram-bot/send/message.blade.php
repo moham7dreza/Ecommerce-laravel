@@ -8,8 +8,8 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item font-size-12"> <a href="#">خانه</a></li>
-            <li class="breadcrumb-item font-size-12"> <a href="#">اسمبل هوشمند</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#">خانه</a></li>
+            <li class="breadcrumb-item font-size-12"><a href="#">اسمبل هوشمند</a></li>
             <li class="breadcrumb-item font-size-12 active" aria-current="page">برند ها</li>
         </ol>
     </nav>
@@ -39,7 +39,8 @@
                             <section class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="chat_id">آی دی ربات</label>
-                                    <input type="number" name="chat_id" value="{{ old('chat_id') }}" class="form-control form-control-sm">
+                                    <input type="number" name="chat_id" value="{{ old('chat_id') }}"
+                                           class="form-control form-control-sm">
                                 </div>
                                 @error('chat_id')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -53,7 +54,8 @@
                             <section class="col-12">
                                 <div class="form-group">
                                     <label for="">محتوی پیام</label>
-                                    <textarea name="text" id="introduction" class="form-control form-control-sm" rows="6">{{ old('text') }}</textarea>
+                                    <textarea name="text" id="introduction" class="form-control form-control-sm"
+                                              rows="6">{{ old('text') }}</textarea>
                                 </div>
                                 @error('text')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">

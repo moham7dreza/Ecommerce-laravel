@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Dashboard;
 
-use App\Models\Content\Banner;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class BannerRequest extends FormRequest
 {

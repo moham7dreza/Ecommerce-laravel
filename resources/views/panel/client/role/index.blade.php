@@ -34,15 +34,16 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                        <a href="{{ route('panel.client.role.create') }}" class="arrow-none btn btn-primary text-white" aria-expanded="false">
-                            ساخت مقام جدید
-                        </a>
-                    </div>
-                    <h4 class="mt-0 header-title">لیست تمامی مقام ها</h4>
-                    <br>
-                    <div class="table-responsive">
-                        <table class="table table-striped mb-0">
-                            <thead>
+                            <a href="{{ route('panel.client.role.create') }}"
+                               class="arrow-none btn btn-primary text-white" aria-expanded="false">
+                                ساخت مقام جدید
+                            </a>
+                        </div>
+                        <h4 class="mt-0 header-title">لیست تمامی مقام ها</h4>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped mb-0">
+                                <thead>
                                 <tr class="text-center">
                                     <th>#</th>
                                     <th>عنوان مقام</th>
@@ -52,8 +53,8 @@
                                     <th>تاریخ ساخت</th>
                                     <th>عملیات</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($roles as $role)
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
@@ -74,17 +75,20 @@
                                         <td>{{ $role->getFaCreatedDate()}}</td>
                                         <td>
                                             <div class="row">
-                                                <a href="{{ route('panel.client.role.edit', $role->id) }}" class="btn btn-warning">
+                                                <a href="{{ route('panel.client.role.edit', $role->id) }}"
+                                                   class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.client.role.change.status', $role->id) }}" method="POST">
+                                                <form action="{{ route('panel.client.role.change.status', $role->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">
                                                         <i class="fas fa-spinner"></i>
                                                     </button>
                                                 </form>
-                                                <form action="{{ route('panel.client.role.destroy', $role->id) }}" method="POST">
+                                                <form action="{{ route('panel.client.role.destroy', $role->id) }}"
+                                                      method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger ml-1 delete">
@@ -95,15 +99,15 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                        <hr>
-                        {{ $roles->links() }}
+                                </tbody>
+                            </table>
+                            <hr>
+                            {{ $roles->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('script')

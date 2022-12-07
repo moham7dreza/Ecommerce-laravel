@@ -42,13 +42,13 @@
             <h4>برچسب ها</h4>
             <div class="tags">
                 <ul>
-{{--                    @foreach(explode(',', $service->tags) as $tag)--}}
-{{--                        @php--}}
-{{--                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();--}}
-{{--                        @endphp--}}
-{{--                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"--}}
-{{--                               @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>--}}
-{{--                    @endforeach--}}
+                    {{--                    @foreach(explode(',', $service->tags) as $tag)--}}
+                    {{--                        @php--}}
+                    {{--                            $category = \App\Models\Market\ProductCategory::query()->where('name', 'LIKE', '%' . $tag . '%')->first();--}}
+                    {{--                        @endphp--}}
+                    {{--                        <li><a @if($category) href="{{ route('it-city.store.category.components', $category) }}"--}}
+                    {{--                               @else href="{{ route('it-city.error.404') }}" @endif>{{ $tag }}</a></li>--}}
+                    {{--                    @endforeach--}}
                 </ul>
             </div>
         </div>

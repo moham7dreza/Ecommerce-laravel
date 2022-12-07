@@ -34,7 +34,8 @@
                 <div class="card shade h-100">
                     <div class="card-body">
                         <div class="float-left cart-title">
-                            <a href="{{ route('panel.content.banner.create') }}" class="arrow-none btn btn-primary text-white"
+                            <a href="{{ route('panel.content.banner.create') }}"
+                               class="arrow-none btn btn-primary text-white"
                                aria-expanded="false">
                                 ساخت تبلیغات جدید
                             </a>
@@ -60,7 +61,8 @@
                                     <tr class="text-center">
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <img src="{{ $banner->imagePath() }}" width="80" class="img-thumbnail" alt="">
+                                            <img src="{{ $banner->imagePath() }}" width="80" class="img-thumbnail"
+                                                 alt="">
                                         </td>
                                         <td>{{ $banner->title }}</td>
                                         <td>
@@ -84,8 +86,9 @@
                                                    class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{ route('panel.content.banner.change.status', $banner->id) }}"
-                                                      method="POST">
+                                                <form
+                                                    action="{{ route('panel.content.banner.change.status', $banner->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('PATCH')
                                                     <button type="submit" class="btn btn-dark ml-1">

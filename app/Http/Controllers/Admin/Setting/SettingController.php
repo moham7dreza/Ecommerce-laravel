@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Setting\SettingRequest;
+use App\Http\Services\Image\ImageService;
 use App\Models\Setting\Setting;
 use Database\Seeders\SettingSeeder;
-use App\Http\Controllers\Controller;
-use App\Http\Services\Image\ImageService;
-use App\Http\Requests\Admin\Setting\SettingRequest;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -17,6 +16,7 @@ class SettingController extends Controller
         $this->middleware('can:permission-setting')->only(['index']);
         $this->middleware('can:permission-setting-edit')->only(['edit', 'update']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,7 +91,7 @@ class SettingController extends Controller
                 $imageService->deleteImage($setting->logo);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
-            $imageService->setImageName($setting->title. ' لوگو');
+            $imageService->setImageName($setting->title . ' لوگو');
             $result = $imageService->save($request->file('logo'));
             if ($result === false) {
                 return redirect()->route('admin.setting.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -103,7 +103,7 @@ class SettingController extends Controller
                 $imageService->deleteImage($setting->icon);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'setting');
-            $imageService->setImageName($setting->title. ' آیکون');
+            $imageService->setImageName($setting->title . ' آیکون');
             $result = $imageService->save($request->file('icon'));
             if ($result === false) {
                 return redirect()->route('admin.setting.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');

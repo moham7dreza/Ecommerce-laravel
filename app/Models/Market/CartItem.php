@@ -39,7 +39,6 @@ class CartItem extends Model
     }
 
 
-
     //productPrice + colorPrice + guranateePrice
     public function cartItemProductPrice()
     {

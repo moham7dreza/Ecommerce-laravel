@@ -9,12 +9,10 @@ use App\Http\Requests\Dashboard\PostRequest;
 use App\Http\Services\Dashboard\PostService;
 use App\Http\Services\Image\ImageService;
 use App\Models\Content\Post;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -64,7 +62,7 @@ class PostController extends Controller
     public function store(PostRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage(null,$imageService,
+            $result = ShareService::uploadNewImage(null, $imageService,
                 'adminto-post', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('adminto.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -79,7 +77,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -90,7 +88,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(int $id, CategoryRepo $categoryRepo)
@@ -112,7 +110,7 @@ class PostController extends Controller
     {
         $post = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($post->image,$imageService,
+            $result = ShareService::uploadNewImage($post->image, $imageService,
                 'adminto-post', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('adminto.post.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -129,7 +127,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

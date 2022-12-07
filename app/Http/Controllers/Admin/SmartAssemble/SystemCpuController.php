@@ -9,7 +9,6 @@ use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemCpu;
 use App\Models\SmartAssemble\SystemMeta;
 use App\Models\SmartAssemble\SystemType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class SystemCpuController extends Controller
@@ -59,12 +58,12 @@ class SystemCpuController extends Controller
 
             $systemCpu = SystemCpu::create($inputs);
             $metas = array_combine($request->meta_key, $request->meta_value);
-            foreach ($metas as $key => $value){
+            foreach ($metas as $key => $value) {
                 $meta = SystemMeta::create([
                     'meta_key' => $key,
                     'meta_value' => $value,
                     'system_category_id' => $request->system_category_id,
-                    'system_type_id' =>$request->system_type_id,
+                    'system_type_id' => $request->system_type_id,
                     'system_gen_id' => $systemCpu->id
                 ]);
             }

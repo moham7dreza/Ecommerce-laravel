@@ -2,7 +2,6 @@
 
 namespace App\Models\ItCity\Store;
 
-use App\Models\Content\Post;
 use App\Models\Market\Brand;
 use App\Models\Market\CategoryAttribute;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -79,6 +78,7 @@ class HardwareCategory extends Model
     {
         return $this->status === Status::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
+
     public function imagePath(): string
     {
         return asset($this->image['indexArray']['medium']);

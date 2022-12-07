@@ -44,7 +44,8 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -100,7 +101,8 @@
                 <div class="col-lg-7 col-12">
                     <div class="hero-text">
                         <div class="hero-title-wrap d-flex align-items-center mb-4">
-                            <img src="{{ asset('profile-assets/images/happy-bearded-young-man.jpg') }}" class="avatar-image avatar-image-large img-fluid" alt="">
+                            <img src="{{ asset('profile-assets/images/happy-bearded-young-man.jpg') }}"
+                                 class="avatar-image avatar-image-large img-fluid" alt="">
 
                             <h1 class="hero-title ms-3 mb-0">Hello friend!</h1>
                         </div>
@@ -112,13 +114,18 @@
 
                 <div class="col-lg-5 col-12 position-relative">
                     <div class="hero-image-wrap"></div>
-                    <img src="{{ asset('profile-assets/images/portrait-happy-excited-man-holding-laptop-computer.png') }}" class="hero-image img-fluid" alt="">
+                    <img
+                        src="{{ asset('profile-assets/images/portrait-happy-excited-man-holding-laptop-computer.png') }}"
+                        class="hero-image img-fluid" alt="">
                 </div>
 
             </div>
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#535da1" fill-opacity="1" d="M0,160L24,160C48,160,96,160,144,138.7C192,117,240,75,288,64C336,53,384,75,432,106.7C480,139,528,181,576,208C624,235,672,245,720,240C768,235,816,213,864,186.7C912,160,960,128,1008,133.3C1056,139,1104,181,1152,202.7C1200,224,1248,224,1296,197.3C1344,171,1392,117,1416,90.7L1440,64L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#535da1" fill-opacity="1"
+                  d="M0,160L24,160C48,160,96,160,144,138.7C192,117,240,75,288,64C336,53,384,75,432,106.7C480,139,528,181,576,208C624,235,672,245,720,240C768,235,816,213,864,186.7C912,160,960,128,1008,133.3C1056,139,1104,181,1152,202.7C1200,224,1248,224,1296,197.3C1344,171,1392,117,1416,90.7L1440,64L1440,0L1416,0C1392,0,1344,0,1296,0C1248,0,1200,0,1152,0C1104,0,1056,0,1008,0C960,0,912,0,864,0C816,0,768,0,720,0C672,0,624,0,576,0C528,0,480,0,432,0C384,0,336,0,288,0C240,0,192,0,144,0C96,0,48,0,24,0L0,0Z"></path>
+        </svg>
     </section>
 
 
@@ -127,7 +134,8 @@
             <div class="row">
 
                 <div class="col-lg-6 col-12">
-                    <img src="{{ asset('profile-assets/images/couple-working-from-home-together-sofa.jpg') }}" class="about-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/couple-working-from-home-together-sofa.jpg') }}"
+                         class="about-image img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-6 col-12 mt-5 mt-lg-0">
@@ -136,14 +144,21 @@
                         <div class="section-title-wrap d-flex justify-content-end align-items-center mb-4">
                             <h2 class="text-white me-4 mb-0">My Story</h2>
 
-                            <img src="{{ asset('profile-assets/images/happy-bearded-young-man.jpg') }}" class="avatar-image img-fluid" alt="">
+                            <img src="{{ asset('profile-assets/images/happy-bearded-young-man.jpg') }}"
+                                 class="avatar-image img-fluid" alt="">
                         </div>
 
                         <h3 class="pt-2 mb-3">a little about Joshua</h3>
 
-                        <p>This one-page HTML portfolio is provided by <a href="https://templatemo.com" target="_blank">TemplateMo</a>. This layout is based on Bootstrap v5.1.3 CSS and JS libraries. Image credits go to <a href="https://unsplash.com" target="_blank">Unsplash</a> and <a href="https://freepik.com" target="_blank">FreePik</a> for images used in this page.</p>
+                        <p>This one-page HTML portfolio is provided by <a href="https://templatemo.com" target="_blank">TemplateMo</a>.
+                            This layout is based on Bootstrap v5.1.3 CSS and JS libraries. Image credits go to <a
+                                href="https://unsplash.com" target="_blank">Unsplash</a> and <a
+                                href="https://freepik.com" target="_blank">FreePik</a> for images used in this page.</p>
 
-                        <p>You are allowed to use this template for your websites. You are not allowed to redistribute the template ZIP file on any other website. Please <a href="https://templatemo.com/contact" target="_blank">contact us</a> for more info.</p>
+                        <p>You are allowed to use this template for your websites. You are not allowed to redistribute
+                            the template ZIP file on any other website. Please <a href="https://templatemo.com/contact"
+                                                                                  target="_blank">contact us</a> for
+                            more info.</p>
                     </div>
                 </div>
 
@@ -229,23 +244,28 @@
                 </div>
 
                 <div class="col-lg-2 col-4 ms-auto clients-item-height">
-                    <img src="{{ asset('profile-assets/images/clients/cachet.svg') }}" class="clients-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/clients/cachet.svg') }}" class="clients-image img-fluid"
+                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-4 clients-item-height">
-                    <img src="{{ asset('profile-assets/images/clients/guitar-center.svg') }}" class="clients-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/clients/guitar-center.svg') }}"
+                         class="clients-image img-fluid" alt="">
                 </div>
 
                 <div class="col-lg-2 col-4 clients-item-height">
-                    <img src="{{ asset('profile-assets/images/clients/tokico.svg') }}" class="clients-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/clients/tokico.svg') }}" class="clients-image img-fluid"
+                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-4 clients-item-height">
-                    <img src="{{ asset('profile-assets/images/clients/shopify.svg') }}" class="clients-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/clients/shopify.svg') }}" class="clients-image img-fluid"
+                         alt="">
                 </div>
 
                 <div class="col-lg-2 col-4 me-auto clients-item-height">
-                    <img src="{{ asset('profile-assets/images/clients/profil-rejser.svg') }}" class="clients-image img-fluid" alt="">
+                    <img src="{{ asset('profile-assets/images/clients/profil-rejser.svg') }}"
+                         class="clients-image img-fluid" alt="">
                 </div>
 
             </div>
@@ -259,7 +279,9 @@
 
                 <div class="col-lg-10 col-12 mx-auto">
                     <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
-                        <img src="{{ asset('profile-assets/images/handshake-man-woman-after-signing-business-contract-closeup.jpg') }}" class="avatar-image img-fluid" alt="">
+                        <img
+                            src="{{ asset('profile-assets/images/handshake-man-woman-after-signing-business-contract-closeup.jpg') }}"
+                            class="avatar-image img-fluid" alt="">
 
                         <h2 class="text-white ms-4 mb-0">Services</h2>
                     </div>
@@ -297,7 +319,8 @@
                                     </div>
                                 </div>
 
-                                <p>You can explore more CSS templates on TemplateMo website by browsing through different tags.</p>
+                                <p>You can explore more CSS templates on TemplateMo website by browsing through
+                                    different tags.</p>
 
                                 <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
 
@@ -318,7 +341,8 @@
                                     </div>
                                 </div>
 
-                                <p>If you need a customized ecommerce website for your business, feel free to discuss with me.</p>
+                                <p>If you need a customized ecommerce website for your business, feel free to discuss
+                                    with me.</p>
 
                                 <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
 
@@ -339,7 +363,8 @@
                                     </div>
                                 </div>
 
-                                <p>To list your website first on any search engine, we will work together. First Portfolio is one-page CSS Template for free download.</p>
+                                <p>To list your website first on any search engine, we will work together. First
+                                    Portfolio is one-page CSS Template for free download.</p>
 
                                 <a href="#" class="custom-btn custom-border-btn btn mt-3">Discover More</a>
 
@@ -361,7 +386,8 @@
 
                 <div class="col-lg-8 col-md-8 col-12 ms-auto">
                     <div class="section-title-wrap d-flex justify-content-center align-items-center mb-4">
-                        <img src="{{ asset('profile-assets/images/white-desk-work-study-aesthetics.jpg') }}" class="avatar-image img-fluid" alt="">
+                        <img src="{{ asset('profile-assets/images/white-desk-work-study-aesthetics.jpg') }}"
+                             class="avatar-image img-fluid" alt="">
 
                         <h2 class="text-white ms-4 mb-0">Projects</h2>
                     </div>
@@ -377,8 +403,10 @@
                             <h3 class="projects-title">Zoik agency</h3>
                         </div>
 
-                        <a href="{{ asset('profile-assets/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg') }}" class="popup-image">
-                            <img src="{{ asset('profile-assets/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg') }}" class="projects-image img-fluid" alt="">
+                        <a href="{{ asset('profile-assets/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg') }}"
+                           class="popup-image">
+                            <img src="{{ asset('profile-assets/images/projects/nikhil-KO4io-eCAXA-unsplash.jpg') }}"
+                                 class="projects-image img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -391,8 +419,10 @@
                             <h3 class="projects-title">The Watch</h3>
                         </div>
 
-                        <a href="{{ asset('profile-assets/images/projects/the-5th-IQYR7N67dhM-unsplash.jpg') }}" class="popup-image">
-                            <img src="{{ asset('profile-assets/images/projects/the-5th-IQYR7N67dhM-unsplash.jpg') }}" class="projects-image img-fluid" alt="">
+                        <a href="{{ asset('profile-assets/images/projects/the-5th-IQYR7N67dhM-unsplash.jpg') }}"
+                           class="popup-image">
+                            <img src="{{ asset('profile-assets/images/projects/the-5th-IQYR7N67dhM-unsplash.jpg') }}"
+                                 class="projects-image img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -405,8 +435,11 @@
                             <h3 class="projects-title">Polo</h3>
                         </div>
 
-                        <a href="{{ asset('profile-assets/images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg') }}" class="popup-image">
-                            <img src="{{ asset('profile-assets/images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg') }}" class="projects-image img-fluid" alt="">
+                        <a href="{{ asset('profile-assets/images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg') }}"
+                           class="popup-image">
+                            <img
+                                src="{{ asset('profile-assets/images/projects/true-agency-9Bjog5FZ-oc-unsplash.jpg') }}"
+                                class="projects-image img-fluid" alt="">
                         </a>
                     </div>
                 </div>
@@ -421,7 +454,9 @@
 
                 <div class="col-lg-6 col-md-8 col-12">
                     <div class="section-title-wrap d-flex justify-content-center align-items-center mb-5">
-                        <img src="{{ asset('profile-assets/images/aerial-view-man-using-computer-laptop-wooden-table.jpg') }}" class="avatar-image img-fluid" alt="">
+                        <img
+                            src="{{ asset('profile-assets/images/aerial-view-man-using-computer-laptop-wooden-table.jpg') }}"
+                            class="avatar-image img-fluid" alt="">
 
                         <h2 class="text-white ms-4 mb-0">Say Hi</h2>
                     </div>
@@ -446,13 +481,15 @@
                         <strong class="site-footer-title d-block mt-4 mb-3">Stay connected</strong>
 
                         <ul class="social-icon">
-                            <li class="social-icon-item"><a href="https://twitter.com/minthu" class="social-icon-link bi-twitter"></a></li>
+                            <li class="social-icon-item"><a href="https://twitter.com/minthu"
+                                                            class="social-icon-link bi-twitter"></a></li>
 
                             <li class="social-icon-item"><a href="#" class="social-icon-link bi-instagram"></a></li>
 
                             <li class="social-icon-item"><a href="#" class="social-icon-link bi-pinterest"></a></li>
 
-                            <li class="social-icon-item"><a href="https://www.youtube.com/templatemo" class="social-icon-link bi-youtube"></a></li>
+                            <li class="social-icon-item"><a href="https://www.youtube.com/templatemo"
+                                                            class="social-icon-link bi-youtube"></a></li>
                         </ul>
 
                         <strong class="site-footer-title d-block mt-4 mb-3">Start a project</strong>
@@ -492,7 +529,8 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name" required="">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Name"
+                                           required="">
 
                                     <label for="floatingInput">Name</label>
                                 </div>
@@ -500,7 +538,8 @@
 
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="form-floating">
-                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
+                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
+                                           class="form-control" placeholder="Email address" required="">
 
                                     <label for="floatingInput">Email address</label>
                                 </div>
@@ -508,7 +547,8 @@
 
                             <div class="col-lg-3 col-md-6 col-6">
                                 <div class="form-check form-check-inline">
-                                    <input name="website" type="checkbox" class="form-check-input" id="inlineCheckbox1" value="1">
+                                    <input name="website" type="checkbox" class="form-check-input" id="inlineCheckbox1"
+                                           value="1">
 
                                     <label class="form-check-label" for="inlineCheckbox1">
                                         <i class="bi-globe form-check-icon"></i>
@@ -519,7 +559,8 @@
 
                             <div class="col-lg-3 col-md-6 col-6">
                                 <div class="form-check form-check-inline">
-                                    <input name="branding" type="checkbox" class="form-check-input" id="inlineCheckbox2" value="1">
+                                    <input name="branding" type="checkbox" class="form-check-input" id="inlineCheckbox2"
+                                           value="1">
 
                                     <label class="form-check-label" for="inlineCheckbox2">
                                         <i class="bi-lightbulb form-check-icon"></i>
@@ -530,7 +571,8 @@
 
                             <div class="col-lg-3 col-md-6 col-6">
                                 <div class="form-check form-check-inline">
-                                    <input name="ecommerce" type="checkbox" class="form-check-input" id="inlineCheckbox3" value="1">
+                                    <input name="ecommerce" type="checkbox" class="form-check-input"
+                                           id="inlineCheckbox3" value="1">
 
                                     <label class="form-check-label" for="inlineCheckbox3">
                                         <i class="bi-phone form-check-icon"></i>
@@ -541,7 +583,8 @@
 
                             <div class="col-lg-3 col-md-6 col-6">
                                 <div class="form-check form-check-inline me-0">
-                                    <input name="seo" type="checkbox" class="form-check-input" id="inlineCheckbox4" value="1">
+                                    <input name="seo" type="checkbox" class="form-check-input" id="inlineCheckbox4"
+                                           value="1">
 
                                     <label class="form-check-label" for="inlineCheckbox4">
                                         <i class="bi-google form-check-icon"></i>
@@ -552,7 +595,8 @@
 
                             <div class="col-lg-12 col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" id="message" name="message" placeholder="Tell me about the project"></textarea>
+                                    <textarea class="form-control" id="message" name="message"
+                                              placeholder="Tell me about the project"></textarea>
 
                                     <label for="floatingTextarea">Tell me about the project</label>
                                 </div>

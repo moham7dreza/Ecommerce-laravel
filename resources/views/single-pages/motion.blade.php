@@ -7,7 +7,7 @@
     <title>Astro Motion by TemplateMo</title>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('astro-assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('astro-assets/css/slick.css" type="text/css') }}" />
+    <link rel="stylesheet" href="{{ asset('astro-assets/css/slick.css" type="text/css') }}"/>
     <link rel="stylesheet" href="{{ asset('astro-assets/css/templatemo-style.css') }}">
     <!--
 
@@ -28,7 +28,9 @@
                 <div class="cd-slider-nav">
                     <nav class="navbar navbar-expand-lg" id="tm-nav">
                         <a class="navbar-brand" href="#">Astro Motion</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-supported-content" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbar-supported-content" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbar-supported-content">
@@ -64,15 +66,21 @@
                         <div class="intro-left tm-bg-dark">
                             <h2 class="mb-4">Welcome to Astro Motion</h2>
                             <p class="mb-4">
-                                This HTML template has a motion video background loop which is provided by <a rel="sponsored" href="https://getfreepictures.com" target="_blank">Get Free Pictures</a>. This is
+                                This HTML template has a motion video background loop which is provided by <a
+                                    rel="sponsored" href="https://getfreepictures.com" target="_blank">Get Free
+                                    Pictures</a>. This is
                                 one-page responsive layout for your websites. Feel
                                 free to use this for a commercial purpose. </p>
                             <p class="mb-0">
-                                You are not permitted to redistribute this template on your Free CSS collection websites. Please <a rel="nofollow" href="https://templatemo.com/contact" target="_blank">contact us</a> for more information. </p>
+                                You are not permitted to redistribute this template on your Free CSS collection
+                                websites. Please <a rel="nofollow" href="https://templatemo.com/contact"
+                                                    target="_blank">contact us</a> for more information. </p>
                         </div>
                         <div class="intro-right">
-                            <img src="{{ asset('astro-assets/img/home-img-1.jpg') }}" alt="Image" class="img-fluid intro-img-1">
-                            <img src="{{ asset('astro-assets/img/home-img-2.jpg') }}" alt="Image" class="img-fluid intro-img-2">
+                            <img src="{{ asset('astro-assets/img/home-img-1.jpg') }}" alt="Image"
+                                 class="img-fluid intro-img-1">
+                            <img src="{{ asset('astro-assets/img/home-img-2.jpg') }}" alt="Image"
+                                 class="img-fluid intro-img-2">
                         </div>
                         <div class="circle intro-circle-1"></div>
                         <div class="circle intro-circle-2"></div>
@@ -185,7 +193,9 @@
                     <div class="tm-bg-dark content-pad">
                         <h2 class="mb-4">About our company</h2>
                         <p class="mb-4">
-                            You are <span class="highlight">allowed</span> to use Astro Motion HTML Template for your websites. You are not allowed to re-distribute this template ZIP file on any Free CSS template collection website. Illegal redistribution is strongly prohibited.
+                            You are <span class="highlight">allowed</span> to use Astro Motion HTML Template for your
+                            websites. You are not allowed to re-distribute this template ZIP file on any Free CSS
+                            template collection website. Illegal redistribution is strongly prohibited.
                         </p>
                         <p>
                             Praesent auctor rhoncus arcu, vitae blandit est vestibulum sit amet. Integer erat
@@ -206,13 +216,19 @@
                         <div class="col-md-6 tm-contact-left">
                             <form action="#" method="POST" class="contact-form">
                                 <div class="input-group tm-mb-30">
-                                    <input name="name" type="text" class="form-control rounded-0 border-top-0 border-end-0 border-start-0" placeholder="Name">
+                                    <input name="name" type="text"
+                                           class="form-control rounded-0 border-top-0 border-end-0 border-start-0"
+                                           placeholder="Name">
                                 </div>
                                 <div class="input-group tm-mb-30">
-                                    <input name="email" type="text" class="form-control rounded-0 border-top-0 border-end-0 border-start-0" placeholder="Email">
+                                    <input name="email" type="text"
+                                           class="form-control rounded-0 border-top-0 border-end-0 border-start-0"
+                                           placeholder="Email">
                                 </div>
                                 <div class="input-group tm-mb-30">
-                                    <textarea rows="5" name="message" class="textarea form-control rounded-0 border-top-0 border-end-0 border-start-0" placeholder="Message"></textarea>
+                                    <textarea rows="5" name="message"
+                                              class="textarea form-control rounded-0 border-top-0 border-end-0 border-start-0"
+                                              placeholder="Message"></textarea>
                                 </div>
                                 <div class="input-group justify-content-end">
                                     <input type="submit" class="btn btn-primary tm-btn-pad-2" value="Send">

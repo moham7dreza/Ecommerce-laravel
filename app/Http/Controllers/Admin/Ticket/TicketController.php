@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\admin\ticket;
 
-use Illuminate\Http\Request;
-use App\Models\Ticket\Ticket;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Ticket\TicketRequest;
+use App\Models\Ticket\Ticket;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -22,7 +22,7 @@ class TicketController extends Controller
     public function newTickets()
     {
         $tickets = Ticket::where('seen', 0)->get();
-        foreach($tickets as $newTicket){
+        foreach ($tickets as $newTicket) {
             $newTicket->seen = 1;
             $result = $newTicket->save();
         }
@@ -40,6 +40,7 @@ class TicketController extends Controller
         $tickets = Ticket::where('status', 1)->get();
         return view('admin.ticket.index', compact('tickets'));
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -64,7 +65,7 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -75,7 +76,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Ticket $ticket)
@@ -86,7 +87,7 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -97,8 +98,8 @@ class TicketController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -109,7 +110,7 @@ class TicketController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -135,7 +136,8 @@ class TicketController extends Controller
     }
 
 
-    public function change(Ticket $ticket){
+    public function change(Ticket $ticket)
+    {
         $ticket->status = $ticket->status == 0 ? 1 : 0;
         $result = $ticket->save();
         return redirect()->route('admin.ticket.index')->with('swal-success', 'تغییر شما با موفقیت حذف شد');

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Market\CategoryAttributeRequest;
-use App\Models\Market\ProductCategory;
 use App\Models\Market\CategoryAttribute;
+use App\Models\Market\ProductCategory;
 
 class PropertyController extends Controller
 {
@@ -45,7 +44,7 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryAttributeRequest $request)
@@ -58,7 +57,7 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,7 +68,7 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(CategoryAttribute $categoryAttribute)
@@ -82,8 +81,8 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryAttributeRequest $request, CategoryAttribute $categoryAttribute)
@@ -96,7 +95,7 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(CategoryAttribute $categoryAttribute)

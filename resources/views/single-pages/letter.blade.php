@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa-IR">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,8 @@
 
     <title>ثبت نام</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
     <link rel="stylesheet" href="{{ asset('letter-assets/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('letter-assets/css/bootstrap.min.css') }}">
 
@@ -33,7 +34,7 @@
 
 <div class="container-fluid">
     <div class="row cb-slideshow-text-container ">
-        <div class= "tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section mr-5">
+        <div class="tm-content col-xl-6 col-sm-8 col-xs-8 ml-auto section mr-5">
             <header class="mb-5"><h1 class="text-center">ارسال ایمیل</h1></header>
             <P class="mb-5 text-center">لطفا برای ورود یا ثبت نام ایمیل خود را وارد کنید</P>
 
@@ -41,7 +42,8 @@
                 <div class="row form-section">
 
                     <div class="col-md-7 col-sm-7 col-xs-7">
-                        <input name="email" type="text" class="form-control text-right" id="contact_email" placeholder="ایمیل خود را وارد کنید" required/>
+                        <input name="email" type="text" class="form-control text-right" id="contact_email"
+                               placeholder="ایمیل خود را وارد کنید" required/>
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-5">
                         <button type="submit" class="tm-btn-subscribe">ثبت</button>

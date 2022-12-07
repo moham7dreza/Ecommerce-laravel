@@ -46,8 +46,9 @@ use App\Http\Controllers\Admin\User\AdminUserController;
 use App\Http\Controllers\Admin\User\CustomerController;
 use App\Http\Controllers\Admin\user\PermissionController;
 use App\Http\Controllers\Admin\user\RoleController;
-//
 use Illuminate\Support\Facades\Route;
+
+//
 
 /*
 |--------------------------------------------------------------------------

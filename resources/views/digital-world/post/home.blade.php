@@ -29,15 +29,18 @@
                                         @foreach ($posts as $post)
                                             <article class="col-lg-6 col-md-12 wow fadeIn animated">
                                                 <div class="background-white border-radius-10 p-10 mb-30">
-                                                    <div class="post-thumb d-flex mb-15 border-radius-15 img-hover-scale">
+                                                    <div
+                                                        class="post-thumb d-flex mb-15 border-radius-15 img-hover-scale">
                                                         <a href="{{ $post->path() }}">
-                                                            <img class="border-radius-15 style-article-img" alt="image article"
+                                                            <img class="border-radius-15 style-article-img"
+                                                                 alt="image article"
                                                                  src="{{ $post->imagePath() }}">
                                                         </a>
                                                     </div>
                                                     <div class="pl-10 pr-10">
                                                         <div class="entry-meta mb-15 mt-10">
-                                                            <a class="entry-meta meta-2" href="{{ $post->getCategoryPath() }}">
+                                                            <a class="entry-meta meta-2"
+                                                               href="{{ $post->getCategoryPath() }}">
                                                                 <span class="post-in text-primary font-x-small">
                                                                     {{ $post->textCategoryName() }}
                                                                 </span>
@@ -49,15 +52,17 @@
                                                             </a>
                                                         </h5>
                                                         <p class="post-exerpt font-medium text-muted mb-30">
-                                                                {!! $post->limitedSummary() !!}
+                                                            {!! $post->limitedSummary() !!}
                                                         </p>
-                                                        <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
+                                                        <div
+                                                            class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase mb-10">
                                                             <span class="post-by">توسط
                                                                 <a href="{{ $post->getAuthorPath() }}">
                                                                     {{ $post->textAuthorName() }}
                                                                 </a>
                                                             </span>
-                                                            <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
+                                                            <span
+                                                                class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -79,11 +84,14 @@
                                 <div class="post-aside-style-2">
                                     <ul class="list-post">
                                         @foreach ($viewsPosts as $post)
-                                            <li class="mb-30 wow fadeIn  animated" style="visibility: visible; animation-name: fadeIn;">
+                                            <li class="mb-30 wow fadeIn  animated"
+                                                style="visibility: visible; animation-name: fadeIn;">
                                                 <div class="d-flex">
-                                                    <div class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">
+                                                    <div
+                                                        class="post-thumb d-flex ml-15 border-radius-5 img-hover-scale">
                                                         <a class="color-white" href="{{ $post->path() }}">
-                                                            <img src="{{ $post->imagePath() }}" alt="{{ $post->title }}">
+                                                            <img src="{{ $post->imagePath() }}"
+                                                                 alt="{{ $post->title }}">
                                                         </a>
                                                     </div>
                                                     <div class="post-content media-body">
@@ -92,11 +100,13 @@
                                                                 {{ $post->limitedTitle() }}
                                                             </a>
                                                         </h6>
-                                                        <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
+                                                        <div
+                                                            class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
                                                             <span class="post-by">توسط
                                                                 <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a>
                                                             </span>
-                                                            <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
+                                                            <span
+                                                                class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,10 +121,12 @@
                                 </div>
                                 <div class="newsletter">
                                     <p class="font-medium">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                                    <form target="_blank" action="#" method="get" class="subscribe_form relative mail_part">
+                                    <form target="_blank" action="#" method="get"
+                                          class="subscribe_form relative mail_part">
                                         <div class="form-newsletter-cover">
                                             <div class="form-newsletter position-relative">
-                                                <input type="email" name="EMAIL" placeholder="ایمیل خود را اینجا وارد کنید" required="">
+                                                <input type="email" name="EMAIL"
+                                                       placeholder="ایمیل خود را اینجا وارد کنید" required="">
                                                 <button type="submit">
                                                     <i class="ti ti-email"></i>
                                                 </button>

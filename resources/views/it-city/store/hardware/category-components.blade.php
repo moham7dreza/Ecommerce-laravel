@@ -40,16 +40,23 @@
                             <div class="col-md-4 col-sm-6 col-xs-12 margin_bottom_30_all">
                                 <div class="product_list">
                                     <a href="{{ route('it-city.store.hardware', $hardware) }}">
-                                        <div class="product_img"> <img class="img-responsive" src="{{ asset('it-next-assets/images/it_service/1.jpg') }}" alt=""> </div>
+                                        <div class="product_img"><img class="img-responsive"
+                                                                      src="{{ asset('it-next-assets/images/it_service/1.jpg') }}"
+                                                                      alt=""></div>
                                         <div class="product_detail_btm">
                                             <div class="center text_align_center">
                                                 <h5>{{ $hardware->name }}</h5>
                                             </div>
                                             <div class="starratin">
-                                                <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
+                                                <div class="center"><i class="fa fa-star" aria-hidden="true"></i> <i
+                                                        class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
+                                                                                                      aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i> <i
+                                                        class="fa fa-star-o" aria-hidden="true"></i></div>
                                             </div>
                                             <div class="product_price">
-                                                <p><span class="old_price">$15.00</span> – <span class="new_price">{{ priceFormat($hardware->price)  }} تومان</span></p>
+                                                <p><span class="old_price">$15.00</span> – <span class="new_price">{{ priceFormat($hardware->price)  }} تومان</span>
+                                                </p>
                                             </div>
                                         </div>
                                     </a>

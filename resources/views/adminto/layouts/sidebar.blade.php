@@ -1,9 +1,11 @@
 <div class="left-side-menu">
     <div class="slimscroll-menu">
         <div class="user-box text-center">
-            <img src="{{ auth()->user()->image() }}" alt="{{ auth()->user()->fullName }}" title="{{ auth()->user()->fullName }}" class="rounded-circle img-thumbnail avatar-lg">
+            <img src="{{ auth()->user()->image() }}" alt="{{ auth()->user()->fullName }}"
+                 title="{{ auth()->user()->fullName }}" class="rounded-circle img-thumbnail avatar-lg">
             <div class="dropdown">
-                <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-toggle="dropdown">{{ auth()->user()->fullName }}</a>
+                <a href="#" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
+                   data-toggle="dropdown">{{ auth()->user()->fullName }}</a>
                 <div class="dropdown-menu user-pro-dropdown">
 
                     <!-- item-->
@@ -48,7 +50,7 @@
             </ul>
         </div>
 
-{{--        @include('adminto.layouts.partials.side-menu')--}}
+        {{--        @include('adminto.layouts.partials.side-menu')--}}
         <!--- Sidemenu -->
         <div id="sidebar-menu">
 

@@ -10,9 +10,9 @@ use App\Http\Controllers\Dashboard\PostController as PostsController;
 use App\Http\Controllers\Dashboard\RoleController as PostRoleController;
 use App\Http\Controllers\Dashboard\SettingController as PostSettingController;
 use App\Http\Controllers\Dashboard\UserController as PostUserController;
+use Illuminate\Support\Facades\Route;
 
 //
-use Illuminate\Support\Facades\Route;
 
 /***********************************************************************************************************************
  *

@@ -10,7 +10,8 @@
                     <ul>
                         <li data-index="rs-1812" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
-                            data-thumb="{{ asset('it-next-assets/images/it_service/slide1.jpg') }}" data-rotate="0" data-saveperformance="off"
+                            data-thumb="{{ asset('it-next-assets/images/it_service/slide1.jpg') }}" data-rotate="0"
+                            data-saveperformance="off"
                             data-title="سرویس های کامپیوتری" data-description="">
                             <!-- MAIN IMAGE -->
                             <img
@@ -97,7 +98,8 @@
                         </li>
                         <li data-index="rs-181" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
-                            data-thumb="{{ asset('it-next-assets/images/it_service/slide2.jpg') }}" data-rotate="0" data-saveperformance="off"
+                            data-thumb="{{ asset('it-next-assets/images/it_service/slide2.jpg') }}" data-rotate="0"
+                            data-saveperformance="off"
                             data-title="سرویس اسمبل هوشمند" data-description="">
                             <!-- MAIN IMAGE -->
                             <img src="{{ asset('it-next-assets/images/it_service/slide2.jpg') }}" alt=""
@@ -183,7 +185,8 @@
                         </li>
                         <li data-index="rs-18" data-transition="zoomin" data-slotamount="7"
                             data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"
-                            data-thumb="{{ asset('it-next-assets/images/it_service/slide3.jpg') }}" data-rotate="0" data-saveperformance="off"
+                            data-thumb="{{ asset('it-next-assets/images/it_service/slide3.jpg') }}" data-rotate="0"
+                            data-saveperformance="off"
                             data-title="اخبار سخت افزار" data-description="">
                             <!-- MAIN IMAGE -->
                             <img src="{{ asset('it-next-assets/images/it_service/slide3.jpg') }}" alt=""

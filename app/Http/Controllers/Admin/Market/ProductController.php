@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Market\ProductRequest;
+use App\Http\Services\Image\ImageService;
 use App\Models\Market\Brand;
-use Illuminate\Http\Request;
 use App\Models\Market\Product;
+use App\Models\Market\ProductCategory;
 use App\Models\Market\ProductMeta;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Market\ProductCategory;
-use App\Http\Services\Image\ImageService;
-use App\Http\Requests\Admin\Market\ProductRequest;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller

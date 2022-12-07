@@ -13,8 +13,8 @@ class SystemBrand extends Model
 
     public function sluggable(): array
     {
-        return[
-            'slug' =>[
+        return [
+            'slug' => [
                 'source' => 'original_name'
             ]
         ];

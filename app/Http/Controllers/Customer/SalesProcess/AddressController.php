@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Customer\SalesProcess;
 
-use App\Models\Address;
-use App\Models\Province;
-use App\Models\Market\Order;
-use Illuminate\Http\Request;
-use App\Models\Market\CartItem;
-use App\Models\Market\Delivery;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Market\CommonDiscount;
+use App\Http\Requests\Customer\SalesProcess\ChooseAddressAndDeliveryRequest;
 use App\Http\Requests\Customer\SalesProcess\StoreAddressRequest;
 use App\Http\Requests\Customer\SalesProcess\UpdateAddressRequest;
-use App\Http\Requests\Customer\SalesProcess\ChooseAddressAndDeliveryRequest;
+use App\Models\Address;
+use App\Models\Market\CartItem;
+use App\Models\Market\CommonDiscount;
+use App\Models\Market\Delivery;
+use App\Models\Market\Order;
+use App\Models\Province;
+use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {

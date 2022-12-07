@@ -29,7 +29,7 @@ class PermissionServiceProvider extends ServiceProvider
         try {
 
             Permission::query()->get()->map(function ($permission) {
-                Gate::define($permission->name, function ($user) use ($permission){
+                Gate::define($permission->name, function ($user) use ($permission) {
                     return $user->hasPermissionTo($permission);
                 });
             });
@@ -40,17 +40,17 @@ class PermissionServiceProvider extends ServiceProvider
         }
 
 
-        //        Gate::before(function ($user) {
-//            $permission = Permission::query()->where([
-//                ['name', Permission::PERMISSION_SUPER_ADMIN['name']],
-//                ['status', 1]
-//            ])->first();
-//            if (is_null($permission))
-//                return false;
-//            if ($user->user_type == 1 && $user->isPermission($permission))
-//                return true;
-//            return false;
-//        });
+        Gate::before(function ($user) {
+            $permission = Permission::query()->where([
+                ['name', Permission::PERMISSION_SUPER_ADMIN['name']],
+                ['status', 1]
+            ])->first();
+            if (is_null($permission))
+                return false;
+            if ($user->user_type == 1 && $user->hasPermissionTo($permission))
+                return true;
+            return false;
+        });
 
 //        foreach (Permission::all() as $permission) {
 //            Gate::define($permission->name, function ($user) use ($permission) {

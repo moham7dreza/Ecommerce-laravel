@@ -16,7 +16,8 @@
                 <a href="{{ route('digital-world.livewire.post.detail', $post) }}">{{ $post->limitedTitle() }}</a>
             </h5>
             <div class="entry-meta meta-1 font-x-small color-grey float-right text-uppercase">
-                <span class="post-by">توسط <a href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
+                <span class="post-by">توسط <a
+                        href="{{ $post->getAuthorPath() }}">{{ $post->textAuthorName() }}</a></span>
                 <span class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                 <span class="time-reading">زمان خواندن {{ $post->time_to_read }} دقیقه</span>
             </div>

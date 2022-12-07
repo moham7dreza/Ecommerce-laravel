@@ -34,7 +34,7 @@ class SystemClassGalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, SystemCategory $systemCategory, SystemType $systemType, ImageService $imageService)
@@ -53,14 +53,14 @@ class SystemClassGalleryController extends Controller
             $inputs['system_category_id'] = $systemCategory->id;
             $inputs['system_type_id'] = $systemType->id;
             $gallery = SystemGallery::create($inputs);
-            return redirect()->route('admin.smart-assemble.type.gallery.index',[$systemCategory, $systemType])->with('swal-success', 'عکس شما با موفقیت ثبت شد');
+            return redirect()->route('admin.smart-assemble.type.gallery.index', [$systemCategory, $systemType])->with('swal-success', 'عکس شما با موفقیت ثبت شد');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SmartAssemble\SystemGallery  $systemGallery
+     * @param \App\Models\SmartAssemble\SystemGallery $systemGallery
      * @return \Illuminate\Http\Response
      */
     public function show(SystemGallery $systemGallery)
@@ -71,7 +71,7 @@ class SystemClassGalleryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SmartAssemble\SystemGallery  $systemGallery
+     * @param \App\Models\SmartAssemble\SystemGallery $systemGallery
      * @return \Illuminate\Http\Response
      */
     public function edit(SystemGallery $systemGallery)
@@ -82,8 +82,8 @@ class SystemClassGalleryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SmartAssemble\SystemGallery  $systemGallery
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\SmartAssemble\SystemGallery $systemGallery
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SystemGallery $systemGallery)
@@ -94,7 +94,7 @@ class SystemClassGalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SmartAssemble\SystemGallery  $systemGallery
+     * @param \App\Models\SmartAssemble\SystemGallery $systemGallery
      * @return \Illuminate\Http\Response
      */
     public function destroy(SystemCategory $systemCategory, SystemType $systemType, SystemGallery $systemGallery)

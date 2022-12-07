@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SmartAssemble\SystemMenuRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\SmartAssemble\SystemMenu;
-use Illuminate\Http\Request;
 
 class SystemMenuController extends Controller
 {
@@ -102,8 +101,7 @@ class SystemMenuController extends Controller
                 $image = $systemMenu->image;
                 $image['currentImage'] = $inputs['currentImage'];
                 $inputs['image'] = $image;
-            }
-            else $inputs['image'] = null;
+            } else $inputs['image'] = null;
         }
         $systemMenu->update($inputs);
         return redirect()->route('admin.smart-assemble.menu.index')->with('swal-success', 'منوی شما با موفقیت ویرایش شد');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\ItCity;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content\Post;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {

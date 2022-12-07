@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\User;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Services\Image\ImageService;
 use App\Http\Requests\Admin\User\CustomerRequest;
+use App\Http\Services\Image\ImageService;
+use App\Models\User;
 use App\Notifications\NewUserRegistered;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -48,7 +47,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CustomerRequest $request, ImageService $imageService)
@@ -78,7 +77,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -89,7 +88,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -100,24 +99,21 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CustomerRequest $request, User $user, ImageService $imageService)
     {
         $inputs = $request->all();
 
-        if($request->hasFile('profile_photo_path'))
-        {
-            if(!empty($user->profile_photo_path))
-            {
+        if ($request->hasFile('profile_photo_path')) {
+            if (!empty($user->profile_photo_path)) {
                 $imageService->deleteImage($user->profile_photo_path);
             }
             $imageService->setExclusiveDirectory('images' . DIRECTORY_SEPARATOR . 'users');
             $result = $imageService->save($request->file('profile_photo_path'));
-            if($result === false)
-            {
+            if ($result === false) {
                 return redirect()->route('admin.user.customer.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
             }
             $inputs['profile_photo_path'] = $result;
@@ -129,7 +125,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
@@ -139,38 +135,35 @@ class CustomerController extends Controller
     }
 
 
-
-    public function status(User $user){
+    public function status(User $user)
+    {
 
         $user->status = $user->status == 0 ? 1 : 0;
         $result = $user->save();
-        if($result){
-                if($user->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($user->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 
     }
 
 
-    public function activation(User $user){
+    public function activation(User $user)
+    {
         $user->activation = $user->activation == 0 ? 1 : 0;
         $result = $user->save();
-        if($result){
-                if($user->activation == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($user->activation == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

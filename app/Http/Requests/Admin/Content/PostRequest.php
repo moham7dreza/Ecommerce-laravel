@@ -23,7 +23,7 @@ class PostRequest extends FormRequest
      */
     public function rules(): array
     {
-        if($this->isMethod('post')){
+        if ($this->isMethod('post')) {
             return [
                 'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 //                'summary' => 'required|max:2000|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',
@@ -38,8 +38,7 @@ class PostRequest extends FormRequest
                 'published_at' => 'required|numeric',
                 'time_to_read' => 'required|numeric|min:1',
             ];
-        }
-        else{
+        } else {
             return [
                 'title' => 'required|max:120|min:2|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 //                'summary' => 'required|max:300|min:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,><\/;\n\r& ]+$/u',

@@ -63,7 +63,7 @@ class HardwareController extends Controller
     public function store(HardwareRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage(null,$imageService,
+            $result = ShareService::uploadNewImage(null, $imageService,
                 'panel-hardware', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.hardware.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -78,7 +78,7 @@ class HardwareController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -110,11 +110,11 @@ class HardwareController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(HardwareRequest $request,ImageService $imageService, int $id): RedirectResponse
+    public function update(HardwareRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
         $hardware = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($hardware->image,$imageService,
+            $result = ShareService::uploadNewImage($hardware->image, $imageService,
                 'panel-hardware', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.market.hardware.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -131,7 +131,7 @@ class HardwareController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

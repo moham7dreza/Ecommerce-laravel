@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Market;
 
-use Illuminate\Http\Request;
-use App\Models\Market\Payment;
 use App\Http\Controllers\Controller;
+use App\Models\Market\Payment;
 
 class PaymentController extends Controller
 {
@@ -14,9 +13,18 @@ class PaymentController extends Controller
         $this->middleware('can:permission-product-online-payments')->only(['online']);
         $this->middleware('can:permission-product-offline-payments')->only(['offline']);
         $this->middleware('can:permission-product-cash-payments')->only(['cash']);
-        $this->middleware('can:permission-product-payment-cancel')->only(['canceled']);
-        $this->middleware('can:permission-product-payment-return')->only(['returned']);
-        $this->middleware('can:permission-product-payment-show')->only(['show']);
+        $this->middleware('can:permission-product-payment-cancel,
+                                        permission-product-online-payment-cancel,
+                                        permission-product-offline-payment-cancel,
+                                        permission-product-cash-payment-cancel')->only(['canceled']);
+        $this->middleware('can:permission-product-payment-return,
+                                        permission-product-online-payment-return,
+                                        permission-product-offline-payment-return,
+                                        permission-product-cash-payment-return')->only(['returned']);
+        $this->middleware('can:permission-product-payment-show,
+                                        permission-product-online-payment-show,
+                                        permission-product-offline-payment-show,
+                                        permission-product-cash-payment-show')->only(['show']);
     }
 
     public function index()

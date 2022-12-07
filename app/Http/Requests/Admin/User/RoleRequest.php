@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Admin\User;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Route;
 
 class RoleRequest extends FormRequest
 {

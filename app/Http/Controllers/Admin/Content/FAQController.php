@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Content;
 
-use App\Models\Content\Faq;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Content\FaqRequest;
+use App\Models\Content\Faq;
 
 class FAQController extends Controller
 {
@@ -42,7 +41,7 @@ class FAQController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(FaqRequest $request)
@@ -55,7 +54,7 @@ class FAQController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +65,7 @@ class FAQController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Faq $faq)
@@ -77,8 +76,8 @@ class FAQController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(FaqRequest $request, Faq $faq)
@@ -91,7 +90,7 @@ class FAQController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Faq $faq)
@@ -101,19 +100,18 @@ class FAQController extends Controller
     }
 
 
-    public function status(Faq $faq){
+    public function status(Faq $faq)
+    {
 
         $faq->status = $faq->status == 0 ? 1 : 0;
         $result = $faq->save();
-        if($result){
-                if($faq->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($faq->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

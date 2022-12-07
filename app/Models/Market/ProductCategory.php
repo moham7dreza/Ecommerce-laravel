@@ -2,7 +2,6 @@
 
 namespace App\Models\Market;
 
-use App\Models\Content\Post;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -99,7 +98,7 @@ class ProductCategory extends Model
         else return 'warning';
     }
 
-    public function productsCount() : int
+    public function productsCount(): int
     {
         return $this->products->count() ?? 0;
     }

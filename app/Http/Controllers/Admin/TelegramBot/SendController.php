@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin\TelegramBot;
 
 use App\Http\Controllers\Controller;
-use App\Models\Market\Product;
-use GuzzleHttp\Client;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use function Livewire\str;
 
 class SendController extends Controller
 {
@@ -101,8 +98,7 @@ class SendController extends Controller
                         $bot->SendMessage($chat_id, 'اطلاعاتی از پیام وارد شده برای نمایش وجود ندارد.');
                         break;
                 }
-            }
-            elseif (isset($update->callback_query)) //answer to queez
+            } elseif (isset($update->callback_query)) //answer to queez
             {
                 $msg_flag = false;
                 $chat_id = $update->callback_query->from->id;
@@ -162,8 +158,7 @@ class SendController extends Controller
                         $bot->SendMessage($chat_id, 'اطلاعاتی برای نمایش وجود ندارد.');
                         break;
                 }
-            }
-            elseif (isset($update->inline_query)) {
+            } elseif (isset($update->inline_query)) {
                 $id = $update->inline_query->from->id;
                 $name = $update->inline_query->from->first_name;
                 $user_name = $update->inline_query->from->username;

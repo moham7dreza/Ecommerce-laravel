@@ -1,6 +1,6 @@
 <?php
 
 
-return[
+return [
     'zarinpal_api_key' => 'dwdqqwwqqwdqdqqwdq',
 ];

@@ -17,13 +17,14 @@
                          class="dropdown-menu dropdown-menu-right dropdown-menu dropdown-menu-right-lg">
                         <span class="dropdown-item dropdown-header">{{ $unseenComments->count() }} نظر</span>
                         @foreach ($unseenComments as $unseenComment)
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <img src="{{ $unseenComment->authorImage() }}" alt="" width="50" height="50">
-                            <i class="fa fa-times"><p class="notification-time ml-2">{{ $unseenComment->textAuthorName() }}</p></i>
-                            <p class="mt-2">{{ $unseenComment->limitedBody() }}</p>
-{{--                            <span class="float-right-rtl text-muted text-sm">3 دقیقه پیش</span>--}}
-                        </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <img src="{{ $unseenComment->authorImage() }}" alt="" width="50" height="50">
+                                <i class="fa fa-times"><p
+                                        class="notification-time ml-2">{{ $unseenComment->textAuthorName() }}</p></i>
+                                <p class="mt-2">{{ $unseenComment->limitedBody() }}</p>
+                                {{--                            <span class="float-right-rtl text-muted text-sm">3 دقیقه پیش</span>--}}
+                            </a>
                         @endforeach
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">دیدن همه</a>
@@ -39,16 +40,18 @@
                     </button>
                     <div aria-labelledby="dropdownMenu2"
                          class="dropdown-menu dropdown-menu-right dropdown-menu dropdown-menu-right-lg">
-                        <span class="dropdown-item dropdown-header persianumber">{{ $notifications->count() }} اطلاعیه</span>
+                        <span
+                            class="dropdown-item dropdown-header persianumber">{{ $notifications->count() }} اطلاعیه</span>
 
                         @foreach ($notifications as $notification)
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fa fa-times"><p class="notification-time ml-2">{{ $notification['data']['message'] }}</p></i>
-                            <span class="float-right-rtl text-muted text-sm">
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="fa fa-times"><p
+                                        class="notification-time ml-2">{{ $notification['data']['message'] }}</p></i>
+                                <span class="float-right-rtl text-muted text-sm">
 {{--                                {{ $notification['data']['created_at']->diffForHumans() }}--}}
                             </span>
-                        </a>
+                            </a>
                         @endforeach
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">دیدن همه</a>

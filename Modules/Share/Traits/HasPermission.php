@@ -24,7 +24,7 @@ trait HasPermission
     // new functions
     protected function hasPermission($permission): bool
     {
-        return (bool) $this->permissions->where('name', $permission->name)->count();
+        return (bool)$this->permissions->where('name', $permission->name)->count();
     }
 
     public function hasPermissionTo($permission): bool

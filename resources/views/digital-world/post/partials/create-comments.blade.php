@@ -1,6 +1,7 @@
 <div class="comment-form">
     <h3 class="mb-30">ارسال نظرات</h3>
-    <form class="form-contact comment_form" action="{{ route('digital-world.post.add-comments', $post) }}" id="commentForm" method="POST">
+    <form class="form-contact comment_form" action="{{ route('digital-world.post.add-comments', $post) }}"
+          id="commentForm" method="POST">
         @csrf
         <input type="hidden" name="commentable_id" value="{{ $post->id }}">
         <input type="hidden" name="commentable_type" value="{{ get_class($post) }}">

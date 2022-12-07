@@ -48,7 +48,8 @@
                             </li>
                             <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> سرویس موبایل</a>
                             </li>
-                            <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> راه کارهایی برای شبکه</a></li>
+                            <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> راه کارهایی برای
+                                    شبکه</a></li>
                             <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> ساپورت تکنیکی</a>
                             </li>
                         </ul>
@@ -64,7 +65,7 @@
                             <form>
                                 <fieldset>
                                     <div class="field d-flex">
-{{--                                        <label for="email">ارتباط : </label>--}}
+                                        {{--                                        <label for="email">ارتباط : </label>--}}
                                         <input name="email" placeholder="ایمیل رو وارد کنید..." type="text">
                                         <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i>
                                         </button>

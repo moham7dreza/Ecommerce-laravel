@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     public static array $seeders = [];
+
     /**
      * Seed the application's database.
      *

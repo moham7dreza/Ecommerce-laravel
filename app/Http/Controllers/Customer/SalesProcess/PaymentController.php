@@ -12,7 +12,6 @@ use App\Models\Market\OnlinePayment;
 use App\Models\Market\Order;
 use App\Models\Market\OrderItem;
 use App\Models\Market\Payment;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -128,25 +127,23 @@ class PaymentController extends Controller
                 ['payment_type' => $type]
             );
             $paymentService->zarinpal($order->order_final_amount, $paymented, $order, $payment);
-        }
-        else
-        {
+        } else {
 //            DB::transaction(function () use ($order, $cartItems, $type, $payment) {
-                // offline pay or cash pay
-                $order->update(
-                    ['order_status' => 3,
-                        'payment_type' => $type,
-                        'payment_id' => $payment->id,
-                        'payment_object' => $payment,
-                        'payment_status' => 1,
-                        'delivery_status' => 1,
-                        'delivery_date' => now()]
-                );
-                $this->addOrderItems($order, $cartItems);
+            // offline pay or cash pay
+            $order->update(
+                ['order_status' => 3,
+                    'payment_type' => $type,
+                    'payment_id' => $payment->id,
+                    'payment_object' => $payment,
+                    'payment_status' => 1,
+                    'delivery_status' => 1,
+                    'delivery_date' => now()]
+            );
+            $this->addOrderItems($order, $cartItems);
 
-                foreach ($cartItems as $cartItem) {
-                    $cartItem->delete();
-                }
+            foreach ($cartItems as $cartItem) {
+                $cartItem->delete();
+            }
 //            });
             return redirect()->route('customer.home')->with('success', 'سفارش شما با موفقیت ثبت شد');
         }

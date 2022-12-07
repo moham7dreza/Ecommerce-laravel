@@ -4,7 +4,7 @@
     @include('livewire.digital-world.layouts.head-tag')
     @yield('head-tag')
 
-{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+    {{--    <script src="{{ asset('js/app.js') }}"></script>--}}
     <title>{{ $title }}</title>
     @livewireStyles
 </head>

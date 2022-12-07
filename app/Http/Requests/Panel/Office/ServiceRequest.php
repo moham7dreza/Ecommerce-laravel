@@ -50,8 +50,8 @@ class ServiceRequest extends FormRequest
     public function attributes(): array
     {
         return [
-          'warranty_time'  => 'مدت زمان گارانتی سرویس',
-          'time_to_give_service'  => 'مدت زمان ارائه سرویس',
+            'warranty_time' => 'مدت زمان گارانتی سرویس',
+            'time_to_give_service' => 'مدت زمان ارائه سرویس',
         ];
     }
 }

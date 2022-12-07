@@ -7,26 +7,32 @@
                 <div class="col-lg-2 col-md-3">
                     <div class="header-logo d-none d-lg-block">
                         <a href="{{ route('digital-world.home') }}">
-                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/logo.svg') }}" alt="{{ $setting->title }}">
+                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/logo.svg') }}"
+                                 alt="{{ $setting->title }}">
                         </a>
                     </div>
                     <div class="logo-tablet d-md-inline d-lg-none d-none">
                         <a href="{{ route('digital-world.home') }}">
-                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/logo.svg') }}" alt="{{ $setting->title }}">
+                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/logo.svg') }}"
+                                 alt="{{ $setting->title }}">
                         </a>
                     </div>
                     <div class="logo-mobile d-block d-md-none">
                         <a href="{{ route('digital-world.home') }}">
-                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/favicon.svg') }}" alt="{{ $setting->title }}">
+                            <img class="logo-img d-inline" src="{{ asset('news-viral-assets/imgs/favicon.svg') }}"
+                                 alt="{{ $setting->title }}">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-10 col-md-9 main-header-navigation">
                     <div class="main-nav text-right float-lg-right float-md-left">
                         <ul class="mobi-menu d-none menu-3-columns" id="navigation">
-                            <li class="cat-item cat-item-2"><a href="{{ route('digital-world.home') }}">صفحه اصلی</a></li>
-                            <li class="cat-item cat-item-3"><a href="{{ route('digital-world.posts.all') }}">پست ها</a></li>
-                            <li class="cat-item cat-item-4"><a href="{{ route('digital-world.posts.authors') }}">نویسنده ها</a></li>
+                            <li class="cat-item cat-item-2"><a href="{{ route('digital-world.home') }}">صفحه اصلی</a>
+                            </li>
+                            <li class="cat-item cat-item-3"><a href="{{ route('digital-world.posts.all') }}">پست ها</a>
+                            </li>
+                            <li class="cat-item cat-item-4"><a href="{{ route('digital-world.posts.authors') }}">نویسنده
+                                    ها</a></li>
                             @auth
                                 <li class="cat-item cat-item-5"><a href="#">{{ auth()->user()->fullName }}</a></li>
                                 <li class="cat-item cat-item-6"><a href="">خروج</a></li>
@@ -109,7 +115,8 @@
                             </ul>
                         </nav>
                     </div>
-                    <form action="#" method="get" class="search-form d-lg-inline float-left position-relative ml-30 d-none">
+                    <form action="#" method="get"
+                          class="search-form d-lg-inline float-left position-relative ml-30 d-none">
                         <input type="text" class="search_field" placeholder="جستجو ..." value="" name="s">
                         <span class="search-icon"><i class="ti-search mr-5"></i></span>
                     </form>

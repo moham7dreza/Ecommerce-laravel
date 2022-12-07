@@ -66,6 +66,7 @@ class PostCategory extends Model
     {
         return $this->status === self::STATUS_ACTIVE ? 'فعال' : 'غیر فعال';
     }
+
     public function imagePath(): string
     {
         return asset($this->image['indexArray']['medium']);

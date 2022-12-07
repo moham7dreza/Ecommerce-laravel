@@ -15,7 +15,7 @@
                         <div class="col-12">
                             <div class="p-2">
                                 <form class="form-horizontal" role="form" method="POST"
-                                    action="{{ route('adminto.menu.update', $menu->id) }}">
+                                      action="{{ route('adminto.menu.update', $menu->id) }}">
                                     @csrf
                                     @method('PATCH')
                                     <div class="form-group row">
@@ -43,10 +43,16 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="status">وضعیت</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control @error('status') is-invalid @enderror" name="status">
+                                            <select class="form-control @error('status') is-invalid @enderror"
+                                                    name="status">
                                                 @foreach (\App\Models\Content\Menu::$statuses as $status)
-                                                    <option value="{{ $status }}" @if(old('status', $menu->status) == $status) selected @endif>
-                                                        @if($status == 1) فعال @else غیر فعال @endif</option>
+                                                    <option value="{{ $status }}"
+                                                            @if(old('status', $menu->status) == $status) selected @endif>
+                                                        @if($status == 1)
+                                                            فعال
+                                                        @else
+                                                            غیر فعال
+                                                        @endif</option>
                                                 @endforeach
                                             </select>
                                             @error('status')
@@ -58,7 +64,8 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label" for="parent_id">منوی والد</label>
                                         <div class="col-sm-10">
-                                            <select class="form-control @error('parent_id') is-invalid @enderror" name="parent_id">
+                                            <select class="form-control @error('parent_id') is-invalid @enderror"
+                                                    name="parent_id">
                                                 <option value="" selected>منوی اصلی</option>
                                                 @foreach ($menus as $menu)
                                                     <option value="{{ $menu->id }}"

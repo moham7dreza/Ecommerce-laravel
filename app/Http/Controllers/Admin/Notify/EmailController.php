@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\admin\notify;
 
-use App\Models\Notify\Email;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Notify\EmailRequest;
+use App\Models\Notify\Email;
 
 class EmailController extends Controller
 {
@@ -44,7 +43,7 @@ class EmailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(EmailRequest $request)
@@ -60,7 +59,7 @@ class EmailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,7 +70,7 @@ class EmailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Email $email)
@@ -83,8 +82,8 @@ class EmailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(EmailRequest $request, Email $email)
@@ -100,7 +99,7 @@ class EmailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Email $email)
@@ -110,19 +109,18 @@ class EmailController extends Controller
     }
 
 
-    public function status(Email $email){
+    public function status(Email $email)
+    {
 
         $email->status = $email->status == 0 ? 1 : 0;
         $result = $email->save();
-        if($result){
-                if($email->status == 0){
-                    return response()->json(['status' => true, 'checked' => false]);
-                }
-                else{
-                    return response()->json(['status' => true, 'checked' => true]);
-                }
-        }
-        else{
+        if ($result) {
+            if ($email->status == 0) {
+                return response()->json(['status' => true, 'checked' => false]);
+            } else {
+                return response()->json(['status' => true, 'checked' => true]);
+            }
+        } else {
             return response()->json(['status' => false]);
         }
 

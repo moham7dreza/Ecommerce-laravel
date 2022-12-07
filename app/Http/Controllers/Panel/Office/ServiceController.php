@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Panel\Office;
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Panel\Market\CategoryRepo;
 use App\Http\Repositories\Panel\Office\ServiceRepo;
-
 use App\Http\Requests\Panel\Office\ServiceRequest;
 use App\Http\Services\Image\ImageService;
 use App\Http\Services\Panel\Office\serviceService;
@@ -14,7 +13,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
 
@@ -64,7 +62,7 @@ class ServiceController extends Controller
     public function store(ServiceRequest $request, ImageService $imageService): RedirectResponse
     {
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage(null,$imageService,
+            $result = ShareService::uploadNewImage(null, $imageService,
                 'panel-service', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.office.service.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -80,7 +78,7 @@ class ServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
     public function show($id)
@@ -91,7 +89,7 @@ class ServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Application|Factory|View
      */
     public function edit(int $id)
@@ -110,11 +108,11 @@ class ServiceController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(ServiceRequest $request,ImageService $imageService, int $id): RedirectResponse
+    public function update(ServiceRequest $request, ImageService $imageService, int $id): RedirectResponse
     {
         $service = $this->repo->findById($id);
         if ($request->hasFile('image')) {
-            $result = ShareService::uploadNewImage($service->image,$imageService,
+            $result = ShareService::uploadNewImage($service->image, $imageService,
                 'panel-service', $request->file('image'));
             if ($result === false) {
                 return redirect()->route('panel.office.service.index')->with('swal-error', 'آپلود تصویر با خطا مواجه شد');
@@ -130,7 +128,7 @@ class ServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return RedirectResponse
      */
     public function destroy(int $id): RedirectResponse

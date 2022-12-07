@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\ItCity;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class PageController extends Controller
 {

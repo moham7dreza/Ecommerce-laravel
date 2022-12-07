@@ -2,21 +2,19 @@
 
 // digital world
 use App\Http\Controllers\DigitalWorld\HomeController as DigiHomeController;
-
-// implement with livewire
+use App\Http\Livewire\DigitalWorld\Author\Detail as DigitalWorldAuthorDetailController;
+use App\Http\Livewire\DigitalWorld\Author\Home as DigitalWorldAuthorController;
+use App\Http\Livewire\DigitalWorld\Category\Home as DigitalWorldCategoryController;
 use App\Http\Livewire\DigitalWorld\Home as DigitalWorldHomeController;
+use App\Http\Livewire\DigitalWorld\Post\Detail as DigitalWorldPostDetailController;
 use App\Http\Livewire\DigitalWorld\Post\Home as DigitalWorldPostController;
 use App\Http\Livewire\DigitalWorld\Post\Search as DigitalWorldPostSearchController;
-use App\Http\Livewire\DigitalWorld\Post\Detail as DigitalWorldPostDetailController;
-use App\Http\Livewire\DigitalWorld\Category\Home as DigitalWorldCategoryController;
-use App\Http\Livewire\DigitalWorld\Author\Home as DigitalWorldAuthorController;
-use App\Http\Livewire\DigitalWorld\Author\Detail as DigitalWorldAuthorDetailController;
-
 use App\Http\Livewire\DigitalWorld\Technology\CategoryPosts;
 use App\Http\Livewire\DigitalWorld\Technology\PostDetail;
 use App\Http\Livewire\DigitalWorld\Technology\Posts;
-
 use Illuminate\Support\Facades\Route;
+
+// implement with livewire
 
 
 /***********************************************************************************************************************

@@ -2,8 +2,6 @@
 
 //require_once 'jdf.php';
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\File;
 use Morilog\Jalali\Jalalian;
 
 function jalaliDate($date, $format = '%A, %d %B %Y')
@@ -45,7 +43,6 @@ function convertArabicToEnglish($number)
 }
 
 
-
 function convertEnglishToPersian($number)
 {
     $number = str_replace('0', '۰', $number);
@@ -63,7 +60,6 @@ function convertEnglishToPersian($number)
 }
 
 
-
 function priceFormat($price)
 {
     $price = number_format($price, 0, '/', '،');
@@ -78,50 +74,37 @@ function validateNationalCode($nationalCode)
     $nationalCode = convertPersianToEnglish($nationalCode);
     $bannedArray = ['0000000000', '1111111111', '2222222222', '3333333333', '4444444444', '5555555555', '6666666666', '7777777777', '8888888888', '9999999999'];
 
-    if(empty($nationalCode))
-    {
+    if (empty($nationalCode)) {
         return false;
-    }
-    else if(count(str_split($nationalCode)) != 10)
-    {
+    } else if (count(str_split($nationalCode)) != 10) {
         return false;
-    }
-    else if(in_array($nationalCode, $bannedArray))
-    {
+    } else if (in_array($nationalCode, $bannedArray)) {
         return false;
-    }
-    else{
+    } else {
 
         $sum = 0;
 
-        for($i = 0; $i < 9; $i++)
-        {
+        for ($i = 0; $i < 9; $i++) {
             // 1234567890
-            $sum += (int) $nationalCode[$i] * (10 - $i);
+            $sum += (int)$nationalCode[$i] * (10 - $i);
         }
 
         $divideRemaining = $sum % 11;
 
-        if($divideRemaining < 2)
-        {
+        if ($divideRemaining < 2) {
             $lastDigit = $divideRemaining;
-        }
-        else{
+        } else {
             $lastDigit = 11 - ($divideRemaining);
         }
 
-        if((int) $nationalCode[9] == $lastDigit)
-        {
+        if ((int)$nationalCode[9] == $lastDigit) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 
     }
 }
-
-
 
 
 function squareSliderTheme($school)

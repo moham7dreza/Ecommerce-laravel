@@ -57,9 +57,9 @@
             </section>
             
 
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-market')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-market')): ?>
                 <section class="sidebar-part-title">بخش فروش</section>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-vitrine')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-vitrine')): ?>
                     <section class="sidebar-group-link">
                         <section class="sidebar-dropdown-toggle">
                             <i class="fas fa-chart-bar icon"></i>
@@ -67,28 +67,28 @@
                             <i class="fas fa-angle-left angle"></i>
                         </section>
                         <section class="sidebar-dropdown">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-categories')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-categories')): ?>
                                 <a href="<?php echo e(route('admin.market.category.index')); ?>">دسته بندی</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-properties')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-properties')): ?>
                                 <a href="<?php echo e(route('admin.market.property.index')); ?>">فرم کالا</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-brands')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-brands')): ?>
                                 <a href="<?php echo e(route('admin.market.brand.index')); ?>">برندها</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-products')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-products')): ?>
                                 <a href="<?php echo e(route('admin.market.product.index')); ?>">کالاها</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-warehouse')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-warehouse')): ?>
                                 <a href="<?php echo e(route('admin.market.store.index')); ?>">انبار</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-comments')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-comments')): ?>
                                 <a href="<?php echo e(route('admin.market.comment.index')); ?>">نظرات</a>
                             <?php endif; ?>
                         </section>
                     </section>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-orders')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-orders')): ?>
                     <section class="sidebar-group-link">
                         <section class="sidebar-dropdown-toggle">
                             <i class="fas fa-chart-bar icon"></i>
@@ -96,28 +96,28 @@
                             <i class="fas fa-angle-left angle"></i>
                         </section>
                         <section class="sidebar-dropdown">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-new-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-new-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.newOrders')); ?>"> جدید</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-sending-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-sending-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.sending')); ?>">در حال ارسال</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-unpaid-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-unpaid-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.unpaid')); ?>">پرداخت نشده</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-canceled-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-canceled-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.canceled')); ?>">باطل شده</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-returned-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-returned-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.returned')); ?>">مرجوعی</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-all-orders')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-all-orders')): ?>
                                 <a href="<?php echo e(route('admin.market.order.all')); ?>">تمام سفارشات</a>
                             <?php endif; ?>
                         </section>
                     </section>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-payments')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-payments')): ?>
                     <section class="sidebar-group-link">
                         <section class="sidebar-dropdown-toggle">
                             <i class="fas fa-chart-bar icon"></i>
@@ -125,22 +125,22 @@
                             <i class="fas fa-angle-left angle"></i>
                         </section>
                         <section class="sidebar-dropdown">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-all-payments')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-all-payments')): ?>
                                 <a href="<?php echo e(route('admin.market.payment.index')); ?>">تمام پرداخت ها</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-online-payments')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-online-payments')): ?>
                                 <a href="<?php echo e(route('admin.market.payment.online')); ?>">پرداخت های آنلاین</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-offline-payments')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-offline-payments')): ?>
                                 <a href="<?php echo e(route('admin.market.payment.offline')); ?>">پرداخت های آفلاین</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-cash-payments')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-cash-payments')): ?>
                                 <a href="<?php echo e(route('admin.market.payment.cash')); ?>">پرداخت در محل</a>
                             <?php endif; ?>
                         </section>
                     </section>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-discounts')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-discounts')): ?>
                     <section class="sidebar-group-link">
                         <section class="sidebar-dropdown-toggle">
                             <i class="fas fa-chart-bar icon"></i>
@@ -148,145 +148,145 @@
                             <i class="fas fa-angle-left angle"></i>
                         </section>
                         <section class="sidebar-dropdown">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-coupon-discounts')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-coupon-discounts')): ?>
                                 <a href="<?php echo e(route('admin.market.discount.copan')); ?>">کپن تخفیف</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-common-discounts')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-common-discounts')): ?>
                                 <a href="<?php echo e(route('admin.market.discount.commonDiscount')); ?>">تخفیف عمومی</a>
                             <?php endif; ?>
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-product-amazing-sales')): ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-product-amazing-sales')): ?>
                                 <a href="<?php echo e(route('admin.market.discount.amazingSale')); ?>">فروش شگفت انگیز</a>
                             <?php endif; ?>
                         </section>
                     </section>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-delivery-methods')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-delivery-methods')): ?>
                     <a href="<?php echo e(route('admin.market.delivery.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>روش های ارسال</span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-content')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-content')): ?>
                 <section class="sidebar-part-title">بخش محتوی</section>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-post-categories')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-post-categories')): ?>
                     <a href="<?php echo e(route('admin.content.category.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>دسته بندی</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-posts')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-posts')): ?>
                     <a href="<?php echo e(route('admin.content.post.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>پست ها</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-post-comments')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-post-comments')): ?>
                     <a href="<?php echo e(route('admin.content.comment.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>نظرات</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-menus')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-menus')): ?>
                     <a href="<?php echo e(route('admin.content.menu.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>منو</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-faqs')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-faqs')): ?>
                     <a href="<?php echo e(route('admin.content.faq.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>سوالات متداول</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-pages')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-pages')): ?>
                     <a href="<?php echo e(route('admin.content.page.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>پیج ساز</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-banners')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-banners')): ?>
                     <a href="<?php echo e(route('admin.content.banner.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>بنر ها</span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-users')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-users')): ?>
                 <section class="sidebar-part-title">بخش کاربران</section>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-admin-users')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-admin-users')): ?>
                     <a href="<?php echo e(route('admin.user.admin-user.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>کاربران ادمین</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-customer-users')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-customer-users')): ?>
                     <a href="<?php echo e(route('admin.user.customer.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>مشتریان</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-user-roles')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-user-roles')): ?>
                     <a href="<?php echo e(route('admin.user.role.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>سطوح دسترسی</span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-tickets')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-tickets')): ?>
                 <section class="sidebar-part-title">تیکت ها</section>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-ticket-categories')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-ticket-categories')): ?>
                     <a href="<?php echo e(route('admin.ticket.category.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span> دسته بندی تیکت ها </span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-ticket-priorities')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-ticket-priorities')): ?>
                     <a href="<?php echo e(route('admin.ticket.priority.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span> اولویت تیکت ها </span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-admin-tickets')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-admin-tickets')): ?>
                     <a href="<?php echo e(route('admin.ticket.admin.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span> ادمین تیکت ها </span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-new-tickets')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-new-tickets')): ?>
                     <a href="<?php echo e(route('admin.ticket.newTickets')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>تیکت های جدید</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-open-tickets')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-open-tickets')): ?>
                     <a href="<?php echo e(route('admin.ticket.openTickets')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>تیکت های باز</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-close-tickets')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-close-tickets')): ?>
                     <a href="<?php echo e(route('admin.ticket.closeTickets')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>تیکت های بسته</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-all-tickets')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-all-tickets')): ?>
                     <a href="<?php echo e(route('admin.ticket.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>همه ی تیکت ها</span>
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-notify')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-notify')): ?>
                 <section class="sidebar-part-title">اطلاع رسانی</section>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-email-notify')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-email-notify')): ?>
                     <a href="<?php echo e(route('admin.notify.email.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>اعلامیه ایمیلی</span>
                     </a>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-sms-notify')): ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-sms-notify')): ?>
                     <a href="<?php echo e(route('admin.notify.sms.index')); ?>" class="sidebar-link">
                         <i class="fas fa-bars"></i>
                         <span>اعلامیه پیامکی</span>
@@ -294,7 +294,7 @@
 
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-setting')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-setting')): ?>
                 <section class="sidebar-part-title">تنظیمات</section>
                 <a href="<?php echo e(route('admin.setting.index')); ?>" class="sidebar-link">
                     <i class="fas fa-bars"></i>
