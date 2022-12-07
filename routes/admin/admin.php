@@ -56,7 +56,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')->group(function () {
+Route::prefix('admin')->middleware(['auth', 'admin.check', 'can:permission-adminty-panel'])->namespace('Admin')->group(function () {
 
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
 
@@ -188,7 +188,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
      *
      *  admin market section
      *  */
-    Route::prefix('market')->namespace('Market')->group(function () {
+    Route::prefix('market')->namespace('Market')->middleware(['can:permission-market'])->group(function () {
 
         //category
         Route::prefix('category')->group(function () {
@@ -349,7 +349,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
      *
      *  admin content section
      *  */
-    Route::prefix('content')->namespace('Content')->group(function () {
+    Route::prefix('content')->namespace('Content')->middleware(['can:permission-content'])->group(function () {
 
         //category
         Route::prefix('category')->group(function () {
@@ -434,7 +434,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
      *
      *  admin user section
      *  */
-    Route::prefix('user')->namespace('User')->group(function () {
+    Route::prefix('user')->namespace('User')->middleware(['can:permission-users'])->group(function () {
 
         //admin-user
         Route::prefix('admin-user')->group(function () {
@@ -491,7 +491,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
      *
      *  admin notify section
      *  */
-    Route::prefix('notify')->namespace('Notify')->group(function () {
+    Route::prefix('notify')->namespace('Notify')->middleware(['can:permission-notify'])->group(function () {
 
         //email
         Route::prefix('email')->group(function () {
@@ -532,7 +532,7 @@ Route::prefix('admin')->middleware(['auth', 'admin.check'])->namespace('Admin')-
      *
      *  admin ticket section
      *  */
-    Route::prefix('ticket')->namespace('Ticket')->group(function () {
+    Route::prefix('ticket')->namespace('Ticket')->middleware(['can:permission-tickets'])->group(function () {
 
         //category
         Route::prefix('category')->group(function () {

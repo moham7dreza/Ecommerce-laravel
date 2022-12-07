@@ -68,9 +68,13 @@ class AdminUserController extends Controller
         $user = User::create($inputs);
         $inputs['roles'] = $inputs['roles'] ?? [];
         $user->roles()->sync($inputs['roles']);
-        foreach ($request->roles as $role_id) {
-            $role = Role::find($role_id);
-            $user->permissions()->sync($role->permissions);
+        if (empty($inputs['roles'])){
+            $user->permissions()->sync([]);
+        }else{
+            foreach ($request->roles as $role_id) {
+                $role = Role::find($role_id);
+                $user->permissions()->sync($role->permissions);
+            }
         }
         User::activityLog($user, 'users', 'created');
         return redirect()->route('admin.user.admin-user.index')->with('swal-success', 'ادمین جدید با موفقیت ثبت شد');
@@ -182,9 +186,13 @@ class AdminUserController extends Controller
         $inputs = $request->all();
         $inputs['roles'] = $inputs['roles'] ?? [];
         $user->roles()->sync($inputs['roles']);
-        foreach ($request->roles as $role_id) {
-            $role = Role::find($role_id);
-            $user->permissions()->sync($role->permissions);
+        if (empty($inputs['roles'])){
+            $user->permissions()->sync([]);
+        }else{
+            foreach ($request->roles as $role_id) {
+                $role = Role::query()->findOrFail($role_id);
+                $user->permissions()->sync($role->permissions);
+            }
         }
 
         return redirect()->route('admin.user.admin-user.index')->with('swal-success', 'نقش جدید با موفقیت ویرایش شد');

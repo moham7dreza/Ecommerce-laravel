@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
  *
  *  adminto dashboard
  *  */
-Route::prefix('adminto')->middleware(['auth', 'admin.check'])->namespace('Dashboard')
+Route::prefix('adminto')->middleware(['auth', 'admin.check', 'can:permission-adminto-panel'])->namespace('Dashboard')
     ->group(function () {
         Route::get('/', [AdminToController::class, 'home'])->name('adminto.home');
 

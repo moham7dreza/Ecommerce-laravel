@@ -212,7 +212,7 @@
                     </a>
                 <?php endif; ?>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-users')): ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['permission-super-admin','permission-users'])): ?>
                 <section class="sidebar-part-title">بخش کاربران</section>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-admin-users')): ?>
                     <a href="<?php echo e(route('admin.user.admin-user.index')); ?>" class="sidebar-link">

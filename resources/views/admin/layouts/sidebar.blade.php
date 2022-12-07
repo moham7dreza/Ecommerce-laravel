@@ -212,7 +212,7 @@
                     </a>
                 @endcan
             @endcan
-            @can('permission-super-admin','permission-users')
+            @canany(['permission-super-admin','permission-users'])
                 <section class="sidebar-part-title">بخش کاربران</section>
                 @can('permission-super-admin','permission-admin-users')
                     <a href="{{ route('admin.user.admin-user.index') }}" class="sidebar-link">
@@ -232,7 +232,7 @@
                         <span>سطوح دسترسی</span>
                     </a>
                 @endcan
-            @endcan
+            @endcanany
             @can('permission-super-admin','permission-tickets')
                 <section class="sidebar-part-title">تیکت ها</section>
                 @can('permission-super-admin','permission-ticket-categories')

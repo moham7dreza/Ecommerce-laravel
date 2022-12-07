@@ -8,7 +8,7 @@
     @can('permission-super-admin')
         <section class="row">
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.user.customer.index') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-custom-yellow text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -28,7 +28,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.content.post.index') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-custom-green text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -48,7 +48,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.market.comment.index') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-custom-pink text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -68,7 +68,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.market.order.all') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-custom-yellow text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -88,7 +88,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.market.payment.index') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-danger text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -108,7 +108,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.market.discount.amazingSale') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-success text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -128,7 +128,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.user.admin-user.index') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-warning text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -148,7 +148,7 @@
                 </a>
             </section>
             <section class="col-lg-3 col-md-6 col-12">
-                <a href="#" class="text-decoration-none d-block mb-4">
+                <a href="{{ route('admin.ticket.newTickets') }}" class="text-decoration-none d-block mb-4">
                     <section class="card bg-primary text-white">
                         <section class="card-body">
                             <section class="d-flex justify-content-between">
@@ -213,7 +213,7 @@
                                         </td>
                                         <td>{{ $log->getFaUpdatedDate() }}</td>
                                         <td class="width-22-rem text-left">
-                                            <a href="" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                            <a href="{{ $log->path() }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

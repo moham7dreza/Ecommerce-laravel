@@ -15,7 +15,8 @@ class PanelController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['access.control:role-admin'])->only(['index']);
+//        $this->middleware(['access.control:role-admin'])->only(['index']);
+        $this->middleware('can:permission-nozha-panel')->only(['index']);
     }
 
     public function index(PanelRepo $panelRepo): Factory|View|Application

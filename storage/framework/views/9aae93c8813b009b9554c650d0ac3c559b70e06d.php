@@ -7,7 +7,8 @@
 
     <title><?php echo $__env->yieldContent('title'); ?></title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Google web font "Open Sans" -->
     <link rel="stylesheet" href="<?php echo e(asset('letter-assets/css/font-awesome.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('letter-assets/css/bootstrap.min.css')); ?>">
 
@@ -33,7 +34,7 @@
 
 <div class="container-fluid">
     <div class="row cb-slideshow-text-container ">
-        <div class= "tm-content col-xl-12 col-sm-12 col-xs-12 ml-auto section mr-5">
+        <div class="tm-content col-xl-12 col-sm-12 col-xs-12 ml-auto section mr-5">
             <header class="mb-5"><h1 class="text-center"><?php echo $__env->yieldContent('title'); ?></h1></header>
             <P class="mb-5 text-center"><?php echo $__env->yieldContent('message'); ?></P>
         </div>

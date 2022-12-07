@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
  *
  *  new admin panel section
  *  */
-Route::prefix('panel')->middleware(['auth', 'admin.check', 'access.control:role-admin'])->namespace('Panel')->group(function () {
+Route::prefix('panel')->middleware(['auth', 'admin.check', 'can:permission-nozha-panel'])->namespace('Panel')->group(function () {
 
     Route::get('/', [PanelController::class, 'index'])->name('panel.home');
 //    Route::get('/', ['uses' => [PanelController::class, 'index'], 'as' => 'panel.home']);

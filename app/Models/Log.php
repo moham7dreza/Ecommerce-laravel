@@ -28,4 +28,16 @@ class Log extends Model
     {
         return json_decode($this->properties, true);
     }
+
+    public function path(): string
+    {
+        if ($this->log_name === 'products') {
+            $product = $this->subject_type::findOrFail($this->subject_id);
+            if (is_null($product)) { return '#'; }
+            return route('customer.market.product', $product);
+        }
+        else{
+            return '#';
+        }
+    }
 }

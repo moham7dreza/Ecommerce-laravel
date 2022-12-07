@@ -20,9 +20,9 @@ class Permission extends Model
 
     // access to each panels
     //******************************************************************************************************************
-    public const PERMISSION_IT_CITY_PANEL = ['name' => 'permission-it-city-panel', 'description' => 'دسترسی به پنل مدیریت بخش آیتی سیتی'];
-    public const PERMISSION_CUSTOMER_PANEL = ['name' => 'permission-customer-panel', 'description' => 'دسترسی به پنل مدیریت بخش مشتری'];
-    public const PERMISSION_ADMIN_TO_PANEL = ['name' => 'permission-admin-to-panel', 'description' => 'دسترسی به پنل مدیریت بخش دنیای دیجیتالی'];
+    public const PERMISSION_NOZHA_PANEL = ['name' => 'permission-nozha-panel', 'description' => 'دسترسی به پنل مدیریت بخش آیتی سیتی'];
+    public const PERMISSION_ADMINTY_PANEL = ['name' => 'permission-adminty-panel', 'description' => 'دسترسی به پنل مدیریت بخش مشتری'];
+    public const PERMISSION_ADMIN_TO_PANEL = ['name' => 'permission-adminto-panel', 'description' => 'دسترسی به پنل مدیریت بخش دنیای دیجیتالی'];
 
     // Market section Permissions
     //******************************************************************************************************************
@@ -384,8 +384,8 @@ class Permission extends Model
 
     public static array $permissions = [
         self::PERMISSION_SUPER_ADMIN
-        , self::PERMISSION_IT_CITY_PANEL
-        , self::PERMISSION_CUSTOMER_PANEL
+        , self::PERMISSION_NOZHA_PANEL
+        , self::PERMISSION_ADMINTY_PANEL
         , self::PERMISSION_ADMIN_TO_PANEL
         , self::PERMISSION_MARKET
         , self::PERMISSION_VITRINE

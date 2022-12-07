@@ -22,12 +22,11 @@ class PermissionServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      *
-     * @return void
+     * @return false
      */
-    public function boot()
+    public function boot(): bool
     {
         try {
-
             Permission::query()->get()->map(function ($permission) {
                 Gate::define($permission->name, function ($user) use ($permission) {
                     return $user->hasPermissionTo($permission);
@@ -51,7 +50,7 @@ class PermissionServiceProvider extends ServiceProvider
                 return true;
             return false;
         });
-
+        return false;
 //        foreach (Permission::all() as $permission) {
 //            Gate::define($permission->name, function ($user) use ($permission) {
 //                return $user->isPermission($permission);
