@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Share\Traits\Logs\HasProductLog;
 use Share\Traits\HasFaDate;
+use Share\Traits\hasLog;
 
 class Product extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable, HasFaDate, HasProductLog;
+    use HasFactory, SoftDeletes, Sluggable, HasFaDate, HasLog;
 
     public function sluggable(): array
     {

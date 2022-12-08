@@ -4,6 +4,8 @@
 
 <?php $__env->startSection('content'); ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin')): ?>
+
+        <!-- Counters cards --->
         <section class="row">
             <section class="col-lg-3 col-md-6 col-12">
                 <a href="<?php echo e(route('admin.user.customer.index')); ?>" class="text-decoration-none d-block mb-4">
@@ -175,7 +177,27 @@
             </section>
 
         </section>
+        <hr>
+        <!-- common discount alert --->
+        <section class="row">
+            <section class="col-12">
+                <?php
+                    $discount = $homeRepo->activeCommonDiscount();
+                ?>
+                <?php if(!is_null($discount)): ?>
+                    <div class="alert alert-primary" role="alert">
+                        یک تخفیف عمومی <strong><?php echo e($discount->percentage); ?></strong>درصدی با عنوان <strong><?php echo e($discount->title); ?></strong> تا تاریخ <strong><?php echo e(jalaliDate($discount->end_date)); ?></strong> فعال است. برای<a href="<?php echo e(route('admin.market.discount.commonDiscount.edit', $discount)); ?>" class="alert-link"> ویرایش </a>کلیک کن
+                    </div>
+                <?php else: ?>
+                    <div class="alert alert-primary" role="alert">
+                        هیچ تخفیف عمومی فعال نیست. برای افزودن <a href="<?php echo e(route('admin.market.discount.commonDiscount.create')); ?>" class="alert-link">تخفیف</a> کلیک کن
+                    </div>
+                <?php endif; ?>
 
+            </section>
+        </section>
+
+        <!-- activity logs --->
         <section class="row">
             <section class="col-12">
                 <section class="main-body-container">
@@ -202,7 +224,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $__currentLoopData = $logs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $log): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__empty_1 = true; $__currentLoopData = $homeRepo->logs(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $log): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr>
                                         <th><?php echo e($log->id); ?></th>
                                         <td><?php echo e($log->log_name); ?></td>
@@ -222,10 +244,12 @@
                                             <a href="<?php echo e($log->path()); ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <tr><td>هیج عملیاتی صورت نگرفته است.</td></tr>
+                                <?php endif; ?>
                                 </tbody>
                             </table>
-                            <?php echo e($logs->links()); ?>
+                            <?php echo e($homeRepo->logs()->links()); ?>
 
                         </section>
                     </section>

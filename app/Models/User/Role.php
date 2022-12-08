@@ -19,6 +19,12 @@ class Role extends Model
 
     public static array $statuses = [self::STATUS_ACTIVE, self::STATUS_INACTIVE];
 
+    // access everywhere
+    //******************************************************************************************************************
+    public const ROLE_SUPER_ADMIN = ['name' => 'role-super-admin', 'description' => 'مدیر ارشد سیستم - دسترسی نامحدود'];
+
+    public static array $roles = [ self::ROLE_SUPER_ADMIN ];
+
     protected $fillable = ['name', 'description', 'status'];
 
     // Relations
@@ -64,5 +70,15 @@ class Role extends Model
     public function limitedDescription(): string
     {
         return Str::limit($this->description, 50);
+    }
+
+    public function textName()
+    {
+        foreach (self::$roles as $role) {
+            if ($this->name == $role['name']) {
+                return $role['description'];
+            }
+        }
+        return 'نقش یافت نشد.';
     }
 }

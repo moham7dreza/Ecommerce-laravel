@@ -31,10 +31,15 @@ class Log extends Model
 
     public function path(): string
     {
+        $modelObject = $this->subject_type::findOrFail($this->subject_id);
         if ($this->log_name === 'products') {
-            $product = $this->subject_type::findOrFail($this->subject_id);
-            if (is_null($product)) { return '#'; }
-            return route('customer.market.product', $product);
+            if (is_null($modelObject)) { return '#'; }
+            return route('customer.market.product', $modelObject);
+        }
+        else if ($this->log_name === 'users') {
+            if (is_null($modelObject)) { return '#'; }
+            return $modelObject->user_type == 1 ? route('admin.user.admin-user.edit', $modelObject)
+                : route('admin.user.customer.edit', $modelObject);
         }
         else{
             return '#';

@@ -65,13 +65,13 @@
 
                             <tr>
                                 <th>{{ $key + 1 }}</th>
-                                <td>{{ $role->name }}</td>
+                                <td>{{ $role->textName() }}</td>
                                 <td>
                                     @if(empty($role->permissions()->get()->toArray()))
                                         <span class="text-danger">برای این نقش هیچ سطح دسترسی تعریف نشده است</span>
                                     @else
                                         @foreach($role->permissions as $permission)
-                                            {{ $permission->name }} <br>
+                                            {{ $permission->textName() }} <br>
                                         @endforeach
                                     @endif
                                 </td>

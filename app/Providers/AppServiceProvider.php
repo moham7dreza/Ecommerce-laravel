@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
+use Database\Seeders\admin\PermissionsSeeder;
 use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\PermissionsSeeder;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;

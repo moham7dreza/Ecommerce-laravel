@@ -67,7 +67,7 @@ class ProductController extends Controller
         DB::transaction(function () use ($request, $inputs) {
 
             $product = Product::create($inputs);
-            Product::activityLog($product, 'products', 'created');
+            Product::productActivityLog($product, 'products', 'created');
             $metas = array_combine($request->meta_key, $request->meta_value);
             foreach ($metas as $key => $value) {
                 $meta = ProductMeta::create([

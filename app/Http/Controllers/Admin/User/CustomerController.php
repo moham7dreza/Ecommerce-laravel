@@ -69,8 +69,14 @@ class CustomerController extends Controller
             'message' => 'یک کاربر جدید در سایت ثبت نام کرد',
             'created_at' => now()
         ];
-        $adminUser = User::find(1);
-        $adminUser->notify(new NewUserRegistered($details));
+        // find admin users and send notification to them
+        $admins = User::query()->where('user_type', 1)->get();
+        foreach ($admins as $admin) {
+            if($admin->roles->contains('name', 'role-super-admin') || $admin->permissions->contains('name', 'permission-super-admin'))
+                $admin->notify(new NewUserRegistered($details));
+        }
+        // create activity log for admin
+        User::userActivityLog($user, 'users', 'created');
         return redirect()->route('admin.user.customer.index')->with('swal-success', 'مشتری جدید با موفقیت ثبت شد');
     }
 

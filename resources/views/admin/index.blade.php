@@ -6,6 +6,8 @@
 
 @section('content')
     @can('permission-super-admin')
+
+        <!-- Counters cards --->
         <section class="row">
             <section class="col-lg-3 col-md-6 col-12">
                 <a href="{{ route('admin.user.customer.index') }}" class="text-decoration-none d-block mb-4">
@@ -169,7 +171,27 @@
             </section>
 
         </section>
+        <hr>
+        <!-- common discount alert --->
+        <section class="row">
+            <section class="col-12">
+                @php
+                    $discount = $homeRepo->activeCommonDiscount();
+                @endphp
+                @if(!is_null($discount))
+                    <div class="alert alert-primary" role="alert">
+                        یک تخفیف عمومی <strong>{{ $discount->percentage }}</strong>درصدی با عنوان <strong>{{ $discount->title }}</strong> تا تاریخ <strong>{{ jalaliDate($discount->end_date) }}</strong> فعال است. برای<a href="{{ route('admin.market.discount.commonDiscount.edit', $discount) }}" class="alert-link"> ویرایش </a>کلیک کن
+                    </div>
+                @else
+                    <div class="alert alert-primary" role="alert">
+                        هیچ تخفیف عمومی فعال نیست. برای افزودن <a href="{{ route('admin.market.discount.commonDiscount.create') }}" class="alert-link">تخفیف</a> کلیک کن
+                    </div>
+                @endif
 
+            </section>
+        </section>
+
+        <!-- activity logs --->
         <section class="row">
             <section class="col-12">
                 <section class="main-body-container">
@@ -196,7 +218,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($logs as $log)
+                                @forelse($homeRepo->logs() as $log)
                                     <tr>
                                         <th>{{ $log->id }}</th>
                                         <td>{{ $log->log_name }}</td>
@@ -216,10 +238,12 @@
                                             <a href="{{ $log->path() }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr><td>هیج عملیاتی صورت نگرفته است.</td></tr>
+                                @endforelse
                                 </tbody>
                             </table>
-                            {{ $logs->links() }}
+                            {{ $homeRepo->logs()->links() }}
                         </section>
                     </section>
                 </section>

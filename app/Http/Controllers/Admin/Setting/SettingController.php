@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Setting\SettingRequest;
 use App\Http\Services\Image\ImageService;
 use App\Models\Setting\Setting;
-use Database\Seeders\SettingSeeder;
+use Database\Seeders\admin\SettingSeeder;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller

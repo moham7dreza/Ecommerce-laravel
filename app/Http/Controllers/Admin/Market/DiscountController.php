@@ -138,7 +138,7 @@ class DiscountController extends Controller
 
     public function amazingSale()
     {
-        $amazingSales = AmazingSale::all();
+        $amazingSales = AmazingSale::query()->latest()->get();
         return view('admin.market.discount.amazing', compact('amazingSales'));
     }
 

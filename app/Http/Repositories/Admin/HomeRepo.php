@@ -4,7 +4,9 @@ namespace App\Http\Repositories\Admin;
 
 use App\Models\Content\Comment;
 use App\Models\Content\Post;
+use App\Models\Log;
 use App\Models\Market\AmazingSale;
+use App\Models\Market\CommonDiscount;
 use App\Models\Market\Order;
 use App\Models\Market\Payment;
 use App\Models\Ticket\Ticket;
@@ -44,12 +46,30 @@ class HomeRepo
 
     public function activeAmazingSalesCount(): int
     {
-        return AmazingSale::query()->where('start_date', '<', Carbon::now())->where('end_date', '>', Carbon::now())->where('status', 1)->count();
-
+        return AmazingSale::query()->where([
+            ['start_date', '<', Carbon::now()],
+            ['end_date', '>', Carbon::now()],
+            ['status', 1]
+        ])->count();
     }
 
     public function newTicketsCount() : int
     {
         return Ticket::query()->where('seen', 0)->count();
     }
+
+    public function activeCommonDiscount()
+    {
+        return CommonDiscount::query()->where([
+            ['start_date', '<', Carbon::now()],
+            ['end_date', '>', Carbon::now()],
+            ['status', 1]
+        ])->first();
+    }
+
+    public function logs()
+    {
+        return Log::query()->where([['causer_id', '!=', auth()->id()]])->latest()->paginate(2);
+    }
+
 }

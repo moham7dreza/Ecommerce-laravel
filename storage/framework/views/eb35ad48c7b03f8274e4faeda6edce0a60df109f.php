@@ -63,13 +63,13 @@
 
                             <tr>
                                 <th><?php echo e($key + 1); ?></th>
-                                <td><?php echo e($role->name); ?></td>
+                                <td><?php echo e($role->textName()); ?></td>
                                 <td>
                                     <?php if(empty($role->permissions()->get()->toArray())): ?>
                                         <span class="text-danger">برای این نقش هیچ سطح دسترسی تعریف نشده است</span>
                                     <?php else: ?>
                                         <?php $__currentLoopData = $role->permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php echo e($permission->name); ?> <br>
+                                            <?php echo e($permission->textName()); ?> <br>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     <?php endif; ?>
                                 </td>
