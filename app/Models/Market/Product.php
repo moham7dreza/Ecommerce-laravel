@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -63,6 +64,10 @@ class Product extends Model
         return $this->morphMany('App\Models\Content\Comment', 'commentable');
     }
 
+    public function user(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function guarantees(): HasMany
     {
@@ -75,14 +80,15 @@ class Product extends Model
 
     }
 
-    public function activeAmazingSales()
-    {
-        return $this->amazingSales()->where('start_date', '<', Carbon::now())->where('end_date', '>', Carbon::now())->first();
-    }
-
     public function values(): HasMany
     {
         return $this->hasMany(CategoryValue::class);
+    }
+
+    // methods
+    public function activeAmazingSales()
+    {
+        return $this->amazingSales()->where('start_date', '<', Carbon::now())->where('end_date', '>', Carbon::now())->first();
     }
 
     public function activeComments()
@@ -90,8 +96,8 @@ class Product extends Model
         return $this->comments()->where('approved', 1)->whereNull('parent_id')->get();
     }
 
-    public function user()
+    public function path(): string
     {
-        return $this->belongsToMany(User::class);
+        return route('customer.market.product', $this->slug) ?? '#';
     }
 }

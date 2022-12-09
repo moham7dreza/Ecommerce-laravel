@@ -12,6 +12,9 @@ use App\Models\Market\Payment;
 use App\Models\Ticket\Ticket;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Khill\Lavacharts\Lavacharts;
 
 class HomeRepo
 {
@@ -72,4 +75,86 @@ class HomeRepo
         return Log::query()->where([['causer_id', '!=', auth()->id()]])->latest()->paginate(2);
     }
 
+    public function latestComments()
+    {
+        return Comment::query()->where('author_id', '!=', auth()->id())->latest()->paginate(3);
+    }
+
+    public function lavaColumChart()
+    {
+        $chart = new Lavacharts();
+        $data = $chart->DataTable();
+        $data->addStringColumn('سال')
+            ->addNumberColumn('تعداد')
+            ->addRow(['1390', rand(1000, 9000)])
+            ->addRow(['1391', rand(1000, 9000)])
+            ->addRow(['1392', rand(1000, 9000)])
+            ->addRow(['1393', rand(1000, 9000)])
+            ->addRow(['1394', rand(1000, 9000)])
+            ->addRow(['1395', rand(1000, 9000)])
+            ->addRow(['1396', rand(1000, 9000)])
+            ->addRow(['1397', rand(1000, 9000)])
+            ->addRow(['1398', rand(1000, 9000)])
+            ->addRow(['1399', rand(1000, 9000)])
+            ->addRow(['1400', rand(1000, 9000)]);
+        $chart->ColumnChart('YearCount', $data, [
+            'title' => 'تعداد در سال',
+            'titleTextStyle' => [
+                'fontSize' => 14,
+                'color' => 'green',
+                'background' => 'red'
+            ],
+            'elementId' => 'chart_column',
+            'fontName' => 'tahoma'
+        ]);
+        return $chart;
+    }
+
+    public function lastMonthlySalesAmount(): array|string
+    {
+        $payments= Payment::query()->latest()->get();
+        $start_date = new Carbon('first day of ' . Carbon::now()->format('M') . ' ' . Carbon::now()->format('Y'));
+        $end_date = Carbon::now();
+        $amount = 0;
+        foreach ($payments as $payment) {
+            if ($payment->updated_at >= $start_date && $payment->updated_at <= $end_date) {
+                $amount += $payment->amount;
+            }
+        }
+        return priceFormat($amount);
+    }
+
+    public function lastWeeklySalesAmount(): array|string
+    {
+        $payments= Payment::query()->latest()->get();
+        $amount = 0;
+        $week = [];
+        for ($i = 0; $i < 7; $i++) {
+            $week[] = Carbon::now()->startOfWeek(Carbon::SATURDAY)->addDay($i)->format('Y-m-d');//push the current day and plus the mount of $i
+        }
+        foreach ($payments as $payment) {
+
+            if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[0]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[1]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[2]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[3]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[4]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[5]) {
+                $amount += $payment->amount;
+            } else if (Carbon::parse($payment->updated_at)->format('Y-m-d') == $week[6]) {
+                $amount += $payment->amount;
+            }
+        }
+        return priceFormat($amount);
+    }
+
+    public function lastOrder(): Builder|Model
+    {
+        return Order::query()->orderBy('updated_at', 'desc')->take(1)->first();
+    }
 }

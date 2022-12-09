@@ -9,54 +9,6 @@
                 <i class="fas fa-gift"></i>
                 <span>فروشگاه</span>
             </a>
-
-            
-            
-            
-            
-
-            
-            <section class="sidebar-part-title">ربات تلگرام</section>
-            <a href="<?php echo e(route('admin.bot.message')); ?>" class="sidebar-link">
-                <i class="fas fa-bars"></i>
-                <span>ارسال پیام</span>
-            </a>
-            
-
-            
-            <section class="sidebar-part-title">گزارشات</section>
-            <a href="<?php echo e(route('admin.reports.charts.sales')); ?>" class="sidebar-link">
-                <i class="fas fa-bars"></i>
-                <span>نمودار فروش</span>
-            </a>
-            
-
-            
-            <section class="sidebar-part-title">پی سی پیک</section>
-
-            <section class="sidebar-group-link">
-                <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>سیستم اسمبل هوشمند</span>
-                    <i class="fas fa-angle-left angle"></i>
-                </section>
-                <section class="sidebar-dropdown">
-                    <a href="<?php echo e(route('admin.smart-assemble.system.index')); ?>">سیستم پیشنهادی</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.category.index')); ?>">دسته بندی</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.type.index')); ?>">کلاس سیستم</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.cpu.index')); ?>">نسل پردازنده</a>
-                    
-                    
-                    
-                    <a href="<?php echo e(route('admin.smart-assemble.config.index')); ?>">کانفیگ و رم</a>
-                    
-                    <a href="<?php echo e(route('admin.smart-assemble.brand.index')); ?>">برندها</a>
-                    <a href="<?php echo e(route('admin.smart-assemble.menu.index')); ?>">منوها</a>
-
-                </section>
-            </section>
-            
-
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-market')): ?>
                 <section class="sidebar-part-title">بخش فروش</section>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-vitrine')): ?>
@@ -301,6 +253,54 @@
                     <span>تنظیمات</span>
                 </a>
             <?php endif; ?>
+
+
+            
+            
+            
+            
+
+            
+            <section class="sidebar-part-title">ربات تلگرام</section>
+            <a href="<?php echo e(route('admin.bot.message')); ?>" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>ارسال پیام</span>
+            </a>
+            
+
+            
+            
+            
+            
+            
+            
+            
+
+            
+            <section class="sidebar-part-title">پی سی پیک</section>
+
+            <section class="sidebar-group-link">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-chart-bar icon"></i>
+                    <span>سیستم اسمبل هوشمند</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="<?php echo e(route('admin.smart-assemble.system.index')); ?>">سیستم پیشنهادی</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.category.index')); ?>">دسته بندی</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.type.index')); ?>">کلاس سیستم</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.cpu.index')); ?>">نسل پردازنده</a>
+                    
+                    
+                    
+                    <a href="<?php echo e(route('admin.smart-assemble.config.index')); ?>">کانفیگ و رم</a>
+                    
+                    <a href="<?php echo e(route('admin.smart-assemble.brand.index')); ?>">برندها</a>
+                    <a href="<?php echo e(route('admin.smart-assemble.menu.index')); ?>">منوها</a>
+
+                </section>
+            </section>
+            
         </section>
     </section>
 </aside>

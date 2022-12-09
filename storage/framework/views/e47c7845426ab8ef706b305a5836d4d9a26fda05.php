@@ -57,7 +57,7 @@
             <input class="sidebar-input-text" type="text" placeholder="جستجو بر اساس نام، برند ...">
         </section>
     </section>
-    @if(!is_null($productCategory))
+    <?php if(!is_null($productCategory)): ?>
         <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
             <section class="content-header mb-3">
                 <section class="d-flex justify-content-between align-items-center">
@@ -71,26 +71,27 @@
             </section>
 
             <section class="sidebar-brand-wrapper">
-                @foreach($productCategory->brands as $brand)
+                <?php $__currentLoopData = $productCategory->brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <section class="form-check sidebar-brand-item">
                         <input class="form-check-input" type="checkbox" value="1" id="1">
                         <label class="form-check-label d-flex justify-content-between" for="1">
-                            <span>{{ $brand->persian_name }}</span>
-                            <span>{{ $brand->original_name }}</span>
+                            <span><?php echo e($brand->persian_name); ?></span>
+                            <span><?php echo e($brand->original_name); ?></span>
                         </label>
                     </section>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </section>
         </section>
 
 
-        @foreach($productCategory->attributes as $attribute)
+        <?php $__currentLoopData = $productCategory->attributes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $attribute): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
                 <section class="content-header mb-3">
                     <section class="d-flex justify-content-between align-items-center">
                         <h2 class="content-header-title content-header-title-small">
-                            {{ $attribute->name }}
+                            <?php echo e($attribute->name); ?>
+
                         </h2>
                         <section class="content-header-link">
                             <!--<a href="#">مشاهده همه</a>-->
@@ -99,19 +100,19 @@
                 </section>
 
                 <section class="sidebar-brand-wrapper">
-                    @foreach($attribute->values as $value)
+                    <?php $__currentLoopData = $attribute->values; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <section class="form-check sidebar-brand-item">
                             <input class="form-check-input" type="checkbox" value="1" id="1">
                             <label class="form-check-label" for="1">
-                                <span>{{ json_decode($value->value, true)['value'] . ' ' . $attribute->unit }}</span>
+                                <span><?php echo e(json_decode($value->value, true)['value'] . ' ' . $attribute->unit); ?></span>
                             </label>
                         </section>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </section>
             </section>
-        @endforeach
-    @else
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php else: ?>
         <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
             <section class="content-header mb-3">
                 <section class="d-flex justify-content-between align-items-center">
@@ -125,19 +126,19 @@
             </section>
 
             <section class="sidebar-brand-wrapper">
-                @foreach($brands as $brand)
+                <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <section class="form-check sidebar-brand-item">
                         <input class="form-check-input" type="checkbox" value="1" id="1">
                         <label class="form-check-label d-flex justify-content-between" for="1">
-                            <span>{{ $brand->persian_name }}</span>
-                            <span>{{ $brand->original_name }}</span>
+                            <span><?php echo e($brand->persian_name); ?></span>
+                            <span><?php echo e($brand->original_name); ?></span>
                         </label>
                     </section>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
             </section>
         </section>
-    @endif
+    <?php endif; ?>
 
     <section class="content-wrapper bg-white p-3 rounded-2 mb-3">
         <section class="content-header mb-3">
@@ -164,3 +165,4 @@
     </section>
 
 </aside>
+<?php /**PATH C:\CODEX\techzilla\resources\views/customer/layouts/sidebar.blade.php ENDPATH**/ ?>

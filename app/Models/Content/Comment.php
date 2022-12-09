@@ -127,6 +127,11 @@ class Comment extends Model
         return is_null($this->parent_id) ? 'نظر اصلی' : $this->parent->name;
     }
 
+    public function textParentBody(): string
+    {
+        return is_null($this->parent_id) ? '-' : Str::limit($this->parent->body);
+    }
+
     public function answersCount(): int
     {
         return $this->answers->count() ?? 0;
@@ -140,6 +145,36 @@ class Comment extends Model
     public function getCommentablePath(): string
     {
         return $this->commentable->path();
+    }
+
+    public function ObjectPath(): string
+    {
+        $modelObject = $this->commentable_type::query()->findOrFail($this->commentable_id);
+        if (is_null($modelObject)) {
+            return '#';
+        }
+        if ($this->commentable_type == 'App\Models\Market\Product')
+            return route('customer.market.product', $modelObject);
+        else if ($this->commentable_type == 'App\Models\Content\Post')
+            return route('digital-world.post.detail', $modelObject);
+        else if ($this->commentable_type == 'App\Models\ItCity\Office\Service')
+            return route('it-city.service.detail', $modelObject);
+        else if ($this->commentable_type == 'App\Models\ItCity\Store\Hardware')
+            return route('it-city.store.hardware', $modelObject);
+        else return '#';
+    }
+
+    public function commentAdminPath(): string
+    {
+        if ($this->commentable_type == 'App\Models\Market\Product')
+            return route('admin.market.comment.index');
+        else if ($this->commentable_type == 'App\Models\Content\Post')
+            return route('admin.content.comment.index');
+        else if ($this->commentable_type == 'App\Models\ItCity\Office\Service')
+            return route('panel.office.comment.index');
+        else if ($this->commentable_type == 'App\Models\ItCity\Store\Hardware')
+            return route('panel.market.comment.index');
+        else return '#';
     }
 
 }

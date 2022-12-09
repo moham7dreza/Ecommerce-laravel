@@ -9,54 +9,6 @@
                 <i class="fas fa-gift"></i>
                 <span>فروشگاه</span>
             </a>
-
-            {{--            <a href="{{ route('smart.assemble.index') }}" class="sidebar-link">--}}
-            {{--                <i class="fas fa-gift"></i>--}}
-            {{--                <span>پی سی پیک - اسمبل سیستم</span>--}}
-            {{--            </a>--}}
-
-            {{--            @can('permission-super-admin','ربات تلگرام')--}}
-            <section class="sidebar-part-title">ربات تلگرام</section>
-            <a href="{{ route('admin.bot.message') }}" class="sidebar-link">
-                <i class="fas fa-bars"></i>
-                <span>ارسال پیام</span>
-            </a>
-            {{--            @endcan--}}
-
-            {{--            @can('permission-super-admin','ربات تلگرام')--}}
-            <section class="sidebar-part-title">گزارشات</section>
-            <a href="{{ route('admin.reports.charts.sales') }}" class="sidebar-link">
-                <i class="fas fa-bars"></i>
-                <span>نمودار فروش</span>
-            </a>
-            {{--            @endcan--}}
-
-            {{--            @can('permission-super-admin','اسمبل هوشمند')--}}
-            <section class="sidebar-part-title">پی سی پیک</section>
-
-            <section class="sidebar-group-link">
-                <section class="sidebar-dropdown-toggle">
-                    <i class="fas fa-chart-bar icon"></i>
-                    <span>سیستم اسمبل هوشمند</span>
-                    <i class="fas fa-angle-left angle"></i>
-                </section>
-                <section class="sidebar-dropdown">
-                    <a href="{{ route('admin.smart-assemble.system.index') }}">سیستم پیشنهادی</a>
-                    <a href="{{ route('admin.smart-assemble.category.index') }}">دسته بندی</a>
-                    <a href="{{ route('admin.smart-assemble.type.index') }}">کلاس سیستم</a>
-                    <a href="{{ route('admin.smart-assemble.cpu.index') }}">نسل پردازنده</a>
-                    {{--                    <a href="{{ route('admin.smart-assemble.ram.index') }}">نسل رم</a>--}}
-                    {{--                    <a href="{{ route('admin.smart-assemble.gpu.index') }}">نسل گرافیک</a>--}}
-                    {{--                    <a href="{{ route('admin.smart-assemble.mb.index') }}">مادربرد</a>--}}
-                    <a href="{{ route('admin.smart-assemble.config.index') }}">کانفیگ و رم</a>
-                    {{--                    <a href="{{ route('admin.smart-assemble.gallery.index') }}">گالری</a>--}}
-                    <a href="{{ route('admin.smart-assemble.brand.index') }}">برندها</a>
-                    <a href="{{ route('admin.smart-assemble.menu.index') }}">منوها</a>
-
-                </section>
-            </section>
-            {{--            @endcan--}}
-
             @can('permission-super-admin','permission-market')
                 <section class="sidebar-part-title">بخش فروش</section>
                 @can('permission-super-admin','permission-vitrine')
@@ -301,6 +253,54 @@
                     <span>تنظیمات</span>
                 </a>
             @endcan
+
+
+            {{--            <a href="{{ route('smart.assemble.index') }}" class="sidebar-link">--}}
+            {{--                <i class="fas fa-gift"></i>--}}
+            {{--                <span>پی سی پیک - اسمبل سیستم</span>--}}
+            {{--            </a>--}}
+
+            {{--            @can('permission-super-admin','ربات تلگرام')--}}
+            <section class="sidebar-part-title">ربات تلگرام</section>
+            <a href="{{ route('admin.bot.message') }}" class="sidebar-link">
+                <i class="fas fa-bars"></i>
+                <span>ارسال پیام</span>
+            </a>
+            {{--            @endcan--}}
+
+            {{--            @can('permission-super-admin','ربات تلگرام')--}}
+            {{--            <section class="sidebar-part-title">گزارشات</section>--}}
+            {{--            <a href="{{ route('admin.reports.charts.sales') }}" class="sidebar-link">--}}
+            {{--                <i class="fas fa-bars"></i>--}}
+            {{--                <span>نمودار فروش</span>--}}
+            {{--            </a>--}}
+            {{--            @endcan--}}
+
+            {{--            @can('permission-super-admin','اسمبل هوشمند')--}}
+            <section class="sidebar-part-title">پی سی پیک</section>
+
+            <section class="sidebar-group-link">
+                <section class="sidebar-dropdown-toggle">
+                    <i class="fas fa-chart-bar icon"></i>
+                    <span>سیستم اسمبل هوشمند</span>
+                    <i class="fas fa-angle-left angle"></i>
+                </section>
+                <section class="sidebar-dropdown">
+                    <a href="{{ route('admin.smart-assemble.system.index') }}">سیستم پیشنهادی</a>
+                    <a href="{{ route('admin.smart-assemble.category.index') }}">دسته بندی</a>
+                    <a href="{{ route('admin.smart-assemble.type.index') }}">کلاس سیستم</a>
+                    <a href="{{ route('admin.smart-assemble.cpu.index') }}">نسل پردازنده</a>
+                    {{--                    <a href="{{ route('admin.smart-assemble.ram.index') }}">نسل رم</a>--}}
+                    {{--                    <a href="{{ route('admin.smart-assemble.gpu.index') }}">نسل گرافیک</a>--}}
+                    {{--                    <a href="{{ route('admin.smart-assemble.mb.index') }}">مادربرد</a>--}}
+                    <a href="{{ route('admin.smart-assemble.config.index') }}">کانفیگ و رم</a>
+                    {{--                    <a href="{{ route('admin.smart-assemble.gallery.index') }}">گالری</a>--}}
+                    <a href="{{ route('admin.smart-assemble.brand.index') }}">برندها</a>
+                    <a href="{{ route('admin.smart-assemble.menu.index') }}">منوها</a>
+
+                </section>
+            </section>
+            {{--            @endcan--}}
         </section>
     </section>
 </aside>
