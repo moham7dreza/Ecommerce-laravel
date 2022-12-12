@@ -17,27 +17,34 @@ class HomeRepo
 
     public function getActiveCategories(): Collection|array
     {
-        return PostCategory::query()->where('status', Post::STATUS_ACTIVE)->latest()->get();
+        return PostCategory::query()->where('status', PostCategory::STATUS_ACTIVE)->latest()->get();
     }
 
     public function getVipPostsOrderByView(): Collection|array
     {
-        return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->limit(5)->get();
+        return Post::query()->where('status', Post::STATUS_ACTIVE)->orderByViews()->latest()->limit(5)->get();
     }
 
-    public function getAuthorUsers(): Collection|array
+    public function getAuthorUsers(): \Illuminate\Support\Collection
     {
-        return User::query()->limit(20)->get();
+        $authorUserPermission = User\Permission::query()->where('name', User\Permission::PERMISSION_POST_AUTHORS['name'])->first();
+        $users = collect();
+        foreach (User::query()->limit(20)->get() as $user) {
+            if ($user->hasPermissionTo($authorUserPermission)) {
+                $users->push($user);
+            }
+        }
+        return $users;
     }
 
     public function getPostsOrderByView(): Collection|array
     {
-        return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->limit(3)->get();
+        return Post::query()->where('status', Post::STATUS_ACTIVE)->orderByViews()->latest()->limit(3)->get();
     }
 
-    public function getNewPosts(): Collection|array
+    public function getNewPosts()
     {
-        return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->limit(8)->get();
+        return Post::query()->where('status', Post::STATUS_ACTIVE)->latest()->paginate(3);
     }
 
     public function getNewPosts2()

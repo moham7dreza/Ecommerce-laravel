@@ -19,13 +19,18 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Overtrue\LaravelFavorite\Traits\Favoriter;
+use Overtrue\LaravelFollow\Traits\Followable;
+use Overtrue\LaravelFollow\Traits\Follower;
+use Overtrue\LaravelLike\Traits\Liker;
 use Share\Traits\HasFaDate;
 use Share\Traits\hasLog;
 use Share\Traits\HasPermission;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable, HasPermission, HasFaDate, hasLog;
+    use HasApiTokens, HasFactory, HasProfilePhoto, Notifiable, TwoFactorAuthenticatable,
+        HasPermission, HasFaDate, hasLog, Liker, Follower, Followable, Favoriter;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;
@@ -131,6 +136,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class, 'commentable_id');
     }
 
+    public function hasPosts(): HasMany
+    {
+        return $this->HasMany(Post::class, 'author_id');
+    }
+
 
     // Methods
     public function getFullNameAttribute(): string
@@ -161,6 +171,16 @@ class User extends Authenticatable
     public function permissionsCount(): int
     {
         return $this->permissions->count() ?? 0;
+    }
+
+    public function likesCount(): int
+    {
+        $counter = 0;
+//        $posts = Post::query()->where('author_id', $this->id)->withCount('likers')->get();
+        foreach ($this->hasPosts as $post) {
+            $counter += $post->likers()->count();
+        }
+        return $counter;
     }
 
     public function textStatusEmailVerifiedAt(): string
@@ -196,7 +216,21 @@ class User extends Authenticatable
 
     public function getPostsCount(): string
     {
-        return convertEnglishToPersian($this->posts->count()) ?? 0;
+        return convertEnglishToPersian($this->hasPosts->count()) ?? 0;
     }
 
+    public function likedPostsCount(): int
+    {
+        return $this->likes()->withType(\App\Models\Content\Post::class)->count();
+    }
+
+    public function followersCount(): int
+    {
+        return $this->followers()->count();
+    }
+
+    public function followingsCount(): int
+    {
+        return $this->followings()->count();
+    }
 }

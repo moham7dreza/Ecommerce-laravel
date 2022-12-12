@@ -34,7 +34,7 @@ class PostRepo
 
     public function getPostsByViews(): Builder
     {
-        return $this->query()->where('status', Post::STATUS_ACTIVE)->orderBy('view_count');
+        return $this->query()->where('status', Post::STATUS_ACTIVE)->orderByViews();
     }
 
     public function getPostsByUserId($id): Builder

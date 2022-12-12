@@ -177,6 +177,28 @@
                 </a>
             </section>
 
+            <section class="col-lg-3 col-md-6 col-12">
+                <a href="#" class="text-decoration-none d-block mb-4">
+                    <section class="card bg-primary text-white">
+                        <section class="card-body">
+                            <section class="d-flex justify-content-between">
+                                <section class="info-box-body">
+                                    <h5><?php echo e($homeRepo->customerHomeViewCount()); ?></h5>
+                                    <p>تعداد بازدید از فروشگاه</p>
+                                </section>
+                                <section class="info-box-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </section>
+                            </section>
+                        </section>
+                        <section class="card-footer info-box-footer">
+                            <i class="fas fa-clock mx-2"></i> به روز رسانی شده در : <?php echo e(jalaliDate(now())); ?>
+
+                        </section>
+                    </section>
+                </a>
+            </section>
+
         </section>
         <hr>
         <!-- common discount alert --->
@@ -207,11 +229,12 @@
         <!-- last weekly sales -->
         <section class="row">
             <section class="col-12">
-                    <div class="alert alert-info" role="alert">
-                       کل فروش هفته جاری <strong><?php echo e($homeRepo->lastWeeklySalesAmount()); ?> تومان</strong> و کل فروش ماه جاری <strong><?php echo e($homeRepo->lastMonthlySalesAmount()); ?> تومان</strong> است. برای مشاهده<a
-                            href="<?php echo e(route('admin.market.order.show', $homeRepo->lastOrder()->id)); ?>"
-                            class="alert-link"> جزئیات </a>آخرین سفارش کلیک کن
-                    </div>
+                <div class="alert alert-info" role="alert">
+                    کل فروش هفته جاری <strong><?php echo e($homeRepo->lastWeeklySalesAmount()); ?> تومان</strong> و کل فروش ماه جاری
+                    <strong><?php echo e($homeRepo->lastMonthlySalesAmount()); ?> تومان</strong> است. برای مشاهده<a
+                        href="<?php echo e(route('admin.market.order.show', $homeRepo->lastOrder()->id)); ?>"
+                        class="alert-link"> جزئیات </a>آخرین سفارش کلیک کن
+                </div>
             </section>
         </section>
 

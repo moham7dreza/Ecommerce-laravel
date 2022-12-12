@@ -23,8 +23,9 @@
                     <span class="time-reading">زمان خواندن {{ $post->time_to_read }} دقیقه</span>
                     <p class="font-x-small mt-10">
                         <span class="hit-count"><i class="ti-comment ml-5"></i>نظرات {{ $post->commentsCount() }}</span>
-                        <span class="hit-count"><i class="ti-heart ml-5"></i>لایک {{ $post->like_count }}</span>
+                        <span class="hit-count"><i class="ti-heart ml-5"></i>لایک {{ $post->likers()->count() }}</span>
                         <span class="hit-count"><i class="ti-star ml-5"></i>امتیاز {{ $post->rating }}/10</span>
+                        <span class="hit-count"><i class="ti-eye ml-5"></i>بازدید {{ views($post)->unique()->count() }}</span>
                     </p>
                 </div>
             </div>
@@ -65,13 +66,57 @@
                             </p>
                         @endif
                     </div>
-                    <div class="entry-bottom mt-50 mb-30">
+                    <div class="entry-bottom mt-50 mb-10">
+                        <div class="overflow-hidden mt-30">
+                            <div class="single-social-share float-left">
+
+                                <ul class="d-inline-block list-inline">
+                                    @if(!auth()->user()->hasFavorited($post))
+                                        <li class="list-inline-item">
+                                            <a type="button" class="social-icon instagram-icon text-xs-center"
+                                               data-url="{{ route('digital-world.post.favorite', $post) }}"
+                                               data-bs-toggle="tooltip" data-bs-placement="left"
+                                               title="افزودن پست به علاقه مندی ها" id="post-favorite-btn"><i
+                                                    class="ti-bookmark"></i></a></li>
+                                    @else
+                                        <li class="list-inline-item">
+                                            <a type="button" class="social-icon instagram-icon text-xs-center"
+                                               data-url="{{ route('digital-world.post.favorite', $post) }}"
+                                               data-bs-toggle="tooltip" data-bs-placement="left"
+                                               title="حذف پست از علاقه مندی ها" id="post-favorite-btn"><i
+                                                    class="ti-bookmark text-danger"></i></a></li>
+                                    @endif
+                                    <li class="list-inline-item">
+                                        <a class="social-icon instagram-icon text-xs-center" href="#commentForm"><i
+                                                class="ti-comment"></i></a></li>
+                                    @if(!auth()->user()->hasLiked($post))
+                                        <li class="list-inline-item">
+                                            <a type="button" class="social-icon instagram-icon text-xs-center"
+                                               data-url="{{ route('digital-world.post.like', $post) }}"
+                                               data-bs-toggle="tooltip" data-bs-placement="left"
+                                               title="لایک کردن پست" id="post-like-btn"><i
+                                                    class="ti-heart"></i></a></li>
+                                    @else
+                                        <li class="list-inline-item">
+                                            <a type="button" class="social-icon instagram-icon text-xs-center"
+                                               data-url="{{ route('digital-world.post.like', $post) }}"
+                                               data-bs-toggle="tooltip" data-bs-placement="left"
+                                               title="آن لایک کردن پست" id="post-like-btn"><i
+                                                    class="ti-heart text-danger"></i></a></li>
+                                    @endif
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="entry-bottom mt-10 mb-30">
                         <div class="overflow-hidden mt-30">
                             <div class="tags float-right text-muted mb-md-30">
                                 <span class="font-small ml-10"><i class="fa fa-tag ml-5"></i>برچسب ها: </span>
-                                <a href="category.html" rel="tag">فناوری</a>
-                                <a href="category.html" rel="tag">جهان</a>
-                                <a href="category.html" rel="tag">جهانی</a>
+                                @foreach(explode(',', $post->tags) as $tag)
+                                    <a href="#" rel="tag">{{ $tag }}</a>
+                                @endforeach
                             </div> {{-- TODO --}}
                             <div class="single-social-share float-left">
                                 <ul class="d-inline-block list-inline">
@@ -124,7 +169,20 @@
                                 با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
                                 که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز.
                             </div>
-                            <a href="author.html" class="author-bio-link text-muted">مشاهده همه پست ها</a>
+                            <a href="{{ $post->getAuthorPath() }}" class="author-bio-link text-muted">مشاهده همه پست
+                                ها</a>
+
+                            @if(auth()->id() !== $post->author->id)
+                                @if(!auth()->user()->isFollowing($post->author))
+                                    <a type="button"
+                                       data-url="{{ route('digital-world.posts.author.follow', $post->author) }}"
+                                       class="author-bio-link text-primary" id="follow-author">دنبال کردن نویسنده</a>
+                                @else
+                                    <a type="button"
+                                       data-url="{{ route('digital-world.posts.author.follow', $post->author) }}"
+                                       class="author-bio-link text-danger" id="follow-author">دنبال نکردن نویسنده</a>
+                                @endif
+                            @endif
                             <div class="author-social">
                                 <ul class="author-social-icons">
                                     <li class="author-social-link-facebook"><a href="#" target="_blank"><i
@@ -151,4 +209,76 @@
             </div>
         </div>
     </main>
+@endsection
+
+@section('script')
+
+    <script>
+        $('#post-favorite-btn').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).children().first().addClass('text-danger');
+                        $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
+                        $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
+                    } else if (result.status == 2) {
+                        $(element).children().first().removeClass('text-danger')
+                        $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
+                        $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $('#post-like-btn').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).children().first().addClass('text-danger');
+                        $(element).attr('data-original-title', 'آن لایک کردن');
+                        $(element).attr('data-bs-original-title', 'آن لایک کردن');
+                    } else if (result.status == 2) {
+                        $(element).children().first().removeClass('text-danger')
+                        $(element).attr('data-original-title', 'لایک کردن');
+                        $(element).attr('data-bs-original-title', 'لایک کردن');
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $('#follow-author').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).removeClass('text-primary').addClass('text-danger');
+                        $(element).innerText = "";
+                        $(element).text("دنبال نکردن نویسنده");
+                    } else if (result.status == 2) {
+                        $(element).removeClass('text-danger').addClass('text-primary');
+                        $(element).innerText = "";
+                        $(element).text("دنبال کردن نویسنده");
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
 @endsection

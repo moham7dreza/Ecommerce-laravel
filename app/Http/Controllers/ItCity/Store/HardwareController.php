@@ -28,6 +28,7 @@ class HardwareController extends Controller
         $posts = $posts = $postRepo->home()->take(4)->get();
         $services = $services = $serviceRepo->parentServices()->get();
         $relatedProducts = $this->repo->relatedHardware($hardware->category->id)->take(3)->get()->except($hardware->id);
+        views($hardware)->unique()->record();
         return view('it-city.store.hardware.product', compact('hardware', 'relatedProducts', 'posts', 'services'));
     }
 

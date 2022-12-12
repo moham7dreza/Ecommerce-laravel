@@ -2,13 +2,17 @@
 
 namespace App\Models\SmartAssemble;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Overtrue\LaravelFavorite\Traits\Favoriteable;
+use Overtrue\LaravelLike\Traits\Likeable;
 
-class System extends Model
+class System extends Model implements Viewable
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Likeable, InteractsWithViews, Favoriteable;
 
     protected $casts = ['image' => 'array'];
 

@@ -49,6 +49,7 @@ class ServiceController extends Controller
         $posts = $postRepo->home()->take(3)->get();
         $services = $this->repo->parentServices()->get();
         $relatedServices = $this->repo->relatedServices($service)->take(2)->get();
+        views($service)->unique()->record();
         return view('it-city.office.service.detail', compact('service', 'relatedServices', 'posts', 'services'));
     }
 }

@@ -72,6 +72,8 @@ class HomeController extends Controller
         // تنطیمات سایت
         $siteSetting = Setting::find(1);
 
+        $siteSetting->update(['view_count' => $siteSetting->view_count += 1]);
+
         return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner',
             'brands', 'mostVisitedProducts', 'offerProducts', 'systemBrands', 'siteSetting', 'productsWithActiveAmazingSales',
             'newestProducts', 'systemCategories', 'bottomMiddleBanners', 'brandsBanner', 'sampleOfGamingSystemImages',

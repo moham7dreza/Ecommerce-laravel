@@ -23,6 +23,7 @@ class BlogController extends Controller
     public function postDetail(Post $post)
     {
         $relatedPosts = Post::query()->where('status', 1)->latest()->take(5)->get();
+        views($post)->unique()->record();
         return view('it-city.blog.detail', compact('post', 'relatedPosts'));
     }
 }

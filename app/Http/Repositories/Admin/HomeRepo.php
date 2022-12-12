@@ -9,6 +9,7 @@ use App\Models\Market\AmazingSale;
 use App\Models\Market\CommonDiscount;
 use App\Models\Market\Order;
 use App\Models\Market\Payment;
+use App\Models\Setting\Setting;
 use App\Models\Ticket\Ticket;
 use App\Models\User;
 use Carbon\Carbon;
@@ -27,6 +28,7 @@ class HomeRepo
     {
         return User::query()->where('user_type', 1)->count();
     }
+
     public function postsCount(): int
     {
         return Post::query()->count();
@@ -56,7 +58,7 @@ class HomeRepo
         ])->count();
     }
 
-    public function newTicketsCount() : int
+    public function newTicketsCount(): int
     {
         return Ticket::query()->where('seen', 0)->count();
     }
@@ -112,7 +114,7 @@ class HomeRepo
 
     public function lastMonthlySalesAmount(): array|string
     {
-        $payments= Payment::query()->latest()->get();
+        $payments = Payment::query()->latest()->get();
         $start_date = new Carbon('first day of ' . Carbon::now()->format('M') . ' ' . Carbon::now()->format('Y'));
         $end_date = Carbon::now();
         $amount = 0;
@@ -126,7 +128,7 @@ class HomeRepo
 
     public function lastWeeklySalesAmount(): array|string
     {
-        $payments= Payment::query()->latest()->get();
+        $payments = Payment::query()->latest()->get();
         $amount = 0;
         $week = [];
         for ($i = 0; $i < 7; $i++) {
@@ -156,5 +158,10 @@ class HomeRepo
     public function lastOrder(): Builder|Model
     {
         return Order::query()->orderBy('updated_at', 'desc')->take(1)->first();
+    }
+
+    public function customerHomeViewCount(): int
+    {
+        return Setting::query()->findOrFail(1)->view_count;
     }
 }

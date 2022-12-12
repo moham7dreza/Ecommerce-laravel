@@ -5,6 +5,8 @@ namespace App\Models\Market;
 use App\Models\User;
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,12 +14,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Overtrue\LaravelFavorite\Traits\Favoriteable;
+use Overtrue\LaravelLike\Traits\Likeable;
 use Share\Traits\HasFaDate;
 use Share\Traits\hasLog;
 
-class Product extends Model
+class Product extends Model implements Viewable
 {
-    use HasFactory, SoftDeletes, Sluggable, HasFaDate, HasLog;
+    use HasFactory, SoftDeletes, Sluggable, HasFaDate, HasLog, Likeable, InteractsWithViews, Favoriteable;
 
     public function sluggable(): array
     {

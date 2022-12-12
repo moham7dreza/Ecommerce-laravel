@@ -86,11 +86,16 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('digital-world.user.favorites') }}">
+                                            علاقه مندی
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="">
                                             <span class="ml-15">
                                                 <ion-icon name="mail-unread-outline"></ion-icon>
                                             </span>
-                                            خروج از حساب کاربری
+                                            لاگ اوت
                                         </a>
                                     </li>
                                 @endauth

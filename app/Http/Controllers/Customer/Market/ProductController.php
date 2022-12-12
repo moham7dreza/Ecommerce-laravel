@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function product(Product $product)
     {
         $relatedProducts = Product::all();
-        // Auth::loginUsingId(15);
+        views($product)->unique()->record();
         return view('customer.market.product.product', compact('product', 'relatedProducts'));
     }
 

@@ -63,7 +63,7 @@
 
                             <tr>
                                 <th><?php echo e($key + 1); ?></th>
-                                <td><?php echo e($role->textName()); ?></td>
+                                <td><?php echo e($role->name); ?></td>
                                 <td>
                                     <?php if(empty($role->permissions()->get()->toArray())): ?>
                                         <span class="text-danger">برای این نقش هیچ سطح دسترسی تعریف نشده است</span>

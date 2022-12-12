@@ -65,7 +65,7 @@
 
                             <tr>
                                 <th>{{ $key + 1 }}</th>
-                                <td>{{ $role->textName() }}</td>
+                                <td>{{ $role->name }}</td>
                                 <td>
                                     @if(empty($role->permissions()->get()->toArray()))
                                         <span class="text-danger">برای این نقش هیچ سطح دسترسی تعریف نشده است</span>

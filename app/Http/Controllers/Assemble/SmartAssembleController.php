@@ -88,6 +88,7 @@ class SmartAssembleController extends Controller
 //        $system_items = SystemItem::where(['system_id' => $system->id])->get();
         $menus = SystemMenu::where('status', 1)->get();
         $relatedProducts = Product::all();
+        views($system)->unique()->record();
         return view('smart-assemble.build', compact('menus', 'system', 'relatedProducts'));
     }
 

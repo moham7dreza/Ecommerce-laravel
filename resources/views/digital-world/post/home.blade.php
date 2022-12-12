@@ -65,6 +65,57 @@
                                                                 class="post-on">{{ $post->getDiffCreatedDate() }}</span>
                                                         </div>
                                                     </div>
+                                                    <div class="entry-bottom mt-50 mb-10">
+                                                <div class="overflow-hidden mt-30">
+                                                    <div class="single-social-share float-left">
+
+                                                        <ul class="d-inline-block list-inline">
+                                                            @if(!auth()->user()->hasFavorited($post))
+                                                                <li class="list-inline-item">
+                                                                    <a type="button"
+                                                                       class="social-icon instagram-icon text-xs-center"
+                                                                       data-url="{{ route('digital-world.post.favorite', $post) }}"
+                                                                       data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                       title="افزودن پست به علاقه مندی ها"
+                                                                       id="post-favorite-btn"><i
+                                                                            class="ti-bookmark"></i></a></li>
+                                                            @else
+                                                                <li class="list-inline-item">
+                                                                    <a type="button"
+                                                                       class="social-icon instagram-icon text-xs-center"
+                                                                       data-url="{{ route('digital-world.post.favorite', $post) }}"
+                                                                       data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                       title="حذف پست از علاقه مندی ها"
+                                                                       id="post-favorite-btn"><i
+                                                                            class="ti-bookmark text-danger"></i></a>
+                                                                </li>
+                                                            @endif
+                                                            <li class="list-inline-item">
+                                                                <a class="social-icon instagram-icon text-xs-center"
+                                                                   href="#commentForm"><i
+                                                                        class="ti-comment"></i></a></li>
+                                                            @if(!auth()->user()->hasLiked($post))
+                                                                <li class="list-inline-item">
+                                                                    <a type="button"
+                                                                       class="social-icon instagram-icon text-xs-center"
+                                                                       data-url="{{ route('digital-world.post.like', $post) }}"
+                                                                       data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                       title="لایک کردن پست" id="post-like-btn"><i
+                                                                            class="ti-heart"></i></a></li>
+                                                            @else
+                                                                <li class="list-inline-item">
+                                                                    <a type="button"
+                                                                       class="social-icon instagram-icon text-xs-center"
+                                                                       data-url="{{ route('digital-world.post.like', $post) }}"
+                                                                       data-bs-toggle="tooltip" data-bs-placement="left"
+                                                                       title="آن لایک کردن پست" id="post-like-btn"><i
+                                                                            class="ti-heart text-danger"></i></a></li>
+                                                            @endif
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 </div>
                                             </article>
                                         @endforeach
@@ -142,4 +193,76 @@
             </div>
         </div>
     </main>
+@endsection
+
+@section('script')
+
+    <script>
+        $('#post-favorite-btn').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).children().first().addClass('text-danger');
+                        $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
+                        $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
+                    } else if (result.status == 2) {
+                        $(element).children().first().removeClass('text-danger')
+                        $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
+                        $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $('#post-like-btn').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).children().first().addClass('text-danger');
+                        $(element).attr('data-original-title', 'آن لایک کردن');
+                        $(element).attr('data-bs-original-title', 'آن لایک کردن');
+                    } else if (result.status == 2) {
+                        $(element).children().first().removeClass('text-danger')
+                        $(element).attr('data-original-title', 'لایک کردن');
+                        $(element).attr('data-bs-original-title', 'لایک کردن');
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
+
+    <script>
+        $('#follow-author').click(function () {
+            var url = $(this).attr('data-url');
+            var element = $(this);
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    if (result.status == 1) {
+                        $(element).removeClass('text-primary').addClass('text-danger');
+                        $(element).innerText = "";
+                        $(element).text("دنبال نکردن نویسنده");
+                    } else if (result.status == 2) {
+                        $(element).removeClass('text-danger').addClass('text-primary');
+                        $(element).innerText = "";
+                        $(element).text("دنبال کردن نویسنده");
+                    } else if (result.status == 3) {
+                        $('.toast').toast('show');
+                    }
+                }
+            })
+        })
+    </script>
 @endsection

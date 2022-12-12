@@ -155,6 +155,11 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/markbaker/complex" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/nwidart/laravel-modules" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/khill/lavacharts" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/overtrue/laravel-like" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/artesaos/seotools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/overtrue/laravel-follow" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/overtrue/laravel-favorite" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cyrildewit/eloquent-viewable" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

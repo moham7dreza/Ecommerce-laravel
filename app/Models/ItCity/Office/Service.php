@@ -6,6 +6,8 @@ use App\Models\Market\Brand;
 use App\Models\Market\ProductCategory;
 use App\Models\User;
 use Cviebrock\EloquentSluggable\Sluggable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,12 +15,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Overtrue\LaravelFavorite\Traits\Favoriteable;
+use Overtrue\LaravelLike\Traits\Likeable;
 use Share\Traits\HasComments;
 use Share\Traits\HasFaDate;
 
-class Service extends Model
+class Service extends Model implements Viewable
 {
-    use HasFactory, SoftDeletes, Sluggable, HasComments, HasFaDate;
+    use HasFactory, SoftDeletes, Sluggable, HasComments, HasFaDate, Likeable, InteractsWithViews, Favoriteable;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;

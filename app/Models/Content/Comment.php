@@ -10,11 +10,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use Overtrue\LaravelLike\Traits\Likeable;
 use Share\Traits\HasFaDate;
 
 class Comment extends Model
 {
-    use HasFactory, SoftDeletes, HasFaDate;
+    use HasFactory, SoftDeletes, HasFaDate, Likeable;
 
     public const STATUS_ACTIVE = 1;
     public const STATUS_INACTIVE = 0;

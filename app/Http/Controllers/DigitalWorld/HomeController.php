@@ -47,12 +47,13 @@ class HomeController extends Controller
         ])->first();
         $latestComments = Comment::query()->where('commentable_type', 'App\Models\Content\Post')->limit(3)->get();
         $relatedPosts = $this->postRepo->relatedPosts($post->category->id, $post->id)->latest()->get();
+        views($post)->unique()->record();
         return view('digital-world.post.details', compact(['post', 'relatedPosts', 'homeRepo', 'latestComments', 'banner']));
     }
 
     public function posts(HomeRepo $homeRepo): Factory|View|Application
     {
-        $posts = $this->postRepo->home()->paginate(6);
+        $posts = $this->postRepo->home()->withCount('likers')->paginate(6);
         $viewsPosts = $this->postRepo->getPostsByViews()->latest()->limit(5)->get();
         $latestComments = Comment::query()->where('commentable_type', 'App\Models\Content\Post')->limit(3)->get();
         return view('digital-world.post.home', compact(['posts', 'latestComments', 'viewsPosts', 'homeRepo']));
@@ -67,13 +68,13 @@ class HomeController extends Controller
 
     public function authors(HomeRepo $homeRepo): Factory|View|Application
     {
-        $authors = $homeRepo->authors()->paginate(50);
+        $authors = $homeRepo->getAuthorUsers()->take(50);
         return view('digital-world.user.authors', compact(['authors']));
     }
 
     public function author(User $user): Factory|View|Application
     {
-        $posts = $this->postRepo->getPostsByUserID($user->id)->latest()->paginate(10);
+        $posts = $this->postRepo->getPostsByUserID($user->id)->latest()->withCount('likers')->paginate(10);
         return view('digital-world.user.author', compact(['user', 'posts']));
     }
 
@@ -105,5 +106,67 @@ class HomeController extends Controller
         } else {
             return response()->json(['status' => 3]);
         }
+    }
+
+    public function likePost(Post $post): JsonResponse
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            $user->toggleLike($post);
+            if ($user->hasLiked($post)) {
+                return response()->json(['status' => 1, 'likesCount' => $user->likesCount()]);
+            } else {
+                return response()->json(['status' => 2, 'likesCount' => $user->likesCount()]);
+            }
+        } else {
+            return response()->json(['status' => 3]);
+        }
+    }
+
+    public function follow(User $user): JsonResponse
+    {
+        if (Auth::check()) {
+            $author = $user;
+            $follower = auth()->user();
+            $follower->toggleFollow($author);
+            if ($follower->isFollowing($author)) {
+                return response()->json(['status' => 1, 'followersCount' => $author->followersCount()]);
+            } else {
+                return response()->json(['status' => 2, 'followersCount' => $author->followersCount()]);
+            }
+        } else {
+            return response()->json(['status' => 3]);
+        }
+    }
+
+    public function authorFollowers(User $author): Factory|View|Application
+    {
+        $followers = $author->followers;
+        $followings = $author->followings;
+        return view('digital-world.user.followers', compact(['followings', 'followers']));
+    }
+
+    public function favoritePost(Post $post): JsonResponse
+    {
+        if (Auth::check()) {
+            $user = auth()->user();
+            $user->toggleFavorite($post);
+            if ($user->hasFavorited($post)) {
+                return response()->json(['status' => 1]);
+            } else {
+                return response()->json(['status' => 2]);
+            }
+        } else {
+            return response()->json(['status' => 3]);
+        }
+    }
+
+    public function userFavorites(HomeRepo $homeRepo): Factory|View|Application
+    {
+        $user = auth()->user();
+        $posts = $user->getFavoriteItems(Post::class)->paginate(6);
+        $viewsPosts = $this->postRepo->getPostsByViews()->latest()->limit(5)->get();
+        $latestComments = Comment::query()->where('commentable_type', 'App\Models\Content\Post')->limit(3)->get();
+        return view('digital-world.user.favorites', compact(['posts', 'latestComments', 'viewsPosts', 'homeRepo']));
     }
 }
