@@ -1,8 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        لیست پست های دسته بندی - {{ $postCategory->name }}
-    </title>
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
 @endsection
 
 @section('content')

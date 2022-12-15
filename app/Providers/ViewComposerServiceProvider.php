@@ -72,6 +72,8 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with('menus', Menu::query()->where([['status', 1], ['location', 3], ['parent_id', NULL]])->orderBy('created_at')->get());
             $view->with('setting', Setting::query()->find(3));
             $view->with('categories', PostCategory::query()->where([['status', 1], ['parent_id', NULL]])->orderBy('created_at')->get());
+            $view->with('notifications', Notification::query()->where([['read_at', null], ['notifiable_id', auth()->id()]])->get());
+            $view->with('unseenComments', Comment::query()->where([['seen', 0], ['commentable_type', 'App\Models\Content\Post'], ['author_id', auth()->id()]])->get());
         });
         view()->composer('digital-world.layouts.head-tag', function ($view) {
             $view->with('setting', Setting::query()->find(3));

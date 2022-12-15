@@ -1,8 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        لیست علاقه مندی ها
-    </title>
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
 @endsection
 
 @section('content')
@@ -77,7 +76,7 @@
                                                                        data-url="{{ route('digital-world.post.favorite', $post) }}"
                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                                        title="افزودن پست به علاقه مندی ها"
-                                                                       id="post-favorite-btn"><i
+                                                                       id="post-favorite-btn-{{ $post->id }}"><i
                                                                             class="ti-bookmark"></i></a></li>
                                                             @else
                                                                 <li class="list-inline-item">
@@ -86,7 +85,7 @@
                                                                        data-url="{{ route('digital-world.post.favorite', $post) }}"
                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                                        title="حذف پست از علاقه مندی ها"
-                                                                       id="post-favorite-btn"><i
+                                                                       id="post-favorite-btn-{{ $post->id }}"><i
                                                                             class="ti-bookmark text-danger"></i></a>
                                                                 </li>
                                                             @endif
@@ -100,7 +99,7 @@
                                                                        class="social-icon instagram-icon text-xs-center"
                                                                        data-url="{{ route('digital-world.post.like', $post) }}"
                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                       title="لایک کردن پست" id="post-like-btn"><i
+                                                                       title="لایک کردن پست" id="post-like-btn-{{ $post->id }}"><i
                                                                             class="ti-heart"></i></a></li>
                                                             @else
                                                                 <li class="list-inline-item">
@@ -108,7 +107,7 @@
                                                                        class="social-icon instagram-icon text-xs-center"
                                                                        data-url="{{ route('digital-world.post.like', $post) }}"
                                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                                       title="آن لایک کردن پست" id="post-like-btn"><i
+                                                                       title="آن لایک کردن پست" id="post-like-btn-{{ $post->id }}"><i
                                                                             class="ti-heart text-danger"></i></a></li>
                                                             @endif
 
@@ -198,49 +197,70 @@
 @section('script')
 
     <script>
-        $('#post-favorite-btn').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
-            })
-        })
+        $(document).ready(function () {
+            var posts = {!! auth()->user()->getFavoriteItems(\App\Models\Content\Post::class)->latest()->get() !!};
+            posts.map(function (post) {
+                var id = post.id;
+                var target = `#post-favorite-btn-${id}`;
+                $(target).click(function () {
+                    var url = $(this).attr('data-url');
+                    var element = $(this);
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $(element).children().first().addClass('text-danger');
+                                $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
+                                $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
+                            } else if (result.status == 2) {
+                                $(element).children().first().removeClass('text-danger')
+                                $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
+                                $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
+                            } else if (result.status == 3) {
+                                $('.toast').toast('show');
+                            }
+                        }
+                    })
+                })
+            });
+        });
+
     </script>
 
     <script>
-        $('#post-like-btn').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'آن لایک کردن');
-                        $(element).attr('data-bs-original-title', 'آن لایک کردن');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'لایک کردن');
-                        $(element).attr('data-bs-original-title', 'لایک کردن');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
-            })
-        })
+        $(document).ready(function () {
+            var posts = {!! auth()->user()->getFavoriteItems(\App\Models\Content\Post::class)->latest()->get() !!};
+            posts.map(function (post) {
+                var id = post.id;
+                var target = `#post-like-btn-${id}`;
+                $(target).click(function () {
+                    var url = $(this).attr('data-url');
+                    var element = $(this);
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $(element).children().first().addClass('text-danger');
+                                $(element).attr('data-original-title', 'آن لایک کردن');
+                                $(element).attr('data-bs-original-title', 'آن لایک کردن');
+                                console.log(result.likesCount);
+                                $('#likes-count').innerText = "";
+                                $('#likes-count').text(result.likesCount);
+                            } else if (result.status == 2) {
+                                $(element).children().first().removeClass('text-danger')
+                                $(element).attr('data-original-title', 'لایک کردن');
+                                $(element).attr('data-bs-original-title', 'لایک کردن');
+                                console.log(result.likesCount);
+                                $('#likes-count').innerText = "";
+                                $('#likes-count').text(result.likesCount);
+                            } else if (result.status == 3) {
+                                $('.toast').toast('show');
+                            }
+                        }
+                    })
+                })
+            });
+        });
     </script>
 
     <script>

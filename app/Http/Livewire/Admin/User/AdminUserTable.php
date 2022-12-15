@@ -34,18 +34,18 @@ class AdminUserTable extends DataTableComponent
                 ->sortable(),
             Column::make("Activation", "activation")
                 ->sortable(),
-            Column::make("Profile photo path", "profile_photo_path")
-                ->sortable(),
-            Column::make("Email verified at", "email_verified_at")
-                ->sortable(),
-            Column::make("Mobile verified at", "mobile_verified_at")
-                ->sortable(),
-            Column::make("National code", "national_code")
-                ->sortable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
+//            Column::make("Profile photo path", "profile_photo_path")
+//                ->sortable(),
+//            Column::make("Email verified at", "email_verified_at")
+//                ->sortable(),
+//            Column::make("Mobile verified at", "mobile_verified_at")
+//                ->sortable(),
+//            Column::make("National code", "national_code")
+//                ->sortable(),
+//            Column::make("Created at", "created_at")
+//                ->sortable(),
+//            Column::make("Updated at", "updated_at")
+//                ->sortable(),
         ];
     }
 }

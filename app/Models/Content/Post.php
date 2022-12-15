@@ -76,11 +76,6 @@ class Post extends Model implements Viewable
         return route('digital-world.post.detail', $this->slug);
     }
 
-    public function commentsCount(): int
-    {
-        return $this->activeComments()->count();
-    }
-
     public function imagePath(): string
     {
         return asset($this->image['indexArray']['medium']);
@@ -138,8 +133,20 @@ class Post extends Model implements Viewable
         return $this->author->image() ?? 'عکس ندارد.';
     }
 
+    // Counters
+
     public function likersCount(): int
     {
         return $this->likers()->count();
+    }
+
+    public function favoritersCount(): int
+    {
+        return $this->favoriters()->count();
+    }
+
+    public function commentsCount(): int
+    {
+        return $this->activeComments()->count();
     }
 }

@@ -1,8 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        دنیای دیجیتالی
-    </title>
+    <!-- MINIFIED -->
+   {!! SEO::generate(true) !!}
 @endsection
 
 @section('content')
@@ -25,49 +24,99 @@
 @section('script')
 
     <script>
-        $('#post-favorite-btn').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
-                        $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
+        $(document).ready(function () {
+            var posts = {!! \App\Models\Content\Post::query()->where('status', \App\Models\Content\Post::STATUS_ACTIVE)->latest()->get() !!};
+            posts.map(function (post) {
+                var id = post.id;
+                var target = `#post-favorite-btn-${id}`;
+                $(target).click(function () {
+                    var url = $(this).attr('data-url');
+                    var element = $(this);
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $(element).children().first().addClass('text-danger');
+                                $(element).attr('data-original-title', 'حذف پست از علاقه مندی ها');
+                                $(element).attr('data-bs-original-title', 'حذف پست از علاقه مندی ها');
+                                successToast('ادمین  با موفقیت فعال شد')
+                            } else if (result.status == 2) {
+                                $(element).children().first().removeClass('text-danger')
+                                $(element).attr('data-original-title', 'افزودن پست به علاقه مندی ها');
+                                $(element).attr('data-bs-original-title', 'افزودن پست به علاقه مندی ها');
+                            } else if (result.status == 3) {
+                                $('.toast').toast('show');
+                            }
+                        }
+                    })
+                })
+            });
+        });
+
+        function successToast(message) {
+
+            var successToastTag = '<section class="toast" data-delay="5000">\n' +
+                '<section class="toast-body py-3 d-flex bg-success text-white">\n' +
+                '<strong class="ml-auto">' + message + '</strong>\n' +
+                '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                '<span aria-hidden="true">&times;</span>\n' +
+                '</button>\n' +
+                '</section>\n' +
+                '</section>';
+
+            $('.toast-wrapper').append(successToastTag);
+            $('.toast').toast('show').delay(5500).queue(function () {
+                $(this).remove();
             })
-        })
+        }
+
+        function errorToast(message) {
+
+            var errorToastTag = '<section class="toast" data-delay="5000">\n' +
+                '<section class="toast-body py-3 d-flex bg-danger text-white">\n' +
+                '<strong class="ml-auto">' + message + '</strong>\n' +
+                '<button type="button" class="mr-2 close" data-dismiss="toast" aria-label="Close">\n' +
+                '<span aria-hidden="true">&times;</span>\n' +
+                '</button>\n' +
+                '</section>\n' +
+                '</section>';
+
+            $('.toast-wrapper').append(errorToastTag);
+            $('.toast').toast('show').delay(5500).queue(function () {
+                $(this).remove();
+            })
+        }
+
     </script>
 
     <script>
-        $('#post-like-btn').click(function () {
-            var url = $(this).attr('data-url');
-            var element = $(this);
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    if (result.status == 1) {
-                        $(element).children().first().addClass('text-danger');
-                        $(element).attr('data-original-title', 'آن لایک کردن');
-                        $(element).attr('data-bs-original-title', 'آن لایک کردن');
-                    } else if (result.status == 2) {
-                        $(element).children().first().removeClass('text-danger')
-                        $(element).attr('data-original-title', 'لایک کردن');
-                        $(element).attr('data-bs-original-title', 'لایک کردن');
-                    } else if (result.status == 3) {
-                        $('.toast').toast('show');
-                    }
-                }
-            })
-        })
+        $(document).ready(function () {
+            var posts = {!! \App\Models\Content\Post::query()->where('status', \App\Models\Content\Post::STATUS_ACTIVE)->latest()->get() !!};
+            posts.map(function (post) {
+                var id = post.id;
+                var target = `#post-like-btn-${id}`;
+                $(target).click(function () {
+                    var url = $(this).attr('data-url');
+                    var element = $(this);
+                    $.ajax({
+                        url: url,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $(element).children().first().addClass('text-danger');
+                                $(element).attr('data-original-title', 'آن لایک کردن');
+                                $(element).attr('data-bs-original-title', 'آن لایک کردن');
+                            } else if (result.status == 2) {
+                                $(element).children().first().removeClass('text-danger')
+                                $(element).attr('data-original-title', 'لایک کردن');
+                                $(element).attr('data-bs-original-title', 'لایک کردن');
+                            } else if (result.status == 3) {
+                                $('.toast').toast('show');
+                            }
+                        }
+                    })
+                })
+            });
+        });
     </script>
 
     <script>

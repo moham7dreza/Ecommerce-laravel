@@ -20,11 +20,11 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 class AdminUserAdvancedTable extends DataTableComponent
 {
     public $myParam = 'Default';
-    public string $tableName = 'users1';
+    public string $tableName = 'users';
     public array $users1 = [];
 
     public $columnSearch = [
-        'name' => null,
+        'first_name' => null,
         'email' => null,
     ];
 
@@ -52,7 +52,7 @@ class AdminUserAdvancedTable extends DataTableComponent
                 return ['class' => 'bg-gray-100'];
             })
             ->setFooterTdAttributes(function (Column $column, $rows) {
-                if ($column->isField('name')) {
+                if ($column->isField('first_name')) {
                     return ['class' => 'text-green-500'];
                 }
 
@@ -79,15 +79,15 @@ class AdminUserAdvancedTable extends DataTableComponent
             //             'class' => 'w-8 h-8 rounded-full',
             //         ];
             //     }),
-            Column::make('Order', 'sort')
-                ->sortable()
-                ->collapseOnMobile()
-                ->excludeFromColumnSelect(),
+//            Column::make('Order', 'sort')
+//                ->sortable()
+//                ->collapseOnMobile()
+//                ->excludeFromColumnSelect(),
             Column::make('Name')
                 ->sortable()
                 ->searchable()
                 ->secondaryHeader(function () {
-                    return view('tables.cells.input-search', ['field' => 'name', 'columnSearch' => $this->columnSearch]);
+                    return view('tables.cells.input-search', ['field' => 'first_name', 'columnSearch' => $this->columnSearch]);
                 })
                 ->footer(function ($rows) {
                     return '<strong>Name Footer</strong>';
@@ -114,11 +114,11 @@ class AdminUserAdvancedTable extends DataTableComponent
             BooleanColumn::make('Active')
                 ->sortable()
                 ->collapseOnMobile(),
-            Column::make('Verified', 'email_verified_at')
-                ->sortable()
-                ->collapseOnTablet(),
-            Column::make('Tags')
-                ->label(fn($row) => $row->tags->pluck('name')->implode(', ')),
+//            Column::make('Verified', 'email_verified_at')
+//                ->sortable()
+//                ->collapseOnTablet(),
+//            Column::make('Tags')
+//                ->label(fn($row) => $row->tags->pluck('name')->implode(', ')),
             // Column::make('Actions')
             //     ->label(
             //         fn($row, Column $column) => view('tables.cells.actions')->withUser($row)
@@ -170,22 +170,22 @@ class AdminUserAdvancedTable extends DataTableComponent
                     'placeholder' => 'Search Name',
                 ])
                 ->filter(function (Builder $builder, string $value) {
-                    $builder->where('users.name', 'like', '%' . $value . '%');
+                    $builder->where('users.first_name', 'like', '%' . $value . '%');
                 }),
-            MultiSelectFilter::make('Tags')
-                ->options(
-//                    Tag::query()
-//                        ->orderBy('name')
-//                        ->get()
-//                        ->keyBy('id')
-//                        ->map(fn($tag) => $tag->name)
-//                        ->toArray()
-                )->filter(function (Builder $builder, array $values) {
-                    $builder->whereHas('tags', fn($query) => $query->whereIn('tags.id', $values));
-                })
-                ->setFilterPillValues([
-                    '3' => 'Tag 1',
-                ]),
+//            MultiSelectFilter::make('Tags')
+//                ->options(
+////                    Tag::query()
+////                        ->orderBy('name')
+////                        ->get()
+////                        ->keyBy('id')
+////                        ->map(fn($tag) => $tag->name)
+////                        ->toArray()
+//                )->filter(function (Builder $builder, array $values) {
+//                    $builder->whereHas('tags', fn($query) => $query->whereIn('tags.id', $values));
+//                })
+//                ->setFilterPillValues([
+//                    '3' => 'Tag 1',
+//                ]),
             SelectFilter::make('E-mail Verified', 'email_verified_at')
                 ->setFilterPillTitle('Verified')
                 ->options([
@@ -236,7 +236,7 @@ class AdminUserAdvancedTable extends DataTableComponent
     public function builder(): Builder
     {
         return User::query()
-            ->when($this->columnSearch['name'] ?? null, fn($query, $name) => $query->where('users.first_name', 'like', '%' . $name . '%'))
+            ->when($this->columnSearch['first_name'] ?? null, fn($query, $name) => $query->where('users.first_name', 'like', '%' . $name . '%'))
             ->when($this->columnSearch['email'] ?? null, fn($query, $email) => $query->where('users.email', 'like', '%' . $email . '%'));
     }
 

@@ -1,7 +1,8 @@
 @extends('customer.layouts.master-one-col')
 
 @section('head-tag')
-    <title>{{ $siteSetting->title }}</title>
+{{--    <title>{{ $siteSetting->title }}</title>--}}
+       {!! SEOMeta::generate() !!}
 @endsection
 
 @section('content')

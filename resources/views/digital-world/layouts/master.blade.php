@@ -38,5 +38,10 @@
 <div class="dark-mark"></div>
 @include('digital-world.layouts.script')
 @yield('script')
+
+<section class="toast-wrapper flex-row-reverse"></section>
+
+@include('sweetalert::alert')
+
 </body>
 </html>

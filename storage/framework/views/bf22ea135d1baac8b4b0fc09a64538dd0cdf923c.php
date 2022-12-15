@@ -38,6 +38,11 @@
 <div class="dark-mark"></div>
 <?php echo $__env->make('digital-world.layouts.script', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->yieldContent('script'); ?>
+
+<section class="toast-wrapper flex-row-reverse"></section>
+
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
 </body>
 </html>
 <?php /**PATH C:\CODEX\techzilla\resources\views/digital-world/layouts/master.blade.php ENDPATH**/ ?>

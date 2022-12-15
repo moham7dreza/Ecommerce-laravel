@@ -1,8 +1,7 @@
 <?php $__env->startSection('head-tag'); ?>
-    <title>
-        <?php echo e($post->title); ?>
+    <!-- MINIFIED -->
+    <?php echo SEO::generate(true); ?>
 
-    </title>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

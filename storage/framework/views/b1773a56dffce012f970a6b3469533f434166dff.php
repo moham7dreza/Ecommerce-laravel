@@ -9,7 +9,7 @@
 <script>
     let notificationDropdown = document.getElementById('header-notification-toggle');
     notificationDropdown.addEventListener('click', function () {
-        console.log('yes');
+        // console.log('yes');
 
         $.ajax({
             type: "POST",

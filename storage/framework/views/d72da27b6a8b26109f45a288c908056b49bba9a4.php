@@ -77,26 +77,79 @@
                                 
                                 
                                 <?php if(auth()->guard()->check()): ?>
-                                    <li>
-                                        <a href="">
-                                            <span class="ml-15">
-                                                <ion-icon name="mail-unread-outline"></ion-icon>
-                                            </span>
-                                            پروفایل
-                                        </a>
-                                    </li>
+
+
+
+
+
+
+
+
+
                                     <li>
                                         <a href="<?php echo e(route('digital-world.user.favorites')); ?>">
                                             علاقه مندی
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="ml-15">
-                                                <ion-icon name="mail-unread-outline"></ion-icon>
-                                            </span>
-                                            لاگ اوت
-                                        </a>
+
+
+
+
+
+
+
+
+                                    <li class="mega-menu-item">
+                                        <a type="button"
+                                           class="social-icon instagram-icon text-xs-center"
+                                           data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="اعلان ها"><i
+                                                class="ti-bell"></i></a>
+                                        <div class="sub-mega-menu sub-menu-list row text-muted font-small">
+                                            <?php if(count($notifications) > 0): ?>
+                                                <?php $__currentLoopData = $notifications->chunk(5); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <ul class="col-md-6">
+                                                        <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li><a href="#"><?php echo e($notification['data']['message']); ?></a>
+                                                            </li>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </ul>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                                <ul class="col-md-6">
+                                                    <li>هیچ اعلانی برای شما وجود ندارد.</li>
+                                                </ul>
+                                            <?php endif; ?>
+                                        </div>
+                                    </li>
+
+                                    <li class="mega-menu-item">
+                                        <a type="button"
+                                           class="social-icon instagram-icon text-xs-center"
+                                           data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="نظر ها"><i
+                                                class="ti-comments"></i></a>
+                                        <div class="sub-mega-menu sub-menu-list row text-muted font-small">
+                                            <?php if(count($unseenComments) > 0): ?>
+                                                <?php $__currentLoopData = $unseenComments->chunk(5); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <ul class="col-md-6">
+                                                        <?php $__currentLoopData = $item; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $unseenComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <li>
+                                                                <h6><?php echo e($unseenComment->user->fullName); ?></h6>
+                                                                <span><i
+                                                                        class="ti-alert m-1"></i><?php echo e($unseenComment->body); ?>
+
+                                                                </span>
+                                                            </li>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    </ul>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                                <ul class="col-md-6">
+                                                    <li>هیچ نظری برای شما وجود ندارد.</li>
+                                                </ul>
+                                            <?php endif; ?>
+                                        </div>
                                     </li>
                                 <?php endif; ?>
                                 <?php if(auth()->guard()->guest()): ?>

@@ -50,7 +50,7 @@
                                                        data-url="{{ route('digital-world.post.favorite', $post) }}"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                        title="افزودن پست به علاقه مندی ها"
-                                                       id="post-favorite-btn"><i
+                                                       id="post-favorite-btn-{{ $post->id }}"><i
                                                             class="ti-bookmark"></i></a></li>
                                             @else
                                                 <li class="list-inline-item">
@@ -59,7 +59,7 @@
                                                        data-url="{{ route('digital-world.post.favorite', $post) }}"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                        title="حذف پست از علاقه مندی ها"
-                                                       id="post-favorite-btn"><i
+                                                       id="post-favorite-btn-{{ $post->id }}"><i
                                                             class="ti-bookmark text-danger"></i></a>
                                                 </li>
                                             @endif
@@ -73,7 +73,7 @@
                                                        class="social-icon instagram-icon text-xs-center"
                                                        data-url="{{ route('digital-world.post.like', $post) }}"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                       title="لایک کردن پست" id="post-like-btn"><i
+                                                       title="لایک کردن پست" id="post-like-btn-{{ $post->id }}"><i
                                                             class="ti-heart"></i></a></li>
                                             @else
                                                 <li class="list-inline-item">
@@ -81,7 +81,7 @@
                                                        class="social-icon instagram-icon text-xs-center"
                                                        data-url="{{ route('digital-world.post.like', $post) }}"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                       title="آن لایک کردن پست" id="post-like-btn"><i
+                                                       title="آن لایک کردن پست" id="post-like-btn-{{ $post->id }}"><i
                                                             class="ti-heart text-danger"></i></a></li>
                                             @endif
 
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="pagination-area mb-30">
-                {{ $homeRepo->getNewPosts()->links() }}
+        {{ $homeRepo->getNewPosts()->links() }}
     </div>
     @include('digital-world.layouts.partials.bottom-banner')
 </div>

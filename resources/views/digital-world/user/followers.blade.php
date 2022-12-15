@@ -1,8 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        لیست دنبال کننده ها
-    </title>
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
 @endsection
 
 

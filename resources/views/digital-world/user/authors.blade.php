@@ -1,10 +1,8 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        لیست نویسندگان
-    </title>
+    <!-- MINIFIED -->
+    {!! SEO::generate() !!}
 @endsection
-
 
 @section('content')
     <main class="position-relative">

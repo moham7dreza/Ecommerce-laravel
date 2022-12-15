@@ -77,26 +77,78 @@
                                 {{--                                    <a href="{{ route('contacts.create') }}">تماس با ما</a>--}}
                                 {{--                                </li>--}}
                                 @auth
-                                    <li>
-                                        <a href="">
-                                            <span class="ml-15">
-                                                <ion-icon name="mail-unread-outline"></ion-icon>
-                                            </span>
-                                            پروفایل
-                                        </a>
-                                    </li>
+
+{{--                                    <li>--}}
+{{--                                        <a href="">--}}
+{{--                                            <span class="ml-15">--}}
+{{--                                                <ion-icon name="mail-unread-outline"></ion-icon>--}}
+{{--                                            </span>--}}
+{{--                                            پروفایل--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
                                     <li>
                                         <a href="{{ route('digital-world.user.favorites') }}">
                                             علاقه مندی
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="">
-                                            <span class="ml-15">
-                                                <ion-icon name="mail-unread-outline"></ion-icon>
-                                            </span>
-                                            لاگ اوت
-                                        </a>
+{{--                                    <li>--}}
+{{--                                        <a href="">--}}
+{{--                                            <span class="ml-15">--}}
+{{--                                                <ion-icon name="mail-unread-outline"></ion-icon>--}}
+{{--                                            </span>--}}
+{{--                                            لاگ اوت--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+                                    <li class="mega-menu-item">
+                                        <a type="button"
+                                           class="social-icon instagram-icon text-xs-center"
+                                           data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="اعلان ها"><i
+                                                class="ti-bell"></i></a>
+                                        <div class="sub-mega-menu sub-menu-list row text-muted font-small">
+                                            @if(count($notifications) > 0)
+                                                @foreach ($notifications->chunk(5) as $item)
+                                                    <ul class="col-md-6">
+                                                        @foreach ($item as $notification)
+                                                            <li><a href="#">{{ $notification['data']['message'] }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endforeach
+                                            @else
+                                                <ul class="col-md-6">
+                                                    <li>هیچ اعلانی برای شما وجود ندارد.</li>
+                                                </ul>
+                                            @endif
+                                        </div>
+                                    </li>
+
+                                    <li class="mega-menu-item">
+                                        <a type="button"
+                                           class="social-icon instagram-icon text-xs-center"
+                                           data-bs-toggle="tooltip" data-bs-placement="left"
+                                           title="نظر ها"><i
+                                                class="ti-comments"></i></a>
+                                        <div class="sub-mega-menu sub-menu-list row text-muted font-small">
+                                            @if(count($unseenComments) > 0)
+                                                @foreach ($unseenComments->chunk(5) as $item)
+                                                    <ul class="col-md-6">
+                                                        @foreach ($item as $unseenComment)
+                                                            <li>
+                                                                <h6>{{ $unseenComment->user->fullName }}</h6>
+                                                                <span><i
+                                                                        class="ti-alert m-1"></i>{{ $unseenComment->body }}
+                                                                </span>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endforeach
+                                            @else
+                                                <ul class="col-md-6">
+                                                    <li>هیچ نظری برای شما وجود ندارد.</li>
+                                                </ul>
+                                            @endif
+                                        </div>
                                     </li>
                                 @endauth
                                 @guest

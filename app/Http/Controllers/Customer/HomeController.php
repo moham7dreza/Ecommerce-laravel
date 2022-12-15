@@ -15,11 +15,14 @@ use App\Models\SmartAssemble\System;
 use App\Models\SmartAssemble\SystemBrand;
 use App\Models\SmartAssemble\SystemCategory;
 use App\Models\SmartAssemble\SystemType;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+//    use SEOTools;
+
     public function home()
     {
         // بنرها
@@ -73,6 +76,12 @@ class HomeController extends Controller
         $siteSetting = Setting::find(1);
 
         $siteSetting->update(['view_count' => $siteSetting->view_count += 1]);
+
+//        $this->seo()->setTitle('Home');
+//        $this->seo()->setDescription('This is my page description');
+
+        SEOMeta::setTitle($siteSetting->title);
+//        SEOMeta::setDescription('This is my page description');
 
         return view('customer.home', compact('slideShowImages', 'topBanners', 'middleBanners', 'bottomBanner',
             'brands', 'mostVisitedProducts', 'offerProducts', 'systemBrands', 'siteSetting', 'productsWithActiveAmazingSales',

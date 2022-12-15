@@ -1,8 +1,7 @@
 @extends('digital-world.layouts.master')
 @section('head-tag')
-    <title>
-        {{ $post->title }}
-    </title>
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
 @endsection
 
 @section('content')

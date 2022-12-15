@@ -50,7 +50,7 @@
                                                        data-url="<?php echo e(route('digital-world.post.favorite', $post)); ?>"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                        title="افزودن پست به علاقه مندی ها"
-                                                       id="post-favorite-btn"><i
+                                                       id="post-favorite-btn-<?php echo e($post->id); ?>"><i
                                                             class="ti-bookmark"></i></a></li>
                                             <?php else: ?>
                                                 <li class="list-inline-item">
@@ -59,7 +59,7 @@
                                                        data-url="<?php echo e(route('digital-world.post.favorite', $post)); ?>"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
                                                        title="حذف پست از علاقه مندی ها"
-                                                       id="post-favorite-btn"><i
+                                                       id="post-favorite-btn-<?php echo e($post->id); ?>"><i
                                                             class="ti-bookmark text-danger"></i></a>
                                                 </li>
                                             <?php endif; ?>
@@ -73,7 +73,7 @@
                                                        class="social-icon instagram-icon text-xs-center"
                                                        data-url="<?php echo e(route('digital-world.post.like', $post)); ?>"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                       title="لایک کردن پست" id="post-like-btn"><i
+                                                       title="لایک کردن پست" id="post-like-btn-<?php echo e($post->id); ?>"><i
                                                             class="ti-heart"></i></a></li>
                                             <?php else: ?>
                                                 <li class="list-inline-item">
@@ -81,7 +81,7 @@
                                                        class="social-icon instagram-icon text-xs-center"
                                                        data-url="<?php echo e(route('digital-world.post.like', $post)); ?>"
                                                        data-bs-toggle="tooltip" data-bs-placement="left"
-                                                       title="آن لایک کردن پست" id="post-like-btn"><i
+                                                       title="آن لایک کردن پست" id="post-like-btn-<?php echo e($post->id); ?>"><i
                                                             class="ti-heart text-danger"></i></a></li>
                                             <?php endif; ?>
 
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="pagination-area mb-30">
-                <?php echo e($homeRepo->getNewPosts()->links()); ?>
+        <?php echo e($homeRepo->getNewPosts()->links()); ?>
 
     </div>
     <?php echo $__env->make('digital-world.layouts.partials.bottom-banner', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

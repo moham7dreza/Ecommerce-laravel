@@ -158,31 +158,6 @@ class User extends Authenticatable
         return asset($this->profile_photo_path);
     }
 
-    public function commentsCount(): int
-    {
-        return $this->comments->count() ?? 0;
-    }
-
-    public function rolesCount(): int
-    {
-        return $this->roles->count() ?? 0;
-    }
-
-    public function permissionsCount(): int
-    {
-        return $this->permissions->count() ?? 0;
-    }
-
-    public function likesCount(): int
-    {
-        $counter = 0;
-//        $posts = Post::query()->where('author_id', $this->id)->withCount('likers')->get();
-        foreach ($this->hasPosts as $post) {
-            $counter += $post->likers()->count();
-        }
-        return $counter;
-    }
-
     public function textStatusEmailVerifiedAt(): string
     {
         if ($this->email_verified_at) return 'تایید شده';
@@ -214,6 +189,32 @@ class User extends Authenticatable
         return $this->activation === 1 ? 'فعال' : 'غیر فعال';
     }
 
+    // Counters
+    public function commentsCount(): int
+    {
+        return $this->comments->count() ?? 0;
+    }
+
+    public function rolesCount(): int
+    {
+        return $this->roles->count() ?? 0;
+    }
+
+    public function permissionsCount(): int
+    {
+        return $this->permissions->count() ?? 0;
+    }
+
+    public function likesCount(): int
+    {
+        $counter = 0;
+//        $posts = Post::query()->where('author_id', $this->id)->withCount('likers')->get();
+        foreach ($this->hasPosts as $post) {
+            $counter += $post->likers()->count();
+        }
+        return $counter;
+    }
+
     public function getPostsCount(): string
     {
         return convertEnglishToPersian($this->hasPosts->count()) ?? 0;
@@ -221,7 +222,12 @@ class User extends Authenticatable
 
     public function likedPostsCount(): int
     {
-        return $this->likes()->withType(\App\Models\Content\Post::class)->count();
+        return $this->likes()->withType(Post::class)->count();
+    }
+
+    public function favoritedPostsCount(): int
+    {
+        return $this->favorites()->withType(Post::class)->count();
     }
 
     public function followersCount(): int

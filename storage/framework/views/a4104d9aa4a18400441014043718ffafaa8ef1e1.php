@@ -1,5 +1,7 @@
 <?php $__env->startSection('head-tag'); ?>
-    <title><?php echo e($siteSetting->title); ?></title>
+
+       <?php echo SEOMeta::generate(); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>

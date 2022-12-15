@@ -1,0 +1,11 @@
+{
+    "name": "Tailwind",
+    "alias": "tailwind",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Tailwind\\Providers\\TailwindServiceProvider"
+    ],
+    "files": []
+}
