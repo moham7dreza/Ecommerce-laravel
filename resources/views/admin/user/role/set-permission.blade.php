@@ -25,7 +25,7 @@
                     </h5>
                 </section>
 
-                <section class="d-flex justify-content-between align-items-center mt-4 mb-3  pb-2">
+                <section class="d-flex justify-content-between align-items-center mt-4 mb-3 pb-2">
                     <a href="{{ route('admin.user.role.index') }}" class="btn btn-info btn-sm">بازگشت</a>
                 </section>
 

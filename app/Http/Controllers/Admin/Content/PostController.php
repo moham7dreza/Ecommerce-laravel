@@ -17,6 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Share\Services\ShareService;
+use Spatie\Tags\Tag;
 
 class PostController extends Controller
 {
@@ -82,7 +83,8 @@ class PostController extends Controller
                 'admin.content.post.index', $imageService);
         }
         $inputs['author_id'] = auth()->user()->id;
-        $this->postService->store($inputs);
+        $post = $this->postService->store($inputs);
+//        $post->attachTags(explode(',', $inputs['tags']));
         return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت ثبت شد');
     }
 
@@ -128,6 +130,7 @@ class PostController extends Controller
         $inputs = ShareService::updateImage($request, 'post', 'admin.content.post.index',
             $imageService, $post, $inputs);
         $this->postService->update($post, $inputs);
+//        $post->attachTags(explode(',', $inputs['tags']));
         return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت ویرایش شد');
     }
 
@@ -175,5 +178,29 @@ class PostController extends Controller
         } else {
             return response()->json(['commentable' => false]);
         }
+    }
+
+    /**
+     * @param Post $post
+     * @return Factory|View|Application
+     */
+    public function setTags(Post $post): Factory|View|Application
+    {
+        $tags = Tag::query()->latest()->get();
+        return view('admin.content.post.set-tags', compact(['tags', 'post']));
+    }
+
+    /**
+     * @param PostRequest $request
+     * @param Post $post
+     * @return RedirectResponse
+     */
+    public function updateTags(PostRequest $request, Post $post): RedirectResponse
+    {
+        $inputs = $request->all();
+        $inputs['tags'] = $inputs['tags'] ?? [];
+//        $post->syncTags($inputs['tags']);
+        $post->tags()->sync($inputs['tags']);
+        return ShareService::redirect('admin.content.post.index', 'تگ ها با موفقیت به پست تخصیص یافت.');
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Content\FAQController;
 use App\Http\Controllers\Admin\Content\MenuController;
 use App\Http\Controllers\Admin\content\PageController;
 use App\Http\Controllers\Admin\content\PostController;
+use App\Http\Controllers\Admin\Content\TagController;
 use App\Http\Controllers\Admin\Market\BrandController;
 use App\Http\Controllers\Admin\Market\CategoryController;
 use App\Http\Controllers\Admin\Market\CommentController;
@@ -416,6 +417,8 @@ Route::prefix('admin')->middleware(['auth', 'admin.check', 'can:permission-admin
             Route::delete('/destroy/{post}', [PostController::class, 'destroy'])->name('admin.content.post.destroy');
             Route::get('/status/{post}', [PostController::class, 'status'])->name('admin.content.post.status');
             Route::get('/commentable/{post}', [PostController::class, 'commentable'])->name('admin.content.post.commentable');
+            Route::get('/set-tags/{post}', [PostController::class, 'setTags'])->name('admin.content.post.set-tags');
+            Route::put('/update-tags/{post}', [PostController::class, 'updateTags'])->name('admin.content.post.update-tags');
         });
 
         //banner
@@ -427,6 +430,17 @@ Route::prefix('admin')->middleware(['auth', 'admin.check', 'can:permission-admin
             Route::put('/update/{banner}', [BannerController::class, 'update'])->name('admin.content.banner.update');
             Route::delete('/destroy/{banner}', [BannerController::class, 'destroy'])->name('admin.content.banner.destroy');
             Route::get('/status/{banner}', [BannerController::class, 'status'])->name('admin.content.banner.status');
+        });
+
+        //tag
+        Route::prefix('tag')->group(function () {
+            Route::get('/', [TagController::class, 'index'])->name('admin.content.tag.index');
+            Route::get('/create', [TagController::class, 'create'])->name('admin.content.tag.create');
+            Route::post('/store', [TagController::class, 'store'])->name('admin.content.tag.store');
+            Route::get('/edit/{tag}', [TagController::class, 'edit'])->name('admin.content.tag.edit');
+            Route::put('/update/{tag}', [TagController::class, 'update'])->name('admin.content.tag.update');
+            Route::delete('/destroy/{tag}', [TagController::class, 'destroy'])->name('admin.content.tag.destroy');
+            Route::get('/status/{tag}', [TagController::class, 'status'])->name('admin.content.tag.status');
         });
     });
 

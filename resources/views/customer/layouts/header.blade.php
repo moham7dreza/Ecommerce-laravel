@@ -120,7 +120,7 @@
                                                 @php
                                                     $totalProductPrice += $cartItem->cartItemProductPrice();
                                                     $totalDiscount += $cartItem->cartItemProductDiscount();
-                                                @endphp
+//                                                @endphp
 
 
                                                 <section
@@ -209,7 +209,10 @@
                     </section>
                     <section class="border-start my-2 mx-1"></section>
                     @foreach($menus as $menu)
-                        <section class="navbar-item"><a href="{{ $menu->url }}">{{ $menu->name }}</a></section>
+                        <section class="navbar-item">
+                            {{--                            {{ $menu }}--}}
+                            <a href="{{ $menu->url }}">{{ $menu->name }}</a>
+                        </section>
                         {{--                    <section class="navbar-item"><a href="#">سوپرمارکت</a></section>--}}
                         {{--                    <section class="navbar-item"><a href="#">تخفیف ها و پیشنهادها</a></section>--}}
                         {{--                    <section class="navbar-item"><a href="#">آمازون من</a></section>--}}

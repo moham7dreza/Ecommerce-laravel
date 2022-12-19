@@ -163,6 +163,12 @@
                         <span>بنر ها</span>
                     </a>
                 @endcan
+                @can('permission-super-admin','permission-tags')
+                    <a href="{{ route('admin.content.tag.index') }}" class="sidebar-link">
+                        <i class="fas fa-bars"></i>
+                        <span>تگ</span>
+                    </a>
+                @endcan
             @endcan
             @canany(['permission-super-admin','permission-users'])
                 <section class="sidebar-part-title">بخش کاربران</section>

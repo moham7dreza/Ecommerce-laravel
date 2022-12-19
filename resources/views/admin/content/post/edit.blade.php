@@ -206,7 +206,7 @@
                                 <div class="form-group">
                                     <label for="">خلاصه پست</label>
                                     <textarea name="summary" id="summary" class="form-control form-control-sm"
-                                              rows="6">{{ old('summary', $post->summary) }}</textarea>
+                                              rows="6">{!! old('summary', $post->summary) !!}</textarea>
                                 </div>
                                 @error('summary')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">
@@ -221,7 +221,7 @@
                                 <div class="form-group">
                                     <label for="">متن پست</label>
                                     <textarea name="body" id="body" class="form-control form-control-sm"
-                                              rows="6">{{ old('body', $post->body) }}</textarea>
+                                              rows="6">{!! old('body', $post->body) !!}</textarea>
                                 </div>
                                 @error('body')
                                 <span class="alert_required bg-danger text-white p-1 rounded" role="alert">

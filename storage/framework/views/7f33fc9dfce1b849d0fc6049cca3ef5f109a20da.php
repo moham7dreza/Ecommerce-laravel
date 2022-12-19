@@ -120,7 +120,7 @@
                                                 <?php
                                                     $totalProductPrice += $cartItem->cartItemProductPrice();
                                                     $totalDiscount += $cartItem->cartItemProductDiscount();
-                                                ?>
+//                                                ?>
 
 
                                                 <section
@@ -209,7 +209,10 @@
                     </section>
                     <section class="border-start my-2 mx-1"></section>
                     <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <section class="navbar-item"><a href="<?php echo e($menu->url); ?>"><?php echo e($menu->name); ?></a></section>
+                        <section class="navbar-item">
+                            
+                            <a href="<?php echo e($menu->url); ?>"><?php echo e($menu->name); ?></a>
+                        </section>
                         
                         
                         

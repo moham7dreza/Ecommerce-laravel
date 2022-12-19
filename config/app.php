@@ -186,6 +186,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\ViewComposerServiceProvider::class,
         App\Providers\PermissionServiceProvider::class,
+        App\Providers\HealthServiceProvider::class,
     ],
 
     /*

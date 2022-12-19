@@ -201,6 +201,6 @@ return [
         'delivery_id' => 'نحوه ارسال',
         'address_id' => 'آدرس',
         'copan' => 'کد تخفیف',
-
+        'time_to_read' => 'زمان مطالعه',
     ],
 ];

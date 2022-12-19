@@ -163,6 +163,12 @@
                         <span>بنر ها</span>
                     </a>
                 <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('permission-super-admin','permission-tags')): ?>
+                    <a href="<?php echo e(route('admin.content.tag.index')); ?>" class="sidebar-link">
+                        <i class="fas fa-bars"></i>
+                        <span>تگ</span>
+                    </a>
+                <?php endif; ?>
             <?php endif; ?>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->any(['permission-super-admin','permission-users'])): ?>
                 <section class="sidebar-part-title">بخش کاربران</section>
