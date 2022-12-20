@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Share\Traits\HasFaDate;
 
@@ -216,6 +215,8 @@ class Permission extends Model
     public const PERMISSION_POST_EDIT = ['name' => 'permission-post-edit', 'description' => 'دسترسی به بخش ویرایش پست'];
     public const PERMISSION_POST_DELETE = ['name' => 'permission-post-delete', 'description' => 'دسترسی به بخش حذف پست'];
     public const PERMISSION_POST_STATUS = ['name' => 'permission-post-status', 'description' => 'دسترسی به بخش تغییر وضعیت پست'];
+    public const PERMISSION_POST_SET_TAGS = ['name' => 'permission-post-set-tags', 'description' => 'دسترسی به بخش افزودن تگ های پست'];
+    public const PERMISSION_POST_UPDATE_TAGS = ['name' => 'permission-post-update-tags', 'description' => 'دسترسی به بخش ویرایش تگ های پست'];
 
     public const PERMISSION_POST_AUTHORS = ['name' => 'permission-authors', 'description' => 'دسترسی به بخش نویسندگان پست ها'];
 
@@ -252,6 +253,13 @@ class Permission extends Model
     public const PERMISSION_BANNER_EDIT = ['name' => 'permission-banner-edit', 'description' => 'دسترسی به بخش ویرایش بنر تبلیغی'];
     public const PERMISSION_BANNER_DELETE = ['name' => 'permission-banner-delete', 'description' => 'دسترسی به بخش حذف بنر تبلیغی'];
     public const PERMISSION_BANNER_STATUS = ['name' => 'permission-banner-status', 'description' => 'دسترسی به بخش تغییر وضعیت بنر تبلیغی'];
+
+    // 8- TAG
+    public const PERMISSION_TAGS = ['name' => 'permission-tags', 'description' => 'دسترسی به بخش تگ ها'];
+    public const PERMISSION_TAG_CREATE = ['name' => 'permission-tag-create', 'description' => 'دسترسی به بخش ایجاد تگ'];
+    public const PERMISSION_TAG_EDIT = ['name' => 'permission-tag-edit', 'description' => 'دسترسی به بخش ویرایش تگ'];
+    public const PERMISSION_TAG_DELETE = ['name' => 'permission-tag-delete', 'description' => 'دسترسی به بخش حذف تگ'];
+    public const PERMISSION_TAG_STATUS = ['name' => 'permission-tag-status', 'description' => 'دسترسی به بخش تغییر وضعیت تگ'];
 
     // User Section Permissions
     //******************************************************************************************************************
@@ -547,6 +555,13 @@ class Permission extends Model
         , self::PERMISSION_BANNER_EDIT
         , self::PERMISSION_BANNER_DELETE
         , self::PERMISSION_BANNER_STATUS
+        , self::PERMISSION_POST_SET_TAGS
+        , self::PERMISSION_POST_UPDATE_TAGS
+        , self::PERMISSION_TAGS
+        , self::PERMISSION_TAG_CREATE
+        , self::PERMISSION_TAG_EDIT
+        , self::PERMISSION_TAG_DELETE
+        , self::PERMISSION_TAG_STATUS
         , self::PERMISSION_USERS
         , self::PERMISSION_ADMIN_USERS
         , self::PERMISSION_ADMIN_USER_CREATE

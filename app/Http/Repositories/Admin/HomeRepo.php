@@ -19,6 +19,7 @@ use Khill\Lavacharts\Lavacharts;
 
 class HomeRepo
 {
+
     public function customersCount(): int
     {
         return User::query()->where('user_type', 0)->count();
@@ -163,5 +164,10 @@ class HomeRepo
     public function customerHomeViewCount(): int
     {
         return Setting::query()->findOrFail(1)->view_count;
+    }
+
+    public function browser()
+    {
+        return Browser::isDesktop();
     }
 }

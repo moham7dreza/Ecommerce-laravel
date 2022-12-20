@@ -75,16 +75,16 @@
                                 </td>
                                 <td class="width-22-rem text-left">
                                     <a href="<?php echo e(route('admin.user.role.permission-form', $role->id)); ?>"
-                                       class="btn btn-success btn-sm"><i class="fa fa-user-graduate"></i> دسترسی ها</a>
+                                       class="btn btn-success btn-sm"><i class="fa fa-user-graduate"></i></a>
                                     <a href="<?php echo e(route('admin.user.role.edit', $role->id)); ?>"
-                                       class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> ویرایش</a>
+                                       class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                     <form class="d-inline" action="<?php echo e(route('admin.user.role.destroy', $role->id)); ?>"
                                           method="post">
                                         <?php echo csrf_field(); ?>
                                         <?php echo e(method_field('delete')); ?>
 
                                         <button class="btn btn-danger btn-sm delete" type="submit"><i
-                                                class="fa fa-trash-alt"></i> حذف
+                                                class="fa fa-trash-alt"></i>
                                         </button>
                                     </form>
                                 </td>

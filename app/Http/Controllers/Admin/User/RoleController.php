@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\User\RoleRequest;
 use App\Imports\User\PermissionsImport;
 use App\Models\User\Permission;
 use App\Models\User\Role;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -139,8 +140,12 @@ class RoleController extends Controller
         return redirect()->route('admin.user.role.index')->with('swal-success', 'سطوح دسترسی با موفقیت بارگذاری شد.');
     }
 
-    public function permissionsExport(): BinaryFileResponse
+    public function permissionsExport()
     {
-        return Excel::download(new PermissionsExport(), "export_user_permissions.xlsx");
+//        return Excel::download(new PermissionsExport(), "export_user_permissions.xlsx");
+
+        $permissions = Permission::query()->latest()->get();
+        $permissionsPdf = Pdf::loadView('admin.user.permission.index', compact('permissions'));
+        return $permissionsPdf->download('permissions.pdf');
     }
 }

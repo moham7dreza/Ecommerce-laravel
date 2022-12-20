@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\Tags\Tag;
 
 class TagController extends Controller
@@ -33,7 +34,8 @@ class TagController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $tags = Tag::query()->latest()->paginate(5);
+//        $tags = Tag::query()->latest()->paginate(5);
+        $tags = QueryBuilder::for(Tag::class)->allowedSorts('id')->paginate(5);
         return view('admin.content.tag.index', compact(['tags']));
     }
 

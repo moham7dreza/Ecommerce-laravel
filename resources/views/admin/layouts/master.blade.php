@@ -4,6 +4,9 @@
 <head>
     @include('admin.layouts.head-tag')
     @yield('head-tag')
+
+    <meta name="csrf_token" content="{{ csrf_token() }}">
+    {!! htmlScriptTagJsApi() !!}
 </head>
 
 <body dir="rtl">

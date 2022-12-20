@@ -194,6 +194,10 @@
 
         </section>
         <hr>
+@mobile
+    <p>This is the MOBILE template!</p>
+@endmobile
+        
         <!-- common discount alert --->
         <section class="row">
             <section class="col-12">

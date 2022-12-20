@@ -9,7 +9,7 @@
                         <div class="topbar-left">
                             <ul class="list-inline">
                                 <li><span
-                                        class="topbar-hightlight"> {{ json_decode($settings->address, true)['addresses']['central_office'] }} </span>
+                                        class="topbar-hightlight">{{ json_decode($settings->address, true)['addresses']['central_office'] }}</span>
                                     <span
                                         class="topbar-label"><i
                                             class="fa  fa-home"></i></span></li>

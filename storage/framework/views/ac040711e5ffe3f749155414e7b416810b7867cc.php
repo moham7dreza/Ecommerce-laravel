@@ -201,6 +201,11 @@
 
         </section>
         <hr>
+<?php if (\Illuminate\Support\Facades\Blade::check('mobile')): ?>
+    <p>This is the MOBILE template!</p>
+<?php endif; ?>
+        <?php echo e($homeRepo->browser()); ?>
+
         <!-- common discount alert --->
         <section class="row">
             <section class="col-12">

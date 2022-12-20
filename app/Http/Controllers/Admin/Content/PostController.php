@@ -36,6 +36,9 @@ class PostController extends Controller
         $this->middleware('can:permission-post-edit')->only(['edit', 'update']);
         $this->middleware('can:permission-post-delete')->only(['destroy']);
         $this->middleware('can:permission-post-status')->only(['status']);
+        $this->middleware('can:permission-post-status')->only(['status']);
+        $this->middleware('can:permission-post-set-tags')->only(['setTags']);
+        $this->middleware('can:permission-post-update-tags')->only(['updateTags']);
     }
 
     /**
@@ -84,7 +87,8 @@ class PostController extends Controller
         }
         $inputs['author_id'] = auth()->user()->id;
         $post = $this->postService->store($inputs);
-//        $post->attachTags(explode(',', $inputs['tags']));
+//        $post->setTranslation('title', 'fa', 'Name in English')->setTranslation('name', 'en', 'Name in English');
+
         return ShareService::redirect('admin.content.post.index', 'پست شما با موفقیت ثبت شد');
     }
 

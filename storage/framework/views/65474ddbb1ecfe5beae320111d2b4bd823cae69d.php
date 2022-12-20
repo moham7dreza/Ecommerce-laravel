@@ -4,6 +4,10 @@
 <head>
     <?php echo $__env->make('admin.layouts.head-tag', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <?php echo $__env->yieldContent('head-tag'); ?>
+
+    <meta name="csrf_token" content="<?php echo e(csrf_token()); ?>">
+    <?php echo htmlScriptTagJsApi(); ?>
+
 </head>
 
 <body dir="rtl">
