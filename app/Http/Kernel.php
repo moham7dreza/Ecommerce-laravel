@@ -66,5 +66,11 @@ class Kernel extends HttpKernel
         'profile.completion' => \App\Http\Middleware\ProfileCompletion::class,
         'admin.check' => \App\Http\Middleware\AdminCheck::class,
         'access.control' => AccessControl::class,
+        // localization
+        'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
     ];
 }

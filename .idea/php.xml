@@ -195,6 +195,7 @@
       <path value="$PROJECT_DIR$/vendor/matomo/device-detector" />
       <path value="$PROJECT_DIR$/vendor/league/pipeline" />
       <path value="$PROJECT_DIR$/vendor/hisorange/browser-detect" />
+      <path value="$PROJECT_DIR$/vendor/mcamara/laravel-localization" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

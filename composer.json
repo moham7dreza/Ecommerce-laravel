@@ -26,6 +26,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "mcamara/laravel-localization": "^1.7",
         "mews/captcha": "^3.2",
         "morilog/jalali": "^3.2",
         "nwidart/laravel-modules": "^9.0",
@@ -67,7 +68,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Share\\": "Modules/Share/",
-            "Modules\\": "Modules/"
+            "Modules\\": "Modules/",
+            "Modules\\Techzilla\\Panel\\": "Modules/Techzilla/Panel/"
         }
     },
     "autoload-dev": {
