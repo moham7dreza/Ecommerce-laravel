@@ -37,7 +37,6 @@
         "psr/simple-cache": "2.0",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "realrashid/sweet-alert": "^5.1",
-        "saeedpooyanfar/zarinpal": "^5.0",
         "spatie/enum": "^3.13",
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-backup": "^8.1",
