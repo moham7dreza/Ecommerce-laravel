@@ -117,7 +117,7 @@ class PaymentController extends Controller
                 'type' => $type,
                 'paymentable_id' => $paymented->id,
                 'paymentable_type' => $targetModel,
-                'staus' => 1,
+                'status' => 1,
             ]
         );
 
