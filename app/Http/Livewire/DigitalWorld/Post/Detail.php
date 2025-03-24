@@ -9,7 +9,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Share\Repositories\ShareRepo;
 
 class Detail extends Component
 {
@@ -24,11 +23,6 @@ class Detail extends Component
             ['position', 9], ['status', 1]
         ])->first();
         $this->post = $post;
-    }
-
-    public function sweetAlert($title)
-    {
-        ShareRepo::successMessage($title);
     }
 
     public function render(): Factory|View|Application
