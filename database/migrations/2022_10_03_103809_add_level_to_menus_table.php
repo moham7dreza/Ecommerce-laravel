@@ -14,7 +14,7 @@ class AddLevelToMenusTable extends Migration
     public function up()
     {
         Schema::table('menus', function (Blueprint $table) {
-            $table->tinyInteger('level')->default(1)->after('location')
+            $table->tinyInteger('level')->default(1)
                 ->comment('1 => main menu, 2 => sub menu, 3 => submenu children');
         });
     }
