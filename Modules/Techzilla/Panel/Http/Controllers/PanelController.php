@@ -3,11 +3,12 @@
 
 namespace Modules\Techzilla\Panel\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Modules\Techzilla\Share\Http\Controllers\Controller;
+
 
 class PanelController extends Controller
 {
