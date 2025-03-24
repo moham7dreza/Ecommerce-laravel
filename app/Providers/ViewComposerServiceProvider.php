@@ -46,7 +46,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 $cartItems = CartItem::query()->where('user_id', Auth::user()->id)->get();
                 $view->with('cartItems', $cartItems);
             }
-            $allMenus = Menu::query()->where([['status', 1], ['location', 1], ['parent_id', NULL]])->orderBy('created_at')->get();
+            $allMenus = Menu::query()->where([['status', 1], ['parent_id', NULL]])->orderBy('created_at')->get();
             $menus = \Spatie\Menu\Menu::build($allMenus->toArray(), function ($menu, $allMenu){
                $menu->link($allMenu['url'] ?? '/', $allMenu['name']);
             });

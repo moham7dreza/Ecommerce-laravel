@@ -83,7 +83,7 @@ class MenuController extends Controller
         $parent_menus = Menu::query()->where([
             ['parent_id', null],
             ['status', 1],
-            ['location', $menu->location]
+//            ['location', $menu->location]
         ])->get()->except($menu->id);
         return view('admin.content.menu.edit', compact('menu', 'parent_menus'));
     }
