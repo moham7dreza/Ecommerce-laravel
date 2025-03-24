@@ -197,7 +197,7 @@
 @mobile
     <p>This is the MOBILE template!</p>
 @endmobile
-        
+
         <!-- common discount alert --->
         <section class="row">
             <section class="col-12">
@@ -228,9 +228,13 @@
             <section class="col-12">
                 <div class="alert alert-info" role="alert">
                     کل فروش هفته جاری <strong>{{ $homeRepo->lastWeeklySalesAmount() }} تومان</strong> و کل فروش ماه جاری
-                    <strong>{{ $homeRepo->lastMonthlySalesAmount() }} تومان</strong> است. برای مشاهده<a
-                        href="{{ route('admin.market.order.show', $homeRepo->lastOrder()->id) }}"
-                        class="alert-link"> جزئیات </a>آخرین سفارش کلیک کن
+                    <strong>{{ $homeRepo->lastMonthlySalesAmount() }} تومان</strong> است. برای مشاهده
+                    @if($homeRepo->lastOrder())
+                        <a
+                            href="{{ route('admin.market.order.show', $homeRepo->lastOrder()->id) }}"
+                            class="alert-link"> جزئیات </a>
+                    @endif
+                    آخرین سفارش کلیک کن
                 </div>
             </section>
         </section>

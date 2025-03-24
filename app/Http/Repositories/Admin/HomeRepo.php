@@ -156,14 +156,14 @@ class HomeRepo
         return priceFormat($amount);
     }
 
-    public function lastOrder(): Builder|Model
+    public function lastOrder(): Builder|Model|null
     {
         return Order::query()->orderBy('updated_at', 'desc')->take(1)->first();
     }
 
     public function customerHomeViewCount(): int
     {
-        return Setting::query()->findOrFail(1)->view_count;
+        return Setting::query()->findOrFail(1)->view_count ?? 0;
     }
 
     public function browser()
