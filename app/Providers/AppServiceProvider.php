@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Auth::loginUsingId(1);
         Paginator::useBootstrap();
     }
 }
