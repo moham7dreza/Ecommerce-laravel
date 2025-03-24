@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\admin\SettingSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(SettingSeeder::class);
         foreach (self::$seeders as $seeder) {
             $this->call($seeder);
         }

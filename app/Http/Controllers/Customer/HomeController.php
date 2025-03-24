@@ -70,12 +70,12 @@ class HomeController extends Controller
         // محبوب ترین سیستم ها
         $popularSystems = System::where('system_rating', '>=', 4)->where('status', 1)->where('system_view_number', '>=', 99)->take(10)->get();
         // نمونه سیستم های اسمبل شده
-        $sampleOfGamingSystemImages = SystemType::where('name', 'like', '%کولاک مینی%')->first()->images;
+        $sampleOfGamingSystemImages = SystemType::where('name', 'like', '%کولاک مینی%')->first()?->images;
         $sampleOfAssembledSystems = System::latest()->take(10)->get();
         // تنطیمات سایت
-        $siteSetting = Setting::find(1);
+        $siteSetting = Setting::query()->find(1);
 
-        $siteSetting->update(['view_count' => $siteSetting->view_count += 1]);
+//        $siteSetting?->increment('view_count');
 
 //        $this->seo()->setTitle('Home');
 //        $this->seo()->setDescription('This is my page description');
